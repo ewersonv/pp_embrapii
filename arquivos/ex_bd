@@ -1,0 +1,30 @@
+pessoa
+  id
+  nome
+  telefone
+  email
+  tipo (representante empresa ou polo)
+
+empresa
+  id
+  nome
+  cnpj
+
+produto
+  id
+  nome
+  tipo (prestação de serviço ou projeto de inovação)
+
+projeto
+  id
+  justificativa
+  riscos
+  restrições
+  partes_interessadas
+  equipe *** verificar requisitos, pois pode ser FK de pessoa caso armazene infos dos membros da equipe como email, tel etc
+  entregas
+  cronograma
+  premissas
+  efeitos
+  requisitos
+  custos
