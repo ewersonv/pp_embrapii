@@ -1,0 +1,15 @@
+Gráfico de pizza:
+representantes -> total x tipo de pessoa (representante da empresa ou do polo de inovação)
+prospectadores -> total x nome
+projetos -> total x empresa
+projetos -> total x tipo de empresa (MEI/ME ou Médio/Grande porte)
+projetos -> total x tipo de projeto (prestação de serviços ou projeto de inovação)
+projetos -> total x estado (finalizado/em andamento/não iniciado/aguardando análise)
+custos -> total x custo de cada projeto
+
+Gráfico de linha:
+número de projetos prospectados ao longo do tempo (ano)
+
+Gráfico de barras:
+número de projetos prospectados por mês em um determinado período
+número de projetos finalizados por mês em um determinado período
