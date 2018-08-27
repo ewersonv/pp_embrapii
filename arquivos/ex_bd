@@ -3,6 +3,13 @@ pessoa
   nome
   telefone
   email
+
+prospectador
+  id_projeto
+  id_pessoa
+  nome_pessoa
+  telefone_pessoa
+  email_pessoa
   tipo (representante empresa ou polo)
 
 empresa
@@ -12,20 +19,28 @@ empresa
   tipo
 
 produto
+  id_projeto
   id
   nome
   tipo (prestação de serviço ou projeto de inovação)
   justificativa
 
 projeto
+  id_empresa
   id
   riscos
   restrições
   partes_interessadas
-  equipe *** verificar requisitos, pois pode ser FK de pessoa caso armazene infos dos membros da equipe como email, tel etc
   entregas
-  cronograma
+  cronograma (data ini/data fim)
   premissas
   efeitos
   requisitos
   custos
+
+equipe_projeto
+  id_projeto
+  id_pessoa
+  nome_pessoa
+  telefone_pessoa
+  email_pessoa
