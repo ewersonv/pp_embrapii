@@ -2,7 +2,7 @@
 session_start();
 include_once("conexao.php");
 
-$cb1 = filter_input(INPUT_POST, 'cb1', FILTER_SANITIZE_STRING);
+$checkbox = filter_input(INPUT_POST, 'cb1', FILTER_SANITIZE_STRING);
 $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $telefone = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_NUMBER_INT);
@@ -12,7 +12,7 @@ $telefone = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_NUMBER_INT);
 //echo "Nome Representante: $nome_rep <br>";
 //echo "E-mail: $email <br>";
 
-$result_pessoa = "INSERT INTO pessoa (tipo_pessoa, nome, email, telefone, created) VALUES ('$cb1','$nome', '$email', $telefone, NOW())";
+$result_pessoa = "INSERT INTO pessoa (tipo_pessoa, nome, email, telefone, created) VALUES ('$checkbox','$nome', '$email', $telefone, NOW())";
 $resultado_pessoa = mysqli_query($conn, $result_pessoa);
 
 /*if($_POST['checkbox'] != "")
