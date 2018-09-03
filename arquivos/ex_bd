@@ -1,33 +1,11 @@
-pessoa
-  id
-  nome
-  telefone
-  email
-
-prospectador
-  id_projeto
-  id_pessoa
-  nome_pessoa
-  telefone_pessoa
-  email_pessoa
-  tipo (representante empresa ou polo)
-
 empresa
-  id
-  nome
+  id_empresa
+  nome_empresa
   cnpj
-  tipo
-
-produto
-  id_projeto
-  id
-  nome
-  tipo (prestação de serviço ou projeto de inovação)
-  justificativa
+  tipo_empresa
 
 projeto
-  id_empresa
-  id
+  id_projeto
   riscos
   restrições
   partes_interessadas
@@ -38,9 +16,19 @@ projeto
   requisitos
   custos
 
+produto
+  id_produto
+  nome_produto
+  tipo_produto (prestação de serviço ou projeto de inovação)
+  justificativa
+
 equipe_projeto
-  id_projeto
+  id_equipe
+
+pessoa
   id_pessoa
   nome_pessoa
-  telefone_pessoa
-  email_pessoa
+  telefone
+  email
+  tipo_pessoa (prospectador ou não)
+  tipo_prospectador (começa nulo, representante da empresa ou do polo de inovação)
