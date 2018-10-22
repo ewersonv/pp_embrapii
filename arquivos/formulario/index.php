@@ -5,7 +5,7 @@ include_once("conexao.php");
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
-		<meta charset="utf-8">
+		<meta charset="UTF-8">
 		<title>SPP - IFES</title>		
 	</head>
 	<body>
