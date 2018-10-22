@@ -7,7 +7,7 @@
 	<body>
 		<h1>Pesquisar Usuários</h1>
 		<form method="POST" id="form-pesquisa" action="">
-			<label>Pesquisar nome da empresa: </label>
+			<label>Pesquisar por empresa: </label>
 			<input type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome da empresa">
 		</form>
 		
