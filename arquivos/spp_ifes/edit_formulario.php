@@ -1,6 +1,7 @@
 <?php
 session_start();
 include_once("conexao.php");
+
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 /* TABELA PROPOSTA */
 $result_proposta = "SELECT * FROM proposta WHERE id_proposta = '$id'";
@@ -35,8 +36,8 @@ $row_produto = mysqli_fetch_assoc($resultado_produto);
 		<title>SPP - IFES</title>		
 	</head>
 	<body>
-		<a href="cad_usuario.php">Cadastrar</a><br>
-		<a href="index.php">Listar</a><br>
+		<a href="index.php">Início</a><br>
+		<a href="listar.php">Listar</a><br>
 		<h1>Preencher proposta</h1>
 		<?php
 		if(isset($_SESSION['msg'])){
@@ -47,7 +48,7 @@ $row_produto = mysqli_fetch_assoc($resultado_produto);
 		/* USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE */
 
 		?>
-		<form method="POST" action="proc_edit_usuario.php">
+		<form method="POST" action="proc_edit_formulario.php">
 			<input type="hidden" name="id" value="<?php echo utf8_encode($row_proposta['id_proposta']); ?>">
 			
 			<label><b>Descrição do produto: </b></label><br>
@@ -109,6 +110,8 @@ $row_produto = mysqli_fetch_assoc($resultado_produto);
 
 			<label><b>Custos: </b></label><br>
 			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+
+			<input type="checkbox" name="checkbox" value="Sim">Análise finalizada <br><br>
 			
 			<input type="submit" value="Editar">
 		</form>

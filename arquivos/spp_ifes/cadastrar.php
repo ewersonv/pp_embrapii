@@ -8,8 +8,7 @@ session_start();
 		<title>CRUD - Cadastrar</title>		
 	</head>
 	<body>
-		<a href="cad_usuario.php">Cadastrar</a><br>
-		<a href="index.php">Listar</a><br>
+		<a href="index.php">Início</a><br>
 		<h1>Cadastrar Usuário</h1>
 		<?php
 		if(isset($_SESSION['msg'])){
@@ -17,7 +16,7 @@ session_start();
 			unset($_SESSION['msg']);
 		}
 		?>
-		<form method="POST" action="proc_cad_usuario.php">
+		<form method="POST" action="proc_cad_formulario.php">
 			<label>Nome: </label>
 			<input type="text" name="nome" placeholder="Digite o nome completo"><br><br>
 			

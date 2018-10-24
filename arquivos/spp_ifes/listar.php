@@ -9,8 +9,7 @@ include_once("conexao.php");
 		<title>SPP - IFES</title>		
 	</head>
 	<body>
-		<a href="cad_usuario.php">Cadastrar</a><br>
-		<a href="index.php">Listar</a><br>
+		<a href="index.php">Início</a><br>
 		<h1>Propostas para prospecção</h1>
 		<?php
 		if(isset($_SESSION['msg'])){
@@ -25,27 +24,26 @@ include_once("conexao.php");
 		//Setar a quantidade de itens por pagina
 		$qnt_result_pg = 10;
 
-		//Campo "Pesquisar"
-		echo "<i>Pesquisar</i>" . "<br>","<br>","<br>";
-
-
 		//calcular o inicio visualização
 		$inicio = ($qnt_result_pg * $pagina) - $qnt_result_pg;
 		
-		$result_proposta = "SELECT * FROM proposta LIMIT $inicio, $qnt_result_pg";
+		$result_proposta = "SELECT * FROM proposta ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
 		$resultado_proposta = mysqli_query($conn, $result_proposta);
-		while($row_proposta = mysqli_fetch_assoc($resultado_proposta)){
 
+		$result_empresa = "SELECT nome_empresa FROM empresa INNER JOIN proposta ON empresa.id_empresa=proposta.id_proposta ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
+		$resultado_empresa = mysqli_query($conn, $result_empresa);
+
+		while($row_proposta = mysqli_fetch_assoc($resultado_proposta) and $row_empresa = mysqli_fetch_assoc($resultado_empresa)){
 			/* USAR ENCODE AQUI, CASO CONTRÁRIO OS CARACTERES ESPECIAIS NÃO APARECERÃO NA PÁGINA */
 
 			echo "<b>Código: </b>" . utf8_encode($row_proposta['id_proposta']) . "<br>";
 			echo "<b>Tipo: </b>" . utf8_encode($row_proposta['tipo_proposta']) . "<br>";
-			echo "<b>Empresa: </b>" . utf8_encode($row_proposta['tipo_proposta']) . "<br>";
+			echo "<b>Empresa: </b>" . utf8_encode($row_empresa['nome_empresa']) . "<br>";
 			echo "<b>Resumo: </b>" . utf8_encode($row_proposta['resumo_proposta']) . "<br>";
 			echo "<a href='edit_formulario.php?id=" . $row_proposta['id_proposta'] . "'>Editar</a><br><hr>";
 		}
 		
-		//Paginação - Somar a quantidade de usuários
+		//Paginação - Somar a quantidade de formulários
 		$result_pg = "SELECT COUNT(id_proposta) AS num_result FROM proposta";
 		$resultado_pg = mysqli_query($conn, $result_pg);
 		$row_pg = mysqli_fetch_assoc($resultado_pg);
@@ -55,11 +53,11 @@ include_once("conexao.php");
 		
 		//Limitar os link antes depois
 		$max_links = 2;
-		echo "<a href='index.php?pagina=1'>Primeira</a> ";
+		echo "<a href='listar.php?pagina=1'>Primeira</a> ";
 		
 		for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
 			if($pag_ant >= 1){
-				echo "<a href='index.php?pagina=$pag_ant'>$pag_ant</a> ";
+				echo "<a href='listar.php?pagina=$pag_ant'>$pag_ant</a> ";
 			}
 		}
 			
@@ -67,11 +65,11 @@ include_once("conexao.php");
 		
 		for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
 			if($pag_dep <= $quantidade_pg){
-				echo "<a href='index.php?pagina=$pag_dep'>$pag_dep</a> ";
+				echo "<a href='listar.php?pagina=$pag_dep'>$pag_dep</a> ";
 			}
 		}
 		
-		echo "<a href='index.php?pagina=$quantidade_pg'>Ultima</a>";
+		echo "<a href='listar.php?pagina=$quantidade_pg'>Ultima</a>";
 		
 		?>		
 	</body>

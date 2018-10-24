@@ -11,5 +11,8 @@ adicionar campos created/modified à tabela do BD.
 adicionar imgs/ícones ao site.
 
 
-inserir checkbox no formulário para sinalizar que a análise da proposta foi
-concluída.
+integrar checkbox ao BD e mostrar se está marcado ou não quando clicar em
+editar.
+
+
+adicionar css/bootstrap.
