@@ -1,0 +1,15 @@
+index.php será "Início", com botão para listar todas as propostas, campo
+pesquisar *e botão "Gráficos".
+
+
+adicionar chaves primárias e extrangeiras às tabelas do BD.
+
+
+adicionar campos created/modified à tabela do BD.
+
+
+adicionar imgs/ícones ao site.
+
+
+inserir checkbox no formulário para sinalizar que a análise da proposta foi
+concluída.

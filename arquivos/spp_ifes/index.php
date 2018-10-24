@@ -40,7 +40,6 @@ include_once("conexao.php");
 
 			echo "<b>Código: </b>" . utf8_encode($row_proposta['id_proposta']) . "<br>";
 			echo "<b>Tipo: </b>" . utf8_encode($row_proposta['tipo_proposta']) . "<br>";
-			echo "<b>Empresa: </b>" . utf8_encode($row_proposta['tipo_proposta']) . "<br>";
 			echo "<b>Resumo: </b>" . utf8_encode($row_proposta['resumo_proposta']) . "<br>";
 			echo "<a href='edit_formulario.php?id=" . $row_proposta['id_proposta'] . "'>Editar</a><br><hr>";
 		}
