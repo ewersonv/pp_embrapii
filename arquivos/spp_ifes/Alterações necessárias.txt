@@ -15,4 +15,4 @@ integrar checkbox ao BD e mostrar se está marcado ou não quando clicar em
 editar.
 
 
-adicionar css/bootstrap. TESTE
+adicionar css/bootstrap.
