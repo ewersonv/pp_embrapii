@@ -1,17 +1,17 @@
-index.php ser· "InÌcio", com bot„o para listar todas as propostas, campo
-pesquisar *e bot„o "Gr·ficos".
+index.php ser√° "In√≠cio", com bot√£o para listar todas as propostas, campo
+pesquisar *e bot√£o "Gr√°ficos".
 
 
-adicionar chaves prim·rias e extrangeiras ‡s tabelas do BD.
+adicionar chaves prim√°rias e extrangeiras √†s tabelas do BD.
 
 
-adicionar campos created/modified ‡ tabela do BD.
+adicionar campos created/modified √† tabela do BD.
 
 
-adicionar imgs/Ìcones ao site.
+adicionar imgs/√≠cones ao site.
 
 
-integrar checkbox ao BD e mostrar se est· marcado ou n„o quando clicar em
+integrar checkbox ao BD e mostrar se est√° marcado ou n√£o quando clicar em
 editar.
 
 
