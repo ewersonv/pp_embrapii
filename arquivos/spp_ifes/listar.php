@@ -1,15 +1,25 @@
 <?php
 session_start();
 include_once("conexao.php");
+include_once("funcoes.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/product.css" rel="stylesheet">
 		<title>SPP - IFES</title>		
 	</head>
 	<body>
-		<a href="index.php">Início</a><br>
+		<nav class="site-header sticky-top py-1">
+			<div class="container d-flex flex-column flex-md-row justify-content-between">
+				<a class="py-2 d-none d-md-inline-block" href="index.php">Início</a>
+				<a class="py-2 d-none d-md-inline-block"href="cadastrar.php">Nova Proposta</a>
+				<a class="py-2 d-none d-md-inline-block" href="#">Relatórios</a>
+			</div>
+		</nav>
+
 		<h1>Propostas para prospecção</h1>
 		<?php
 		if(isset($_SESSION['msg'])){
@@ -39,10 +49,10 @@ include_once("conexao.php");
 			echo "<b>Código: </b>" . utf8_encode($row_proposta['id_proposta']) . "<br>";
 			echo "<b>Tipo: </b>" . utf8_encode($row_proposta['tipo_proposta']) . "<br>";
 			echo "<b>Empresa: </b>" . utf8_encode($row_empresa['nome_empresa']) . "<br>";
-			echo "<b>Resumo: </b>" . utf8_encode($row_proposta['resumo_proposta']) . "<br>";
-			echo "<a href='edit_formulario.php?id=" . $row_proposta['id_proposta'] . "'>Editar</a><br><hr>";
+			echo "<b>Resumo: </b>" . utf8_encode(limita_caracteres($row_proposta['resumo_proposta'], 50)) . "<br>";
+			echo "<a href='edit_formulario.php?id=" . $row_proposta['id_proposta'] . "'>Preencher proposta</a><br><br>";
 		}
-		
+
 		//Paginação - Somar a quantidade de formulários
 		$result_pg = "SELECT COUNT(id_proposta) AS num_result FROM proposta";
 		$resultado_pg = mysqli_query($conn, $result_pg);

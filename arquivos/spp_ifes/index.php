@@ -6,11 +6,19 @@ include_once("conexao.php");
 <html lang="pt-br">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/product.css" rel="stylesheet">
 		<title>SPP - IFES</title>		
 	</head>
 	<body>
-		<a href="cadastrar.php">Cadastrar</a><br>
-		<a href="listar.php">Listar</a><br>
+		<nav class="site-header sticky-top py-1">
+			<div class="container d-flex flex-column flex-md-row justify-content-between">
+				<a class="py-2 d-none d-md-inline-block" href="listar.php">Listar propostas</a>
+				<a class="py-2 d-none d-md-inline-block"href="cadastrar.php">Nova Proposta</a>
+				<a class="py-2 d-none d-md-inline-block" href="#">Relatórios</a>
+			</div>
+		</nav>
+
 		<h1>Propostas para prospecção</h1>
 		<?php
 		if(isset($_SESSION['msg'])){
@@ -22,7 +30,7 @@ include_once("conexao.php");
 		echo "<i>Pesquisar propostas</i>" . "<br>","<br>","<br>";
 
 		//Campo "Gráficos"
-		echo "<i>Relatórios em forma de gráficos</i>" . "<br>","<br>","<br>";
+		echo "<i>Relatórios e gráficos</i>" . "<br>","<br>","<br>";
 
 
 		?>		

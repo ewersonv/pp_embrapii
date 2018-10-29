@@ -33,87 +33,106 @@ $row_produto = mysqli_fetch_assoc($resultado_produto);
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/bootstrap.css" rel="stylesheet">
+		<link href="css/product.css" rel="stylesheet">
 		<title>SPP - IFES</title>		
 	</head>
 	<body>
-		<a href="index.php">Início</a><br>
-		<a href="listar.php">Listar</a><br>
-		<h1>Preencher proposta</h1>
-		<?php
-		if(isset($_SESSION['msg'])){
-			echo $_SESSION['msg'];
-			unset($_SESSION['msg']);
-		}
+		<nav class="site-header sticky-top py-1">
+			<div class="container d-flex flex-column flex-md-row justify-content-between">
+				<a class="py-2 d-none d-md-inline-block" href="index.php">Início</a>
+				<a class="py-2 d-none d-md-inline-block" href="listar.php">Listar propostas</a>
+				<a class="py-2 d-none d-md-inline-block"href="cadastrar.php">Nova Proposta</a>
+				<a class="py-2 d-none d-md-inline-block" href="#">Relatórios</a>
+			</div>
+		</nav>
 
-		/* USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE */
+		<div class="container">
+			<div class="py-5 text-center">
+				<h1>Preencher proposta</h1>
+			</div>
+			<?php
+			if(isset($_SESSION['msg'])){
+				echo $_SESSION['msg'];
+				unset($_SESSION['msg']);
+			}
 
-		?>
-		<form method="POST" action="proc_edit_formulario.php">
-			<input type="hidden" name="id" value="<?php echo utf8_encode($row_proposta['id_proposta']); ?>">
-			
-			<label><b>Descrição do produto: </b></label><br>
-			<input type="text" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+			/* USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE */
 
-			<label><b>Justificativa: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+			?>
+			<form method="POST" action="proc_edit_formulario.php">
+				<div class="col-md-6 mb-3">
+					<input type="hidden" name="id" value="<?php echo utf8_encode($row_proposta['id_proposta']); ?>">
+					
+					<label><b>Descrição do produto: </b></label><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
 
-			<label><b>Nome da empresa: </b></label><br>
-			<input type="text" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<label><b>Justificativa: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<label><b>CNPJ: </b></label><br>
-			<input type="text" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<label><b>Nome da empresa: </b></label><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
 
-			<label><b>Tipo de empresa: </b></label><br>
-			<input type="text" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<label><b>CNPJ: </b></label><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
 
-			<label><b>Tipo de proposta: </b></label><br>
-			<input type="text" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<label><b>Tipo de empresa: </b></label><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
 
-			<label><b>Prospectado por: </b></label><br>
-			<input type="text" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<label><b>Tipo de proposta: </b></label><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
 
-			<label><b>Representante do(a): </b></label><br>
-			<input type="text" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<label><b>Prospectado por: </b></label><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
 
-			<label><b>Email: </b></label><br>
-			<input type="email" name="email" value="<?php echo utf8_encode($row_pessoa['email']); ?>"><br><br>
+					<label><b>Representante do(a): </b></label><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
 
-			<label><b>Telefone: </b></label><br>
-			<input type="text" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<label><b>Email: </b></label><br>
+					<input type="email" class="form-control" name="email" value="<?php echo utf8_encode($row_pessoa['email']); ?>"><br><br>
 
-			<label><b>Riscos: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Telefone: </b></label><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
 
-			<label><b>Restrições: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Riscos: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<label><b>Partes interessadas: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Restrições: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<label><b>Equipe do projeto: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Partes interessadas: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<label><b>Entregas: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Equipe do projeto: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<label><b>Cronograma: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Entregas: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<label><b>Premissas: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Cronograma: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<label><b>Efeitos do projeto: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Premissas: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<label><b>Requisitos: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Efeitos do projeto: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<label><b>Custos: </b></label><br>
-			<textarea name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<label><b>Requisitos: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-			<input type="checkbox" name="checkbox" value="Sim">Análise finalizada <br><br>
-			
-			<input type="submit" value="Editar">
-		</form>
+					<label><b>Custos: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+
+					<input type="checkbox" name="checkbox" value="Sim">Análise finalizada <br><br>
+					
+					<div class="py-5 text-center">
+						<button class="btn btn-outline-secondary" href="#">Editar</button>
+					</div>
+				</div>
+			</form>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+			<script src="js/bootstrap.min.js"></script>
+		</div>
 	</body>
 </html>
