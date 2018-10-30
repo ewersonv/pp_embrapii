@@ -50,7 +50,7 @@ include_once("funcoes.php");
 			echo "<b>Tipo: </b>" . utf8_encode($row_proposta['tipo_proposta']) . "<br>";
 			echo "<b>Empresa: </b>" . utf8_encode($row_empresa['nome_empresa']) . "<br>";
 			echo "<b>Resumo: </b>" . utf8_encode(limita_caracteres($row_proposta['resumo_proposta'], 50)) . "<br>";
-			echo "<a href='edit_formulario.php?id=" . $row_proposta['id_proposta'] . "'>Preencher proposta</a><br><br>";
+			echo "<a href='edit_formulario.php?id=" . $row_proposta['id_proposta'] . "'>Preencher proposta</a><br><hr>";
 		}
 
 		//Paginação - Somar a quantidade de formulários

@@ -63,9 +63,12 @@ $row_produto = mysqli_fetch_assoc($resultado_produto);
 			<form method="POST" action="proc_edit_formulario.php">
 				<div class="col-md-6 mb-3">
 					<input type="hidden" name="id" value="<?php echo utf8_encode($row_proposta['id_proposta']); ?>">
-					
-					<label><b>Descrição do produto: </b></label><br>
+
+					<label><b>Nome do produto: </b></label><br>
 					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+
+					<label><b>Descrição do produto: </b></label><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Digite o nome completo"/><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
 					<label><b>Justificativa: </b></label><br>
 					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
@@ -124,8 +127,11 @@ $row_produto = mysqli_fetch_assoc($resultado_produto);
 					<label><b>Custos: </b></label><br>
 					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
 
-					<input type="checkbox" name="checkbox" value="Sim">Análise finalizada <br><br>
-					
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" value="1" id="checkbox">
+						<label class="custom-control-label" for="checkbox">Análise finalizada?</label> <br><br>
+					</div>
+
 					<div class="py-5 text-center">
 						<button class="btn btn-outline-secondary" href="#">Editar</button>
 					</div>
