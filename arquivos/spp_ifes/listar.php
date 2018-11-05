@@ -2,6 +2,7 @@
 session_start();
 include_once("conexao.php");
 include_once("funcoes.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,73 +15,54 @@ include_once("funcoes.php");
 	<body>
 		<nav class="site-header sticky-top py-1">
 			<div class="container d-flex flex-column flex-md-row justify-content-between">
-				<a class="py-2 d-none d-md-inline-block" href="index.php">Início</a>
+				<a class="py-2 d-none d-md-inline-block" href="index.html">Início</a>
 				<a class="py-2 d-none d-md-inline-block"href="cadastrar.php">Nova Proposta</a>
 				<a class="py-2 d-none d-md-inline-block" href="#">Relatórios</a>
 			</div>
 		</nav>
 
-		<h1>Propostas para prospecção</h1>
-		<?php
-		if(isset($_SESSION['msg'])){
-			echo $_SESSION['msg'];
-			unset($_SESSION['msg']);
-		}
-		
-		//Receber o número da página
-		$pagina_atual = filter_input(INPUT_GET,'pagina', FILTER_SANITIZE_NUMBER_INT);		
-		$pagina = (!empty($pagina_atual)) ? $pagina_atual : 1;
-		
-		//Setar a quantidade de itens por pagina
-		$qnt_result_pg = 10;
+		<div class="container">
+			<div class="py-5 text-center">
+				<h1>Propostas para prospecção</h1>
+			</div>
 
-		//calcular o inicio visualização
-		$inicio = ($qnt_result_pg * $pagina) - $qnt_result_pg;
-		
-		$result_proposta = "SELECT * FROM proposta ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
-		$resultado_proposta = mysqli_query($conn, $result_proposta);
+				<?php
+					include_once("exibir_listar.php")
+				?>
 
-		$result_empresa = "SELECT nome_empresa FROM empresa INNER JOIN proposta ON empresa.id_empresa=proposta.id_proposta ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
-		$resultado_empresa = mysqli_query($conn, $result_empresa);
+			<div class="row mb-2">
+				<div class="col-md-6">
+				<div class="card flex-md-row mb-4 shadow-sm h-md-250">
+					<div class="card-body d-flex flex-column align-items-start">
+					
+					<h5 class="mb-0">
+						<a class="text-dark">Código: </a>
+					</h5>
+					<a class="mb-1 text-muted">Nov 12</a>
+					<p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+					<a role='button' class='btn btn-sm btn-outline-secondary' href="#">Preencher</a>
+					</div>
+					<img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" >
+				</div>
+				</div>
+				<div class="col-md-6">
+				<div class="card flex-md-row mb-4 shadow-sm h-md-250">
+					<div class="card-body d-flex flex-column align-items-start">
+					<strong class="d-inline-block mb-2 text-success">Design</strong>
+					<h3 class="mb-0">
+						<a class="text-dark" href="#">Post title</a>
+					</h3>
+					<div class="mb-1 text-muted">Nov 11</div>
+					<p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+					<a href="#">Continue reading</a>
+					</div>
+					<img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" >
+				</div>
+				</div>
+			</div>
+			</div>
 
-		while($row_proposta = mysqli_fetch_assoc($resultado_proposta) and $row_empresa = mysqli_fetch_assoc($resultado_empresa)){
-			/* USAR ENCODE AQUI, CASO CONTRÁRIO OS CARACTERES ESPECIAIS NÃO APARECERÃO NA PÁGINA */
 
-			echo "<b>Código: </b>" . utf8_encode($row_proposta['id_proposta']) . "<br>";
-			echo "<b>Tipo: </b>" . utf8_encode($row_proposta['tipo_proposta']) . "<br>";
-			echo "<b>Empresa: </b>" . utf8_encode($row_empresa['nome_empresa']) . "<br>";
-			echo "<b>Resumo: </b>" . utf8_encode(limita_caracteres($row_proposta['resumo_proposta'], 50)) . "<br>";
-			echo "<a href='edit_formulario.php?id=" . $row_proposta['id_proposta'] . "'>Preencher proposta</a><br><hr>";
-		}
-
-		//Paginação - Somar a quantidade de formulários
-		$result_pg = "SELECT COUNT(id_proposta) AS num_result FROM proposta";
-		$resultado_pg = mysqli_query($conn, $result_pg);
-		$row_pg = mysqli_fetch_assoc($resultado_pg);
-		//echo $row_pg['num_result'];
-		//Quantidade de pagina 
-		$quantidade_pg = ceil($row_pg['num_result'] / $qnt_result_pg);
-		
-		//Limitar os link antes depois
-		$max_links = 2;
-		echo "<a href='listar.php?pagina=1'>Primeira</a> ";
-		
-		for($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++){
-			if($pag_ant >= 1){
-				echo "<a href='listar.php?pagina=$pag_ant'>$pag_ant</a> ";
-			}
-		}
-			
-		echo "$pagina ";
-		
-		for($pag_dep = $pagina + 1; $pag_dep <= $pagina + $max_links; $pag_dep++){
-			if($pag_dep <= $quantidade_pg){
-				echo "<a href='listar.php?pagina=$pag_dep'>$pag_dep</a> ";
-			}
-		}
-		
-		echo "<a href='listar.php?pagina=$quantidade_pg'>Ultima</a>";
-		
-		?>		
+		</div>
 	</body>
 </html>

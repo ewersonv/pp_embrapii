@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once("conexao.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,7 +13,7 @@ session_start();
 	<body>	
 		<nav class="site-header sticky-top py-1">
 			<div class="container d-flex flex-column flex-md-row justify-content-between">
-				<a class="py-2 d-none d-md-inline-block" href="index.php">Início</a>
+				<a class="py-2 d-none d-md-inline-block" href="index.html">Início</a>
 				<a class="py-2 d-none d-md-inline-block" href="listar.php">Listar propostas</a>
 				<a class="py-2 d-none d-md-inline-block" href="#">Relatórios</a>
 			</div>
@@ -22,15 +23,9 @@ session_start();
       		<div class="py-5 text-center">
 			  <h1>Nova proposta</h1>
 			</div>
-				<?php
-				if(isset($_SESSION['msg'])){
-					echo $_SESSION['msg'];
-					unset($_SESSION['msg']);
-				}
-				?>
 
 				<form method="POST" action="proc_cad_formulario.php">
-					<div class="col-md-6 mb-3">
+					<div class="col-md-12 mb-3">
 						<label><b>Nome do produto: </b></label><br>
 						<input type="text" class="form-control" name="nome" placeholder="Nome completo" required><br><br>
 						<div class="invalid-feedback">
@@ -62,10 +57,28 @@ session_start();
 						</div>
 
 						<label><b>Tipo de empresa: </b></label><br>
-						<input type="text" name="nome" placeholder="MEI/ME/EPP/Médio porte/Grande porte"><br><br>
+						<div class="custom-control custom-radio">
+                			<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="MEI/ME">MEI/ME</label> <br>
+						</div>
+						<div class="custom-control custom-radio">
+                			<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="EPP">EPP</label> <br>
+						</div>
+						<div class="custom-control custom-radio">
+                			<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="Médio/Grande porte">Médio/Grande porte</label> <br><br>
+						</div>
 
 						<label><b>Tipo de proposta: </b></label><br>
-						<input type="text" name="nome" placeholder="Projeto de inovação/Prestação de serviço tecnológico"><br><br>
+						<div class="custom-control custom-radio">
+							<input id="Projeto de inovação tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="Projeto de inovação tecnológico">Projeto de inovação tecnológico</label> <br>
+						</div>
+						<div class="custom-control custom-radio">
+							<input id="Prestação de serviço tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" required>
+							<label class="custom-control-label" for="Prestação de serviço tecnológico">Prestação de serviço tecnológico</label> <br><br>
+						</div>
 
 						<label><b>Prospectado por: </b></label><br>
 						<input type="text" class="form-control" name="nome" placeholder="Nome completo" required><br><br>

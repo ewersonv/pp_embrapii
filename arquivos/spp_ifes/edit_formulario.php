@@ -1,33 +1,7 @@
 <?php
 session_start();
 include_once("conexao.php");
-
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-/* TABELA PROPOSTA */
-$result_proposta = "SELECT * FROM proposta WHERE id_proposta = '$id'";
-$resultado_proposta = mysqli_query($conn, $result_proposta);
-$row_proposta = mysqli_fetch_assoc($resultado_proposta);
-
-/* TABELA EMPRESA */
-$result_empresa = "SELECT * FROM empresa WHERE id_empresa = '$id'";
-$resultado_empresa = mysqli_query($conn, $result_empresa);
-$row_empresa = mysqli_fetch_assoc($resultado_empresa);
-
-/* TABELA PROJETO */
-$result_projeto = "SELECT * FROM projeto WHERE id_projeto = '$id'";
-$resultado_projeto = mysqli_query($conn, $result_projeto);
-$row_projeto = mysqli_fetch_assoc($resultado_projeto);
-
-/* TABELA PESSOA */
-$result_pessoa = "SELECT * FROM pessoa WHERE id_pessoa = '$id'";
-$resultado_pessoa = mysqli_query($conn, $result_pessoa);
-$row_pessoa = mysqli_fetch_assoc($resultado_pessoa);
-
-/* TABELA PRODUTO */
-$result_produto = "SELECT * FROM produto WHERE id_produto = '$id'";
-$resultado_produto = mysqli_query($conn, $result_produto);
-$row_produto = mysqli_fetch_assoc($resultado_produto);
-
+include_once("sql_edit_formulario.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,7 +14,7 @@ $row_produto = mysqli_fetch_assoc($resultado_produto);
 	<body>
 		<nav class="site-header sticky-top py-1">
 			<div class="container d-flex flex-column flex-md-row justify-content-between">
-				<a class="py-2 d-none d-md-inline-block" href="index.php">Início</a>
+				<a class="py-2 d-none d-md-inline-block" href="index.html">Início</a>
 				<a class="py-2 d-none d-md-inline-block" href="listar.php">Listar propostas</a>
 				<a class="py-2 d-none d-md-inline-block"href="cadastrar.php">Nova Proposta</a>
 				<a class="py-2 d-none d-md-inline-block" href="#">Relatórios</a>
@@ -51,17 +25,11 @@ $row_produto = mysqli_fetch_assoc($resultado_produto);
 			<div class="py-5 text-center">
 				<h1>Preencher proposta</h1>
 			</div>
-			<?php
-			if(isset($_SESSION['msg'])){
-				echo $_SESSION['msg'];
-				unset($_SESSION['msg']);
-			}
+			
+			<!-- USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE -->
 
-			/* USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE */
-
-			?>
 			<form method="POST" action="proc_edit_formulario.php">
-				<div class="col-md-6 mb-3">
+				<div class="col-md-12 mb-3">
 					<input type="hidden" name="id" value="<?php echo utf8_encode($row_proposta['id_proposta']); ?>">
 
 					<label><b>Nome do produto: </b></label><br>
@@ -80,10 +48,28 @@ $row_produto = mysqli_fetch_assoc($resultado_produto);
 					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
 
 					<label><b>Tipo de empresa: </b></label><br>
-					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<div class="custom-control custom-radio">
+						<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+						<label class="custom-control-label" for="MEI/ME">MEI/ME</label> <br>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input" required>
+						<label class="custom-control-label" for="EPP">EPP</label> <br>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input" required>
+						<label class="custom-control-label" for="Médio/Grande porte">Médio/Grande porte</label> <br><br>
+					</div>
 
 					<label><b>Tipo de proposta: </b></label><br>
-					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<div class="custom-control custom-radio">
+						<input id="Projeto de inovação tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" checked required>
+						<label class="custom-control-label" for="Projeto de inovação tecnológico">Projeto de inovação tecnológico</label> <br>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="Prestação de serviço tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" required>
+						<label class="custom-control-label" for="Prestação de serviço tecnológico">Prestação de serviço tecnológico</label> <br><br>
+					</div>
 
 					<label><b>Prospectado por: </b></label><br>
 					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
