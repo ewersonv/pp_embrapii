@@ -1,4 +1,5 @@
 <?php
+include_once("funcoes.php");
 				
 		//Receber o número da página
 		$pagina_atual = filter_input(INPUT_GET,'pagina', FILTER_SANITIZE_NUMBER_INT);		
@@ -9,20 +10,21 @@
 
 		//calcular o inicio visualização
 		$inicio = ($qnt_result_pg * $pagina) - $qnt_result_pg;
-		
-		$result_proposta = "SELECT * FROM proposta ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
-		$resultado_proposta = mysqli_query($conn, $result_proposta);
 
-		$result_empresa = "SELECT nome_empresa FROM empresa INNER JOIN proposta ON empresa.id_empresa=proposta.id_proposta ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
-        $resultado_empresa = mysqli_query($conn, $result_empresa);
+		// $order == 0 ASC | $order == 1 DESC
+		$order = 1;
+
+		/*
+		$result_empresa = "SELECT nome_empresa FROM empresa INNER JOIN proposta ON empresa.id_empresa=proposta.fk_id_empresa ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
+        $resultado_empresa = mysqli_query($conn, $result_empresa); */
 
 
-		while($row_proposta = mysqli_fetch_assoc($resultado_proposta) and $row_empresa = mysqli_fetch_assoc($resultado_empresa)){
+		while($row_proposta = mysqli_fetch_assoc(getPropostas($inicio, $qnt_result_pg, $order))){
             /* USAR ENCODE AQUI, CASO CONTRÁRIO OS CARACTERES ESPECIAIS NÃO APARECERÃO NA PÁGINA */
            			
 			echo "<b>Código: </b>" . utf8_encode($row_proposta['id_proposta']) . "<br>";
 			echo "<b>Tipo: </b>" . utf8_encode($row_proposta['tipo_proposta']) . "<br>";
-			echo "<b>Empresa: </b>" . utf8_encode($row_empresa['nome_empresa']) . "<br>";
+			echo "<b>Empresa: </b>" . utf8_encode(getEmpresaProposta($row_proposta['id_proposta'])) . "<br>";
 			echo "<b>Resumo: </b>" . utf8_encode(limita_caracteres($row_proposta['resumo_proposta'], 260)) . "<br><br>";
             echo "<p><a class='btn btn-sm btn-outline-secondary' href='edit_formulario.php?id=" . $row_proposta['id_proposta'] . "' role='button'>Preencher proposta</a><br><hr></p>";
 			

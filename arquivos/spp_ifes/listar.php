@@ -34,12 +34,15 @@ include_once("funcoes.php");
 				<div class="col-md-6">
 				<div class="card flex-md-row mb-4 shadow-sm h-md-250">
 					<div class="card-body d-flex flex-column align-items-start">
-					
+					<p class="card-text mb-auto">AAA</p>
+					<p class="card-text mb-auto">AAA</p>
+					<p class="card-text mb-auto">AAA</p>
+					<p class="card-text mb-auto">AAA</p>
 					<h5 class="mb-0">
 						<a class="text-dark">Código: </a>
 					</h5>
 					<a class="mb-1 text-muted">Nov 12</a>
-					<p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+					<p class="card-text mb-auto">AAA</p>
 					<a role='button' class='btn btn-sm btn-outline-secondary' href="#">Preencher</a>
 					</div>
 					<img class="card-img-right flex-auto d-none d-lg-block" data-src="holder.js/200x250?theme=thumb" >
