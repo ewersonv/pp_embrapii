@@ -1,4 +1,5 @@
 <?php
+include_once('conexao.php');
 
 function limita_caracteres($texto, $limite, $quebra = true){
    $tamanho = strlen($texto);
@@ -16,37 +17,42 @@ function limita_caracteres($texto, $limite, $quebra = true){
 }
 
 function getPropostas($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $order == 1 DESC
+    /* Retorna todos os campos referentes à proposta necessários para exibição em "listar.php" */
 
     $servidor = "localhost";
     $usuario = "root";
     $senha = "";
-    $dbname = "pp_ifes";
+    $dbname = "spp_ifes";
 
     //Criar a conexao
     $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
-
+    
     if($order == 0)
     {
-        $result_proposta = "SELECT * FROM proposta ORDER BY id_proposta LIMIT $inicio, $qnt_result_pg";
+        $result_proposta = "SELECT P.id_proposta, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
+        FROM proposta P
+        INNER JOIN empresa E
+        ON E.id_empresa = P.fk_id_empresa
+        ORDER BY id_proposta
+        LIMIT $inicio, $qnt_result_pg";
+        
         $resultado_proposta = mysqli_query($conn, $result_proposta);
     }
     else
     {
-        $result_proposta = "SELECT * FROM proposta ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
+        $result_proposta = "SELECT P.id_proposta, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
+        FROM proposta P
+        INNER JOIN empresa E
+        ON E.id_empresa = P.fk_id_empresa
+        ORDER BY id_proposta DESC
+        LIMIT $inicio, $qnt_result_pg";
+        
         $resultado_proposta = mysqli_query($conn, $result_proposta);
     }
     return $resultado_proposta;
 }
 
 function getEmpresaProposta($id_proposta){
-    
-    $servidor = "localhost";
-    $usuario = "root";
-    $senha = "";
-    $dbname = "pp_ifes";
-
-    //Criar a conexao
-    $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
 
     $result_empresa = "SELECT nome_empresa FROM empresa INNER JOIN proposta ON empresa.id_empresa=proposta.fk_id_empresa WHERE proposta.id_proposta = $id_proposta";
     $resultado_empresa = mysqli_query($conn, $result_empresa);

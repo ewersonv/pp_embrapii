@@ -30,6 +30,7 @@ include_once("funcoes.php");
 					include_once("exibir_listar.php")
 				?>
 
+			<!-- 
 			<div class="row mb-2">
 				<div class="col-md-6">
 				<div class="card flex-md-row mb-4 shadow-sm h-md-250">
@@ -64,6 +65,7 @@ include_once("funcoes.php");
 				</div>
 			</div>
 			</div>
+			-->
 
 
 		</div>
