@@ -4,7 +4,7 @@ Criação de um sistema para prospecção de projetos no Polo de Inovação do I
 <b style="font-size: 20px;">[Mockup do projeto](arquivos/Mockup_Prospeccao_Projetos.pdf)</b> <br><br>
 
 ### Modelo conceitual:<br>
-![img](arquivos/modelo_conceitual_pp_ifes.png) <br><br>
+![img](arquivos/BD/modelo_conceitual_pp_ifes.png) <br><br>
 
 
 
