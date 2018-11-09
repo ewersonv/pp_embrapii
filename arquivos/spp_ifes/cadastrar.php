@@ -164,7 +164,7 @@ session_start();
 						</div>
 
 						<div class="py-5 text-center">
-							<button class="btn btn-outline-secondary" href="#">Cadastrar</button>
+							<button class="btn btn-dark" href="#">Cadastrar</button>
 						</div>
 					</div>
 				</form>

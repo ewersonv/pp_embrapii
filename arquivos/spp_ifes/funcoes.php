@@ -37,21 +37,25 @@ function getPropostas($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $or
     
     if($order == 0)
     {
-        $result_proposta = "SELECT P.id_proposta, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
+        $result_proposta = "SELECT P.id_proposta, Prod.nome_produto, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
         FROM proposta P
         INNER JOIN empresa E
         ON E.id_empresa = P.fk_id_empresa
+        INNER JOIN produto Prod
+        ON Prod.id_produto = P.fk_id_produto
         ORDER BY id_proposta
         LIMIT $inicio, $qnt_result_pg";
         
-        $resultado_proposta = mysqli_query($conn, $result_proposta);
+        $resultado_proposta = mysqli_query(connect(), $result_proposta);
     }
     else
     {
-        $result_proposta = "SELECT P.id_proposta, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
+        $result_proposta = "SELECT P.id_proposta, Prod.nome_produto, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
         FROM proposta P
         INNER JOIN empresa E
         ON E.id_empresa = P.fk_id_empresa
+        INNER JOIN produto Prod
+        ON Prod.id_produto = P.fk_id_produto
         ORDER BY id_proposta DESC
         LIMIT $inicio, $qnt_result_pg";
         

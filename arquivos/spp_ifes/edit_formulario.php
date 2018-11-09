@@ -118,7 +118,7 @@ include_once("sql_edit_formulario.php");
 					</div>
 
 					<div class="py-5 text-center">
-						<button class="btn btn-outline-secondary" href="#">Editar</button>
+						<button class="btn btn-dark" href="#">Editar</button>
 					</div>
 				</div>
 			</form>

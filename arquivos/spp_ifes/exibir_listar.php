@@ -20,14 +20,23 @@ include_once("funcoes.php");
 
 		$result = getPropostas($inicio, $qnt_result_pg, $order);
 		while($row = mysqli_fetch_assoc($result)){
-            /* USAR ENCODE AQUI, CASO CONTRÁRIO OS CARACTERES ESPECIAIS NÃO APARECERÃO NA PÁGINA */
-           			
-			echo "<b>Código: </b>" . utf8_encode($row['id_proposta']) . "<br>";
-			echo "<b>Tipo: </b>" . utf8_encode($row['tipo_proposta']) . "<br>";
-			echo "<b>Empresa: </b>" . utf8_encode($row['nome_empresa']) . "<br>";
-			echo "<b>Resumo: </b>" . utf8_encode(limita_caracteres($row['resumo_proposta'], 260)) . "<br><br>";
-            echo "<p><a class='btn btn-sm btn-outline-secondary' href='edit_formulario.php?id=" . $row['id_proposta'] . "' role='button'>Preencher proposta</a><br><hr></p>";
-			
+			/* USAR ENCODE AQUI, CASO CONTRÁRIO OS CARACTERES ESPECIAIS NÃO APARECERÃO NA PÁGINA */
+			?>
+
+			<div class="card mb-4">
+			<h5 class="card-header"><?php echo "<b></b>" . utf8_encode($row['nome_produto']); ?></h5>
+			<div class="card-body">
+				<?php
+					
+					echo "<b>Tipo: </b>" . utf8_encode($row['tipo_proposta']) . "<br>";
+					echo "<b>Empresa: </b>" . utf8_encode($row['nome_empresa']) . "<br>";
+					echo "<b>Resumo: </b>" . utf8_encode(limita_caracteres($row['resumo_proposta'], 250)) . "<br><br>";
+					echo "<p><a class='btn btn-sm btn-outline-secondary' href='edit_formulario.php?id=" . $row['id_proposta'] . "' role='button'>Preencher proposta</a></p>";
+				?>
+			</div>
+			</div>
+
+			<?php
 		}
 
 		//Paginação - Somar a quantidade de formulários
@@ -58,4 +67,4 @@ include_once("funcoes.php");
 		
 		echo "<a href='listar.php?pagina=$quantidade_pg'>Ultima</a>";
 		
-		?>		
+		?>
