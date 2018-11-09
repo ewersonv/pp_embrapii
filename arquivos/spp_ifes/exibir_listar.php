@@ -23,7 +23,7 @@ include_once("funcoes.php");
 			/* USAR ENCODE AQUI, CASO CONTRÁRIO OS CARACTERES ESPECIAIS NÃO APARECERÃO NA PÁGINA */
 			?>
 
-			<div class="card mb-4">
+			<div class="card border-secondary mb-4">
 			<h5 class="card-header"><?php echo "<b></b>" . utf8_encode($row['nome_produto']); ?></h5>
 			<div class="card-body">
 				<?php
