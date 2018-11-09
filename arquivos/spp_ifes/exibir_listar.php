@@ -65,6 +65,6 @@ include_once("funcoes.php");
 			}
 		}
 		
-		echo "<a href='listar.php?pagina=$quantidade_pg'>Ultima</a>";
+		echo "<a href='listar.php?pagina=$quantidade_pg'>Ultima</a><br><br>";
 		
 		?>
