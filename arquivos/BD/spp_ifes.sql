@@ -19,29 +19,29 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `spp_ifes`
+-- Database: 'spp_ifes'
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `empresa`
+-- Estrutura da tabela 'empresa'
 --
 
-DROP TABLE IF EXISTS `empresa`;
-CREATE TABLE IF NOT EXISTS `empresa` (
-  `id_empresa` int(11) NOT NULL AUTO_INCREMENT,
-  `nome_empresa` varchar(150) NOT NULL,
-  `cnpj` varchar(150) NOT NULL,
-  `tipo_empresa` varchar(150) NOT NULL,
-  PRIMARY KEY (`id_empresa`)
+DROP TABLE IF EXISTS 'empresa';
+CREATE TABLE IF NOT EXISTS 'empresa' (
+  'id_empresa' int(11) NOT NULL AUTO_INCREMENT,
+  'nome_empresa' varchar(150) NOT NULL,
+  'cnpj' varchar(150) NOT NULL,
+  'tipo_empresa' varchar(150) NOT NULL,
+  PRIMARY KEY ('id_empresa')
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `empresa`
+-- Extraindo dados da tabela 'empresa'
 --
 
-INSERT INTO `empresa` (`id_empresa`, `nome_empresa`, `cnpj`, `tipo_empresa`) VALUES
+INSERT INTO 'empresa' ('id_empresa', 'nome_empresa', 'cnpj', 'tipo_empresa') VALUES
 (1, 'Vale', '11222333444455', 'Médio/Grande porte'),
 (2, 'asdasd', '12313123131231', 'MEI/ME'),
 (3, 'ArcelorMittal', '55444333222211', 'Médio/Grande porte');
@@ -49,25 +49,25 @@ INSERT INTO `empresa` (`id_empresa`, `nome_empresa`, `cnpj`, `tipo_empresa`) VAL
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pessoa`
+-- Estrutura da tabela 'pessoa'
 --
 
-DROP TABLE IF EXISTS `pessoa`;
-CREATE TABLE IF NOT EXISTS `pessoa` (
-  `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(150) NOT NULL,
-  `email` varchar(150) NOT NULL,
-  `telefone` varchar(150) NOT NULL,
-  `tipo_representante` varchar(150) NOT NULL,
-  `cargo` varchar(150) NOT NULL,
-  PRIMARY KEY (`id_pessoa`)
+DROP TABLE IF EXISTS 'pessoa';
+CREATE TABLE IF NOT EXISTS 'pessoa' (
+  'id_pessoa' int(11) NOT NULL AUTO_INCREMENT,
+  'nome' varchar(150) NOT NULL,
+  'email' varchar(150) NOT NULL,
+  'telefone' varchar(150) NOT NULL,
+  'tipo_representante' varchar(150) NOT NULL,
+  'cargo' varchar(150) NOT NULL,
+  PRIMARY KEY ('id_pessoa')
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `pessoa`
+-- Extraindo dados da tabela 'pessoa'
 --
 
-INSERT INTO `pessoa` (`id_pessoa`, `nome`, `email`, `telefone`, `tipo_representante`, `cargo`) VALUES
+INSERT INTO 'pessoa' ('id_pessoa', 'nome', 'email', 'telefone', 'tipo_representante', 'cargo') VALUES
 (1, 'Ewerson Vieira Nascimento', 'ewersonv@gmail.com', '27996187663', 'do IFES', 'Bolsista'),
 (2, 'Estefano Vieira', 'estefano@gmail.com', '12312312312', 'do IFES', 'asdasd'),
 (3, 'Deise', 'deise@gmail.com', '27999888998', 'do IFES', 'Coordenadora');
@@ -75,22 +75,22 @@ INSERT INTO `pessoa` (`id_pessoa`, `nome`, `email`, `telefone`, `tipo_representa
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `produto`
+-- Estrutura da tabela 'produto'
 --
 
-DROP TABLE IF EXISTS `produto`;
-CREATE TABLE IF NOT EXISTS `produto` (
-  `id_produto` int(11) NOT NULL AUTO_INCREMENT,
-  `nome_produto` varchar(450) NOT NULL,
-  `justificativa` varchar(450) NOT NULL,
-  PRIMARY KEY (`id_produto`)
+DROP TABLE IF EXISTS 'produto';
+CREATE TABLE IF NOT EXISTS 'produto' (
+  'id_produto' int(11) NOT NULL AUTO_INCREMENT,
+  'nome_produto' varchar(450) NOT NULL,
+  'justificativa' varchar(450) NOT NULL,
+  PRIMARY KEY ('id_produto')
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `produto`
+-- Extraindo dados da tabela 'produto'
 --
 
-INSERT INTO `produto` (`id_produto`, `nome_produto`, `justificativa`) VALUES
+INSERT INTO 'produto' ('id_produto', 'nome_produto', 'justificativa') VALUES
 (1, 'Novo tijolo refratario', 'A criação do produto é justificada por causa de blabla'),
 (2, 'Produto teste', 'Justificativa aparece aqui'),
 (3, 'Teste teste teste', 'Aqui entra a justificativa'),
@@ -101,28 +101,28 @@ INSERT INTO `produto` (`id_produto`, `nome_produto`, `justificativa`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `projeto`
+-- Estrutura da tabela 'projeto'
 --
 
-DROP TABLE IF EXISTS `projeto`;
-CREATE TABLE IF NOT EXISTS `projeto` (
-  `id_projeto` int(11) NOT NULL AUTO_INCREMENT,
-  `riscos` varchar(450) DEFAULT NULL,
-  `restricoes` varchar(450) DEFAULT NULL,
-  `partes_interessadas` varchar(450) DEFAULT NULL,
-  `entregas` varchar(450) DEFAULT NULL,
-  `premissas` varchar(450) DEFAULT NULL,
-  `efeitos` varchar(450) DEFAULT NULL,
-  `requisitos` varchar(450) DEFAULT NULL,
-  `custo` varchar(450) DEFAULT NULL,
-  PRIMARY KEY (`id_projeto`)
+DROP TABLE IF EXISTS 'projeto';
+CREATE TABLE IF NOT EXISTS 'projeto' (
+  'id_projeto' int(11) NOT NULL AUTO_INCREMENT,
+  'riscos' varchar(450) DEFAULT NULL,
+  'restricoes' varchar(450) DEFAULT NULL,
+  'partes_interessadas' varchar(450) DEFAULT NULL,
+  'entregas' varchar(450) DEFAULT NULL,
+  'premissas' varchar(450) DEFAULT NULL,
+  'efeitos' varchar(450) DEFAULT NULL,
+  'requisitos' varchar(450) DEFAULT NULL,
+  'custo' varchar(450) DEFAULT NULL,
+  PRIMARY KEY ('id_projeto')
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `projeto`
+-- Extraindo dados da tabela 'projeto'
 --
 
-INSERT INTO `projeto` (`id_projeto`, `riscos`, `restricoes`, `partes_interessadas`, `entregas`, `premissas`, `efeitos`, `requisitos`, `custo`) VALUES
+INSERT INTO 'projeto' ('id_projeto', 'riscos', 'restricoes', 'partes_interessadas', 'entregas', 'premissas', 'efeitos', 'requisitos', 'custo') VALUES
 (1, 'Riscos 1 aaaa', 'Restricoes aaaaaa', 'As empresas interessadas sao aaa aaa aaa', 'As datas das entregas estão previstas para aaaa', 'O projeto parte das seguintes premissas aaaa', 'Os efeitos que poderão ser notados aaaa', 'Este projeto depende dos seguintes requisitos aaaaa', 'O projeto tem um custo estimado de aaaaaaaaaa'),
 (2, 'Riscos 2 bbbb', 'Restricoes bbbbbbbbbb', 'As empresas interessadas sao bbbbBBBbb', 'As datas das entregas estão previstas para bbbbbb', 'O projeto parte das seguintes premissas bbbbbb', 'Os efeitos que poderão ser notados bbbbbbbbbb', 'Este projeto depende dos seguintes requisitos bbbbbbbbbb', 'O projeto tem um custo estimado de bbbbBBBBBB'),
 (3, 'Riscos 3 CCCCC', 'Restricoes CCCCCC', 'As empresas interessadas sao CCCccccCCCC', 'As datas das entregas estão previstas para CCCCCCCC', 'O projeto parte das seguintes premissas CCCCC', 'Os efeitos que poderão ser notados CCCcccCC', 'Este projeto depende dos seguintes requisitos CCccC', 'O projeto tem um custo estimado de CCCccccCCC'),
@@ -133,30 +133,30 @@ INSERT INTO `projeto` (`id_projeto`, `riscos`, `restricoes`, `partes_interessada
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `proposta`
+-- Estrutura da tabela 'proposta'
 --
 
-DROP TABLE IF EXISTS `proposta`;
-CREATE TABLE IF NOT EXISTS `proposta` (
-  `id_proposta` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_proposta` varchar(150) NOT NULL,
-  `resumo_proposta` varchar(8000) NOT NULL,
-  `fk_id_empresa` int(11) NOT NULL,
-  `fk_id_pessoa` int(11) NOT NULL,
-  `fk_id_produto` int(11) NOT NULL,
-  `fk_id_projeto` int(11) NOT NULL,
-  PRIMARY KEY (`id_proposta`),
-  KEY `fk_id_empresa` (`fk_id_empresa`),
-  KEY `fk_id_pessoa` (`fk_id_pessoa`),
-  KEY `fk_id_produto` (`fk_id_produto`),
-  KEY `fk_id_projeto` (`fk_id_projeto`)
+DROP TABLE IF EXISTS 'proposta';
+CREATE TABLE IF NOT EXISTS 'proposta' (
+  'id_proposta' int(11) NOT NULL AUTO_INCREMENT,
+  'tipo_proposta' varchar(150) NOT NULL,
+  'resumo_proposta' varchar(8000) NOT NULL,
+  'fk_id_empresa' int(11) NOT NULL,
+  'fk_id_pessoa' int(11) NOT NULL,
+  'fk_id_produto' int(11) NOT NULL,
+  'fk_id_projeto' int(11) NOT NULL,
+  PRIMARY KEY ('id_proposta'),
+  KEY 'fk_id_empresa' ('fk_id_empresa'),
+  KEY 'fk_id_pessoa' ('fk_id_pessoa'),
+  KEY 'fk_id_produto' ('fk_id_produto'),
+  KEY 'fk_id_projeto' ('fk_id_projeto')
 ) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `proposta`
+-- Extraindo dados da tabela 'proposta'
 --
 
-INSERT INTO `proposta` (`id_proposta`, `tipo_proposta`, `resumo_proposta`, `fk_id_empresa`, `fk_id_pessoa`, `fk_id_produto`, `fk_id_projeto`) VALUES
+INSERT INTO 'proposta' ('id_proposta', 'tipo_proposta', 'resumo_proposta', 'fk_id_empresa', 'fk_id_pessoa', 'fk_id_produto', 'fk_id_projeto') VALUES
 (1, 'Projeto de inovação', 'Aqui ficam as informações da proposta prospectada, para que haja uma conversa posteriormente a fim de detalhar melhor as especificações do projeto.', 1, 1, 1, 1),
 (2, 'Projeto de inovação', 'asdadsasddsad\r\nas\r\ndsa\r\ndsa\r\ndsa\r\ndsa\r\nads\r\ndsa\r\nasd\r\nsad\r\nasd\r\nasdasdasd\r\nasd\r\nasd\r\na\r\ndsa\r\nds', 2, 2, 2, 2),
 (3, 'Prestação de serviço tecnológica', 'nafsnsaçasfnçasnfçlkansflçkansfçkansfaksnfçaksnfçansfaksnfasfkaknfçançkfçknafçnkfnkçfasnkçfasknçfasfasfas\r\nfanfsa\r\nfasn\r\nfs\r\nff\r\nsankfnkçfsaknçfskçnfsaçknfasçkn\r\n\r\n\r\nankasfnkfasknçafsçkçfknsakfçnasknçfas\r\n\r\n\r\nkfanççknafskçnafsçknmafs\r\n\r\nafknçafsçknfkaçsçknfam\r\n\r\nafknasknfçasçkmnfasçknfas', 3, 3, 3, 3),
