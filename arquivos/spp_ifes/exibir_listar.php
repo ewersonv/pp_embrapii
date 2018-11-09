@@ -1,5 +1,4 @@
 <?php
-include('conexao.php');
 include_once("funcoes.php");
 				
 		//Receber o número da página
@@ -18,6 +17,7 @@ include_once("funcoes.php");
 		/*
 		$result_empresa = "SELECT nome_empresa FROM empresa INNER JOIN proposta ON empresa.id_empresa=proposta.fk_id_empresa ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
 		$resultado_empresa = mysqli_query($conn, $result_empresa); */
+
 		$result = getPropostas($inicio, $qnt_result_pg, $order);
 		while($row = mysqli_fetch_assoc($result)){
             /* USAR ENCODE AQUI, CASO CONTRÁRIO OS CARACTERES ESPECIAIS NÃO APARECERÃO NA PÁGINA */
@@ -32,7 +32,7 @@ include_once("funcoes.php");
 
 		//Paginação - Somar a quantidade de formulários
 		$result_pg = "SELECT COUNT(id_proposta) AS num_result FROM proposta";
-		$resultado_pg = mysqli_query($conn, $result_pg);
+		$resultado_pg = mysqli_query(connect(), $result_pg);
 		$row_pg = mysqli_fetch_assoc($resultado_pg);
 		
 		//Quantidade de pagina 

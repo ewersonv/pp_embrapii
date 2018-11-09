@@ -1,7 +1,23 @@
 <?php
-include_once('conexao.php');
+
+function connect()
+{
+    /* Conecta ao banco de dados */
+
+    $servidor = "localhost";
+    $usuario = "root";
+    $senha = "";
+    $dbname = "spp_ifes";
+
+    //Criar a conexao
+    $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
+
+    return $conn;
+}
 
 function limita_caracteres($texto, $limite, $quebra = true){
+    /* Limita o número de caracteres exibidos e adiciona "..." ao final */
+
    $tamanho = strlen($texto);
    if($tamanho <= $limite){ //Verifica se o tamanho do texto é menor ou igual ao limite
       $novo_texto = $texto;
@@ -18,14 +34,6 @@ function limita_caracteres($texto, $limite, $quebra = true){
 
 function getPropostas($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $order == 1 DESC
     /* Retorna todos os campos referentes à proposta necessários para exibição em "listar.php" */
-
-    $servidor = "localhost";
-    $usuario = "root";
-    $senha = "";
-    $dbname = "spp_ifes";
-
-    //Criar a conexao
-    $conn = mysqli_connect($servidor, $usuario, $senha, $dbname);
     
     if($order == 0)
     {
@@ -47,15 +55,16 @@ function getPropostas($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $or
         ORDER BY id_proposta DESC
         LIMIT $inicio, $qnt_result_pg";
         
-        $resultado_proposta = mysqli_query($conn, $result_proposta);
+        $resultado_proposta = mysqli_query(connect(), $result_proposta);
     }
     return $resultado_proposta;
 }
 
 function getEmpresaProposta($id_proposta){
+    /* retorna o nome da empresa relacionada à proposta em questão */
 
     $result_empresa = "SELECT nome_empresa FROM empresa INNER JOIN proposta ON empresa.id_empresa=proposta.fk_id_empresa WHERE proposta.id_proposta = $id_proposta";
-    $resultado_empresa = mysqli_query($conn, $result_empresa);
+    $resultado_empresa = mysqli_query(connect(), $result_empresa);
 
     return $resultado_empresa;
 }
