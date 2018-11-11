@@ -15,7 +15,7 @@ INNER JOIN pessoa
 ON proposta.fk_id_pessoa = pessoa.id_pessoa
 INNER JOIN produto
 ON proposta.fk_id_produto = produto.id_produto
-WHERE proposta.id_proposta = 1";
+WHERE proposta.id_proposta = $id";
 $resultado_all = mysqli_query(connect(), $result_all);
 $row = mysqli_fetch_assoc($resultado_all);
 
