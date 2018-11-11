@@ -29,22 +29,19 @@ include_once("sql_edit_formulario.php");
 
 			<form method="POST" action="proc_edit_formulario.php">
 				<div class="col-md-12 mb-3">
-					<input type="hidden" name="id" value="<?php echo utf8_encode($row_proposta['id_proposta']); ?>">
+					<input type="hidden" name="id" value="<?php echo utf8_encode($row['id_proposta']); ?>">
 
 					<label><b>Nome do produto: </b></label><br>
-					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
-
-					<label><b>Descrição do produto: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Digite o nome completo"/><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_produto']); ?>"><br><br>
 
 					<label><b>Justificativa: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['justificativa']); ?></textarea><br><br>
 
 					<label><b>Nome da empresa: </b></label><br>
-					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_empresa']); ?>"><br><br>
 
 					<label><b>CNPJ: </b></label><br>
-					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['cnpj']); ?>"><br><br>
 
 					<label><b>Tipo de empresa: </b></label><br>
 					<div class="custom-control custom-radio">
@@ -71,46 +68,46 @@ include_once("sql_edit_formulario.php");
 					</div>
 
 					<label><b>Prospectado por: </b></label><br>
-					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_pessoa']); ?>"><br><br>
 
 					<label><b>Representante do(a): </b></label><br>
-					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['tipo_representante']); ?>"><br><br>
 
 					<label><b>Email: </b></label><br>
-					<input type="email" class="form-control" name="email" value="<?php echo utf8_encode($row_pessoa['email']); ?>"><br><br>
+					<input type="email" class="form-control" name="email" value="<?php echo utf8_encode($row['email']); ?>"><br><br>
 
 					<label><b>Telefone: </b></label><br>
-					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row_proposta['resumo_proposta']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['resumo_proposta']); ?>"><br><br>
 
 					<label><b>Riscos: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['riscos']); ?></textarea><br><br>
 
 					<label><b>Restrições: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['restricoes']); ?></textarea><br><br>
 
 					<label><b>Partes interessadas: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['partes_interessadas']); ?></textarea><br><br>
 
 					<label><b>Equipe do projeto: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['equipe']); ?></textarea><br><br>
 
 					<label><b>Entregas: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['entregas']); ?></textarea><br><br>
 
 					<label><b>Cronograma: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['cronograma']); ?></textarea><br><br>
 
 					<label><b>Premissas: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['premissas']); ?></textarea><br><br>
 
 					<label><b>Efeitos do projeto: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['efeitos']); ?></textarea><br><br>
 
 					<label><b>Requisitos: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['requisitos']); ?></textarea><br><br>
 
 					<label><b>Custos: </b></label><br>
-					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row_proposta['resumo_proposta']); ?></textarea><br><br>
+					<textarea class="form-control" name="nome" rows="5" cols="80" /><?php echo utf8_encode($row['custo']); ?></textarea><br><br>
 
 					<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" value="1" id="checkbox">

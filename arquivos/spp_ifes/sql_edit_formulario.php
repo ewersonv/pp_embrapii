@@ -2,29 +2,21 @@
 include_once("funcoes.php");
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-/* TABELA PROPOSTA */
-$result_proposta = "SELECT * FROM proposta WHERE id_proposta = '$id'";
-$resultado_proposta = mysqli_query(connect(), $result_proposta);
-$row_proposta = mysqli_fetch_assoc($resultado_proposta);
 
-/* TABELA EMPRESA */
-$result_empresa = "SELECT * FROM empresa WHERE id_empresa = '$id'";
-$resultado_empresa = mysqli_query(connect(), $result_empresa);
-$row_empresa = mysqli_fetch_assoc($resultado_empresa);
+/* TODOS OS DADOS REFERENTES À PROPOSTA CLICADA*/
 
-/* TABELA PROJETO */
-$result_projeto = "SELECT * FROM projeto WHERE id_projeto = '$id'";
-$resultado_projeto = mysqli_query(connect(), $result_projeto);
-$row_projeto = mysqli_fetch_assoc($resultado_projeto);
-
-/* TABELA PESSOA */
-$result_pessoa = "SELECT * FROM pessoa WHERE id_pessoa = '$id'";
-$resultado_pessoa = mysqli_query(connect(), $result_pessoa);
-$row_pessoa = mysqli_fetch_assoc($resultado_pessoa);
-
-/* TABELA PRODUTO */
-$result_produto = "SELECT * FROM produto WHERE id_produto = '$id'";
-$resultado_produto = mysqli_query(connect(), $result_produto);
-$row_produto = mysqli_fetch_assoc($resultado_produto);
+$result_all = "SELECT *
+FROM proposta
+INNER JOIN empresa
+ON proposta.fk_id_empresa = empresa.id_empresa
+INNER JOIN projeto
+ON proposta.fk_id_projeto = projeto.id_projeto
+INNER JOIN pessoa
+ON proposta.fk_id_pessoa = pessoa.id_pessoa
+INNER JOIN produto
+ON proposta.fk_id_produto = produto.id_produto
+WHERE proposta.id_proposta = 1";
+$resultado_all = mysqli_query(connect(), $result_all);
+$row = mysqli_fetch_assoc($resultado_all);
 
 ?>

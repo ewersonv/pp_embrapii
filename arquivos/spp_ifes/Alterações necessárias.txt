@@ -1,10 +1,3 @@
-index.php será "Início", com botão para listar todas as propostas, campo
-pesquisar *e botão "Gráficos".
-
-
-adicionar chaves primárias e extrangeiras às tabelas do BD.
-
-
 adicionar campos created/modified à tabela do BD.
 
 
@@ -15,4 +8,4 @@ integrar checkbox ao BD e mostrar se está marcado ou não quando clicar em
 editar.
 
 
-adicionar css/bootstrap.
+fazer insert de cronograma e equipe em projeto
