@@ -1,11 +1,26 @@
 adicionar campos created/modified à tabela do BD.
 
 
+
 adicionar imgs/ícones ao site.
 
 
+
+criar botão "Gerar PDF"
+
+
+
+fazer pagina de relatorio (bônus -> gráficos)
+
+
+
+fazer processamento da pagina de cadastro
+
+
+
 integrar checkbox ao BD e mostrar se está marcado ou não quando clicar em
-editar.
+editar. ***campos ja adicionados, porém ainda não funcionam
 
 
-fazer insert de cronograma e equipe em projeto
+
+acertar processamento da pagina de edição de formulario

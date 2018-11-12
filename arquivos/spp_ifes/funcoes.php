@@ -73,4 +73,44 @@ function getEmpresaProposta($id_proposta){
     return $resultado_empresa;
 }
 
+function getIdEmpresa($id_proposta)
+{
+    /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
+
+    $query = "SELECT fk_id_empresa FROM proposta WHERE id_proposta = '$id_proposta";
+    $resultado = mysqli_query(connect(), $query);
+
+    return $resultado;
+}
+
+function getIdPessoa($id_proposta)
+{
+    /* Retorna o ID da pessoa de acordo com a FK registrada na proposta */
+
+    $query = "SELECT fk_id_pessoa FROM proposta WHERE id_proposta = '$id_proposta";
+    $resultado = mysqli_query(connect(), $query);
+
+    return $resultado;
+}
+
+function getIdProduto($id_proposta)
+{
+    /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
+
+    $query = "SELECT fk_id_produto FROM proposta WHERE id_proposta = '$id_proposta";
+    $resultado = mysqli_query(connect(), $query);
+
+    return $resultado;
+}
+
+function getIdProjeto($id_proposta)
+{
+    /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
+
+    $query = "SELECT fk_id_projeto FROM proposta WHERE id_proposta = '$id_proposta";
+    $resultado = mysqli_query(connect(), $query);
+
+    return $resultado;
+}
+
 ?>

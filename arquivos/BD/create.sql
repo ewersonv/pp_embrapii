@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS empresa (
 DROP TABLE IF EXISTS pessoa;
 CREATE TABLE IF NOT EXISTS pessoa (
   id_pessoa int(11) NOT NULL AUTO_INCREMENT,
-  nome varchar(150) NOT NULL,
+  nome_pessoa varchar(150) NOT NULL,
   email varchar(150) NOT NULL,
   telefone varchar(150) NOT NULL,
   tipo_representante varchar(150) NOT NULL,
@@ -37,6 +37,8 @@ CREATE TABLE IF NOT EXISTS projeto (
   efeitos varchar(450) DEFAULT NULL,
   requisitos varchar(450) DEFAULT NULL,
   custo varchar(450) DEFAULT NULL,
+  cronograma varchar(450) DEFAULT NULL,
+  equipe varchar(450) DEFAULT NULL,
   PRIMARY KEY (id_projeto)
 );
 
