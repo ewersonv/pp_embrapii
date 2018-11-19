@@ -41,27 +41,11 @@ SET nome_pessoa='$nome_pessoa', email='$email', telefone='$telefone', tipo_repre
 WHERE id_pessoa ='$id_pessoa'";
 $resultado_pessoa = mysqli_query(connect(), $result_pessoa);
 
-if(mysqli_affected_rows(connect())){
-	$_SESSION['msg'] = "<p style='color:green;'>Formulário editado com sucesso</p>";
-	header("Location: listar.php");
-}else{
-	$_SESSION['msg'] = "<p style='color:red;'>Formulário não foi editado com sucesso</p>";
-	header("Location: listar.php?id=$id");
-}
-
 
 $result_produto = "UPDATE produto
 SET nome_produto='$nome_produto', justificativa='$justificativa'
 WHERE id_produto ='$id_produto'";
 $resultado_produto = mysqli_query(connect(), $result_produto);
-
-if(mysqli_affected_rows(connect())){
-	$_SESSION['msg'] = "<p style='color:green;'>Formulário editado com sucesso</p>";
-	header("Location: listar.php");
-}else{
-	$_SESSION['msg'] = "<p style='color:red;'>Formulário não foi editado com sucesso</p>";
-	header("Location: listar.php?id=$id");
-}
 
 
 $result_empresa = "UPDATE empresa
@@ -69,27 +53,11 @@ SET nome_empresa='$nome_empresa', cnpj='$cnpj', tipo_empresa='$tipo_empresa'
 WHERE id_empresa ='$id_empresa'";
 $resultado_empresa = mysqli_query(connect(), $result_empresa);
 
-if(mysqli_affected_rows(connect())){
-	$_SESSION['msg'] = "<p style='color:green;'>Formulário editado com sucesso</p>";
-	header("Location: listar.php");
-}else{
-	$_SESSION['msg'] = "<p style='color:red;'>Formulário não foi editado com sucesso</p>";
-	header("Location: listar.php?id=$id");
-}
-
 
 $result_projeto = "UPDATE projeto
 SET riscos='$riscos', restricoes='$restricoes', partes_interessadas='$partes_interessadas', entregas='$entregas', premissas='$premissas', efeitos='$efeitos', requisitos='$requisitos', custo='$custo', cronograma='$cronograma', equipe='$equipe'
 WHERE id_projeto ='$id_projeto'";
 $resultado_projeto = mysqli_query(connect(), $result_projeto);
-
-if(mysqli_affected_rows(connect())){
-	$_SESSION['msg'] = "<p style='color:green;'>Formulário editado com sucesso</p>";
-	header("Location: listar.php");
-}else{
-	$_SESSION['msg'] = "<p style='color:red;'>Formulário não foi editado com sucesso</p>";
-	header("Location: listar.php?id=$id");
-}
 
 
 $result_proposta = "UPDATE proposta

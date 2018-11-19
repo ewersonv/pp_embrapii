@@ -23,4 +23,10 @@ editar. ***campos ja adicionados, porém ainda não funcionam
 
 
 
-acertar processamento da pagina de edição de formulario
+acertar isset proc_edit_formulario.php
+
+
+http://codewithawa.com/posts/php-crud-create,-edit,-update-and-delete-posts-with-mysql-database
+
+
+UTF8***

@@ -19,6 +19,16 @@ include_once("funcoes.php");
 		</style>
 	</head>
 	<body id="grad1">
+	
+	<?php if (isset($_SESSION['message'])): ?>
+		<div class="msg">
+			<?php 
+				echo $_SESSION['message']; 
+				unset($_SESSION['message']);
+			?>
+		</div>
+	<?php endif ?>
+	
 		<nav class="site-header sticky-top py-1">
 			<div class="container d-flex flex-column flex-md-row justify-content-between">
 				<a class="py-2 d-none d-md-inline-block" href="index.html">Início</a>

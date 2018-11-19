@@ -84,8 +84,11 @@ function getIdEmpresa($id_proposta)
 
     $query = "SELECT fk_id_empresa FROM proposta WHERE id_proposta = $id_proposta";
     $resultado = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($resultado);
 
-    return $resultado;
+    $valor = $row[0];
+
+    return $valor;
 }
 
 function getIdPessoa($id_proposta)
@@ -94,8 +97,11 @@ function getIdPessoa($id_proposta)
 
     $query = "SELECT fk_id_pessoa FROM proposta WHERE id_proposta = $id_proposta";
     $resultado = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($resultado);
 
-    return $resultado;
+    $valor = $row[0];
+
+    return $valor;
 }
 
 function getIdProduto($id_proposta)
@@ -104,8 +110,11 @@ function getIdProduto($id_proposta)
 
     $query = "SELECT fk_id_produto FROM proposta WHERE id_proposta = $id_proposta";
     $resultado = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($resultado);
 
-    return $resultado;
+    $valor = $row[0];
+
+    return $valor;
 }
 
 function getIdProjeto($id_proposta)
@@ -114,8 +123,11 @@ function getIdProjeto($id_proposta)
 
     $query = "SELECT fk_id_projeto FROM proposta WHERE id_proposta = $id_proposta";
     $resultado = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($resultado);
 
-    return $resultado;
+    $valor = $row[0];
+
+    return $valor;
 }
 
 ?>
