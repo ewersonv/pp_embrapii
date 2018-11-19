@@ -57,19 +57,23 @@ CREATE TABLE IF NOT EXISTS proposta (
 ALTER TABLE proposta
     ADD CONSTRAINT fk_id_empresa
     FOREIGN KEY (fk_id_empresa)
-    REFERENCES empresa(id_empresa);
+    REFERENCES empresa(id_empresa)
+    ON UPDATE CASCADE;
 
 ALTER TABLE proposta
     ADD CONSTRAINT fk_id_pessoa
     FOREIGN KEY (fk_id_pessoa)
-    REFERENCES pessoa(id_pessoa);
+    REFERENCES pessoa(id_pessoa)
+    ON UPDATE CASCADE;
 
 ALTER TABLE proposta
     ADD CONSTRAINT fk_id_produto
     FOREIGN KEY (fk_id_produto)
-    REFERENCES produto(id_produto);
+    REFERENCES produto(id_produto)
+    ON UPDATE CASCADE;
 
 ALTER TABLE proposta
     ADD CONSTRAINT fk_id_projeto
     FOREIGN KEY (fk_id_projeto)
-    REFERENCES projeto(id_projeto);
+    REFERENCES projeto(id_projeto)
+    ON UPDATE CASCADE;
