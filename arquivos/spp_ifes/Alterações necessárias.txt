@@ -6,7 +6,7 @@ adicionar imgs/ícones ao site.
 
 
 
-criar botão "Gerar PDF"
+criar botão "Gerar PDF" + "Gerar CSV"
 
 
 
@@ -14,7 +14,7 @@ fazer pagina de relatorio (bônus -> gráficos)
 
 
 
-fazer processamento da pagina de cadastro
+fazer processamento da pagina de cadastro  -> ATUAL
 
 
 
@@ -34,7 +34,131 @@ alterar tabela pessoa para usuário.
 
 
 
+adicionar corretor ortográfico aos formulários cadastra/edit.
+
+
+
 alterar produto.nome_produto para projeto.nome_projeto.
 
 
 http://codewithawa.com/posts/php-crud-create,-edit,-update-and-delete-posts-with-mysql-database
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <label><b>Nome do produto: </b></label><br>
+						<input type="text" class="form-control" name="nome_produto" placeholder="Nome completo" required><br><br>
+						<div class="invalid-feedback">
+							Campo "Nome do produto" inválido.
+						</div>
+
+						<label><b>Descrição do produto: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Descrição completa do produto" required></textarea><br><br>
+						<div class="invalid-feedback">
+							Campo "Descrição do produto" inválido.
+						</div>
+
+						<label><b>Justificativa: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Justificativa para criação do produto"></textarea><br><br>
+
+						<label><b>Nome da empresa: </b></label><br>
+						<input type="text" class="form-control" name="nome" placeholder="Digite o nome completo" required><br><br>
+						<div class="invalid-feedback">
+							Campo "Nome da empresa" inválido.
+						</div>
+
+						<label><b>CNPJ: </b></label><br>
+						<input type="text" class="form-control" name="nome" placeholder="Apenas números" required><br><br>
+						<div class="invalid-feedback">
+							Campo "CNPJ" inválido.
+						</div>
+
+						<label><b>Tipo de empresa: </b></label><br>
+						<div class="custom-control custom-radio">
+                			<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="MEI/ME">MEI/ME</label> <br>
+						</div>
+						<div class="custom-control custom-radio">
+                			<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="EPP">EPP</label> <br>
+						</div>
+						<div class="custom-control custom-radio">
+                			<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="Médio/Grande porte">Médio/Grande porte</label> <br><br>
+						</div>
+
+						<label><b>Tipo de proposta: </b></label><br>
+						<div class="custom-control custom-radio">
+							<input id="Projeto de inovação tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="Projeto de inovação tecnológico">Projeto de inovação tecnológico</label> <br>
+						</div>
+						<div class="custom-control custom-radio">
+							<input id="Prestação de serviço tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" required>
+							<label class="custom-control-label" for="Prestação de serviço tecnológico">Prestação de serviço tecnológico</label> <br><br>
+						</div>
+
+						<label><b>Prospectado por: </b></label><br>
+						<input type="text" class="form-control" name="nome" placeholder="Nome completo" required><br><br>
+						<div class="invalid-feedback">
+							Campo "Prospectado por" inválido.
+						</div>
+
+						<label><b>Representante do(a): </b></label><br>
+						<div class="custom-control custom-radio">
+							<input id="Ifes" name="tipo_representante" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="Ifes">Ifes</label> <br>
+						</div>
+						<div class="custom-control custom-radio">
+							<input id="Empresa" name="tipo_representante" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="Empresa">Empresa</label> <br><br>
+						</div>
+
+						<label><b>Email: </b></label><br>
+						<input type="email" class="form-control" name="email" placeholder="abcd@email.com" required><br><br>
+						<div class="invalid-feedback">
+							Campo "Email" inválido.
+						</div>
+
+						<label><b>Telefone: </b></label><br>
+						<input type="text" class="form-control" name="nome" placeholder="27888889999"><br><br>
+
+						<label><b>Riscos: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Riscos inerentes ao andamento/execução do projeto"></textarea><br><br>
+
+						<label><b>Restrições: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Restrições quanto a implementação do projeto"></textarea><br><br>
+
+						<label><b>Partes interessadas: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Empresas que tem interesse no projeto"></textarea><br><br>
+
+						<label><b>Equipe do projeto: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Pessoas envolvidas no projeto"></textarea><br><br>
+
+						<label><b>Entregas: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Entregas do projeto"></textarea><br><br>
+
+						<label><b>Cronograma: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Datas para realização das entregas"></textarea><br><br>
+
+						<label><b>Premissas: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Pontos de partida para realização do projeto"></textarea><br><br>
+
+						<label><b>Efeitos do projeto: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Efeitos do projeto ao ser implementado com sucesso"></textarea><br><br>
+
+						<label><b>Requisitos: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Pontos necessários para realização do projeto"></textarea><br><br>
+
+						<label><b>Custos: </b></label><br>
+						<textarea class="form-control" name="nome" rows="5" cols="80" placeholder="Custo total e detalhado do projeto"></textarea><br><br>

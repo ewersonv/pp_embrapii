@@ -69,6 +69,6 @@ if(mysqli_affected_rows(connect())){
 	$_SESSION['msg'] = "<p style='color:green;'>Alterações realizadas com sucesso!</p>";
 	header("Location: listar.php");
 }else{
-	$_SESSION['msg'] = "<p style='color:red;'>Alterações não foram salvas.</p>";
+	$_SESSION['msg'] = "<p style='color:red;'>As alterações não foram salvas.</p>";
 	header("Location: listar.php?id=$id");
 }
