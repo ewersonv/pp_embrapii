@@ -26,7 +26,15 @@ editar. ***campos ja adicionados, porém ainda não funcionam
 acertar isset proc_edit_formulario.php
 
 
+
+implementar "hierarquia" no login: cada usuário só vai ter acesso às propostas que ele mesmo prospectou. apenas administradores terão acesso à todas as propostas.
+criar campo "configurações" para alterar dados pessoais + login/senha.
+retirar pessoa de edit/cadastro e adicionar prospectador automaticamente à proposta de acordo com o login da sessão.
+alterar tabela pessoa para usuário.
+
+
+
+alterar produto.nome_produto para projeto.nome_projeto.
+
+
 http://codewithawa.com/posts/php-crud-create,-edit,-update-and-delete-posts-with-mysql-database
-
-
-UTF8***

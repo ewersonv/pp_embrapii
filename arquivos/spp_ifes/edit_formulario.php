@@ -55,7 +55,7 @@ include_once("sql_edit_formulario.php");
 
 					<label><b>Tipo de empresa: </b></label><br>
 					<div class="custom-control custom-radio">
-						<input name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+						<input name="tipo_empresa" type="radio" class="custom-control-input">
 						<label class="custom-control-label" value="MEI/ME" <?php echo (utf8_encode($row['tipo_empresa'])=='MEI/ME')?'checked':'' ?>>MEI/ME</label> <br>
 					</div>
 					<div class="custom-control custom-radio">
@@ -69,7 +69,7 @@ include_once("sql_edit_formulario.php");
 
 					<label><b>Tipo de proposta: </b></label><br>
 					<div class="custom-control custom-radio">
-						<input name="tipo_proposta" type="radio" class="custom-control-input" checked required>
+						<input name="tipo_proposta" type="radio" class="custom-control-input">
 						<label class="custom-control-label" value="Projeto de inovação tecnológico" <?php echo (utf8_encode($row['tipo_proposta'])=='Projeto de inovação tecnológico')?'checked':'' ?>>Projeto de inovação tecnológico</label> <br>
 					</div>
 					<div class="custom-control custom-radio">
@@ -128,7 +128,7 @@ include_once("sql_edit_formulario.php");
 					</div>
 
 					<div class="py-5 text-center">
-						<button class="btn btn-dark" href="#">Editar</button>
+						<button class="btn btn-dark" href="#">Preencher</button>
 					</div>
 				</div>
 			</form>

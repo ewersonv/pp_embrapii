@@ -3,7 +3,7 @@ include_once("funcoes.php");
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 
-/* TODOS OS DADOS REFERENTES À PROPOSTA CLICADA*/
+/* RETORNA TODOS OS DADOS REFERENTES À PROPOSTA CLICADA */
 
 $result_all = "SELECT *
 FROM proposta
