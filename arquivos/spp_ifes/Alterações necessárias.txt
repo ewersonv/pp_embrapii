@@ -15,6 +15,7 @@ fazer pagina de relatorio (bônus -> gráficos)
 
 
 fazer processamento da pagina de cadastro  -> ATUAL
+ALTERAR connect() para $conn = connect()
 
 
 

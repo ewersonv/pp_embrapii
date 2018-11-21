@@ -25,48 +25,42 @@ $efeitos = utf8_decode(filter_input(INPUT_POST, 'efeitos', FILTER_SANITIZE_STRIN
 $requisitos = utf8_decode(filter_input(INPUT_POST, 'requisitos', FILTER_SANITIZE_STRING));
 $custo = utf8_decode(filter_input(INPUT_POST, 'custo', FILTER_SANITIZE_STRING));
 
-//echo "Nome: $nome <br>";
-//echo "E-mail: $email <br>";
 
-/*$result_usuario = "INSERT INTO pessoa (nome, email, created) VALUES ('$nome', '$email', NOW())";
-$resultado_usuario = mysqli_query($conn, $result_usuario);
-
-if(mysqli_insert_id($conn)){
-	$_SESSION['msg'] = "<p style='color:green;'>Proposta cadastrada com sucesso</p>";
-	header("Location: index.php");
-}else{
-	$_SESSION['msg'] = "<p style='color:red;'>Proposta não foi cadastrada com sucesso</p>";
-	header("Location: cadastrar.php");
-}*/
-
-$result_proposta = "INSERT INTO proposta (tipo_proposta, resumo_proposta)
-VALUES ('$tipo_proposta', '$resumo_proposta')";
-$resultado_proposta = mysqli_query(connect(), $result_proposta);
+$conn = connect();
 
 
 $result_pessoa = "INSERT INTO pessoa (nome_pessoa, email, telefone, tipo_representante, cargo)
 VALUES ('$nome_pessoa', '$email', '$telefone', '$tipo_representante', '$cargo')";
-$resultado_pessoa = mysqli_query(connect(), $result_pessoa);
+$resultado_pessoa = mysqli_query($conn, $result_pessoa);
+$id_pessoa = mysqli_insert_id($conn);
 
 
 $result_produto = "INSERT INTO produto (nome_produto, justificativa)
 VALUES ('$nome_produto', '$justificativa')";
-$resultado_produto = mysqli_query(connect(), $result_produto);
+$resultado_produto = mysqli_query($conn, $result_produto);
+$id_produto = mysqli_insert_id($conn);
 
 
 $result_empresa = "INSERT INTO empresa (nome_empresa, cnpj, tipo_empresa)
 VALUES ('$nome_empresa', '$cnpj', '$tipo_empresa')";
-$resultado_empresa = mysqli_query(connect(), $result_empresa);
+$resultado_empresa = mysqli_query($conn, $result_empresa);
+$id_empresa = mysqli_insert_id($conn);
 
 
 $result_projeto = "INSERT INTO projeto (riscos, restricoes, partes_interessadas, entregas, premissas, efeitos, requisitos, custo, cronograma, equipe)
 VALUES ('$riscos', '$restricoes', '$partes_interessadas', '$entregas', '$premissas', '$efeitos', '$requisitos', '$custo', '$cronograma', '$equipe')";
-$resultado_projeto = mysqli_query(connect(), $result_projeto);
+$resultado_projeto = mysqli_query($conn, $result_projeto);
+$id_projeto = mysqli_insert_id($conn);
 
-if(mysqli_insert_id(connect())){
-	$_SESSION['msg'] = "<p style='color:green;'>Proposta cadastrada com sucesso!</p>";
+
+$result_proposta = "INSERT INTO proposta (tipo_proposta, resumo_proposta, fk_id_empresa, fk_id_pessoa, fk_id_produto, fk_id_projeto)
+VALUES ('$tipo_proposta', '$resumo_proposta', '$id_empresa', '$id_pessoa', '$id_produto', '$id_projeto')";
+$resultado_proposta = mysqli_query($conn, $result_proposta);
+
+if(mysqli_affected_rows($conn)){
+	$_SESSION['msg'] = "<p style = 'color:green;'>Proposta cadastrada com sucesso!</p>";
 	header("Location: listar.php");
 }else{
-	$_SESSION['msg'] = "<p style='color:red;'>Não foi possível cadastrar a proposta.</p>";
+	$_SESSION['msg'] = "<p style = 'color:red;'>Não foi possível cadastrar a proposta.</p>";
 	header("Location: listar.php?id=$id");
 }

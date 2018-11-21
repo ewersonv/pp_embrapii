@@ -40,7 +40,10 @@ session_start();
 						</div>
 
 						<label><b>Resumo da proposta: </b></label><br>
-						<textarea type="text" class="form-control" name="resumo_proposta" rows="5" cols="80" placeholder="Resumo com os pontos mais importantes sobre a proposta"/></textarea><br><br>
+						<textarea type="text" class="form-control" name="resumo_proposta" rows="5" cols="80" placeholder="Resumo com os pontos mais importantes sobre a proposta" required/></textarea><br><br>
+						<div class="invalid-feedback">
+							Campo "Resumo da proposta" inválido.
+						</div>
 
 						<label><b>Justificativa: </b></label><br>
 						<textarea type="text" class="form-control" name="justificativa" rows="5" cols="80" placeholder="Justificativa para criação do produto"/></textarea><br><br>						
@@ -59,26 +62,26 @@ session_start();
 
 						<label><b>Tipo de empresa: </b></label><br>
 						<div class="custom-control custom-radio">
-							<input name="tipo_empresa" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" value="MEI/ME" >MEI/ME</label> <br>
+							<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="MEI/ME" >MEI/ME</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input name="tipo_empresa" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" value="EPP" >EPP</label> <br>
+							<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="EPP" >EPP</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input name="tipo_empresa" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" value="Médio/Grande porte" >Médio/Grande porte</label> <br><br>
+							<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="Médio/Grande porte" >Médio/Grande porte</label> <br><br>
 						</div>
 
 						<label><b>Tipo de proposta: </b></label><br>
 						<div class="custom-control custom-radio">
-							<input name="tipo_proposta" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" value="Projeto de inovação tecnológico" >Projeto de inovação tecnológico</label> <br>
+							<input id="Projeto de inovação tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="Projeto de inovação tecnológico" >Projeto de inovação tecnológico</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input name="tipo_proposta" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" value="Prestação de serviço tecnológico" >Prestação de serviço tecnológico</label> <br><br>
+							<input id="Prestação de serviço tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="Prestação de serviço tecnológico" >Prestação de serviço tecnológico</label> <br><br>
 						</div>
 
 						<label><b>Prospectado por: </b></label><br>
