@@ -21,7 +21,6 @@ CREATE TABLE IF NOT EXISTS pessoa (
 DROP TABLE IF EXISTS produto;
 CREATE TABLE IF NOT EXISTS produto (
   id_produto int(11) NOT NULL AUTO_INCREMENT,
-  nome_produto varchar(450) NOT NULL,
   justificativa varchar(450) NOT NULL,
   PRIMARY KEY (id_produto)
 );
@@ -39,6 +38,7 @@ CREATE TABLE IF NOT EXISTS projeto (
   custo varchar(450) DEFAULT NULL,
   cronograma varchar(450) DEFAULT NULL,
   equipe varchar(450) DEFAULT NULL,
+  nome_produto varchar(450) NOT NULL,
   PRIMARY KEY (id_projeto)
 );
 
