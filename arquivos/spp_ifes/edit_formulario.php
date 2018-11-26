@@ -55,33 +55,40 @@ include_once("sql_edit_formulario.php");
 
 					<label><b>Tipo de empresa: </b></label><br>
 					<div class="custom-control custom-radio">
-						<input name="tipo_empresa" type="radio" class="custom-control-input">
-						<label class="custom-control-label" value="MEI/ME" <?php echo (utf8_encode($row['tipo_empresa'])=='MEI/ME')?'checked':'' ?>>MEI/ME</label> <br>
+						<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input">
+						<label class="custom-control-label" for="MEI/ME" value="MEI/ME" <?php echo (utf8_encode($row['tipo_empresa'])=='MEI/ME')?'checked':'' ?>>MEI/ME</label> <br>
 					</div>
 					<div class="custom-control custom-radio">
-						<input name="tipo_empresa" type="radio" class="custom-control-input" >
-						<label class="custom-control-label" value="EPP" <?php echo (utf8_encode($row['tipo_empresa'])=='EPP')?'checked':'' ?>>EPP</label> <br>
+						<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input">
+						<label class="custom-control-label" for="EPP" value="EPP"<?php echo (utf8_encode($row['tipo_empresa'])=='EPP')?'checked':'' ?>>EPP</label> <br>
 					</div>
 					<div class="custom-control custom-radio">
-						<input name="tipo_empresa" type="radio" class="custom-control-input" >
-						<label class="custom-control-label" value="Médio/Grande porte" <?php echo (utf8_encode($row['tipo_empresa'])=='Médio/Grande porte')?'checked':'' ?>>Médio/Grande porte</label> <br><br>
+						<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input">
+						<label class="custom-control-label" for="Médio/Grande porte" value="Médio/Grande porte"<?php echo (utf8_encode($row['tipo_empresa'])=='Médio/Grande porte')?'checked':'' ?>>Médio/Grande porte</label> <br><br>
 					</div>
 
 					<label><b>Tipo de proposta: </b></label><br>
 					<div class="custom-control custom-radio">
-						<input name="tipo_proposta" type="radio" class="custom-control-input">
-						<label class="custom-control-label" value="Projeto de inovação tecnológico" <?php echo (utf8_encode($row['tipo_proposta'])=='Projeto de inovação tecnológico')?'checked':'' ?>>Projeto de inovação tecnológico</label> <br>
+						<input id="Projeto de inovação tecnológico" name="tipo_proposta" type="radio" class="custom-control-input">
+						<label class="custom-control-label" for="Projeto de inovação tecnológico" value="Projeto de inovação tecnológico" <?php echo (utf8_encode($row['tipo_proposta'])=='Projeto de inovação tecnológico')?'checked':'' ?>>Projeto de inovação tecnológico</label> <br>
 					</div>
 					<div class="custom-control custom-radio">
-						<input name="tipo_proposta" type="radio" class="custom-control-input" >
-						<label class="custom-control-label" value="Prestação de serviço tecnológico" <?php echo (utf8_encode($row['tipo_proposta'])=='Prestação de serviço tecnológico')?'checked':'' ?>>Prestação de serviço tecnológico</label> <br><br>
+						<input id="Prestação de serviço tecnológico" name="tipo_proposta" type="radio" class="custom-control-input">
+						<label class="custom-control-label" for="Prestação de serviço tecnológico" value="Prestação de serviço tecnológico" <?php echo (utf8_encode($row['tipo_proposta'])=='Prestação de serviço tecnológico')?'checked':'' ?>>Prestação de serviço tecnológico</label> <br><br>
 					</div>
 
 					<label><b>Prospectado por: </b></label><br>
 					<input type="text" class="form-control" name="nome_pessoa" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_pessoa']); ?>"><br><br>
 
 					<label><b>Representante do(a): </b></label><br>
-					<input type="text" class="form-control" name="tipo_representante" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['tipo_representante']); ?>"><br><br>
+						<div class="custom-control custom-radio">
+							<input id="Ifes" name="tipo_representante" type="radio" class="custom-control-input">
+							<label class="custom-control-label" for="Ifes" value="Ifes" <?php echo (utf8_encode($row['tipo_representante'])=='Ifes')?'checked':'' ?>>Ifes</label> <br>
+						</div>
+						<div class="custom-control custom-radio">
+							<input id="Empresa" name="tipo_representante" type="radio" class="custom-control-input">
+							<label class="custom-control-label" for="Empresa" value="Empresa" <?php echo (utf8_encode($row['tipo_representante'])=='Empresa')?'checked':'' ?>>Empresa</label> <br><br>
+						</div>
 
 					<label><b>Cargo: </b></label><br>
 					<input type="text" class="form-control" name="cargo" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['cargo']); ?>"><br><br>

@@ -38,10 +38,6 @@ alterar tabela pessoa para usuário.
 adicionar corretor ortográfico aos formulários cadastra/edit.
 
 
-
-alterar produto.nome_produto para projeto.nome_projeto.
-
-
 http://codewithawa.com/posts/php-crud-create,-edit,-update-and-delete-posts-with-mysql-database
 
 

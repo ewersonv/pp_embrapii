@@ -33,7 +33,7 @@ session_start();
 				<form method="POST" action="proc_cad_formulario.php">
 					<div class="col-md-12 mb-3">
 
-						<label><b>Nome do produto: </b></label><br>
+						<label><b>Nome do projeto: </b></label><br>
 						<input type="text" class="form-control" name="nome_produto" placeholder="Nome completo" required><br><br>
 						<div class="invalid-feedback">
 							Campo "Nome do produto" inválido.
@@ -62,25 +62,25 @@ session_start();
 
 						<label><b>Tipo de empresa: </b></label><br>
 						<div class="custom-control custom-radio">
-							<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" for="MEI/ME" >MEI/ME</label> <br>
+							<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" required>
+							<label class="custom-control-label" for="MEI/ME" value="MEI/ME">MEI/ME</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" for="EPP" >EPP</label> <br>
+							<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input">
+							<label class="custom-control-label" for="EPP" value="EPP">EPP</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" for="Médio/Grande porte" >Médio/Grande porte</label> <br><br>
+							<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input">
+							<label class="custom-control-label" for="Médio/Grande porte" value="Médio/Grande porte">Médio/Grande porte</label> <br><br>
 						</div>
 
 						<label><b>Tipo de proposta: </b></label><br>
 						<div class="custom-control custom-radio">
-							<input id="Projeto de inovação tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" checked required>
+							<input id="Projeto de inovação tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" required>
 							<label class="custom-control-label" for="Projeto de inovação tecnológico" >Projeto de inovação tecnológico</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input id="Prestação de serviço tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" checked required>
+							<input id="Prestação de serviço tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" >
 							<label class="custom-control-label" for="Prestação de serviço tecnológico" >Prestação de serviço tecnológico</label> <br><br>
 						</div>
 
@@ -92,12 +92,12 @@ session_start();
 
 						<label><b>Representante do(a): </b></label><br>
 						<div class="custom-control custom-radio">
-							<input id="Ifes" name="tipo_representante" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" for="Ifes">Ifes</label> <br>
+							<input id="Ifes" name="tipo_representante" type="radio" class="custom-control-input" required>
+							<label class="custom-control-label" for="Ifes" value="Ifes">Ifes</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input id="Empresa" name="tipo_representante" type="radio" class="custom-control-input" checked required>
-							<label class="custom-control-label" for="Empresa">Empresa</label> <br><br>
+							<input id="Empresa" name="tipo_representante" type="radio" class="custom-control-input" required>
+							<label class="custom-control-label" for="Empresa" value="Empresa">Empresa</label> <br><br>
 						</div>
 
 						<label><b>Cargo: </b></label><br>
