@@ -2,7 +2,7 @@
 session_start();
 include_once("funcoes.php");
 
-$nome_produto = utf8_decode(filter_input(INPUT_POST, 'nome_produto', FILTER_SANITIZE_STRING));
+$nome_projeto = utf8_decode(filter_input(INPUT_POST, 'nome_projeto', FILTER_SANITIZE_STRING));
 $resumo_proposta = utf8_decode(filter_input(INPUT_POST, 'resumo_proposta', FILTER_SANITIZE_STRING));
 $justificativa = utf8_decode(filter_input(INPUT_POST, 'justificativa', FILTER_SANITIZE_STRING));
 $nome_empresa = utf8_decode(filter_input(INPUT_POST, 'nome_empresa', FILTER_SANITIZE_STRING));
@@ -35,8 +35,8 @@ $resultado_pessoa = mysqli_query($conn, $result_pessoa);
 $id_pessoa = mysqli_insert_id($conn);
 
 
-$result_produto = "INSERT INTO produto (nome_produto, justificativa)
-VALUES ('$nome_produto', '$justificativa')";
+$result_produto = "INSERT INTO produto (justificativa)
+VALUES ('$justificativa')";
 $resultado_produto = mysqli_query($conn, $result_produto);
 $id_produto = mysqli_insert_id($conn);
 
@@ -47,8 +47,8 @@ $resultado_empresa = mysqli_query($conn, $result_empresa);
 $id_empresa = mysqli_insert_id($conn);
 
 
-$result_projeto = "INSERT INTO projeto (riscos, restricoes, partes_interessadas, entregas, premissas, efeitos, requisitos, custo, cronograma, equipe)
-VALUES ('$riscos', '$restricoes', '$partes_interessadas', '$entregas', '$premissas', '$efeitos', '$requisitos', '$custo', '$cronograma', '$equipe')";
+$result_projeto = "INSERT INTO projeto (riscos, restricoes, partes_interessadas, entregas, premissas, efeitos, requisitos, custo, cronograma, equipe, nome_projeto)
+VALUES ('$riscos', '$restricoes', '$partes_interessadas', '$entregas', '$premissas', '$efeitos', '$requisitos', '$custo', '$cronograma', '$equipe', '$nome_projeto')";
 $resultado_projeto = mysqli_query($conn, $result_projeto);
 $id_projeto = mysqli_insert_id($conn);
 

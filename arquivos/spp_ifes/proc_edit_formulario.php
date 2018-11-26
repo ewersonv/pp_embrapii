@@ -3,7 +3,7 @@ session_start();
 include_once("funcoes.php");
 
 $id = utf8_decode(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT));
-$nome_produto = utf8_decode(filter_input(INPUT_POST, 'nome_produto', FILTER_SANITIZE_STRING));
+$nome_projeto = utf8_decode(filter_input(INPUT_POST, 'nome_projeto', FILTER_SANITIZE_STRING));
 $resumo_proposta = utf8_decode(filter_input(INPUT_POST, 'resumo_proposta', FILTER_SANITIZE_STRING));
 $justificativa = utf8_decode(filter_input(INPUT_POST, 'justificativa', FILTER_SANITIZE_STRING));
 $nome_empresa = utf8_decode(filter_input(INPUT_POST, 'nome_empresa', FILTER_SANITIZE_STRING));
@@ -43,7 +43,7 @@ $resultado_pessoa = mysqli_query(connect(), $result_pessoa);
 
 
 $result_produto = "UPDATE produto
-SET nome_produto='$nome_produto', justificativa='$justificativa'
+SET justificativa='$justificativa'
 WHERE id_produto ='$id_produto'";
 $resultado_produto = mysqli_query(connect(), $result_produto);
 
@@ -55,7 +55,7 @@ $resultado_empresa = mysqli_query(connect(), $result_empresa);
 
 
 $result_projeto = "UPDATE projeto
-SET riscos='$riscos', restricoes='$restricoes', partes_interessadas='$partes_interessadas', entregas='$entregas', premissas='$premissas', efeitos='$efeitos', requisitos='$requisitos', custo='$custo', cronograma='$cronograma', equipe='$equipe'
+SET riscos='$riscos', restricoes='$restricoes', partes_interessadas='$partes_interessadas', entregas='$entregas', premissas='$premissas', efeitos='$efeitos', requisitos='$requisitos', custo='$custo', cronograma='$cronograma', equipe='$equipe', nome_projeto='$nome_projeto'
 WHERE id_projeto ='$id_projeto'";
 $resultado_projeto = mysqli_query(connect(), $result_projeto);
 

@@ -42,12 +42,12 @@ function getPropostas($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $or
     
     if($order == 0)
     {
-        $result_proposta = "SELECT P.id_proposta, Prod.nome_produto, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
+        $result_proposta = "SELECT P.id_proposta, Proj.nome_projeto, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
         FROM proposta P
         INNER JOIN empresa E
         ON E.id_empresa = P.fk_id_empresa
-        INNER JOIN produto Prod
-        ON Prod.id_produto = P.fk_id_produto
+        INNER JOIN projeto Proj
+        ON Proj.id_projeto = P.fk_id_projeto
         ORDER BY id_proposta
         LIMIT $inicio, $qnt_result_pg";
         
@@ -55,12 +55,12 @@ function getPropostas($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $or
     }
     else
     {
-        $result_proposta = "SELECT P.id_proposta, Prod.nome_produto, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
+        $result_proposta = "SELECT P.id_proposta, Proj.nome_projeto, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
         FROM proposta P
         INNER JOIN empresa E
         ON E.id_empresa = P.fk_id_empresa
-        INNER JOIN produto Prod
-        ON Prod.id_produto = P.fk_id_produto
+        INNER JOIN projeto Proj
+        ON Proj.id_projeto = P.fk_id_projeto
         ORDER BY id_proposta DESC
         LIMIT $inicio, $qnt_result_pg";
         

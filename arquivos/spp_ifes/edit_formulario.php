@@ -38,8 +38,8 @@ include_once("sql_edit_formulario.php");
 				<div class="col-md-12 mb-3">
 					<input type="hidden" name="id" value="<?php echo utf8_encode($row['id_proposta']); ?>">
 
-					<label><b>Nome do produto: </b></label><br>
-					<input type="text" class="form-control" name="nome_produto" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_produto']); ?>"><br><br>
+					<label><b>Nome do projeto: </b></label><br>
+					<input type="text" class="form-control" name="nome_projeto" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_projeto']); ?>"><br><br>
 
 					<label><b>Resumo da proposta: </b></label><br>
 					<textarea type="text" class="form-control" name="resumo_proposta" rows="5" cols="80" /><?php echo utf8_encode($row['resumo_proposta']); ?></textarea><br><br>

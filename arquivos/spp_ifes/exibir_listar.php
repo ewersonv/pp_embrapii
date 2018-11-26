@@ -24,7 +24,7 @@ include_once("funcoes.php");
 			?>
 
 			<div class="card border-secondary mb-3">
-			<h5 class="card-header"><?php echo "<b></b>" . utf8_encode($row['nome_produto']); ?></h5>
+			<h5 class="card-header"><?php echo "<b></b>" . utf8_encode($row['nome_projeto']); ?></h5>
 			<div class="card-body">
 				<?php
 					
