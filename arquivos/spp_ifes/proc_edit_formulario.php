@@ -2,75 +2,37 @@
 session_start();
 include_once("funcoes.php");
 
-$id = utf8_decode(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT));
+$id_projeto = utf8_decode(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT));
 $nome_projeto = utf8_decode(filter_input(INPUT_POST, 'nome_projeto', FILTER_SANITIZE_STRING));
-$resumo_proposta = utf8_decode(filter_input(INPUT_POST, 'resumo_proposta', FILTER_SANITIZE_STRING));
-$justificativa = utf8_decode(filter_input(INPUT_POST, 'justificativa', FILTER_SANITIZE_STRING));
-$nome_empresa = utf8_decode(filter_input(INPUT_POST, 'nome_empresa', FILTER_SANITIZE_STRING));
-$cnpj = utf8_decode(filter_input(INPUT_POST, 'cnpj', FILTER_SANITIZE_STRING));
-$tipo_empresa = utf8_decode($_POST['tipo_empresa']);
-$tipo_proposta = utf8_decode($_POST['tipo_proposta']);
-$nome_pessoa = utf8_decode(filter_input(INPUT_POST, 'nome_pessoa', FILTER_SANITIZE_STRING));
-$tipo_representante = utf8_decode($_POST['tipo_representante']);
-$cargo = utf8_decode(filter_input(INPUT_POST, 'cargo', FILTER_SANITIZE_STRING));
-$email = utf8_decode(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
-$telefone = utf8_decode(filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING));
+$nome_produto = utf8_decode(filter_input(INPUT_POST, 'nome_produto', FILTER_SANITIZE_STRING));
+$descricao_produto = utf8_decode(filter_input(INPUT_POST, 'descricao_produto', FILTER_SANITIZE_STRING));
 $riscos = utf8_decode(filter_input(INPUT_POST, 'riscos', FILTER_SANITIZE_STRING));
-$restricoes = utf8_decode(filter_input(INPUT_POST, 'restricoes', FILTER_SANITIZE_STRING));
-$partes_interessadas = utf8_decode(filter_input(INPUT_POST, 'partes_interessadas', FILTER_SANITIZE_STRING));
+$interessados = utf8_decode(filter_input(INPUT_POST, 'interessados', FILTER_SANITIZE_STRING));
+$viabilidade = utf8_decode(filter_input(INPUT_POST, 'viabilidade', FILTER_SANITIZE_STRING));
 $equipe = utf8_decode(filter_input(INPUT_POST, 'equipe', FILTER_SANITIZE_STRING));
 $entregas = utf8_decode(filter_input(INPUT_POST, 'entregas', FILTER_SANITIZE_STRING));
 $cronograma = utf8_decode(filter_input(INPUT_POST, 'cronograma', FILTER_SANITIZE_STRING));
 $premissas = utf8_decode(filter_input(INPUT_POST, 'premissas', FILTER_SANITIZE_STRING));
 $efeitos = utf8_decode(filter_input(INPUT_POST, 'efeitos', FILTER_SANITIZE_STRING));
-$requisitos = utf8_decode(filter_input(INPUT_POST, 'requisitos', FILTER_SANITIZE_STRING));
 $custo = utf8_decode(filter_input(INPUT_POST, 'custo', FILTER_SANITIZE_STRING));
-
-
-//echo "Nome: $nome <br>";
-//echo "E-mail: $email <br>";
+$anotacoes_complementares = utf8_decode(filter_input(INPUT_POST, 'anotacoes_complementares', FILTER_SANITIZE_STRING));
 
 $conn = connect();
 
-$id_empresa = getIdEmpresa($id);
-$id_pessoa = getIdPessoa($id);
-$id_projeto = getIdProjeto($id);
-$id_produto = getIdProduto($id);
+$id_produto = getIdProduto($id_projeto);
 
-
-$result_pessoa = "UPDATE pessoa
-SET nome_pessoa='$nome_pessoa', email='$email', telefone='$telefone', tipo_representante='$tipo_representante', cargo='$cargo'
-WHERE id_pessoa ='$id_pessoa'";
-$resultado_pessoa = mysqli_query($conn, $result_pessoa);
-
-
-$result_produto = "UPDATE produto
-SET justificativa='$justificativa'
-WHERE id_produto ='$id_produto'";
+$result_produto = "UPDATE produto SET nome_produto='$nome_produto', descricao_produto='$descricao_produto' WHERE id_produto ='$id_produto'";
 $resultado_produto = mysqli_query($conn, $result_produto);
 
 
-$result_empresa = "UPDATE empresa
-SET nome_empresa='$nome_empresa', cnpj='$cnpj', tipo_empresa='$tipo_empresa'
-WHERE id_empresa ='$id_empresa'";
-$resultado_empresa = mysqli_query($conn, $result_empresa);
-
-
-$result_projeto = "UPDATE projeto
-SET riscos='$riscos', restricoes='$restricoes', partes_interessadas='$partes_interessadas', entregas='$entregas', premissas='$premissas', efeitos='$efeitos', requisitos='$requisitos', custo='$custo', cronograma='$cronograma', equipe='$equipe', nome_projeto='$nome_projeto'
-WHERE id_projeto ='$id_projeto'";
+$result_projeto = "UPDATE projeto SET nome_projeto='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares' WHERE id_projeto ='$id_projeto'";
 $resultado_projeto = mysqli_query($conn, $result_projeto);
 
-
-$result_proposta = "UPDATE proposta
-SET tipo_proposta='$tipo_proposta', resumo_proposta='$resumo_proposta'
-WHERE id_proposta ='$id'";
-$resultado_proposta = mysqli_query($conn, $result_proposta);
 
 if(mysqli_affected_rows($conn)){
 	$_SESSION['msg'] = "<p style='color:green;'>Alterações realizadas com sucesso!</p>";
 	header("Location: listar.php");
 }else{
 	$_SESSION['msg'] = "<p style='color:red;'>As alterações não foram salvas.</p>";
-	header("Location: listar.php?id=$id");
+	header("Location: listar.php?id=$id_projeto");
 }

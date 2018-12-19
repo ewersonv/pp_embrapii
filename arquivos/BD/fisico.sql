@@ -33,6 +33,7 @@ CREATE TABLE PROJETO (
 
 CREATE TABLE PRODUTO (
     id_produto INTEGER PRIMARY KEY,
+    nome_produto VARCHAR(450),
     descricao_produto VARCHAR(4000),
     id_projeto INTEGER
 );

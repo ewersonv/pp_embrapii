@@ -36,22 +36,22 @@ include_once("sql_edit_formulario.php");
 
 			<form method="POST" action="proc_edit_formulario.php">
 				<div class="col-md-12 mb-3">
-					<input type="hidden" name="id" value="<?php echo utf8_encode($row['id_proposta']); ?>">
+					<input type="hidden" name="id" value="<?php echo utf8_encode($row['id_projeto']); ?>">
 
 					<label><b>Nome do projeto: </b></label><br>
 					<input type="text" class="form-control" name="nome_projeto" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_projeto']); ?>"><br><br>
 
-					<label><b>Resumo da proposta: </b></label><br>
-					<textarea type="text" class="form-control" name="resumo_proposta" rows="5" cols="80" /><?php echo utf8_encode($row['resumo_proposta']); ?></textarea><br><br>
-
-					<label><b>Justificativa: </b></label><br>
-					<textarea type="text" class="form-control" name="justificativa" rows="5" cols="80" /><?php echo utf8_encode($row['justificativa']); ?></textarea><br><br>
-
+					<label><b>Nome do produto que será desenvolvido: </b></label><br>
+					<input type="text" class="form-control" name="nome_produto" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_produto']); ?>"><br><br>
+					
+					<label><b>Descrição do produto: </b></label><br>
+					<textarea type="text" class="form-control" name="descricao_produto" rows="5" cols="80" /><?php echo utf8_encode($row['descricao_produto']); ?></textarea><br><br>
+					
 					<label><b>Nome da empresa: </b></label><br>
-					<input type="text" class="form-control" name="nome_empresa" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_empresa']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome_empresa" readonly="readonly" value="<?php echo utf8_encode($row['nome_empresa']); ?>"><br><br>
 
 					<label><b>CNPJ: </b></label><br>
-					<input type="text" class="form-control" name="cnpj" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['cnpj']); ?>"><br><br>
+					<input type="text" class="form-control" name="cnpj" readonly="readonly" value="<?php echo utf8_encode($row['cnpj']); ?>"><br><br>
 
 					<label><b>Tipo de empresa: </b></label><br>
 					<div class="custom-control custom-radio">
@@ -67,46 +67,23 @@ include_once("sql_edit_formulario.php");
 						<label class="custom-control-label" for="Médio/Grande porte" value="Médio/Grande porte"<?php echo (utf8_encode($row['tipo_empresa'])=='Médio/Grande porte')?'checked':'' ?>>Médio/Grande porte</label> <br><br>
 					</div>
 
-					<label><b>Tipo de proposta: </b></label><br>
-					<div class="custom-control custom-radio">
-						<input id="Projeto de inovação tecnológico" name="tipo_proposta" type="radio" class="custom-control-input">
-						<label class="custom-control-label" for="Projeto de inovação tecnológico" value="Projeto de inovação tecnológico" <?php echo (utf8_encode($row['tipo_proposta'])=='Projeto de inovação tecnológico')?'checked':'' ?>>Projeto de inovação tecnológico</label> <br>
-					</div>
-					<div class="custom-control custom-radio">
-						<input id="Prestação de serviço tecnológico" name="tipo_proposta" type="radio" class="custom-control-input">
-						<label class="custom-control-label" for="Prestação de serviço tecnológico" value="Prestação de serviço tecnológico" <?php echo (utf8_encode($row['tipo_proposta'])=='Prestação de serviço tecnológico')?'checked':'' ?>>Prestação de serviço tecnológico</label> <br><br>
-					</div>
-
 					<label><b>Prospectado por: </b></label><br>
-					<input type="text" class="form-control" name="nome_pessoa" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_pessoa']); ?>"><br><br>
-
-					<label><b>Representante do(a): </b></label><br>
-						<div class="custom-control custom-radio">
-							<input id="Ifes" name="tipo_representante" type="radio" class="custom-control-input">
-							<label class="custom-control-label" for="Ifes" value="Ifes" <?php echo (utf8_encode($row['tipo_representante'])=='Ifes')?'checked':'' ?>>Ifes</label> <br>
-						</div>
-						<div class="custom-control custom-radio">
-							<input id="Empresa" name="tipo_representante" type="radio" class="custom-control-input">
-							<label class="custom-control-label" for="Empresa" value="Empresa" <?php echo (utf8_encode($row['tipo_representante'])=='Empresa')?'checked':'' ?>>Empresa</label> <br><br>
-						</div>
-
-					<label><b>Cargo: </b></label><br>
-					<input type="text" class="form-control" name="cargo" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['cargo']); ?>"><br><br>
-
+					<input type="text" class="form-control" name="nome_pessoa" readonly="readonly" value="<?php echo utf8_encode($row['nome_pessoa']); ?>"><br><br>
+					
 					<label><b>Email: </b></label><br>
-					<input type="email" class="form-control" name="email" value="<?php echo utf8_encode($row['email']); ?>"><br><br>
+					<input type="email" class="form-control" name="email" readonly="readonly" value="<?php echo utf8_encode($row['email']); ?>"><br><br>
 
 					<label><b>Telefone: </b></label><br>
-					<input type="text" class="form-control" name="telefone" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['telefone']); ?>"><br><br>
+					<input type="text" class="form-control" name="telefone" readonly="readonly" value="<?php echo utf8_encode($row['telefone']); ?>"><br><br>
 
 					<label><b>Riscos: </b></label><br>
 					<textarea type="text" class="form-control" name="riscos" rows="5" cols="80" /><?php echo utf8_encode($row['riscos']); ?></textarea><br><br>
 
-					<label><b>Restrições: </b></label><br>
-					<textarea type="text" class="form-control" name="restricoes" rows="5" cols="80" /><?php echo utf8_encode($row['restricoes']); ?></textarea><br><br>
-
 					<label><b>Partes interessadas: </b></label><br>
-					<textarea type="text" class="form-control" name="partes_interessadas" rows="5" cols="80" /><?php echo utf8_encode($row['partes_interessadas']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="interessados" rows="5" cols="80" /><?php echo utf8_encode($row['interessados']); ?></textarea><br><br>
+
+					<label><b>Viabilidade: </b></label><br>
+					<textarea type="text" class="form-control" name="viabilidade" rows="5" cols="80" /><?php echo utf8_encode($row['viabilidade']); ?></textarea><br><br>
 
 					<label><b>Equipe do projeto: </b></label><br>
 					<textarea type="text" class="form-control" name="equipe" rows="5" cols="80" /><?php echo utf8_encode($row['equipe']); ?></textarea><br><br>
@@ -123,11 +100,11 @@ include_once("sql_edit_formulario.php");
 					<label><b>Efeitos do projeto: </b></label><br>
 					<textarea type="text" class="form-control" name="efeitos" rows="5" cols="80" /><?php echo utf8_encode($row['efeitos']); ?></textarea><br><br>
 
-					<label><b>Requisitos: </b></label><br>
-					<textarea type="text" class="form-control" name="requisitos" rows="5" cols="80" /><?php echo utf8_encode($row['requisitos']); ?></textarea><br><br>
-
-					<label><b>Custos: </b></label><br>
+					<label><b>Custo: </b></label><br>
 					<textarea type="text" class="form-control" name="custo" rows="5" cols="80" /><?php echo utf8_encode($row['custo']); ?></textarea><br><br>
+
+					<label><b>Anotações complementares: </b></label><br>
+					<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" /><?php echo utf8_encode($row['anotacoes_complementares']); ?></textarea><br><br>
 
 					<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" value="1" id="checkbox">
@@ -135,7 +112,7 @@ include_once("sql_edit_formulario.php");
 					</div>
 
 					<div class="py-5 text-center">
-						<button class="btn btn-dark" href="#">Preencher</button>
+						<button class="btn btn-dark" href="proc_edit_formulario.php">Preencher</button>
 					</div>
 				</div>
 			</form>

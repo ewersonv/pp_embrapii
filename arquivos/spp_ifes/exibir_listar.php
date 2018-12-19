@@ -20,7 +20,7 @@ include_once("funcoes.php");
 		$result_empresa = "SELECT nome_empresa FROM empresa INNER JOIN proposta ON empresa.id_empresa=proposta.fk_id_empresa ORDER BY id_proposta DESC LIMIT $inicio, $qnt_result_pg";
 		$resultado_empresa = mysqli_query($conn, $result_empresa); */
 
-		$result = getPropostas($inicio, $qnt_result_pg, $order);
+		$result = getProjetos($inicio, $qnt_result_pg, $order);
 		while($row = mysqli_fetch_assoc($result)){
 			/* USAR ENCODE AQUI, CASO CONTRÁRIO OS CARACTERES ESPECIAIS NÃO APARECERÃO NA PÁGINA */
 			?>
@@ -30,10 +30,11 @@ include_once("funcoes.php");
 			<div class="card-body">
 				<?php
 					
-					echo "<b>Tipo: </b>" . utf8_encode($row['tipo_proposta']) . "<br>";
+					echo "<b>Número do projeto: </b>" . utf8_encode($row['id_projeto']) . "<br>";
 					echo "<b>Empresa: </b>" . utf8_encode($row['nome_empresa']) . "<br>";
-					echo "<b>Resumo: </b>" . utf8_encode(limita_caracteres($row['resumo_proposta'], 250)) . "<br><br>";
-					echo "<p><a class='btn btn-sm btn-outline-secondary' href='edit_formulario.php?id=" . $row['id_proposta'] . "' role='button'>Preencher proposta</a></p>";
+					echo "<b>Prospectado por: </b>" . utf8_encode($row['nome_pessoa']) . "<br>";
+					echo "<b>Descrição do produto: </b>" . utf8_encode(limita_caracteres($row['descricao_produto'], 250)) . "<br><br>";
+					echo "<p><a class='btn btn-sm btn-outline-secondary' href='edit_formulario.php?id=" . $row['id_projeto'] . "' role='button'>Preencher proposta</a></p>";
 				?>
 			</div>
 			</div>
@@ -42,7 +43,7 @@ include_once("funcoes.php");
 		}
 
 		//Paginação - Somar a quantidade de formulários
-		$result_pg = "SELECT COUNT(id_proposta) AS num_result FROM proposta";
+		$result_pg = "SELECT COUNT(id_projeto) AS num_result FROM projeto";
 		$resultado_pg = mysqli_query($conn, $result_pg);
 		$row_pg = mysqli_fetch_assoc($resultado_pg);
 		

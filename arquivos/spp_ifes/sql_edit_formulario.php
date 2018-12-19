@@ -8,16 +8,15 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $conn = connect();
 
 $result_all = "SELECT *
-FROM proposta
-INNER JOIN empresa
-ON proposta.fk_id_empresa = empresa.id_empresa
-INNER JOIN projeto
-ON proposta.fk_id_projeto = projeto.id_projeto
-INNER JOIN pessoa
-ON proposta.fk_id_pessoa = pessoa.id_pessoa
-INNER JOIN produto
-ON proposta.fk_id_produto = produto.id_produto
-WHERE proposta.id_proposta = $id";
+FROM PROJETO P
+INNER JOIN EMPRESA E
+ON P.id_empresa = E.id_empresa
+INNER JOIN PESSOA PS
+ON P.id_pessoa = PS.id_pessoa
+INNER JOIN PRODUTO PD
+ON P.id_projeto = PD.id_projeto
+WHERE P.id_projeto = $id";
+
 $resultado_all = mysqli_query($conn, $result_all);
 $row = mysqli_fetch_assoc($resultado_all);
 

@@ -8,13 +8,13 @@ INSERT INTO PESSOA (id_pessoa, nome_pessoa, email, telefone) VALUES
 (2, 'Estefano Vieira', 'estefano@gmail.com', '12312312312'),
 (3, 'Deise', 'deise@gmail.com', '27999888998');
 
-INSERT INTO PRODUTO (id_produto, descricao_produto, id_projeto) VALUES
-(1, 'O novo tijolo refratário consiste na ideia de ...', 1),
-(2, 'O produto teste é composto por ...', 2),
-(3, 'Aqui entra a descrição do produto do projet 3', 3),
-(4, 'Descrição produto/projeto 4', 4),
-(5, 'Mais uma descrição de produto', 5),
-(6, 'O produto do projeto 6 realizará tais tarefas e é composto por ...', 6);
+INSERT INTO PRODUTO (id_produto, nome_produto, descricao_produto, id_projeto) VALUES
+(1, 'Tijolo refratário', 'O novo tijolo refratário consiste na ideia de ...', 1),
+(2, 'Produto teste', 'O produto teste é composto por ...', 2),
+(3, 'Produto projeto 3', 'Aqui entra a descrição do produto do projet 3', 3),
+(4, 'Produto do projeto 4', 'Descrição produto/projeto 4', 4),
+(5, 'Nome de mais um produto', 'Mais uma descrição de produto', 5),
+(6, 'Produto do projeto 6', 'O produto do projeto 6 realizará tais tarefas e é composto por ...', 6);
 
 INSERT INTO PROJETO (id_projeto, viabilidade, efeitos, equipe, nome_projeto, riscos, entregas, premissas, cronograma, custo, interessados, anotacoes_complementares, id_empresa, id_pessoa) VALUES
 (1, 'Este projeto é viável por conta de ...', 'Os efeitos que poderão ser notados aaaa', 'Equipe projeto 1', 'Novo tijolo refratario', 'Riscos 1 aaaa', 'As datas das entregas estão previstas para aaaa', 'O projeto parte das seguintes premissas aaaa', 'Cronograma projeto 1', 'O projeto tem um custo estimado de aaaaaaaaaa', 'As empresas interessadas sao aaa aaa aaa', 'Aqui entram as anotações complementares a respeito do projeto para explicações mais profundas sobre o que será feito', 1, 1),

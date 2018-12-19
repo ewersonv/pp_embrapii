@@ -37,52 +37,62 @@ function limita_caracteres($texto, $limite, $quebra = true){
    return $novo_texto; // Retorna o valor formatado
 }
 
-function getPropostas($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $order == 1 DESC
+function getProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $order == 1 DESC
     /* Retorna todos os campos referentes à proposta necessários para exibição em "listar.php" */
     
     if($order == 0)
     {
-        $result_proposta = "SELECT P.id_proposta, Proj.nome_projeto, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
-        FROM proposta P
-        INNER JOIN empresa E
-        ON E.id_empresa = P.fk_id_empresa
-        INNER JOIN projeto Proj
-        ON Proj.id_projeto = P.fk_id_projeto
-        ORDER BY id_proposta
+        $result_projeto = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+        FROM PROJETO P
+        INNER JOIN EMPRESA E
+        ON P.id_empresa = E.id_empresa
+        INNER JOIN PESSOA PS
+        ON P.id_pessoa = PS.id_pessoa
+        INNER JOIN PRODUTO PD
+        ON P.id_projeto = PD.id_projeto
+        ORDER BY id_projeto
         LIMIT $inicio, $qnt_result_pg";
         
-        $resultado_proposta = mysqli_query(connect(), $result_proposta);
+        $resultado_projeto = mysqli_query(connect(), $result_projeto);
     }
     else
     {
-        $result_proposta = "SELECT P.id_proposta, Proj.nome_projeto, P.tipo_proposta, P.resumo_proposta, E.nome_empresa
-        FROM proposta P
-        INNER JOIN empresa E
-        ON E.id_empresa = P.fk_id_empresa
-        INNER JOIN projeto Proj
-        ON Proj.id_projeto = P.fk_id_projeto
-        ORDER BY id_proposta DESC
+        $result_projeto = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+        FROM PROJETO P
+        INNER JOIN EMPRESA E
+        ON P.id_empresa = E.id_empresa
+        INNER JOIN PESSOA PS
+        ON P.id_pessoa = PS.id_pessoa
+        INNER JOIN PRODUTO PD
+        ON P.id_projeto = PD.id_projeto
+        ORDER BY id_projeto DESC
         LIMIT $inicio, $qnt_result_pg";
         
-        $resultado_proposta = mysqli_query(connect(), $result_proposta);
+        $resultado_projeto = mysqli_query(connect(), $result_projeto);
     }
-    return $resultado_proposta;
+    return $resultado_projeto;
 }
 
-function getEmpresaProposta($id_proposta){
+function getEmpresaProjeto($id_projeto){
     /* retorna o nome da empresa relacionada à proposta em questão */
 
-    $result_empresa = "SELECT nome_empresa FROM empresa INNER JOIN proposta ON empresa.id_empresa=proposta.fk_id_empresa WHERE proposta.id_proposta = $id_proposta";
+    $result_empresa = "SELECT nome_empresa
+    FROM empresa
+    INNER JOIN projeto
+    ON empresa.id_empresa=projeto.id_empresa
+    WHERE projeto.id_projeto = $id_projeto";
     $resultado_empresa = mysqli_query(connect(), $result_empresa);
 
     return $resultado_empresa;
 }
 
-function getIdEmpresa($id_proposta)
+function getIdEmpresa($id_projeto)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
-    $query = "SELECT fk_id_empresa FROM proposta WHERE id_proposta = $id_proposta";
+    $query = "SELECT id_empresa
+    FROM projeto
+    WHERE id_projeto = $id_projeto";
     $resultado = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($resultado);
 
@@ -91,11 +101,13 @@ function getIdEmpresa($id_proposta)
     return $valor;
 }
 
-function getIdPessoa($id_proposta)
+function getIdPessoa($id_projeto)
 {
     /* Retorna o ID da pessoa de acordo com a FK registrada na proposta */
 
-    $query = "SELECT fk_id_pessoa FROM proposta WHERE id_proposta = $id_proposta";
+    $query = "SELECT id_pessoa
+    FROM projeto
+    WHERE id_projeto = $id_projeto";
     $resultado = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($resultado);
 
@@ -104,24 +116,26 @@ function getIdPessoa($id_proposta)
     return $valor;
 }
 
-function getIdProduto($id_proposta)
+function getIdProduto($id_projeto)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
-    $query = "SELECT fk_id_produto FROM proposta WHERE id_proposta = $id_proposta";
+    $query = "SELECT id_produto
+    FROM produto
+    WHERE id_projeto = $id_projeto;";
     $resultado = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($resultado);
 
-    $valor = $row[0];
-
-    return $valor;
+    return $row[0];
 }
 
-function getIdProjeto($id_proposta)
+function getIdProjeto($id_projeto)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
-    $query = "SELECT fk_id_projeto FROM proposta WHERE id_proposta = $id_proposta";
+    $query = "SELECT id_projeto
+    FROM projeto
+    WHERE id_projeto = $id_projeto";
     $resultado = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($resultado);
 
