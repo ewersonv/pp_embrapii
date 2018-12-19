@@ -3,13 +3,15 @@
 CREATE TABLE EMPRESA (
     id_empresa INTEGER PRIMARY KEY,
     nome_empresa VARCHAR(100),
-    cnpj VARCHAR(14)
+    cnpj VARCHAR(14),
+    tipo_empresa VARCHAR(50)
 );
 
 CREATE TABLE PESSOA (
     id_pessoa INTEGER PRIMARY KEY,
-    nome VARCHAR(100),
-    telefone VARCHAR(11)
+    nome_pessoa VARCHAR(100),
+    telefone VARCHAR(11),
+    email VARCHAR(100)
 );
 
 CREATE TABLE PROJETO (
@@ -23,8 +25,8 @@ CREATE TABLE PROJETO (
     premissas VARCHAR(2000),
     cronograma VARCHAR(2000),
     custo VARCHAR(2000),
-    anotacoes_complementares VARCHAR(2000),
     interessados VARCHAR(2000),
+    anotacoes_complementares VARCHAR(2000),
     id_empresa INTEGER,
     id_pessoa INTEGER
 );
