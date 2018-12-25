@@ -17,19 +17,20 @@ $efeitos = utf8_decode(filter_input(INPUT_POST, 'efeitos', FILTER_SANITIZE_STRIN
 $custo = utf8_decode(filter_input(INPUT_POST, 'custo', FILTER_SANITIZE_STRING));
 $anotacoes_complementares = utf8_decode(filter_input(INPUT_POST, 'anotacoes_complementares', FILTER_SANITIZE_STRING));
 
-$conn = connect();
-
+$conn1 = connect();
+$conn2 = connect();
 $id_produto = getIdProduto($id_projeto);
 
-$result_produto = "UPDATE produto SET nome_produto='$nome_produto', descricao_produto='$descricao_produto' WHERE id_produto ='$id_produto'";
-$resultado_produto = mysqli_query($conn, $result_produto);
+
+$query = "UPDATE produto SET nome_produto='$nome_produto', descricao_produto='$descricao_produto' WHERE id_produto ='$id_produto'";
+$result = mysqli_query($conn1, $query);
 
 
-$result_projeto = "UPDATE projeto SET nome_projeto='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares' WHERE id_projeto ='$id_projeto'";
-$resultado_projeto = mysqli_query($conn, $result_projeto);
+$query = "UPDATE projeto SET nome_projeto='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares' WHERE id_projeto ='$id_projeto'";
+$result = mysqli_query($conn2, $query);
 
 
-if(mysqli_affected_rows($conn)){
+if(mysqli_affected_rows($conn1) or mysqli_affected_rows($conn2)){
 	$_SESSION['msg'] = "<p style='color:green;'>Alterações realizadas com sucesso!</p>";
 	header("Location: listar.php");
 }else{
