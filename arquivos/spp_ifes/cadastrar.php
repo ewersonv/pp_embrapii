@@ -34,19 +34,19 @@ session_start();
 					<div class="col-md-12 mb-3">
 
 						<label><b>Nome do projeto: </b></label><br>
-						<input type="text" class="form-control" name="nome_produto" placeholder="Nome completo" required><br><br>
+						<input type="text" class="form-control" name="nome_projeto" placeholder="Nome do projeto" required><br><br>
 						<div class="invalid-feedback">
-							Campo "Nome do produto" inválido.
+							Campo "Nome do projeto" inválido.
 						</div>
 
-						<label><b>Resumo da proposta: </b></label><br>
-						<textarea type="text" class="form-control" name="resumo_proposta" rows="5" cols="80" placeholder="Resumo com os pontos mais importantes sobre a proposta" required/></textarea><br><br>
+						<label><b>Nome do produto que será desenvolvido: </b></label><br>
+						<textarea type="text" class="form-control" name="nome_produto" rows="5" cols="80" placeholder="Nome do produto" required/></textarea><br><br>
 						<div class="invalid-feedback">
 							Campo "Resumo da proposta" inválido.
 						</div>
 
-						<label><b>Justificativa: </b></label><br>
-						<textarea type="text" class="form-control" name="justificativa" rows="5" cols="80" placeholder="Justificativa para criação do produto"/></textarea><br><br>						
+						<label><b>Descrição do produto: </b></label><br>
+						<textarea type="text" class="form-control" name="descricao_produto" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade"/></textarea><br><br>						
 
 						<label><b>Nome da empresa: </b></label><br>
 						<input type="text" class="form-control" name="nome_empresa" placeholder="Digite o nome completo" required><br><br>
@@ -74,34 +74,11 @@ session_start();
 							<label class="custom-control-label" for="Médio/Grande porte" value="Médio/Grande porte">Médio/Grande porte</label> <br><br>
 						</div>
 
-						<label><b>Tipo de proposta: </b></label><br>
-						<div class="custom-control custom-radio">
-							<input id="Projeto de inovação tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" required>
-							<label class="custom-control-label" for="Projeto de inovação tecnológico" >Projeto de inovação tecnológico</label> <br>
-						</div>
-						<div class="custom-control custom-radio">
-							<input id="Prestação de serviço tecnológico" name="tipo_proposta" type="radio" class="custom-control-input" >
-							<label class="custom-control-label" for="Prestação de serviço tecnológico" >Prestação de serviço tecnológico</label> <br><br>
-						</div>
-
 						<label><b>Prospectado por: </b></label><br>
 						<input type="text" class="form-control" name="nome_pessoa" placeholder="Digite o nome completo" required><br><br>
 						<div class="invalid-feedback">
 							Campo "Prospectado por" inválido.
 						</div>
-
-						<label><b>Representante do(a): </b></label><br>
-						<div class="custom-control custom-radio">
-							<input id="Ifes" name="tipo_representante" type="radio" class="custom-control-input" required>
-							<label class="custom-control-label" for="Ifes" value="Ifes">Ifes</label> <br>
-						</div>
-						<div class="custom-control custom-radio">
-							<input id="Empresa" name="tipo_representante" type="radio" class="custom-control-input" required>
-							<label class="custom-control-label" for="Empresa" value="Empresa">Empresa</label> <br><br>
-						</div>
-
-						<label><b>Cargo: </b></label><br>
-						<input type="text" class="form-control" name="cargo" placeholder="Cargo que ocupa na instituição" ><br><br>
 
 						<label><b>Email: </b></label><br>
 						<input type="email" class="form-control" name="email" placeholder="abcd@email.com" required><br><br>
@@ -115,12 +92,12 @@ session_start();
 						<label><b>Riscos: </b></label><br>
 						<textarea type="text" class="form-control" name="riscos" rows="5" cols="80" placeholder="Riscos inerentes ao andamento/execução do projeto"/></textarea><br><br>
 
-						<label><b>Restrições: </b></label><br>
-						<textarea type="text" class="form-control" name="restricoes" rows="5" cols="80" placeholder="Restrições quanto a implementação do projeto"/></textarea><br><br>
-
 						<label><b>Partes interessadas: </b></label><br>
-						<textarea type="text" class="form-control" name="partes_interessadas" rows="5" cols="80" placeholder="Empresas que tem interesse no projeto"/></textarea><br><br>
+						<textarea type="text" class="form-control" name="interessados" rows="5" cols="80" placeholder="Empresas que tem interesse no projeto"/></textarea><br><br>
 
+						<label><b>Viabilidade: </b></label><br>
+						<textarea type="text" class="form-control" name="viabilidade" rows="5" cols="80" placeholder="Fatores que propiciam a viabilidade do projeto"/></textarea><br><br>
+						
 						<label><b>Equipe do projeto: </b></label><br>
 						<textarea type="text" class="form-control" name="equipe" rows="5" cols="80" placeholder="Pessoas envolvidas no projeto"/></textarea><br><br>
 
@@ -136,11 +113,11 @@ session_start();
 						<label><b>Efeitos do projeto: </b></label><br>
 						<textarea type="text" class="form-control" name="efeitos" rows="5" cols="80" placeholder="Efeitos do projeto ao ser implementado com sucesso"/></textarea><br><br>
 
-						<label><b>Requisitos: </b></label><br>
-						<textarea type="text" class="form-control" name="requisitos" rows="5" cols="80" placeholder="Pontos necessários para realização do projeto"/></textarea><br><br>
-
-						<label><b>Custos: </b></label><br>
+						<label><b>Custo: </b></label><br>
 						<textarea type="text" class="form-control" name="custo" rows="5" cols="80" placeholder="Custo total e detalhado do projeto"/></textarea><br><br>
+
+						<label><b>Anotações complementares: </b></label><br>
+						<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" placeholder="Custo total e detalhado do projeto"/></textarea><br><br>
 
 						<div class="py-5 text-center">
 							<button class="btn btn-dark" href="#">Cadastrar</button>

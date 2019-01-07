@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 26-Nov-2018 às 15:52
+-- Generation Time: 07-Jan-2019 às 16:19
 -- Versão do servidor: 5.7.21
 -- PHP Version: 7.0.29
 
@@ -19,162 +19,127 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: 'spp_ifes'
+-- Database: `spp_ifes`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela 'empresa'
+-- Estrutura da tabela `empresa`
 --
 
-DROP TABLE IF EXISTS 'empresa';
-CREATE TABLE IF NOT EXISTS 'empresa' (
-  'id_empresa' int(11) NOT NULL AUTO_INCREMENT,
-  'nome_empresa' varchar(150) NOT NULL,
-  'cnpj' varchar(150) NOT NULL,
-  'tipo_empresa' varchar(150) NOT NULL,
-  PRIMARY KEY ('id_empresa')
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `empresa`;
+CREATE TABLE IF NOT EXISTS `empresa` (
+  `id_empresa` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_empresa` varchar(100) DEFAULT NULL,
+  `cnpj` varchar(14) DEFAULT NULL,
+  `tipo_empresa` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_empresa`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela 'empresa'
+-- Extraindo dados da tabela `empresa`
 --
 
-INSERT INTO 'empresa' ('id_empresa', 'nome_empresa', 'cnpj', 'tipo_empresa') VALUES
+INSERT INTO `empresa` (`id_empresa`, `nome_empresa`, `cnpj`, `tipo_empresa`) VALUES
 (1, 'Vale', '11222333444455', 'Médio/Grande porte'),
 (2, 'asdasd', '12313123131231', 'MEI/ME'),
-(3, 'ArcelorMittal', '55444333222211', ''),
-(11, 'FAPIBNAFPS', '1111444422233', 'on'),
-(12, 'ASPOFINPAISFN', '1231313213', 'on');
+(3, 'ArcelorMittal', '55444333222211', 'Médio/Grande porte'),
+(4, 'Empresa7', '12123444433377', 'on');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela 'pessoa'
+-- Estrutura da tabela `pessoa`
 --
 
-DROP TABLE IF EXISTS 'pessoa';
-CREATE TABLE IF NOT EXISTS 'pessoa' (
-  'id_pessoa' int(11) NOT NULL AUTO_INCREMENT,
-  'nome_pessoa' varchar(150) NOT NULL,
-  'email' varchar(150) NOT NULL,
-  'telefone' varchar(150) NOT NULL,
-  'tipo_representante' varchar(150) NOT NULL,
-  'cargo' varchar(150) NOT NULL,
-  PRIMARY KEY ('id_pessoa')
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `pessoa`;
+CREATE TABLE IF NOT EXISTS `pessoa` (
+  `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_pessoa` varchar(100) DEFAULT NULL,
+  `telefone` varchar(11) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id_pessoa`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela 'pessoa'
+-- Extraindo dados da tabela `pessoa`
 --
 
-INSERT INTO 'pessoa' ('id_pessoa', 'nome_pessoa', 'email', 'telefone', 'tipo_representante', 'cargo') VALUES
-(1, 'Ewerson Vieira Nascimento', 'ewersonv@gmail.com', '27996187663', 'do IFES', 'Bolsista'),
-(2, 'Estefano Vieira', 'estefano@gmail.com', '12312312312', 'do IFES', 'asdasd'),
-(3, 'Deise', 'deise@gmail.com', '27999888998', 'do IFES', 'do IFES'),
-(12, 'ASDAFSGDZXGF', 'ASFASF@EMAIL.COM', '', 'on', 'on'),
-(13, 'AFAFSASFAAFF', 'FAAFSASFSA@EMAIL.COM', '', 'on', 'on');
+INSERT INTO `pessoa` (`id_pessoa`, `nome_pessoa`, `telefone`, `email`) VALUES
+(1, 'Ewerson Vieira Nascimento', '27996187663', 'ewersonv@gmail.com'),
+(2, 'Estefano Vieira', '12312312312', 'estefano@gmail.com'),
+(3, 'Deise', '27999888998', 'deise@gmail.com'),
+(4, 'Pessoa7', '27123457777', 'pessoa7@email.com');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela 'produto'
+-- Estrutura da tabela `produto`
 --
 
-DROP TABLE IF EXISTS 'produto';
-CREATE TABLE IF NOT EXISTS 'produto' (
-  'id_produto' int(11) NOT NULL AUTO_INCREMENT,
-  'justificativa' varchar(450) NOT NULL,
-  PRIMARY KEY ('id_produto')
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `produto`;
+CREATE TABLE IF NOT EXISTS `produto` (
+  `id_produto` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_produto` varchar(450) DEFAULT NULL,
+  `descricao_produto` varchar(4000) DEFAULT NULL,
+  `id_projeto` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_produto`),
+  KEY `FK_PRODUTO_1` (`id_projeto`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela 'produto'
+-- Extraindo dados da tabela `produto`
 --
 
-INSERT INTO 'produto' ('id_produto', 'justificativa') VALUES
-(1, 'A criação do produto é justificada por causa de blabla'),
-(2, 'Justificativa aparece aqui'),
-(3, 'Aqui entra a justificativa'),
-(4, '11111111111111111111111la'),
-(5, 'Mais um Mais um Mais um Mais um Mais um Mais um Mais um'),
-(6, 'XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX XXX'),
-(15, ''),
-(14, '');
+INSERT INTO `produto` (`id_produto`, `nome_produto`, `descricao_produto`, `id_projeto`) VALUES
+(1, 'Tijolo refratário', 'O novo tijolo refratário consiste na ideia de ...', 1),
+(2, 'Produto teste', 'O produto teste é composto por ...', 2),
+(3, 'Produto projeto 3', 'Aqui entra a descrição do produto do projet 3', 3),
+(4, 'Produto do projeto 4', 'Descrição produto/projeto 4', 4),
+(5, 'Nome de mais um produto', 'Mais uma descrição de produto', 5),
+(6, 'Produto do projeto 6', 'O produto do projeto 6 realizará tais tarefas e é composto por ...', 6),
+(7, 'Produto do Projeto 7', 'Descrição do produto do Projeto 7', 7);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela 'projeto'
+-- Estrutura da tabela `projeto`
 --
 
-DROP TABLE IF EXISTS 'projeto';
-CREATE TABLE IF NOT EXISTS 'projeto' (
-  'id_projeto' int(11) NOT NULL AUTO_INCREMENT,
-  'riscos' varchar(450) DEFAULT NULL,
-  'restricoes' varchar(450) DEFAULT NULL,
-  'partes_interessadas' varchar(450) DEFAULT NULL,
-  'entregas' varchar(450) DEFAULT NULL,
-  'premissas' varchar(450) DEFAULT NULL,
-  'efeitos' varchar(450) DEFAULT NULL,
-  'requisitos' varchar(450) DEFAULT NULL,
-  'custo' varchar(450) DEFAULT NULL,
-  'cronograma' varchar(450) DEFAULT NULL,
-  'equipe' varchar(450) DEFAULT NULL,
-  'nome_projeto' varchar(450) DEFAULT NULL,
-  PRIMARY KEY ('id_projeto')
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `projeto`;
+CREATE TABLE IF NOT EXISTS `projeto` (
+  `id_projeto` int(11) NOT NULL AUTO_INCREMENT,
+  `viabilidade` varchar(2000) DEFAULT NULL,
+  `efeitos` varchar(2000) DEFAULT NULL,
+  `equipe` varchar(2000) DEFAULT NULL,
+  `nome_projeto` varchar(100) DEFAULT NULL,
+  `riscos` varchar(2000) DEFAULT NULL,
+  `entregas` varchar(2000) DEFAULT NULL,
+  `premissas` varchar(2000) DEFAULT NULL,
+  `cronograma` varchar(2000) DEFAULT NULL,
+  `custo` varchar(2000) DEFAULT NULL,
+  `interessados` varchar(2000) DEFAULT NULL,
+  `anotacoes_complementares` varchar(2000) DEFAULT NULL,
+  `id_empresa` int(11) DEFAULT NULL,
+  `id_pessoa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_projeto`),
+  KEY `FK_PROJETO_1` (`id_empresa`),
+  KEY `FK_PROJETO_2` (`id_pessoa`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela 'projeto'
+-- Extraindo dados da tabela `projeto`
 --
 
-INSERT INTO 'projeto' ('id_projeto', 'riscos', 'restricoes', 'partes_interessadas', 'entregas', 'premissas', 'efeitos', 'requisitos', 'custo', 'cronograma', 'equipe', 'nome_projeto') VALUES
-(1, 'Riscos 1 aaaa', 'Restricoes aaaaaa', 'As empresas interessadas sao aaa aaa aaa', 'As datas das entregas estão previstas para aaaa', 'O projeto parte das seguintes premissas aaaa', 'Os efeitos que poderão ser notados aaaa', 'Este projeto depende dos seguintes requisitos aaaaa', 'O projeto tem um custo estimado de aaaaaaaaaa', 'Equipe projeto 1', 'Cronograma projeto 1', 'Novo tijolo refratario'),
-(2, 'Riscos 2 bbbb', 'Restricoes bbbbbbbbbb', 'As empresas interessadas sao bbbbBBBbb', 'As datas das entregas estão previstas para bbbbbb', 'O projeto parte das seguintes premissas bbbbbb', 'Os efeitos que poderão ser notados bbbbbbbbbb', 'Este projeto depende dos seguintes requisitos bbbbbbbbbb', 'O projeto tem um custo estimado de bbbbBBBBBB', 'Equipe projeto 2', 'Cronograma projeto 2', 'Produto teste'),
-(3, 'Riscos 3 CCCCC', 'Restricoes CCCCCC', 'As empresas interessadas sao CCCccccCCCC', 'As datas das entregas estão previstas para CCCCCCCC', 'O projeto parte das seguintes premissas CCCCC', 'Os efeitos que poderão ser notados CCCcccCC', 'Este projeto depende dos seguintes requisitos CCccC', 'O projeto tem um custo estimado de CCCccccCCC', 'Equipe projeto 3', 'Cronograma projeto 3', 'Teste teste teste'),
-(4, 'Riscos projeto4projeto4projeto4projeto4projeto4', 'Restricoes projeto4', 'As empresas no projeto4', 'As datas das entregas do projeto4', 'O projeto4 parte das seguintes premissas aaaa', 'Os efeitos do projeto4', 'projeto4 depende dos seguintes requisitos', 'O projeto4 tem um custo estimado de 999999', 'Equipe projeto 4', 'Cronograma projeto 4', 'Produto novo 1'),
-(5, 'Riscos de mais um projeto', 'Restricoes de mais um projeto', 'As empresas interessadas em mais um projeto', 'As datas das entregas de mais um projeto', 'Premissas de mais um projeto', 'Os efeitos que poderão ser notados de mais um projeto', 'Mais um projeto que depende dos seguintes requisitos', 'Mais um projeto que tem um custo estimado de ', 'Equipe projeto 5', 'Cronograma projeto 5', 'Mais um produto'),
-(6, 'Riscos XXXXXX', 'Restricoes XXXXXX', 'As empresas interessadas sao XXXXXXXXXXXX', 'As datas das entregas estão previstas para XXXXXXXXXXXX', 'O projeto parte das seguintes premissas XXXXXXXXXXXX', 'Os efeitos que poderão ser notados XXXXXXXXXXXXXXXXXX', 'Este projeto depende dos seguintes requisitos XXXXXX', 'O projeto tem um custo estimado de XXXXXXXXXXXX', 'Equipe projeto XXX', 'Cronograma projeto XXX', 'Produto novo X'),
-(14, '', '', '', '', '', '', '', '', '', '', 'LALALALAL'),
-(15, '', '', '', '', '', '', '', '', '', '', 'PIAFNPANPSF');
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela 'proposta'
---
-
-DROP TABLE IF EXISTS 'proposta';
-CREATE TABLE IF NOT EXISTS 'proposta' (
-  'id_proposta' int(11) NOT NULL AUTO_INCREMENT,
-  'tipo_proposta' varchar(150) NOT NULL,
-  'resumo_proposta' varchar(8000) NOT NULL,
-  'fk_id_empresa' int(11) NOT NULL,
-  'fk_id_pessoa' int(11) NOT NULL,
-  'fk_id_produto' int(11) NOT NULL,
-  'fk_id_projeto' int(11) NOT NULL,
-  PRIMARY KEY ('id_proposta'),
-  KEY 'fk_id_empresa' ('fk_id_empresa'),
-  KEY 'fk_id_pessoa' ('fk_id_pessoa'),
-  KEY 'fk_id_produto' ('fk_id_produto'),
-  KEY 'fk_id_projeto' ('fk_id_projeto')
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
-
---
--- Extraindo dados da tabela 'proposta'
---
-
-INSERT INTO 'proposta' ('id_proposta', 'tipo_proposta', 'resumo_proposta', 'fk_id_empresa', 'fk_id_pessoa', 'fk_id_produto', 'fk_id_projeto') VALUES
-(1, 'Projeto de inovação', 'Aqui ficam as informações da proposta prospectada, para que haja uma conversa posteriormente a fim de detalhar melhor as especificações do projeto.', 1, 1, 1, 1),
-(2, 'Projeto de inovação', 'asdadsasddsad\r\nas\r\ndsa\r\ndsa\r\ndsa\r\ndsa\r\nads\r\ndsa\r\nasd\r\nsad\r\nasd\r\nasdasdasd\r\nasd\r\nasd\r\na\r\ndsa\r\nds', 2, 2, 2, 2),
-(3, 'Prestação de serviço tecnológica', 'nafsnsaçasfnçasnfçlkansflçkansfçkansfaksnfçaksnfçansfaksnfasfkaknfçançkfçknafçnkfnkçfasnkçfasknçfasfasfas\r\nfanfsa\r\nfasn\r\nfs\r\nff\r\nsankfnkçfsaknçfskçnfsaçknfasçkn\r\n\r\n\r\nankasfnkfasknçafsçkçfknsakfçnasknçfas\r\n\r\n\r\nkfanççknafskçnafsçknmafs\r\n\r\nafknçafsçknfkaçsçknfam\r\n\r\nafknasknfçasçkmnfasçknfas', 3, 3, 3, 3),
-(4, 'Projeto de inovação', 'AAAAAAAAAAAAAAAAAAAAAAA', 1, 1, 4, 4),
-(5, 'Projeto de inovação', 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB', 2, 2, 5, 5),
-(6, '', 'daisodbnpaisnfaiosfnpiasfnaf', 3, 3, 6, 6),
-(9, 'on', 'OAIUFBOAISNFOASUFS', 11, 12, 14, 14),
-(10, 'on', 'POUGOAIBSNFOGIANSF', 12, 13, 15, 15);
+INSERT INTO `projeto` (`id_projeto`, `viabilidade`, `efeitos`, `equipe`, `nome_projeto`, `riscos`, `entregas`, `premissas`, `cronograma`, `custo`, `interessados`, `anotacoes_complementares`, `id_empresa`, `id_pessoa`) VALUES
+(1, 'Este projeto é viável por conta de ...', 'Os efeitos que poderão ser notados aaaa', 'Equipe projeto 1', 'Novo tijolo refratario', 'Riscos 1 aaaa', 'As datas das entregas estão previstas para aaaa', 'O projeto parte das seguintes premissas aaaa', 'Cronograma projeto 1', 'O projeto tem um custo estimado de aaaaaaaaaa', 'As empresas interessadas sao aaa aaa aaa', 'Aqui entram as anotações complementares a respeito do projeto para explicações mais profundas sobre o que será feito', 1, 1),
+(2, 'A viabilidade deste projeto se dá por ...', 'Os efeitos que poderão ser notados BBBBbbbbBBBB', 'Equipe do projeto 2', 'Produto teste', 'Riscos 2 BBBBBB', 'As datas das entregas estão previstas para bbbbbbbbbbbb', 'O projeto parte das seguintes premissas BbBbBBbbB', 'Cronograma do projeto 2', 'O projeto tem um custo estimado de BBBBbbbbBBBBbbb', 'As empresas interessadas sao BBB bBB bbb Bbb', 'Aqui entram as anotações complementares a respeito do projeto 2 BBBBBbbBBBB', 2, 2),
+(3, 'O projeto é viável porque ...', 'Os efeitos que poderão ser notados CCCcccCCCcc', 'Equipe projeto 3CC', 'Teste teste teste', 'Riscos 3 CccCC', 'As datas das entregas estão previstas para CCCCCCCC', 'O projeto parte das seguintes premissas CCCCC', 'Cronograma projeto 1', 'O projeto tem um custo estimado de CCCCCccccCCCC', 'As empresas interessadas sao CCCCCCC', 'Anotações complementares a respeito do projeto 3 CCCC', 1, 3),
+(4, 'A viabilidade do projeto consiste em ...', 'Os efeitos que poderão ser notados 4444444', 'Equipe projeto 4 ddddd', 'Nome do novo projeto 4', 'Riscos 4 dddddd', 'As datas das entregas estão previstas para dddddddddddddddddddd', 'O projeto parte das seguintes premissas 44d4dd4d4', 'Cronograma do projeto 4', 'O projeto tem um custo estimado de 4444444444', 'As empresas interessadas sao 444 dddd DDD', 'Anotações e observações do projeto 4', 3, 1),
+(5, 'Este projeto é viável por conta de ...', 'Os efeitos que poderão ser notados em 55555EEE', 'Equipe do projeto 5', 'Mais um produto 55', 'Riscos 5 EEE', 'As datas das entregas estão previstas para 5555eeee', 'O projeto parte das seguintes premissas 55555eeee', 'Cronograma projeto 5E', 'O projeto tem um custo estimado de 55EEEEEEEE', 'As empresas interessadas sao 555 eeee eeee', 'Aqui entram as anotações complementares do projeto 5E', 1, 3),
+(6, 'Viabilidade do projeto ...', 'Efeitos do projeto 6 FFFF', 'Equipe do projeto 6', 'Nome do projeto 6 XXXX', 'Riscos do projeto 6 XXXx', 'Aqui entram as datas das entregas do projeto 6 XXXX', 'O projeto 6 parte das seguintes premissas 6666XXXXX', 'Cronograma do projeto 6x', 'O projeto 6 tem um custo estimado de 666666', 'As empresas interessadas no projeto 6 sao XXX xxx', 'Anotações e observações a respeito do projeto 6 XXX', 2, 3),
+(7, 'Viabilidade do Projeto 7', 'Efeitos resultantes do Projeto 7', 'Equipe do Projeto 7', 'Projeto 7', 'Riscos do Projeto 7', 'Entregas do Projeto 7', 'Premissas do Projeto 7', 'Cronograma de atividades do Projeto 7', 'Custo do Projeto 7', 'Empresas interessadas no Projeto 7', 'Informações adicionais do Projeto 7', 4, 4);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
