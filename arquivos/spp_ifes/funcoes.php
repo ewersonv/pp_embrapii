@@ -144,4 +144,58 @@ function getIdProjeto($id_projeto)
     return $valor;
 }
 
+function totalProjetos()
+{
+    $query = "SELECT COUNT(id_projeto) FROM projeto";
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
+
+    $value = $row[0];
+
+    return $value;
+}
+
+function totalProdutos()
+{
+    $query = "SELECT COUNT(id_produto) FROM produto";
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
+
+    $value = $row[0];
+
+    return $value;
+}
+
+function empresaMaisProjetos()
+{
+    $query = "SELECT id_empresa, COUNT(id_empresa) FROM projeto GROUP BY id_empresa ORDER BY COUNT(id_empresa) DESC LIMIT 1";
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
+    $id_empresa = $row[0];
+    $max = $row[1];
+
+    $query = "SELECT nome_empresa FROM empresa WHERE id_empresa = '$id_empresa'";
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
+    $value = $row[0] . ' (' . $max . ')';
+
+    return $value;
+}
+
+function maiorProspectador()
+{
+    $query = "SELECT id_pessoa, COUNT(id_pessoa) FROM projeto GROUP BY id_pessoa ORDER BY COUNT(id_pessoa) DESC LIMIT 1";
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
+    $id_pessoa = $row[0];
+    $max = $row[1];
+
+    $query = "SELECT nome_pessoa FROM pessoa WHERE id_pessoa = '$id_pessoa'";
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
+    $value = $row[0] . ' (' . $max . ')';
+
+    return $value;
+}
+
 ?>

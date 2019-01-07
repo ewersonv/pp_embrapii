@@ -1,3 +1,6 @@
+<?php
+include_once("funcoes.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 	<head>
@@ -20,20 +23,12 @@
 				<a class="py-2 d-none d-md-inline-block"href="cadastrar.php">Nova Proposta</a>
 				<a class="py-2 d-none d-md-inline-block" href="relatorios.php">Relatórios</a>
 			</div>
-		</nav>
+        </nav>
+        <?php
+        
+            echo "<b>Total de projetos: </b>" . totalProjetos() . "<br>";
+            echo "<b>Total de produtos: </b>" . totalProdutos() . "<br>";
+            echo "<b>Empresa com mais projetos: </b>" . empresaMaisProjetos() . "<br>";
+            echo "<b>Maior prospectador: </b>" . maiorProspectador() . "<br>";
 
-		<div class="container">
-			<div class="py-5 text-center">
-				<h1 class="mb-0">
-					<br><br><br><a class="text-dark">SPP - IFES</a><br><br><br>
-				</h1>
-
-				<form class="form-inline mt-2 mt-md-0">
-					<input class="form-control mr-sm-2" type="text" style="min-width:820px;" placeholder="Pesquisar proposta" aria-label="Search">
-					<button class="btn btn-dark my-2 my-sm-0" type="submit">Pesquisar</button>
-				</form>
-
-			</div>
-		</div>
-	</body>
-</html>
+        ?>

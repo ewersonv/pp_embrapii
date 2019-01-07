@@ -21,7 +21,7 @@ session_start();
 			<div class="container d-flex flex-column flex-md-row justify-content-between">
 				<a class="py-2 d-none d-md-inline-block" href="index.html">Início</a>
 				<a class="py-2 d-none d-md-inline-block" href="listar.php">Listar propostas</a>
-				<a class="py-2 d-none d-md-inline-block" href="#">Relatórios</a>
+				<a class="py-2 d-none d-md-inline-block" href="relatorios.php">Relatórios</a>
 			</div>
 		</nav>
 

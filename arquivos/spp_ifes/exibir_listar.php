@@ -1,4 +1,4 @@
-<?php
+  <?php
 include_once("funcoes.php");
 				
 		//Receber o número da página
