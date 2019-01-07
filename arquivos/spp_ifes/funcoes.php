@@ -86,13 +86,13 @@ function getEmpresaProjeto($id_projeto){
     return $resultado_empresa;
 }
 
-function getIdEmpresa($id_projeto)
+function getIdEmpresa($nome)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
     $query = "SELECT id_empresa
-    FROM projeto
-    WHERE id_projeto = $id_projeto";
+    FROM empresa
+    WHERE nome_empresa LIKE '$nome'";
     $resultado = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($resultado);
 
@@ -101,13 +101,13 @@ function getIdEmpresa($id_projeto)
     return $valor;
 }
 
-function getIdPessoa($id_projeto)
+function getIdPessoa($nome)
 {
     /* Retorna o ID da pessoa de acordo com a FK registrada na proposta */
 
     $query = "SELECT id_pessoa
-    FROM projeto
-    WHERE id_projeto = $id_projeto";
+    FROM pessoa
+    WHERE nome_pessoa LIKE '$nome'";
     $resultado = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($resultado);
 
