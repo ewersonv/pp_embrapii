@@ -40,7 +40,7 @@ function limita_caracteres($texto, $limite, $quebra = true){
 function getProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $order == 1 DESC
     /* Retorna todos os campos referentes à proposta necessários para exibição em "listar.php" */
     
-    if($order == 0)
+    if($order == 0) /* exibição dos resultados em ordem crescente */
     {
         $result_projeto = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
         FROM PROJETO P
@@ -55,7 +55,7 @@ function getProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $ord
         
         $resultado_projeto = mysqli_query(connect(), $result_projeto);
     }
-    else
+    else /* exibição dos resultados em ordem decrescente */
     {
         $result_projeto = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
         FROM PROJETO P
@@ -73,17 +73,34 @@ function getProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $ord
     return $resultado_projeto;
 }
 
+function projetosEmpresaMax($inicio, $qnt_result_pg)
+{
+    $nome = empresaMaisProjetos();
+
+    $query = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+    FROM PROJETO P
+    INNER JOIN EMPRESA E
+    ON P.id_empresa = E.id_empresa
+    INNER JOIN PESSOA PS
+    ON P.id_pessoa = PS.id_pessoa
+    INNER JOIN PRODUTO PD
+    ON P.id_projeto = PD.id_projeto
+    WHERE e.nome_empresa LIKE '$nome'
+    ORDER BY id_projeto DESC
+    LIMIT $inicio, $qnt_result_pg";
+
+    $result = mysqli_query(connect(), $query);
+
+    return $result;
+}
+
 function getEmpresaProjeto($id_projeto){
     /* retorna o nome da empresa relacionada à proposta em questão */
 
-    $result_empresa = "SELECT nome_empresa
-    FROM empresa
-    INNER JOIN projeto
-    ON empresa.id_empresa=projeto.id_empresa
-    WHERE projeto.id_projeto = $id_projeto";
-    $resultado_empresa = mysqli_query(connect(), $result_empresa);
+    $query = "SELECT nome_empresa FROM empresa WHERE id_empresa IN (SELECT id_empresa FROM projeto WHERE id_projeto = $id_projeto)";
+    $result = mysqli_query(connect(), $query);
 
-    return $resultado_empresa;
+    return $result;
 }
 
 function getIdEmpresa($nome)
@@ -93,8 +110,8 @@ function getIdEmpresa($nome)
     $query = "SELECT id_empresa
     FROM empresa
     WHERE nome_empresa LIKE '$nome'";
-    $resultado = mysqli_query(connect(), $query);
-    $row = mysqli_fetch_row($resultado);
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
 
     $valor = $row[0];
 
@@ -108,8 +125,8 @@ function getIdPessoa($nome)
     $query = "SELECT id_pessoa
     FROM pessoa
     WHERE nome_pessoa LIKE '$nome'";
-    $resultado = mysqli_query(connect(), $query);
-    $row = mysqli_fetch_row($resultado);
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
 
     $valor = $row[0];
 
@@ -123,8 +140,8 @@ function getIdProduto($id_projeto)
     $query = "SELECT id_produto
     FROM produto
     WHERE id_projeto = $id_projeto;";
-    $resultado = mysqli_query(connect(), $query);
-    $row = mysqli_fetch_row($resultado);
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
 
     return $row[0];
 }
@@ -136,8 +153,8 @@ function getIdProjeto($id_projeto)
     $query = "SELECT id_projeto
     FROM projeto
     WHERE id_projeto = $id_projeto";
-    $resultado = mysqli_query(connect(), $query);
-    $row = mysqli_fetch_row($resultado);
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
 
     $valor = $row[0];
 
@@ -168,16 +185,35 @@ function totalProdutos()
 
 function empresaMaisProjetos()
 {
+    $conn = connect();
+
     $query = "SELECT id_empresa, COUNT(id_empresa) FROM projeto GROUP BY id_empresa ORDER BY COUNT(id_empresa) DESC LIMIT 1";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $id_empresa = $row[0];
     $max = $row[1];
 
     $query = "SELECT nome_empresa FROM empresa WHERE id_empresa = '$id_empresa'";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
-    $value = $row[0] . ' (' . $max . ')';
+    $value = $row[0];
+
+    return $value;
+}
+
+function numProjetosEmpresa($nome)
+{
+    $conn = connect();
+
+    $query = "SELECT id_empresa FROM empresa WHERE nome_empresa LIKE '$nome'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+    $id_empresa = $row[0];
+
+    $query = "SELECT COUNT(id_empresa) FROM projeto WHERE id_empresa = $id_empresa";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+    $value = $row[0];
 
     return $value;
 }
@@ -193,7 +229,24 @@ function maiorProspectador()
     $query = "SELECT nome_pessoa FROM pessoa WHERE id_pessoa = '$id_pessoa'";
     $result = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($result);
-    $value = $row[0] . ' (' . $max . ')';
+    $value = $row[0];
+
+    return $value;
+}
+
+function numProjetosPessoa($nome)
+{
+    $conn = connect();
+
+    $query = "SELECT id_pessoa FROM pessoa WHERE nome_pessoa = '$nome'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+    $id_pessoa = $row[0];
+
+    $query = "SELECT COUNT(id_pessoa) FROM projeto WHERE id_pessoa = '$id_pessoa'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+    $value = $row[0];
 
     return $value;
 }
