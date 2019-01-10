@@ -1,9 +1,11 @@
 <?php
 session_start();
-include_once("header.html");
+include_once("site.html");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+	<div class="container">
+		<div class="py-5 text-center">
 			<h1>Nova proposta</h1>
 		</div>
 
@@ -103,6 +105,6 @@ include_once("header.html");
 			</form>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			<script src="js/bootstrap.min.js"></script>
-		</div>
+	</div>
 	</body>
 </html>

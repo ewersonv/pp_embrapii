@@ -1,13 +1,15 @@
 
 <?php
-include_once("header.html");
+include_once("site.html");
 include_once("funcoes.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 	<body id="grad1">
-	
-		<h1>Projetos <?php $empresa = empresaMaisProjetos(); echo $empresa; ?></h1>
+    
+    <div class="container">
+		<div class="py-5 text-center">
+		    <h1>Projetos <?php $empresa = empresaMaisProjetos(); echo $empresa; ?></h1>
 		</div>
 
 		<?php
@@ -75,6 +77,6 @@ include_once("funcoes.php");
             
             echo "<a href='relatorio_empresa.php?pagina=$quantidade_pg'>Ultima</a><br><br>";
         ?>
-        
+    </div>
 	</body>
 </html>

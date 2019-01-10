@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("header.html");
+include_once("site.html");
 include_once("funcoes.php");
 ?>
 <!DOCTYPE html>
@@ -16,13 +16,17 @@ include_once("funcoes.php");
 		</div>
 	<?php endif ?>
 
-		<h1>Propostas para prospecção</h1>
-		</div>
+	<div class="container">
+		<div class="py-5 text-center">
 
-		<?php
-			include_once("exibir_listar.php")
-		?>
-
+			<h1>Propostas para prospecção</h1>
+			</div>
+			<?php
+				include_once("exibir_listar.php")
+			?>
+			</div>
 		</div>
+	</div>
+	
 	</body>
 </html>
