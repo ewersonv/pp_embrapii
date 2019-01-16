@@ -1,7 +1,11 @@
 <?php
 session_start();
 include_once("site.html");
-include_once("../controller/sql_edit_formulario.php");
+include_once("../controller/funcoes.php");
+
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$row = getProjeto($id);
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

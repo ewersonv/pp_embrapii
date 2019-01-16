@@ -37,7 +37,7 @@ function limita_caracteres($texto, $limite, $quebra = true){
    return $novo_texto; // Retorna o valor formatado
 }
 
-function getProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $order == 1 DESC
+function getAllProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $order == 1 DESC
     /* Retorna todos os campos referentes à proposta necessários para exibição em "listar.php" */
     
     if($order == 0) /* exibição dos resultados em ordem crescente */
@@ -71,6 +71,27 @@ function getProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $ord
         $resultado_projeto = mysqli_query(connect(), $result_projeto);
     }
     return $resultado_projeto;
+}
+
+function getProjeto($id)
+{
+    /* RETORNA TODOS OS DADOS REFERENTES À PROPOSTA CLICADA */
+    $conn = connect();
+
+    $result_all = "SELECT *
+    FROM PROJETO P
+    INNER JOIN EMPRESA E
+    ON P.id_empresa = E.id_empresa
+    INNER JOIN PESSOA PS
+    ON P.id_pessoa = PS.id_pessoa
+    INNER JOIN PRODUTO PD
+    ON P.id_projeto = PD.id_projeto
+    WHERE P.id_projeto = $id";
+
+    $resultado_all = mysqli_query($conn, $result_all);
+    $row = mysqli_fetch_assoc($resultado_all);
+
+    return $row;
 }
 
 function getProjetosEmpresaMax($inicio, $qnt_result_pg)
