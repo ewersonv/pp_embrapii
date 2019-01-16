@@ -10,7 +10,7 @@ include_once("site.html");
 				<h1>Nova proposta</h1>
 			</div>
 
-				<form method="POST" action="proc_cad_formulario.php">
+				<form method="POST" action="../controller/proc_cad_formulario.php">
 					<div class="col-md-12 mb-3">
 
 						<label><b>Nome do projeto: </b></label><br>

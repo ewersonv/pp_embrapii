@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once("site.html");
-include_once("sql_edit_formulario.php");
+include_once("../controller/sql_edit_formulario.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -13,7 +13,7 @@ include_once("sql_edit_formulario.php");
 			
 			<!-- USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE -->
 
-			<form method="POST" action="proc_edit_formulario.php">
+			<form method="POST" action="../controller/proc_edit_formulario.php">
 				<div class="col-md-12 mb-3">
 					<input type="hidden" name="id" value="<?php echo utf8_encode($row['id_projeto']); ?>">
 
@@ -91,7 +91,7 @@ include_once("sql_edit_formulario.php");
 					</div>
 
 					<div class="py-5 text-center">
-						<button class="btn btn-dark" href="proc_edit_formulario.php">Preencher</button>
+						<button class="btn btn-dark" href="../controller/proc_edit_formulario.php">Preencher</button>
 					</div>
 				</div>
 			</form>

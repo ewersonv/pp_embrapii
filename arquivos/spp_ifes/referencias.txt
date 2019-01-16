@@ -1,5 +1,0 @@
-https://getbootstrap.com/docs/4.1/examples/product/
-
-https://www.w3schools.com/colors/colors_shades.asp
-
-https://www.w3schools.com/css/css3_gradients.asp

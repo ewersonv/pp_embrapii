@@ -67,8 +67,8 @@ $result = mysqli_query($conn, $query);
 
 if(mysqli_affected_rows($conn)){
 	$_SESSION['msg'] = "<p style = 'color:green;'>Proposta cadastrada com sucesso!</p>";
-	header("Location: listar.php");
+	header("Location: ../view/listar.php");
 }else{
 	$_SESSION['msg'] = "<p style = 'color:red;'>Não foi possível cadastrar a proposta.</p>";
-	header("Location: listar.php?id=$id");
+	header("Location: ../view/listar.php?id=$id");
 }

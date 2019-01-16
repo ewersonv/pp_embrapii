@@ -1,7 +1,7 @@
 <?php
 include_once("site.html");
-include_once("funcoes.php");
-include_once("exibicao.php");
+include_once("../controller/funcoes.php");
+include_once("../controller/exibicao.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -21,7 +21,7 @@ include_once("exibicao.php");
 
 			// Nome da página para ser redirecionado
 			$nome_pagina = 'relatorio_prospectador.php';
-            include_once("exibir_projetos.php")
+            include_once("../controller/exibir_projetos.php")
 		?>
 		
 		</div>

@@ -1,6 +1,6 @@
 <?php
 include_once("site.html");
-include_once("funcoes.php");
+include_once("../controller/funcoes.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

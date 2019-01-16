@@ -32,8 +32,8 @@ $result = mysqli_query($conn2, $query);
 
 if(mysqli_affected_rows($conn1) or mysqli_affected_rows($conn2)){
 	$_SESSION['msg'] = "<p style='color:green;'>Alterações realizadas com sucesso!</p>";
-	header("Location: listar.php");
+	header("Location: ../view/listar.php");
 }else{
 	$_SESSION['msg'] = "<p style='color:red;'>As alterações não foram salvas.</p>";
-	header("Location: listar.php?id=$id_projeto");
+	header("Location: ../view/listar.php?id=$id_projeto");
 }
