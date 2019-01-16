@@ -272,9 +272,4 @@ function numProjetosPessoa($nome)
     return $value;
 }
 
-function exibirProjetos($result, $qtd_total, $nome_pagina)
-{
-    
-}
-
 ?>
