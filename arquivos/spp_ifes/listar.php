@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("site.html");
+include_once("header.html");
 include_once("funcoes.php");
 include_once("exibicao.php");
 ?>
@@ -17,10 +17,6 @@ include_once("exibicao.php");
 		</div>
 	<?php endif ?>
 
-<<<<<<< HEAD
-	<div class="container">
-		<div class="py-5 text-center">
-=======
 		<h1>Propostas para prospecção</h1>
 		</div>
 
@@ -35,16 +31,7 @@ include_once("exibicao.php");
 			$nome_pagina = 'listar.php';
 			include_once("exibir_projetos.php")
 		?>
->>>>>>> relatorio prospec + separar exibir_projetos
 
-			<h1>Propostas para prospecção</h1>
-			</div>
-			<?php
-				include_once("exibir_listar.php")
-			?>
-			</div>
 		</div>
-	</div>
-	
 	</body>
 </html>
