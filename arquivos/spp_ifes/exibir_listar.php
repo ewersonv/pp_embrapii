@@ -43,12 +43,10 @@ include_once("funcoes.php");
 		}
 
 		//Paginação - Somar a quantidade de formulários
-		$result_pg = "SELECT COUNT(id_projeto) AS num_result FROM projeto";
-		$resultado_pg = mysqli_query($conn, $result_pg);
-		$row_pg = mysqli_fetch_assoc($resultado_pg);
+		$qtd_total = totalProjetos();
 		
 		//Quantidade de pagina 
-		$quantidade_pg = ceil($row_pg['num_result'] / $qnt_result_pg);
+		$quantidade_pg = ceil($qtd_total / $qnt_result_pg);
 		
 		//Limitar os link antes depois
 		$max_links = 2;

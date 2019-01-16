@@ -73,7 +73,7 @@ function getProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $ord
     return $resultado_projeto;
 }
 
-function projetosEmpresaMax($inicio, $qnt_result_pg)
+function getProjetosEmpresaMax($inicio, $qnt_result_pg)
 {
     $nome = empresaMaisProjetos();
 
@@ -86,6 +86,27 @@ function projetosEmpresaMax($inicio, $qnt_result_pg)
     INNER JOIN PRODUTO PD
     ON P.id_projeto = PD.id_projeto
     WHERE e.nome_empresa LIKE '$nome'
+    ORDER BY id_projeto DESC
+    LIMIT $inicio, $qnt_result_pg";
+
+    $result = mysqli_query(connect(), $query);
+
+    return $result;
+}
+
+function getProjetosProspectadorMax($inicio, $qnt_result_pg)
+{
+    $nome = maiorProspectador();
+
+    $query = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+    FROM PROJETO P
+    INNER JOIN EMPRESA E
+    ON P.id_empresa = E.id_empresa
+    INNER JOIN PESSOA PS
+    ON P.id_pessoa = PS.id_pessoa
+    INNER JOIN PRODUTO PD
+    ON P.id_projeto = PD.id_projeto
+    WHERE PS.nome_pessoa LIKE '$nome'
     ORDER BY id_projeto DESC
     LIMIT $inicio, $qnt_result_pg";
 
@@ -249,6 +270,11 @@ function numProjetosPessoa($nome)
     $value = $row[0];
 
     return $value;
+}
+
+function exibirProjetos($result, $qtd_total, $nome_pagina)
+{
+    
 }
 
 ?>
