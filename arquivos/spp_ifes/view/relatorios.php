@@ -1,5 +1,5 @@
 <?php
-include_once("site.html");
+include_once("header.html");
 include_once("../controller/funcoes.php");
 ?>
 <!DOCTYPE html>

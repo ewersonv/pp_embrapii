@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("site.html");
+include_once("header.html");
 include_once("../controller/funcoes.php");
 include_once("../controller/exibicao.php");
 ?>

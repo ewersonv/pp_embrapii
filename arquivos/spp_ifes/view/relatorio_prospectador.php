@@ -1,5 +1,5 @@
 <?php
-include_once("site.html");
+include_once("header.html");
 include_once("../controller/funcoes.php");
 include_once("../controller/exibicao.php");
 ?>
@@ -9,7 +9,7 @@ include_once("../controller/exibicao.php");
 		<div class="container">
 			<div class="py-5 text-center">
 	
-				<h1>Projetos <?php $nome = maiorProspectador(); echo $nome; ?></h1>
+				<h1>Projetos <?php $nome = maiorProspectador(); echo '- ' . $nome; ?></h1>
 			</div>
 
 		<?php

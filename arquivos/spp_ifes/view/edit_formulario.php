@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("site.html");
+include_once("header.html");
 include_once("../controller/funcoes.php");
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);

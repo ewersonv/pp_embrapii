@@ -44,6 +44,6 @@ include_once("funcoes.php");
         }
     }
     
-    echo "<a href='$nome_pagina?pagina=$quantidade_pg'>Ultima</a><br><br>";
+    echo "<a href='$nome_pagina?pagina=$quantidade_pg'>Última</a><br><br>";
     
 ?>
