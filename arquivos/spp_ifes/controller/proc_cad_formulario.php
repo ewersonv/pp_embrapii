@@ -27,7 +27,8 @@ $conn = connect();
 
 $prequery = "SELECT nome_pessoa FROM pessoa WHERE nome_pesssoa like '$nome_pessoa'";
 $result = mysqli_query($conn, $prequery);
-if ($result == 0)
+$resultado = mysqli_fetch_assoc($result);
+if ($resultado < 1)
 {
 	$query = "INSERT INTO pessoa (nome_pessoa, email, telefone)
 	VALUES ('$nome_pessoa', '$email', '$telefone')";
@@ -41,7 +42,8 @@ else
 
 $prequery = "SELECT nome_empresa FROM empresa WHERE nome_empresa like '$nome_empresa'";
 $result = mysqli_query($conn, $prequery);
-if ($result == 0)
+$resultado = mysqli_fetch_assoc($result);
+if ($resultado < 1)
 {
 	$query = "INSERT INTO empresa (nome_empresa, cnpj, tipo_empresa)
 	VALUES ('$nome_empresa', '$cnpj', '$tipo_empresa')";

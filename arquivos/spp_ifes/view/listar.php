@@ -32,7 +32,7 @@ include_once("../controller/exibicao.php");
 
 				// Nome da página para ser redirecionado
 				$nome_pagina = 'listar.php';
-				include_once("../controller/exibir_projetos.php")
+				include_once("../controller/exibir_projetos.php");
 			?>
 
 		</div>
