@@ -10,10 +10,10 @@ include_once("../controller/funcoes.php");
 				<h1>Relatórios</h1>
 			</div>
 
-			<label><b>Total de projetos: </b></label> <?php echo totalProjetos(); ?> <br>
-			<label><b>Total de produtos: </b></label> <?php echo totalProdutos(); ?> <br>
-			<label><b>Empresa com mais projetos: </b></label><a class="py-2 d-none d-md-inline-block" href="relatorio_empresa.php"><?php $empresa = empresaMaisProjetos(); echo $empresa . ' (' . numProjetosEmpresa($empresa) . ')'; ?> </a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
-			<label><b>Maior prospectador: </b></label><a class="py-2 d-none d-md-inline-block" href="relatorio_prospectador.php"><?php $pessoa = maiorProspectador(); echo $pessoa . ' (' . numProjetosPessoa($pessoa) . ')'; ?> </a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
+			<label><h5>Total de projetos:                   </h5></label> <?php echo totalProjetos(); ?> <br>
+			<label><h5>Total de produtos:                   </h5></label> <?php echo totalProdutos(); ?> <br>
+			<label><h5>Empresa com mais projetos:   </h5></label><a class='btn btn-sm btn-outline-dark' href="relatorio_empresa.php" role='button'><?php $empresa = empresaMaisProjetos(); echo $empresa . ' (' . numProjetosEmpresa($empresa) . ')'; ?></a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
+			<label><h5>Maior prospectador:               </h5></label><a class='btn btn-sm btn-outline-dark' href="relatorio_prospectador.php" role='button'><?php $pessoa = maiorProspectador(); echo $pessoa . ' (' . numProjetosPessoa($pessoa) . ')'; ?></a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
 		</div>
 	</body>
 </html>

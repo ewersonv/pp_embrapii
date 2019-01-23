@@ -27,8 +27,8 @@ include_once("../controller/exibicao.php");
 				// Resultados a serem exibidos na página
 				$result = getAllProjetos($inicio, $qnt_result_pg, $order);
 
-				// Paginação - Somar a quantidade de formulários
-				$qtd_total_paginas = totalProjetos();
+				// Paginação - Pegar a quantidade de formulários
+				$qtd_total = totalProjetos();
 
 				// Nome da página para ser redirecionado
 				$nome_pagina = 'listar.php';

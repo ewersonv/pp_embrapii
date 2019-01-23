@@ -18,7 +18,7 @@ include_once("../controller/exibicao.php");
 			$result = getProjetosEmpresaMax($inicio, $qnt_result_pg);
 
 			// Paginação - Somar a quantidade de formulários
-			$qtd_total_paginas = numProjetosEmpresa($nome);
+			$qtd_total = numProjetosEmpresa($nome);
 			
 			// Nome da página para ser redirecionado
 			$nome_pagina = 'relatorio_empresa.php';

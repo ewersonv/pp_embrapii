@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once("header.html");
 include_once("../controller/funcoes.php");
 include_once("../controller/exibicao.php");
@@ -16,11 +15,7 @@ include_once("../controller/exibicao.php");
 			
             <?php
                 // Processamento da pesquisa
-                include_once("../controller/proc_pesquisa.php");
-
-				// Nome da página para ser redirecionado
-				$nome_pagina = 'pesquisa.php';
-				include_once("../controller/exibir_projetos.php");
+				include_once("../controller/proc_pesquisa.php");
 			?>
 
 		</div>

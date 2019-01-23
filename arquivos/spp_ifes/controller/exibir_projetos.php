@@ -15,7 +15,7 @@ include_once("funcoes.php");
                         echo "<b>Empresa: </b>" . utf8_encode($row['nome_empresa']) . "<br>";
                         echo "<b>Prospectado por: </b>" . utf8_encode($row['nome_pessoa']) . "<br>";
                         echo "<b>Descrição do produto: </b>" . utf8_encode(limita_caracteres($row['descricao_produto'], 250)) . "<br><br>";
-                        echo "<p><a class='btn btn-sm btn-outline-secondary' href='edit_formulario.php?id=" . $row['id_projeto'] . "' role='button'>Preencher proposta</a></p>";
+                        echo "<p><a class='btn btn-sm btn-outline-dark' href='edit_formulario.php?id=" . $row['id_projeto'] . "' role='button'>Preencher proposta</a></p>";
                     ?>
                 </div>
         </div>
@@ -24,7 +24,7 @@ include_once("funcoes.php");
     }
     
     //Quantidade de pagina 
-    $quantidade_pg = ceil($qtd_total_paginas / $qnt_result_pg);
+    $quantidade_pg = ceil($qtd_total / $qnt_result_pg);
     
     //Limitar os link antes depois
     $max_links = 2;
