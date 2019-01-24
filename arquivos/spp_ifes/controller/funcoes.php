@@ -293,4 +293,18 @@ function numProjetosPessoa($nome)
     return $value;
 }
 
+function verificaCookie($nome)
+{
+    if (isset($_COOKIE[$nome]))
+	{
+		$aux = $_COOKIE[$nome];
+	}
+	else
+	{
+		$aux = '';
+    }
+    
+    return $aux;
+}
+
 ?>
