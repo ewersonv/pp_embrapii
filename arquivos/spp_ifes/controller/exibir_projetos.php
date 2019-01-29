@@ -15,7 +15,9 @@ include_once("funcoes.php");
                         echo "<b>Empresa: </b>" . utf8_encode($row['nome_empresa']) . "<br>";
                         echo "<b>Prospectado por: </b>" . utf8_encode($row['nome_pessoa']) . "<br>";
                         echo "<b>Descrição do produto: </b>" . utf8_encode(limita_caracteres($row['descricao_produto'], 250)) . "<br><br>";
-                        echo "<p><a class='btn btn-sm btn-outline-dark' href='edit_formulario.php?id=" . $row['id_projeto'] . "' role='button'>Preencher proposta</a></p>";
+                        echo "<p><a class='btn btn-sm mr-2 btn-outline-dark' href='edit_formulario.php?id=" . $row['id_projeto'] . "' role='button'>Preencher proposta</a>";
+                        echo "<a class='btn btn-sm mr-2 btn-outline-danger' href='../controller/gerar_pdf.php?id=" . $row['id_projeto'] . "' role='button'>PDF</a>";
+                        echo "<a class='btn btn-sm btn-outline-success' href='../controller/gerar_planilha.php?id=" . $row['id_projeto'] . "' role='button'>XLS</a></p>";
                     ?>
                 </div>
         </div>

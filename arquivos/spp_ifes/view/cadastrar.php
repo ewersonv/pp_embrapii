@@ -67,7 +67,7 @@ include_once("header.html");
 						</div>
 
 						<label><b>Telefone: </b></label><br>
-						<input type="text" class="form-control" name="telefone" placeholder="27888889999"><br><br>
+						<input type="text" class="form-control" name="telefone" placeholder="27888889999" required><br><br>
 
 						<label><b>Riscos: </b></label><br>
 						<textarea type="text" class="form-control" name="riscos" rows="5" cols="80" placeholder="Riscos inerentes ao andamento/execução do projeto"/></textarea><br><br>

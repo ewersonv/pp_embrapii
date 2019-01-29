@@ -13,6 +13,12 @@ $row = getProjeto($id);
 		<div class="container">
 			<div class="py-5 text-center">
 				<h1>Preencher proposta</h1>
+				<div class="py-2 text-right">
+					<?php
+						echo "<p><a class='btn btn-sm btn-outline-danger' href='../controller/gerar_pdf.php?id=". $id . "' role='button'>Gerar PDF</a></p>";
+						echo "<p><a class='btn btn-sm btn-outline-success' href='../controller/gerar_planilha.php?id=". $id . "' role='button'>Gerar XLS</a></p>";
+					?>
+				</div>
 			</div>
 			
 			<!-- USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE -->
@@ -39,15 +45,15 @@ $row = getProjeto($id);
 					<label><b>Tipo de empresa: </b></label><br>
 					<div class="custom-control custom-radio">
 						<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input">
-						<label class="custom-control-label" for="MEI/ME" value="MEI/ME" <?php echo (utf8_encode($row['tipo_empresa'])=='MEI/ME')?'checked':'' ?>>MEI/ME</label> <br>
+						<label class="custom-control-label" for="MEI/ME" value="MEI/ME" <?php echo (utf8_encode($row['tipo_empresa'])=='MEI/ME')?'checked':''?>>MEI/ME</label> <br>
 					</div>
 					<div class="custom-control custom-radio">
 						<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input">
-						<label class="custom-control-label" for="EPP" value="EPP"<?php echo (utf8_encode($row['tipo_empresa'])=='EPP')?'checked':'' ?>>EPP</label> <br>
+						<label class="custom-control-label" for="EPP" value="EPP"<?php echo (utf8_encode($row['tipo_empresa'])=='EPP')?'checked':''?>>EPP</label> <br>
 					</div>
 					<div class="custom-control custom-radio">
-						<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input">
-						<label class="custom-control-label" for="Médio/Grande porte" value="Médio/Grande porte"<?php echo (utf8_encode($row['tipo_empresa'])=='Médio/Grande porte')?'checked':'' ?>>Médio/Grande porte</label> <br><br>
+						<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input">
+						<label class="custom-control-label" for="Médio/Grande porte" value="Médio/Grande porte"<?php echo (utf8_encode($row['tipo_empresa'])=='Médio/Grande porte')?'checked':''?>>Médio/Grande porte</label> <br><br>
 					</div>
 
 					<label><b>Prospectado por: </b></label><br>
