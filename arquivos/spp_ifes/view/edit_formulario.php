@@ -15,8 +15,8 @@ $row = getProjeto($id);
 				<h1>Preencher proposta</h1>
 				<div class="py-2 text-right">
 					<?php
-						echo "<p><a class='btn btn-sm btn-outline-danger' href='../controller/gerar_pdf.php?id=". $id . "' role='button'>Gerar PDF</a></p>";
-						echo "<p><a class='btn btn-sm btn-outline-success' href='../controller/gerar_planilha.php?id=". $id . "' role='button'>Gerar XLS</a></p>";
+						echo "<p><a class='btn btn-sm mr-4 btn-danger' href='../controller/gerar_pdf.php?id=". $id . "' role='button'>Gerar PDF</a>";
+						echo "<a class='btn btn-sm mr-4 btn-success' href='../controller/gerar_planilha.php?id=". $id . "' role='button'>Gerar XLS</a></p>";
 					?>
 				</div>
 			</div>
