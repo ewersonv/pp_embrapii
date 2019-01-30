@@ -10,19 +10,20 @@ include_once("header.html");
 				<h1 class="mb-0">
 					<br><a class="text-dark">Pesquisar projetos</a><br><br>
 				</h1>
-
-				<form name="formulario" class="align center mt-2 mt-md-0" method="POST" action="pesquisa.php">
+			</div>
+				<div class="text-left">
+				<form name="formulario" class="align center" style="float:center" method="POST" action="pesquisa.php">
 					<label>Nome da empresa:</label>
-						<input class="form-control mr-sm-2" type="text" name="nome_empresa" style="min-width:400px;" placeholder="Pesquisar empresa">
+						<input class="form-control" type="text" name="nome_empresa" style="max-width:400px;" placeholder="Pesquisar empresa">
 					<label>Nome do prospectador:</label>
-						<input class="form-control mr-sm-2" type="text" name="nome_pessoa" style="min-width:400px;" placeholder="Pesquisar prospectador">
+						<input class="form-control mr-sm-2" type="text" name="nome_pessoa" style="max-width:400px;" placeholder="Pesquisar prospectador">
 					<label>Nome do produto:</label>
-						<input class="form-control mr-sm-2" type="text" name="nome_produto" style="min-width:400px;" placeholder="Pesquisar produto">
+						<input class="form-control mr-sm-2" type="text" name="nome_produto" style="max-width:400px;" placeholder="Pesquisar produto">
 					<label>Nome do projeto:</label>
-						<input class="form-control mr-sm-2" type="text" name="nome_projeto" style="min-width:400px;" placeholder="Pesquisar projeto">
+						<input class="form-control mr-sm-2" type="text" name="nome_projeto" style="max-width:400px;" placeholder="Pesquisar projeto">
 					<br><button class="btn btn-success my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
 				</form>
-			</div>
+				</div>
 		</div>
 		<script>
 			function validateAndSend() {
