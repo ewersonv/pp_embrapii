@@ -22,7 +22,7 @@ include_once("header.html");
 					<label>Nome do projeto:</label>
 						<input class="form-control mr-sm-2" type="text" name="nome_projeto" style="max-width:400px;" placeholder="Pesquisar projeto">
 					<div class="text-center">
-						<br><button class="btn btn-success my-2 my-sm-0" type="submit" onsubmit="validateAndSend()">Pesquisar</button>
+						<br><button class="btn btn-success my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
 					</div>
 				</form>
 				</div>
