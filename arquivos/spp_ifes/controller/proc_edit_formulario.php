@@ -26,7 +26,7 @@ $query = "UPDATE produto SET nome_produto='$nome_produto', descricao_produto='$d
 $result = mysqli_query($conn1, $query);
 
 
-$query = "UPDATE projeto SET nome_projeto='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares' WHERE id_projeto ='$id_projeto'";
+$query = "UPDATE projeto SET nome_projeto='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares', modified=NOW() WHERE id_projeto ='$id_projeto'";
 $result = mysqli_query($conn2, $query);
 
 

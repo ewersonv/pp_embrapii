@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 07-Jan-2019 às 16:19
--- Versão do servidor: 5.7.21
--- PHP Version: 7.0.29
+-- Generation Time: 12-Fev-2019 às 15:16
+-- Versão do servidor: 5.7.23
+-- versão do PHP: 7.2.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `empresa` (
   `cnpj` varchar(14) DEFAULT NULL,
   `tipo_empresa` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_empresa`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `empresa`
@@ -45,7 +45,7 @@ INSERT INTO `empresa` (`id_empresa`, `nome_empresa`, `cnpj`, `tipo_empresa`) VAL
 (1, 'Vale', '11222333444455', 'Médio/Grande porte'),
 (2, 'asdasd', '12313123131231', 'MEI/ME'),
 (3, 'ArcelorMittal', '55444333222211', 'Médio/Grande porte'),
-(4, 'Empresa7', '12123444433377', 'on');
+(4, 'Empresa7', '12123444433377', 'EPP');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `telefone` varchar(11) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `pessoa`
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `id_projeto` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_produto`),
   KEY `FK_PRODUTO_1` (`id_projeto`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `produto`
@@ -110,36 +110,36 @@ INSERT INTO `produto` (`id_produto`, `nome_produto`, `descricao_produto`, `id_pr
 DROP TABLE IF EXISTS `projeto`;
 CREATE TABLE IF NOT EXISTS `projeto` (
   `id_projeto` int(11) NOT NULL AUTO_INCREMENT,
-  `viabilidade` varchar(2000) DEFAULT NULL,
-  `efeitos` varchar(2000) DEFAULT NULL,
-  `equipe` varchar(2000) DEFAULT NULL,
-  `nome_projeto` varchar(100) DEFAULT NULL,
-  `riscos` varchar(2000) DEFAULT NULL,
-  `entregas` varchar(2000) DEFAULT NULL,
-  `premissas` varchar(2000) DEFAULT NULL,
-  `cronograma` varchar(2000) DEFAULT NULL,
-  `custo` varchar(2000) DEFAULT NULL,
-  `interessados` varchar(2000) DEFAULT NULL,
-  `anotacoes_complementares` varchar(2000) DEFAULT NULL,
-  `id_empresa` int(11) DEFAULT NULL,
-  `id_pessoa` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_projeto`),
-  KEY `FK_PROJETO_1` (`id_empresa`),
-  KEY `FK_PROJETO_2` (`id_pessoa`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `viabilidade` varchar(2000) NOT NULL,
+  `efeitos` varchar(2000) NOT NULL,
+  `equipe` varchar(2000) NOT NULL,
+  `nome_projeto` varchar(100) NOT NULL,
+  `riscos` varchar(2000) NOT NULL,
+  `entregas` varchar(2000) NOT NULL,
+  `premissas` varchar(2000) NOT NULL,
+  `cronograma` varchar(2000) NOT NULL,
+  `custo` varchar(2000) NOT NULL,
+  `interessados` varchar(2000) NOT NULL,
+  `anotacoes_complementares` varchar(2000) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime DEFAULT NULL,
+  `id_empresa` int(11) NOT NULL,
+  `id_pessoa` int(11) NOT NULL,
+  PRIMARY KEY (`id_projeto`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `projeto`
 --
 
-INSERT INTO `projeto` (`id_projeto`, `viabilidade`, `efeitos`, `equipe`, `nome_projeto`, `riscos`, `entregas`, `premissas`, `cronograma`, `custo`, `interessados`, `anotacoes_complementares`, `id_empresa`, `id_pessoa`) VALUES
-(1, 'Este projeto é viável por conta de ...', 'Os efeitos que poderão ser notados aaaa', 'Equipe projeto 1', 'Novo tijolo refratario', 'Riscos 1 aaaa', 'As datas das entregas estão previstas para aaaa', 'O projeto parte das seguintes premissas aaaa', 'Cronograma projeto 1', 'O projeto tem um custo estimado de aaaaaaaaaa', 'As empresas interessadas sao aaa aaa aaa', 'Aqui entram as anotações complementares a respeito do projeto para explicações mais profundas sobre o que será feito', 1, 1),
-(2, 'A viabilidade deste projeto se dá por ...', 'Os efeitos que poderão ser notados BBBBbbbbBBBB', 'Equipe do projeto 2', 'Produto teste', 'Riscos 2 BBBBBB', 'As datas das entregas estão previstas para bbbbbbbbbbbb', 'O projeto parte das seguintes premissas BbBbBBbbB', 'Cronograma do projeto 2', 'O projeto tem um custo estimado de BBBBbbbbBBBBbbb', 'As empresas interessadas sao BBB bBB bbb Bbb', 'Aqui entram as anotações complementares a respeito do projeto 2 BBBBBbbBBBB', 2, 2),
-(3, 'O projeto é viável porque ...', 'Os efeitos que poderão ser notados CCCcccCCCcc', 'Equipe projeto 3CC', 'Teste teste teste', 'Riscos 3 CccCC', 'As datas das entregas estão previstas para CCCCCCCC', 'O projeto parte das seguintes premissas CCCCC', 'Cronograma projeto 1', 'O projeto tem um custo estimado de CCCCCccccCCCC', 'As empresas interessadas sao CCCCCCC', 'Anotações complementares a respeito do projeto 3 CCCC', 1, 3),
-(4, 'A viabilidade do projeto consiste em ...', 'Os efeitos que poderão ser notados 4444444', 'Equipe projeto 4 ddddd', 'Nome do novo projeto 4', 'Riscos 4 dddddd', 'As datas das entregas estão previstas para dddddddddddddddddddd', 'O projeto parte das seguintes premissas 44d4dd4d4', 'Cronograma do projeto 4', 'O projeto tem um custo estimado de 4444444444', 'As empresas interessadas sao 444 dddd DDD', 'Anotações e observações do projeto 4', 3, 1),
-(5, 'Este projeto é viável por conta de ...', 'Os efeitos que poderão ser notados em 55555EEE', 'Equipe do projeto 5', 'Mais um produto 55', 'Riscos 5 EEE', 'As datas das entregas estão previstas para 5555eeee', 'O projeto parte das seguintes premissas 55555eeee', 'Cronograma projeto 5E', 'O projeto tem um custo estimado de 55EEEEEEEE', 'As empresas interessadas sao 555 eeee eeee', 'Aqui entram as anotações complementares do projeto 5E', 1, 3),
-(6, 'Viabilidade do projeto ...', 'Efeitos do projeto 6 FFFF', 'Equipe do projeto 6', 'Nome do projeto 6 XXXX', 'Riscos do projeto 6 XXXx', 'Aqui entram as datas das entregas do projeto 6 XXXX', 'O projeto 6 parte das seguintes premissas 6666XXXXX', 'Cronograma do projeto 6x', 'O projeto 6 tem um custo estimado de 666666', 'As empresas interessadas no projeto 6 sao XXX xxx', 'Anotações e observações a respeito do projeto 6 XXX', 2, 3),
-(7, 'Viabilidade do Projeto 7', 'Efeitos resultantes do Projeto 7', 'Equipe do Projeto 7', 'Projeto 7', 'Riscos do Projeto 7', 'Entregas do Projeto 7', 'Premissas do Projeto 7', 'Cronograma de atividades do Projeto 7', 'Custo do Projeto 7', 'Empresas interessadas no Projeto 7', 'Informações adicionais do Projeto 7', 4, 4);
+INSERT INTO `projeto` (`id_projeto`, `viabilidade`, `efeitos`, `equipe`, `nome_projeto`, `riscos`, `entregas`, `premissas`, `cronograma`, `custo`, `interessados`, `anotacoes_complementares`, `created`, `modified`, `id_empresa`, `id_pessoa`) VALUES
+(1, 'Este projeto é viável por conta de ...', 'Os efeitos que poderão ser notados aaaa', 'Equipe projeto 1', 'Novo tijolo refratario', 'Riscos 1 aaaa', 'As datas das entregas estão previstas para aaaa', 'O projeto parte das seguintes premissas aaaa', 'Cronograma projeto 1', 'O projeto tem um custo estimado de aaaaaaaaaa', 'As empresas interessadas sao aaa aaa aaa', 'Aqui entram as anotações complementares a respeito do projeto para explicações mais profundas sobre o que será feito', '2018-11-12 22:35:47', NULL, 1, 1),
+(2, 'A viabilidade deste projeto se dá por ...', 'Os efeitos que poderão ser notados BBBBbbbbBBBB', 'Equipe do projeto 2', 'Produto teste', 'Riscos 2 BBBBBB', 'As datas das entregas estão previstas para bbbbbbbbbbbb', 'O projeto parte das seguintes premissas BbBbBBbbB', 'Cronograma do projeto 2', 'O projeto tem um custo estimado de BBBBbbbbBBBBbbb', 'As empresas interessadas sao BBB bBB bbb Bbb', 'Aqui entram as anotações complementares a respeito do projeto 2 BBBBBbbBBBB', '2018-11-12 22:37:15', NULL, 2, 2),
+(3, 'O projeto é viável porque ...', 'Os efeitos que poderão ser notados CCCcccCCCcc', 'Equipe projeto 3CC', 'Teste teste teste', 'Riscos 3 CccCC', 'As datas das entregas estão previstas para CCCCCCCC', 'O projeto parte das seguintes premissas CCCCC', 'Cronograma projeto 1', 'O projeto tem um custo estimado de CCCCCccccCCCC', 'As empresas interessadas sao CCCCCCC', 'Anotações complementares a respeito do projeto 3 CCCC', '2018-11-12 22:39:14', NULL, 1, 3),
+(4, 'A viabilidade do projeto consiste em ...', 'Os efeitos que poderão ser notados 4444444', 'Equipe projeto 4 ddddd', 'Nome do novo projeto 4', 'Riscos 4 dddddd', 'As datas das entregas estão previstas para dddddddddddddddddddd', 'O projeto parte das seguintes premissas 44d4dd4d4', 'Cronograma do projeto 4', 'O projeto tem um custo estimado de 4444444444', 'As empresas interessadas sao 444 dddd DDD', 'Anotações e observações do projeto 4', '2018-11-12 22:41:21', NULL, 3, 1),
+(5, 'Este projeto é viável por conta de ...', 'Os efeitos que poderão ser notados em 55555EEE', 'Equipe do projeto 5', 'Mais um produto 55', 'Riscos 5 EEE', 'As datas das entregas estão previstas para 5555eeee', 'O projeto parte das seguintes premissas 55555eeee', 'Cronograma projeto 5E', 'O projeto tem um custo estimado de 55EEEEEEEE', 'As empresas interessadas sao 555 eeee eeee', 'Aqui entram as anotações complementares do projeto 5E', '2018-11-12 22:42:49', NULL, 1, 3),
+(6, 'Viabilidade do projeto ...', 'Efeitos do projeto 6 FFFF', 'Equipe do projeto 6', 'Nome do projeto 6 XXXX', 'Riscos do projeto 6 XXXx', 'Aqui entram as datas das entregas do projeto 6 XXXX', 'O projeto 6 parte das seguintes premissas 6666XXXXX', 'Cronograma do projeto 6x', 'O projeto 6 tem um custo estimado de 666666', 'As empresas interessadas no projeto 6 sao XXX xxx', 'Anotações e observações a respeito do projeto 6 XXX', '2018-11-12 22:48:27', NULL, 2, 3),
+(7, 'Viabilidade do Projeto 7', 'Efeitos resultantes do Projeto 7', 'Equipe do Projeto 7', 'Projeto 7', 'Riscos do Projeto 7', 'Entregas do Projeto 7', 'Premissas do Projeto 7', 'Cronograma de atividades do Projeto 7', 'Custo do Projeto 7', 'Empresas interessadas no Projeto 7', 'Informações adicionais do Projeto 7', '2018-11-12 22:52:37', NULL, 4, 4);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

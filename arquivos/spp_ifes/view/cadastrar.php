@@ -19,15 +19,12 @@ include_once("header.html");
 							Campo "Nome do projeto" inválido.
 						</div>
 
-						<label><b>Nome do produto que será desenvolvido: </b></label><br>
-						<textarea type="text" class="form-control" name="nome_produto" rows="5" cols="80" placeholder="Nome do produto" required/></textarea><br><br>
-						<div class="invalid-feedback">
-							Campo "Resumo da proposta" inválido.
-						</div>
-
-						<label><b>Descrição do produto: </b></label><br>
-						<textarea type="text" class="form-control" name="descricao_produto" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade"/></textarea><br><br>						
-
+						<label><b>Nome do produto que será desenvolvido: </b></label>
+						<input type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" required><br><br>
+						
+						<label><b>Descrição do produto: </b></label>
+						<textarea type="text" class="form-control" name="descricao_produto" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade"/></textarea><br><br>
+						
 						<label><b>Nome da empresa: </b></label><br>
 						<input type="text" class="form-control" name="nome_empresa" placeholder="Digite o nome completo" required><br><br>
 						<div class="invalid-feedback">

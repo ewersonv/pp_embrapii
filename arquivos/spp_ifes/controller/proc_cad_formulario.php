@@ -56,11 +56,10 @@ else
 }
 
 
-$query = "INSERT INTO projeto (nome_projeto, riscos, interessados, viabilidade, equipe, entregas, cronograma, premissas, efeitos, custo, anotacoes_complementares, id_empresa, id_pessoa)
-VALUES ('$nome_projeto', '$riscos', '$interessados', '$viabilidade', '$equipe', '$entregas', '$cronograma', '$premissas', '$efeitos', '$custo', '$anotacoes_complementares', '$id_empresa', '$id_pessoa')";
+$query = "INSERT INTO projeto (nome_projeto, riscos, interessados, viabilidade, equipe, entregas, cronograma, premissas, efeitos, custo, anotacoes_complementares, id_empresa, id_pessoa, created)
+VALUES ('$nome_projeto', '$riscos', '$interessados', '$viabilidade', '$equipe', '$entregas', '$cronograma', '$premissas', '$efeitos', '$custo', '$anotacoes_complementares', '$id_empresa', '$id_pessoa', NOW())";
 $result = mysqli_query($conn, $query);
 $id_projeto = mysqli_insert_id($conn);
-
 
 $query = "INSERT INTO produto (nome_produto, descricao_produto, id_projeto)
 VALUES ('$nome_produto', '$descricao_produto', '$id_projeto')";
