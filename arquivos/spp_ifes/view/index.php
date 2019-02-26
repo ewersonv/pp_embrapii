@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(empty($_SESSION['id'])){
+	$_SESSION['msg'] = "Faça login para acessar a plataforma";
+	header("Location: login.php");
+}
 include_once("header.html");
 ?>
 

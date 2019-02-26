@@ -1,5 +1,9 @@
 <?php
 session_start();
+if(empty($_SESSION['id'])){
+	$_SESSION['msg'] = "Faça login para acessar a plataforma";
+	header("Location: login.php");
+}
 include_once("header.html");
 include_once("../controller/funcoes.php");
 
@@ -23,7 +27,7 @@ $row = getProjeto($id);
 			
 			<!-- USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE -->
 
-			<form method="POST" action="../controller/proc_edit_formulario.php">
+			<form method="POST" action="../controller/proc_edit_proposta.php">
 				<div class="col-md-12 mb-3">
 					<input type="hidden" name="id" value="<?php echo utf8_encode($row['id_projeto']); ?>">
 
@@ -101,7 +105,7 @@ $row = getProjeto($id);
 					</div>
 
 					<div class="py-5 text-center">
-						<button class="btn btn-dark" href="../controller/proc_edit_formulario.php">Preencher</button>
+						<button class="btn btn-dark" href="../controller/proc_edit_proposta.php">Preencher</button>
 					</div>
 				</div>
 			</form>
