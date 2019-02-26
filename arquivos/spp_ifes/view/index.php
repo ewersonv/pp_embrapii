@@ -6,11 +6,14 @@ include_once("header.html");
 <html lang="pt-br">
 	<body id="grad1">
 		<div class="container">
-			<div class="py-5 text-center">
-				<h1 class="mb-0">
-					<br><br><a class="text-dark">Pesquisar projetos</a><br><br>
-				</h1>
+			<div class="row">
+				<div class="py-5 text-center">
+					<h1 class="mb-0">
+						<br><br><a class="text-dark">Pesquisar projetos</a><br><br>
+					</h1>
+				</div>
 			</div>
+			<div class="row">
 				<div class="text-left">
 				<form name="formulario" class="align center" style="float:center" method="POST" action="pesquisa.php">
 					<label>Nome da empresa:</label>
@@ -26,6 +29,7 @@ include_once("header.html");
 					</div>
 				</form>
 				</div>
+			</div>
 		</div>
 		<script>
 			function validateAndSend() {
