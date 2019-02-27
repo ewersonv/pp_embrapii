@@ -98,10 +98,10 @@ include_once("header.html");
 						<textarea type="text" class="form-control" name="custo" rows="5" cols="80" placeholder="Custo total e detalhado do projeto"/></textarea><br><br>
 
 						<label><b>Anotações complementares: </b></label><br>
-						<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" placeholder="Custo total e detalhado do projeto"/></textarea><br><br>
+						<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" placeholder="Custo total e detalhado do projeto"/></textarea>
 
 						<div class="py-5 text-center">
-							<button class="btn btn-dark" href="#">Cadastrar</button>
+							<button class="btn mr-2 btn-outline-dark" href="#">Cadastrar</button>
 						</div>
 					</div>
 				</form>

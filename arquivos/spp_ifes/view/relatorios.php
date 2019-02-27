@@ -4,6 +4,10 @@ if(empty($_SESSION['id'])){
 	$_SESSION['msg'] = "Faça login para acessar a plataforma";
 	header("Location: login.php");
 }
+if($_SESSION['adm'] != 1){
+	$_SESSION['msg'] = "Apenas administradores tem acesso à essa página";
+	header("Location: index.php");
+}
 include_once("header.html");
 include_once("../controller/funcoes.php");
 ?>

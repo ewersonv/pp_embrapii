@@ -19,8 +19,8 @@ $row = getProjeto($id);
 				<h1>Preencher proposta</h1>
 				<div class="py-2 text-right">
 					<?php
-						echo "<p><a class='btn btn-sm mr-4 btn-danger' href='../controller/gerar_pdf.php?id=". $id . "' role='button'>Gerar PDF</a>";
-						echo "<a class='btn btn-sm mr-4 btn-success' href='../controller/gerar_planilha.php?id=". $id . "' role='button'>Gerar XLS</a></p>";
+						echo "<p><a class='btn btn-sm mr-4 btn-outline-danger' href='../controller/gerar_pdf.php?id=". $id . "' role='button'>Gerar PDF</a>";
+						echo "<a class='btn btn-sm mr-4 btn-outline-success' href='../controller/gerar_planilha.php?id=". $id . "' role='button'>Gerar XLS</a></p>";
 					?>
 				</div>
 			</div>
@@ -101,11 +101,11 @@ $row = getProjeto($id);
 
 					<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" value="1" id="checkbox">
-						<label class="custom-control-label" for="checkbox">Análise finalizada?</label> <br><br>
+						<label class="custom-control-label" for="checkbox">Análise finalizada?</label>
 					</div>
 
 					<div class="py-5 text-center">
-						<button class="btn btn-dark" href="../controller/proc_edit_proposta.php">Preencher</button>
+						<button class="btn mr-2 btn-outline-dark" href="../controller/proc_edit_proposta.php">Preencher</button>
 					</div>
 				</div>
 			</form>

@@ -21,6 +21,7 @@ if($btnLogin){
 				$_SESSION['id'] = $row['id'];
 				$_SESSION['nome'] = $row['nome'];
 				$_SESSION['email'] = $row['email'];
+				$_SESSION['adm'] = $row['adm'];
 				header("Location: ../view/index.php");
 			}else{
 				$_SESSION['msg'] = "Login ou senha incorretos!";

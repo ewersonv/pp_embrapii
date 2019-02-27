@@ -4,6 +4,12 @@ if(empty($_SESSION['id'])){
 	$_SESSION['msg'] = "Faça login para acessar a plataforma";
 	header("Location: login.php");
 }
+
+if(isset($_SESSION['msg'])){
+	echo $_SESSION['msg'];
+	unset($_SESSION['msg']);
+}
+
 include_once("header.html");
 ?>
 
@@ -30,7 +36,7 @@ include_once("header.html");
 					<label>Nome do projeto:</label>
 						<input class="form-control mr-sm-2" type="text" name="nome_projeto" style="max-width:400px;" placeholder="Pesquisar projeto">
 					<div class="text-center">
-						<br><button class="btn btn-success my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
+						<br><button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
 					</div>
 				</form>
 				</div>
