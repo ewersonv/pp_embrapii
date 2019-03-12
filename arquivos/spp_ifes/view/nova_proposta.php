@@ -1,9 +1,5 @@
 <?php
-session_start();
-if(empty($_SESSION['id'])){
-	$_SESSION['msg'] = "Faça login para acessar a plataforma";
-	header("Location: login.php");
-}
+include_once("../controller/sessao.php");
 include_once("header.html");
 ?>
 <!DOCTYPE html>
@@ -14,7 +10,7 @@ include_once("header.html");
 				<h1>Nova proposta</h1>
 			</div>
 
-				<form method="POST" action="../controller/proc_cad_formulario.php">
+				<form method="POST" action="../controller/proc_nova_proposta.php">
 					<div class="col-md-12 mb-3">
 
 						<label><b>Nome do projeto: </b></label><br>
@@ -27,7 +23,7 @@ include_once("header.html");
 						<input type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" required><br><br>
 						
 						<label><b>Descrição do produto: </b></label>
-						<textarea type="text" class="form-control" name="descricao_produto" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade"/></textarea><br><br>
+						<textarea type="text" class="form-control" name="descricao" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade"/></textarea><br><br>
 						
 						<label><b>Nome da empresa: </b></label><br>
 						<input type="text" class="form-control" name="nome_empresa" placeholder="Digite o nome completo" required><br><br>
@@ -43,32 +39,17 @@ include_once("header.html");
 
 						<label><b>Tipo de empresa: </b></label><br>
 						<div class="custom-control custom-radio">
-							<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" required>
-							<label class="custom-control-label" for="MEI/ME" value="MEI/ME">MEI/ME</label> <br>
+							<input id="MEI/ME" name="tipo_empresa" type="radio" value="MEI/ME" class="custom-control-input" required>
+							<label class="custom-control-label" for="MEI/ME" >MEI/ME</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input">
-							<label class="custom-control-label" for="EPP" value="EPP">EPP</label> <br>
+							<input id="EPP" name="tipo_empresa" type="radio" value="EPP" class="custom-control-input">
+							<label class="custom-control-label" for="EPP" >EPP</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input">
-							<label class="custom-control-label" for="Médio/Grande porte" value="Médio/Grande porte">Médio/Grande porte</label> <br><br>
+							<input id="Médio/Grande porte" name="tipo_empresa" type="radio" value="Médio/Grande porte" class="custom-control-input">
+							<label class="custom-control-label" for="Médio/Grande porte" >Médio/Grande porte</label> <br><br>
 						</div>
-
-						<label><b>Prospectado por: </b></label><br>
-						<input type="text" class="form-control" name="nome_pessoa" placeholder="Digite o nome completo" required><br><br>
-						<div class="invalid-feedback">
-							Campo "Prospectado por" inválido.
-						</div>
-
-						<label><b>Email: </b></label><br>
-						<input type="email" class="form-control" name="email" placeholder="abcd@email.com" required><br><br>
-						<div class="invalid-feedback">
-							Campo "Email" inválido.
-						</div>
-
-						<label><b>Telefone: </b></label><br>
-						<input type="text" class="form-control" name="telefone" placeholder="27888889999" required><br><br>
 
 						<label><b>Riscos: </b></label><br>
 						<textarea type="text" class="form-control" name="riscos" rows="5" cols="80" placeholder="Riscos inerentes ao andamento/execução do projeto"/></textarea><br><br>

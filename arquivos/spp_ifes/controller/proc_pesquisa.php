@@ -4,57 +4,57 @@ include_once("funcoes.php");
 
 $conn = connect();
 
-if(empty($_POST['nome_empresa']) && empty($_POST['nome_pessoa']) && empty($_POST['nome_produto']) && empty($_POST['nome_projeto']))
+if(empty($_POST['nome_empresa']) && empty($_POST['nome_usuario']) && empty($_POST['nome_produto']) && empty($_POST['nome_projeto']))
 {
 	$nome_empresa = verificaCookie('nome_empresa');
-	$nome_pessoa = verificaCookie('nome_pessoa');
+	$nome_usuario = verificaCookie('nome_usuario');
 	$nome_produto = verificaCookie('nome_produto');
 	$nome_projeto = verificaCookie('nome_projeto');
 }
 else
 {
 	$nome_empresa = $_POST['nome_empresa'];
-	$nome_pessoa = $_POST['nome_pessoa'];
+	$nome_usuario = $_POST['nome_usuario'];
 	$nome_produto = $_POST['nome_produto'];
 	$nome_projeto = $_POST['nome_projeto'];
 }
 
 setcookie('nome_empresa', $nome_empresa);
-setcookie('nome_pessoa', $nome_pessoa);
+setcookie('nome_usuario', $nome_usuario);
 setcookie('nome_produto', $nome_produto);
 setcookie('nome_projeto', $nome_projeto);
 
 $string = '';
 if ($nome_empresa != '')
 {
-	$string = $string."nome_empresa LIKE '%".$nome_empresa."%' AND ";
+	$string = $string."E.nome LIKE '%".$nome_empresa."%' AND ";
 }
-if ($nome_pessoa != '')
+if ($nome_usuario != '')
 {
-	$string = $string."nome_pessoa LIKE '%".$nome_pessoa."%' AND "; 
+	$string = $string."U.nome LIKE '%".$nome_usuario."%' AND "; 
 }
 if ($nome_produto != '')
 {
-	$string = $string."nome_produto LIKE '%".$nome_produto."%' AND ";
+	$string = $string."PD.nome LIKE '%".$nome_produto."%' AND ";
 }
 if ($nome_projeto != '')
 {
-	$string = $string."nome_projeto LIKE '%".$nome_projeto."%' AND ";
+	$string = $string."P.nome LIKE '%".$nome_projeto."%' AND ";
 }
 // remove o ultimo AND com os espaços
 $resposta = substr($string, 0, -5);
 
 
-$query = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
 FROM PROJETO P
 INNER JOIN EMPRESA E
-ON P.id_empresa = E.id_empresa
-INNER JOIN PESSOA PS
-ON P.id_pessoa = PS.id_pessoa
+ON P.fk_id_empresa = E.id
+INNER JOIN USUARIO U
+ON P.fk_id_usuario = U.id
 INNER JOIN PRODUTO PD
-ON P.id_projeto = PD.id_projeto
+ON P.id = PD.fk_id_projeto
 WHERE ($resposta)
-ORDER BY id_projeto DESC";
+ORDER BY P.id DESC";
 $result = mysqli_query($conn, $query);
 $qtd_total = mysqli_num_rows($result);
 
@@ -64,16 +64,16 @@ if($qtd_total == 0)
 }
 else
 {
-	$query = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+	$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
 	FROM PROJETO P
 	INNER JOIN EMPRESA E
-	ON P.id_empresa = E.id_empresa
-	INNER JOIN PESSOA PS
-	ON P.id_pessoa = PS.id_pessoa
+	ON P.fk_id_empresa = E.id
+	INNER JOIN USUARIO U
+	ON P.fk_id_usuario = U.id
 	INNER JOIN PRODUTO PD
-	ON P.id_projeto = PD.id_projeto
+	ON P.id = PD.fk_id_projeto
 	WHERE ($resposta)
-	ORDER BY id_projeto DESC
+	ORDER BY P.id DESC
 	LIMIT $inicio, $qnt_result_pg";
 	$result = mysqli_query($conn, $query);
 	

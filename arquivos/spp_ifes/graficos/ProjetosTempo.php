@@ -1,6 +1,6 @@
 <?php
-	$query = "SELECT COUNT(id_projeto) AS qtd, MONTH(created) as mes
-	FROM projeto
+	$query = "SELECT COUNT(id) AS qtd, MONTH(created) as mes
+	FROM PROJETO
 	WHERE created >= '2018-11-12'
 	GROUP BY MONTH(created)
 	ORDER BY created";

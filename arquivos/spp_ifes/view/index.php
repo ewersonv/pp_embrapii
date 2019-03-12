@@ -1,9 +1,5 @@
 <?php
-session_start();
-if(empty($_SESSION['id'])){
-	$_SESSION['msg'] = "Faça login para acessar a plataforma";
-	header("Location: login.php");
-}
+include_once("../controller/sessao.php");
 
 if(isset($_SESSION['msg'])){
 	echo $_SESSION['msg'];
@@ -30,7 +26,7 @@ include_once("header.html");
 					<label>Nome da empresa:</label>
 						<input class="form-control" type="text" name="nome_empresa" style="max-width:400px;" placeholder="Pesquisar empresa">
 					<label>Nome do prospectador:</label>
-						<input class="form-control mr-sm-2" type="text" name="nome_pessoa" style="max-width:400px;" placeholder="Pesquisar prospectador">
+						<input class="form-control mr-sm-2" type="text" name="nome_usuario" style="max-width:400px;" placeholder="Pesquisar prospectador">
 					<label>Nome do produto:</label>
 						<input class="form-control mr-sm-2" type="text" name="nome_produto" style="max-width:400px;" placeholder="Pesquisar produto">
 					<label>Nome do projeto:</label>
@@ -44,7 +40,7 @@ include_once("header.html");
 		</div>
 		<script>
 			function validateAndSend() {
-				if (formulario.nome_empresa.value == '' && formulario.nome_pessoa.value == '' && formulario.nome_produto.value == '' && formulario.nome_projeto.value == '') {
+				if (formulario.nome_empresa.value == '' && formulario.nome_usuario.value == '' && formulario.nome_produto.value == '' && formulario.nome_projeto.value == '') {
 					alert('Você precisa preencher pelo menos um campo.');
 					return false;
 				}

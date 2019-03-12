@@ -5,7 +5,7 @@ session_start();
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8">
-		<title>Login Teste</title>
+		<title>SPP - Ifes</title>
 	</head>
 	<body>
 		<h2>Área restrita</h2>

@@ -1,10 +1,10 @@
 <?php
-	$query = "SELECT COUNT(projeto.id_empresa) AS qtd, nome_empresa
-	FROM projeto
-	INNER JOIN empresa
-	ON empresa.id_empresa = projeto.id_empresa
-	GROUP BY nome_empresa
-	ORDER BY nome_empresa";
+	$query = "SELECT COUNT(P.fk_id_empresa) AS qtd, E.nome as nome_empresa
+	FROM PROJETO P
+	INNER JOIN EMPRESA E
+	ON E.id = P.fk_id_empresa
+	GROUP BY E.nome
+	ORDER BY E.nome";
 	$result = mysqli_query(connect(), $query);
 
 	$aux = [];

@@ -4,11 +4,11 @@ include_once("funcoes.php");
 
 $nome_projeto = utf8_decode(filter_input(INPUT_POST, 'nome_projeto', FILTER_SANITIZE_STRING));
 $nome_produto =  utf8_decode(filter_input(INPUT_POST, 'nome_produto', FILTER_SANITIZE_STRING));
-$descricao_produto = utf8_decode(filter_input(INPUT_POST, 'descricao_produto', FILTER_SANITIZE_STRING));
+$descricao = utf8_decode(filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_STRING));
 $nome_empresa = utf8_decode(filter_input(INPUT_POST, 'nome_empresa', FILTER_SANITIZE_STRING));
 $cnpj = utf8_decode(filter_input(INPUT_POST, 'cnpj', FILTER_SANITIZE_STRING));
 $tipo_empresa = utf8_decode($_POST['tipo_empresa']);
-$nome_pessoa = utf8_decode(filter_input(INPUT_POST, 'nome_pessoa', FILTER_SANITIZE_STRING));
+$nome_usuario = utf8_decode(filter_input(INPUT_POST, 'nome_usuario', FILTER_SANITIZE_STRING));
 $email = utf8_decode(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
 $telefone = utf8_decode(filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING));
 $riscos = utf8_decode(filter_input(INPUT_POST, 'riscos', FILTER_SANITIZE_STRING));
@@ -25,27 +25,14 @@ $anotacoes_complementares = utf8_decode(filter_input(INPUT_POST, 'anotacoes_comp
 
 $conn = connect();
 
-$prequery = "SELECT nome_pessoa FROM pessoa WHERE nome_pesssoa like '$nome_pessoa'";
-$result = mysqli_query($conn, $prequery);
-$resultado = mysqli_fetch_assoc($result);
-if ($resultado < 1)
-{
-	$query = "INSERT INTO pessoa (nome_pessoa, email, telefone)
-	VALUES ('$nome_pessoa', '$email', '$telefone')";
-	$result = mysqli_query($conn, $query);
-	$id_pessoa = mysqli_insert_id($conn);
-}
-else
-{
-	$id_pessoa = getIdPessoa($nome_pessoa);
-}
+$id_usuario = $_SESSION['id'];
 
-$prequery = "SELECT nome_empresa FROM empresa WHERE nome_empresa like '$nome_empresa'";
+$prequery = "SELECT nome FROM empresa WHERE nome like '$nome_empresa'";
 $result = mysqli_query($conn, $prequery);
 $resultado = mysqli_fetch_assoc($result);
 if ($resultado < 1)
 {
-	$query = "INSERT INTO empresa (nome_empresa, cnpj, tipo_empresa)
+	$query = "INSERT INTO empresa (nome, cnpj, tipo)
 	VALUES ('$nome_empresa', '$cnpj', '$tipo_empresa')";
 	$result = mysqli_query($conn, $query);
 	$id_empresa = mysqli_insert_id($conn);
@@ -56,13 +43,13 @@ else
 }
 
 
-$query = "INSERT INTO projeto (nome_projeto, riscos, interessados, viabilidade, equipe, entregas, cronograma, premissas, efeitos, custo, anotacoes_complementares, id_empresa, id_pessoa, created)
-VALUES ('$nome_projeto', '$riscos', '$interessados', '$viabilidade', '$equipe', '$entregas', '$cronograma', '$premissas', '$efeitos', '$custo', '$anotacoes_complementares', '$id_empresa', '$id_pessoa', NOW())";
+$query = "INSERT INTO projeto (nome, riscos, interessados, viabilidade, equipe, entregas, cronograma, premissas, efeitos, custo, anotacoes_complementares, fk_id_empresa, fk_id_usuario, created)
+VALUES ('$nome_projeto', '$riscos', '$interessados', '$viabilidade', '$equipe', '$entregas', '$cronograma', '$premissas', '$efeitos', '$custo', '$anotacoes_complementares', '$id_empresa', '$id_usuario', NOW())";
 $result = mysqli_query($conn, $query);
 $id_projeto = mysqli_insert_id($conn);
 
-$query = "INSERT INTO produto (nome_produto, descricao_produto, id_projeto)
-VALUES ('$nome_produto', '$descricao_produto', '$id_projeto')";
+$query = "INSERT INTO produto (nome, descricao, fk_id_projeto)
+VALUES ('$nome_produto', '$descricao', '$id_projeto')";
 $result = mysqli_query($conn, $query);
 
 

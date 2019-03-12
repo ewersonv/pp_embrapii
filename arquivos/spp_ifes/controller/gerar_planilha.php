@@ -49,11 +49,11 @@
 	$html .= '<tr>';
 	$html .= '<td>'.utf8_encode($projeto['nome_projeto']).'</td>';
 	$html .= '<td>'.utf8_encode($projeto['nome_produto']).'</td>';
-	$html .= '<td>'.utf8_encode($projeto['descricao_produto']).'</td>';
+	$html .= '<td>'.utf8_encode($projeto['descricao']).'</td>';
 	$html .= '<td>'.utf8_encode($projeto['nome_empresa']).'</td>';
 	$html .= '<td>'.utf8_encode($projeto['cnpj']).'</td>';
 	$html .= '<td>'.utf8_encode($projeto['tipo_empresa']).'</td>';
-	$html .= '<td>'.utf8_encode($projeto['nome_pessoa']).'</td>';
+	$html .= '<td>'.utf8_encode($projeto['nome_usuario']).'</td>';
 	$html .= '<td>'.utf8_encode($projeto['email']).'</td>';
 	$html .= '<td>'.utf8_encode($projeto['telefone']).'</td>';
 	$html .= '<td>'.utf8_encode($projeto['riscos']).'</td>';

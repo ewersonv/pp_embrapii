@@ -1,9 +1,5 @@
 <?php
-session_start();
-if(empty($_SESSION['id'])){
-	$_SESSION['msg'] = "Faça login para acessar a plataforma";
-	header("Location: login.php");
-}
+include_once("../controller/sessao.php");
 include_once("header.html");
 ?>
 <!DOCTYPE html>
@@ -25,7 +21,12 @@ include_once("header.html");
         ?>
         
         <a href="alterar_senha.php">Alterar senha</a><br>
-        <a href="cadastrar_prospectador.php">Cadastrar novo prospectador</a><br>
+        <?php
+        if($_SESSION['tipo'] == 1){
+            $link = 'cadastrar_prospectador.php';
+            echo "<a href='$link'>Cadastrar novo prospectador</a><br>";
+        }
+        ?>
         
     </div>
 </body>

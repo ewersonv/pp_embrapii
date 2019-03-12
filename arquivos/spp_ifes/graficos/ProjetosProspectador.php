@@ -1,17 +1,17 @@
 <?php
-	$query = "SELECT COUNT(projeto.id_pessoa) AS qtd, nome_pessoa
-	FROM projeto
-	INNER JOIN pessoa
-	ON pessoa.id_pessoa = projeto.id_pessoa
-	GROUP BY nome_pessoa
-	ORDER BY nome_pessoa";
+	$query = "SELECT COUNT(P.fk_id_usuario) AS qtd, U.nome as nome_usuario
+	FROM PROJETO P
+	INNER JOIN USUARIO U
+	ON U.id = P.fk_id_usuario
+	GROUP BY U.nome
+	ORDER BY U.nome";
 	$result = mysqli_query(connect(), $query);
 
 	$aux = [];
 	$qtd = [];
 	while($row = mysqli_fetch_assoc($result))
 	{
-		$aux[] = utf8_encode($row['nome_pessoa']);
+		$aux[] = utf8_encode($row['nome_usuario']);
 		$qtd[] = $row['qtd'];
 	}
 ?>

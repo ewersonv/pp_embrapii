@@ -42,30 +42,30 @@ function getAllProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $
     
     if($order == 0) /* exibição dos resultados em ordem crescente */
     {
-        $result_projeto = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+        $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
         FROM PROJETO P
         INNER JOIN EMPRESA E
-        ON P.id_empresa = E.id_empresa
-        INNER JOIN PESSOA PS
-        ON P.id_pessoa = PS.id_pessoa
+        ON P.fk_id_empresa = E.id
+        INNER JOIN USUARIO U
+        ON P.fk_id_usuario = U.id
         INNER JOIN PRODUTO PD
-        ON P.id_projeto = PD.id_projeto
-        ORDER BY id_projeto
+        ON P.id = PD.fk_id_projeto
+        ORDER BY P.id
         LIMIT $inicio, $qnt_result_pg";
         
         $resultado_projeto = mysqli_query(connect(), $result_projeto);
     }
     else /* exibição dos resultados em ordem decrescente */
     {
-        $result_projeto = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+        $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
         FROM PROJETO P
         INNER JOIN EMPRESA E
-        ON P.id_empresa = E.id_empresa
-        INNER JOIN PESSOA PS
-        ON P.id_pessoa = PS.id_pessoa
+        ON P.fk_id_empresa = E.id
+        INNER JOIN USUARIO U
+        ON P.fk_id_usuario = U.id
         INNER JOIN PRODUTO PD
-        ON P.id_projeto = PD.id_projeto
-        ORDER BY id_projeto DESC
+        ON P.id = PD.fk_id_projeto
+        ORDER BY P.id DESC
         LIMIT $inicio, $qnt_result_pg";
         
         $resultado_projeto = mysqli_query(connect(), $result_projeto);
@@ -78,15 +78,18 @@ function getProjeto($id)
     /* RETORNA TODOS OS DADOS REFERENTES À PROPOSTA CLICADA */
     $conn = connect();
 
-    $result_all = "SELECT *
+    $result_all = "SELECT E.id as id_empresa, E.nome as nome_empresa, E.cnpj, E.tipo as tipo_empresa,
+    PD.id as id_produto, PD.nome as nome_produto, PD.descricao,
+    P.id as id_projeto, P.nome as nome_projeto, P.viabilidade, P.efeitos, P.equipe, P.riscos, P.entregas, P.premissas, P.cronograma, P.custo, P.interessados, P.anotacoes_complementares,
+    U.id as id_usuario, U.nome as nome_usuario, U.telefone, U.email
     FROM PROJETO P
     INNER JOIN EMPRESA E
-    ON P.id_empresa = E.id_empresa
-    INNER JOIN PESSOA PS
-    ON P.id_pessoa = PS.id_pessoa
+    ON P.fk_id_empresa = E.id
+    INNER JOIN USUARIO U
+    ON P.fk_id_usuario = U.id
     INNER JOIN PRODUTO PD
-    ON P.id_projeto = PD.id_projeto
-    WHERE P.id_projeto = $id";
+    ON P.id = PD.fk_id_projeto
+    WHERE P.id = $id";
 
     $resultado_all = mysqli_query($conn, $result_all);
     $row = mysqli_fetch_assoc($resultado_all);
@@ -98,16 +101,16 @@ function getProjetosEmpresaMax($inicio, $qnt_result_pg)
 {
     $nome = empresaMaisProjetos();
 
-    $query = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
     FROM PROJETO P
     INNER JOIN EMPRESA E
-    ON P.id_empresa = E.id_empresa
-    INNER JOIN PESSOA PS
-    ON P.id_pessoa = PS.id_pessoa
+    ON P.fk_id_empresa = E.id
+    INNER JOIN USUARIO U
+    ON P.fk_id_usuario = U.id
     INNER JOIN PRODUTO PD
-    ON P.id_projeto = PD.id_projeto
-    WHERE e.nome_empresa LIKE '$nome'
-    ORDER BY id_projeto DESC
+    ON P.id = PD.fk_id_projeto
+    WHERE E.nome LIKE '$nome'
+    ORDER BY P.id DESC
     LIMIT $inicio, $qnt_result_pg";
 
     $result = mysqli_query(connect(), $query);
@@ -119,16 +122,16 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
 {
     $nome = maiorProspectador();
 
-    $query = "SELECT P.id_projeto, P.nome_projeto, PS.nome_pessoa, E.nome_empresa, PD.descricao_produto
+    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
     FROM PROJETO P
     INNER JOIN EMPRESA E
-    ON P.id_empresa = E.id_empresa
-    INNER JOIN PESSOA PS
-    ON P.id_pessoa = PS.id_pessoa
+    ON P.fk_id_empresa = E.id
+    INNER JOIN USUARIO U
+    ON P.fk_id_usuario = U.id
     INNER JOIN PRODUTO PD
-    ON P.id_projeto = PD.id_projeto
-    WHERE PS.nome_pessoa LIKE '$nome'
-    ORDER BY id_projeto DESC
+    ON P.id = PD.fk_id_projeto
+    WHERE U.nome LIKE '$nome'
+    ORDER BY P.id DESC
     LIMIT $inicio, $qnt_result_pg";
 
     $result = mysqli_query(connect(), $query);
@@ -139,7 +142,7 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
 function getEmpresaProjeto($id_projeto){
     /* retorna o nome da empresa relacionada à proposta em questão */
 
-    $query = "SELECT nome_empresa FROM empresa WHERE id_empresa IN (SELECT id_empresa FROM projeto WHERE id_projeto = $id_projeto)";
+    $query = "SELECT nome FROM empresa WHERE id IN (SELECT fk_id_empresa FROM projeto WHERE id = $id_projeto)";
     $result = mysqli_query(connect(), $query);
 
     return $result;
@@ -149,9 +152,9 @@ function getIdEmpresa($nome)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
-    $query = "SELECT id_empresa
+    $query = "SELECT id
     FROM empresa
-    WHERE nome_empresa LIKE '$nome'";
+    WHERE nome LIKE '$nome'";
     $result = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($result);
 
@@ -160,13 +163,13 @@ function getIdEmpresa($nome)
     return $valor;
 }
 
-function getIdPessoa($nome)
+function getIdUsuario($nome)
 {
-    /* Retorna o ID da pessoa de acordo com a FK registrada na proposta */
+    /* Retorna o ID da usuario de acordo com a FK registrada na proposta */
 
-    $query = "SELECT id_pessoa
-    FROM pessoa
-    WHERE nome_pessoa LIKE '$nome'";
+    $query = "SELECT id
+    FROM usuario
+    WHERE nome LIKE '$nome'";
     $result = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($result);
 
@@ -179,9 +182,9 @@ function getIdProduto($id_projeto)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
-    $query = "SELECT id_produto
+    $query = "SELECT id
     FROM produto
-    WHERE id_projeto = $id_projeto;";
+    WHERE fk_id_projeto = $id_projeto;";
     $result = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($result);
 
@@ -192,9 +195,9 @@ function getIdProjeto($id_projeto)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
-    $query = "SELECT id_projeto
+    $query = "SELECT id
     FROM projeto
-    WHERE id_projeto = $id_projeto";
+    WHERE id = $id_projeto";
     $result = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($result);
 
@@ -205,7 +208,7 @@ function getIdProjeto($id_projeto)
 
 function totalProjetos()
 {
-    $query = "SELECT COUNT(id_projeto) FROM projeto";
+    $query = "SELECT COUNT(id) FROM projeto";
     $result = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($result);
 
@@ -216,7 +219,7 @@ function totalProjetos()
 
 function totalProdutos()
 {
-    $query = "SELECT COUNT(id_produto) FROM produto";
+    $query = "SELECT COUNT(id) FROM produto";
     $result = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($result);
 
@@ -229,13 +232,13 @@ function empresaMaisProjetos()
 {
     $conn = connect();
 
-    $query = "SELECT id_empresa, COUNT(id_empresa) FROM projeto GROUP BY id_empresa ORDER BY COUNT(id_empresa) DESC LIMIT 1";
+    $query = "SELECT fk_id_empresa, COUNT(fk_id_empresa) FROM projeto GROUP BY fk_id_empresa ORDER BY COUNT(fk_id_empresa) DESC LIMIT 1";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $id_empresa = $row[0];
     $max = $row[1];
 
-    $query = "SELECT nome_empresa FROM empresa WHERE id_empresa = '$id_empresa'";
+    $query = "SELECT nome FROM empresa WHERE id = '$id_empresa'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $value = $row[0];
@@ -247,12 +250,12 @@ function numProjetosEmpresa($nome)
 {
     $conn = connect();
 
-    $query = "SELECT id_empresa FROM empresa WHERE nome_empresa LIKE '$nome'";
+    $query = "SELECT id FROM empresa WHERE nome LIKE '$nome'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $id_empresa = $row[0];
 
-    $query = "SELECT COUNT(id_empresa) FROM projeto WHERE id_empresa = $id_empresa";
+    $query = "SELECT COUNT(fk_id_empresa) FROM projeto WHERE fk_id_empresa = $id_empresa";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $value = $row[0];
@@ -262,13 +265,13 @@ function numProjetosEmpresa($nome)
 
 function maiorProspectador()
 {
-    $query = "SELECT id_pessoa, COUNT(id_pessoa) FROM projeto GROUP BY id_pessoa ORDER BY COUNT(id_pessoa) DESC LIMIT 1";
+    $query = "SELECT fk_id_usuario, COUNT(fk_id_usuario) FROM projeto GROUP BY fk_id_usuario ORDER BY COUNT(fk_id_usuario) DESC LIMIT 1";
     $result = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($result);
-    $id_pessoa = $row[0];
+    $id_usuario = $row[0];
     $max = $row[1];
 
-    $query = "SELECT nome_pessoa FROM pessoa WHERE id_pessoa = '$id_pessoa'";
+    $query = "SELECT nome FROM usuario WHERE id = '$id_usuario'";
     $result = mysqli_query(connect(), $query);
     $row = mysqli_fetch_row($result);
     $value = $row[0];
@@ -276,16 +279,16 @@ function maiorProspectador()
     return $value;
 }
 
-function numProjetosPessoa($nome)
+function numProjetosUsuario($nome)
 {
     $conn = connect();
 
-    $query = "SELECT id_pessoa FROM pessoa WHERE nome_pessoa = '$nome'";
+    $query = "SELECT id FROM usuario WHERE nome = '$nome'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
-    $id_pessoa = $row[0];
+    $id_usuario = $row[0];
 
-    $query = "SELECT COUNT(id_pessoa) FROM projeto WHERE id_pessoa = '$id_pessoa'";
+    $query = "SELECT COUNT(fk_id_usuario) FROM projeto WHERE fk_id_usuario = '$id_usuario'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $value = $row[0];

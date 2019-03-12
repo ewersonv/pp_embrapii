@@ -1,9 +1,5 @@
 <?php
-session_start();
-if(empty($_SESSION['id'])){
-	$_SESSION['msg'] = "Faça login para acessar a plataforma";
-	header("Location: login.php");
-}
+include_once("../controller/sessao_adm.php");
 include_once("header.html");
 ?>
 <!DOCTYPE html>
@@ -31,10 +27,6 @@ include_once("header.html");
                 <label>Email:</label>
                 <input class="form-control" type="email" name="email" style="max-width:400px;" placeholder="exemplo@email.com"><br>
 
-                <label>Senha:</label>
-                <input class="form-control" type="password" name="senha" style="max-width:400px;" placeholder="******"><br>
-
-                
                 <label>Permissões de administrador?</label>
                 <div class="custom-control custom-radio">
                     <input id="sim" name="adm" type="radio" class="custom-control-input" value="1" required>

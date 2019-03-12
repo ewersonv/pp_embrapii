@@ -1,9 +1,5 @@
 <?php
-session_start();
-if(empty($_SESSION['id'])){
-	$_SESSION['msg'] = "Faça login para acessar a plataforma";
-	header("Location: login.php");
-}
+include_once("../controller/sessao.php");
 include_once("header.html");
 include_once("../controller/funcoes.php");
 
@@ -38,7 +34,7 @@ $row = getProjeto($id);
 					<input type="text" class="form-control" name="nome_produto" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_produto']); ?>"><br><br>
 					
 					<label><b>Descrição do produto: </b></label><br>
-					<textarea type="text" class="form-control" name="descricao_produto" rows="5" cols="80" /><?php echo utf8_encode($row['descricao_produto']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="descricao" rows="5" cols="80" /><?php echo utf8_encode($row['descricao']); ?></textarea><br><br>
 					
 					<label><b>Nome da empresa: </b></label><br>
 					<input type="text" class="form-control" name="nome_empresa" readonly="readonly" value="<?php echo utf8_encode($row['nome_empresa']); ?>"><br><br>
@@ -48,20 +44,20 @@ $row = getProjeto($id);
 
 					<label><b>Tipo de empresa: </b></label><br>
 					<div class="custom-control custom-radio">
-						<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input">
-						<label class="custom-control-label" for="MEI/ME" value="MEI/ME" <?php echo (utf8_encode($row['tipo_empresa'])=='MEI/ME')?'checked':''?>>MEI/ME</label> <br>
+						<input id="MEI/ME" name="tipo_empresa" type="radio" value="MEI/ME" <?php echo (utf8_encode($row['tipo_empresa'])=='MEI/ME')?'checked':''?> class="custom-control-input" disabled>
+						<label class="custom-control-label" for="MEI/ME" >MEI/ME</label> <br>
 					</div>
 					<div class="custom-control custom-radio">
-						<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input">
-						<label class="custom-control-label" for="EPP" value="EPP"<?php echo (utf8_encode($row['tipo_empresa'])=='EPP')?'checked':''?>>EPP</label> <br>
+						<input id="EPP" name="tipo_empresa" type="radio" value="EPP" <?php echo (utf8_encode($row['tipo_empresa'])=='EPP')?'checked':''?> class="custom-control-input" disabled>
+						<label class="custom-control-label" for="EPP" >EPP</label> <br>
 					</div>
 					<div class="custom-control custom-radio">
-						<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input">
-						<label class="custom-control-label" for="Médio/Grande porte" value="Médio/Grande porte"<?php echo (utf8_encode($row['tipo_empresa'])=='Médio/Grande porte')?'checked':''?>>Médio/Grande porte</label> <br><br>
+						<input id="Médio/Grande porte" name="tipo_empresa" type="radio" value="Médio/Grande porte" <?php echo (utf8_encode($row['tipo_empresa'])=='Médio/Grande porte')?'checked':''?> class="custom-control-input" disabled>
+						<label class="custom-control-label" for="Médio/Grande porte" >Médio/Grande porte</label> <br><br>
 					</div>
 
 					<label><b>Prospectado por: </b></label><br>
-					<input type="text" class="form-control" name="nome_pessoa" readonly="readonly" value="<?php echo utf8_encode($row['nome_pessoa']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome_usuario" readonly="readonly" value="<?php echo utf8_encode($row['nome_usuario']); ?>"><br><br>
 					
 					<label><b>Email: </b></label><br>
 					<input type="email" class="form-control" name="email" readonly="readonly" value="<?php echo utf8_encode($row['email']); ?>"><br><br>

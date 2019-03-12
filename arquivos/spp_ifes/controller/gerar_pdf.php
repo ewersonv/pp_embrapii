@@ -14,7 +14,7 @@
 	$html .= utf8_encode($projeto['nome_produto']) . "<br><br>";
 	
 	$html .= '<b>Descrição do produto: </b><br>';
-	$html .= utf8_encode($projeto['descricao_produto']) . "<br><br>";
+	$html .= utf8_encode($projeto['descricao']) . "<br><br>";
 	
 	$html .= '<b>Nome da empresa: </b><br>';
 	$html .= utf8_encode($projeto['nome_empresa']) . "<br><br>";
@@ -26,7 +26,7 @@
 	$html .= utf8_encode($projeto['tipo_empresa']) . "<br><br>";
 
 	$html .= '<b>Prospectado por: </b><br>';
-	$html .= utf8_encode($projeto['nome_pessoa']) . "<br><br>";
+	$html .= utf8_encode($projeto['nome_usuario']) . "<br><br>";
 
 	$html .= '<b>Email: </b><br>';
 	$html .= utf8_encode($projeto['email']) . "<br><br>";

@@ -5,7 +5,7 @@ include_once("funcoes.php");
 $id_projeto = utf8_decode(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT));
 $nome_projeto = utf8_decode(filter_input(INPUT_POST, 'nome_projeto', FILTER_SANITIZE_STRING));
 $nome_produto = utf8_decode(filter_input(INPUT_POST, 'nome_produto', FILTER_SANITIZE_STRING));
-$descricao_produto = utf8_decode(filter_input(INPUT_POST, 'descricao_produto', FILTER_SANITIZE_STRING));
+$descricao = utf8_decode(filter_input(INPUT_POST, 'descricao', FILTER_SANITIZE_STRING));
 $riscos = utf8_decode(filter_input(INPUT_POST, 'riscos', FILTER_SANITIZE_STRING));
 $interessados = utf8_decode(filter_input(INPUT_POST, 'interessados', FILTER_SANITIZE_STRING));
 $viabilidade = utf8_decode(filter_input(INPUT_POST, 'viabilidade', FILTER_SANITIZE_STRING));
@@ -22,11 +22,11 @@ $conn2 = connect();
 $id_produto = getIdProduto($id_projeto);
 
 
-$query = "UPDATE produto SET nome_produto='$nome_produto', descricao_produto='$descricao_produto' WHERE id_produto ='$id_produto'";
+$query = "UPDATE produto SET nome='$nome_produto', descricao='$descricao' WHERE id ='$id_produto'";
 $result = mysqli_query($conn1, $query);
 
 
-$query = "UPDATE projeto SET nome_projeto='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares', modified=NOW() WHERE id_projeto ='$id_projeto'";
+$query = "UPDATE projeto SET nome='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares', modified=NOW() WHERE id ='$id_projeto'";
 $result = mysqli_query($conn2, $query);
 
 
