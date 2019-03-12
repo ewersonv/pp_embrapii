@@ -21,6 +21,7 @@ include_once("header.html");
         ?>
         
         <a href="alterar_senha.php">Alterar senha</a><br>
+        <a href="alterar_telefone.php">Alterar telefone</a><br>
         <?php
         if($_SESSION['tipo'] == 1){
             $link = 'cadastrar_prospectador.php';
