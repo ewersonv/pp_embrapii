@@ -7,7 +7,7 @@ $conn = connect();
 $nome = utf8_decode(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
 $telefone = utf8_decode(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
 $email = utf8_decode(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING));
-$senha = password_hash('123456', PASSWORD_DEFAULT);
+$senha = password_hash('12345678', PASSWORD_DEFAULT); /* senha automática para primeiro acesso */
 $adm = filter_input(INPUT_POST, 'adm', FILTER_SANITIZE_NUMBER_INT);
 
 /* verificar se o nome do usuário já existe no BD */

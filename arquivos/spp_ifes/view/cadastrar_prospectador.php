@@ -25,7 +25,7 @@ include_once("header.html");
                 <input class="form-control" type="text" name="nome" style="max-width:400px;" placeholder="João Silva"><br>
 
                 <label>Telefone:</label>
-                <input class="form-control" type="text" name="telefone" style="max-width:400px;" placeholder="27999998888"><br>
+                <input class="form-control" type="text" name="telefone" style="max-width:400px;" placeholder="27999998888" maxlength="11"><br>
             
                 <label>Email:</label>
                 <input class="form-control" type="email" name="email" style="max-width:400px;" placeholder="exemplo@email.com"><br>

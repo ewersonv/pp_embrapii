@@ -217,6 +217,17 @@ function totalProjetos()
     return $value;
 }
 
+function totalUsuarios()
+{
+    $query = "SELECT COUNT(id) FROM usuario";
+    $result = mysqli_query(connect(), $query);
+    $row = mysqli_fetch_row($result);
+
+    $value = $row[0];
+
+    return $value;
+}
+
 function totalProdutos()
 {
     $query = "SELECT COUNT(id) FROM produto";

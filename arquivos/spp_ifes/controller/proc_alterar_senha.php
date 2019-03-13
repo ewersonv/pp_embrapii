@@ -28,8 +28,8 @@ if(password_verify($atual, $row['senha']))
 }
 else
 {
-    $_SESSION['msg'] = "Senha atual incorreta!";
-	header("Location: ../view/configuracoes.php");
+    $_SESSION['msg'] = "<p style='color:red;'>Senha atual incorreta!</p>";
+	header("Location: ../view/alterar_senha.php");
 }
 
 ?>

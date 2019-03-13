@@ -13,17 +13,48 @@ include_once("header.html");
             <br><br><br><br>
             <h3>Alterar senha</h3><br>
 
+            <?php
+                if(isset($_SESSION['msg'])){
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+            ?>
+
             <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_alterar_senha.php">
                 <label>Senha atual:</label>
                 <input class="form-control" type="password" name="atual" style="max-width:400px;" placeholder="******"><br>
 
                 <label>Nova senha:</label>
-                <input class="form-control" type="password" name="nova" style="max-width:400px;" placeholder="******"><br>
+                <input class="form-control" type="password" name="nova" style="max-width:400px;" placeholder="******">
+                <p><font size="2">*A senha deve conter no mínimo 8 caracteres: 2 em maiúsculo e 1 número.</font></p> <br>
                 
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Confirmar</button><br>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
                 
             </form>
         </div>
     </div>
+    <script>
+        function validate() {
+            var regex = /^(?=(?:.*?[A-Z]){2})(?=(?:.*?[0-9]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
+
+            if (formulario.atual.value == '' || formulario.nova.value == '') {
+                alert('Por favor, preencha todos os campos.');
+                return false;
+            }
+            if (formulario.nova.value.length < 8) {
+                alert('A senha precisa ter no mínimo 8 caracteres.');
+                formulario.nova.focus();
+                return false;
+            }
+            else if(!regex.exec(formulario.nova.value)) {
+                alert("A senha deve conter no mínimo 2 caracteres em maiúsculo e 1 número");
+                formulario.nova.focus();
+                return false;
+            }
+            else {
+                formulario.submit();
+            }
+        }
+    </script>
 </body>
 </html>

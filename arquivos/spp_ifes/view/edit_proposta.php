@@ -28,19 +28,19 @@ $row = getProjeto($id);
 					<input type="hidden" name="id" value="<?php echo utf8_encode($row['id_projeto']); ?>">
 
 					<label><b>Nome do projeto: </b></label><br>
-					<input type="text" class="form-control" name="nome_projeto" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_projeto']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome_projeto" placeholder="Nome do projeto" maxlength="100" value="<?php echo utf8_encode($row['nome_projeto']); ?>"><br><br>
 
 					<label><b>Nome do produto que será desenvolvido: </b></label><br>
-					<input type="text" class="form-control" name="nome_produto" placeholder="Digite o nome completo" value="<?php echo utf8_encode($row['nome_produto']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" maxlength="100" value="<?php echo utf8_encode($row['nome_produto']); ?>"><br><br>
 					
 					<label><b>Descrição do produto: </b></label><br>
-					<textarea type="text" class="form-control" name="descricao" rows="5" cols="80" /><?php echo utf8_encode($row['descricao']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="descricao" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade" maxlength="4000"/><?php echo utf8_encode($row['descricao']); ?></textarea><br><br>
 					
 					<label><b>Nome da empresa: </b></label><br>
-					<input type="text" class="form-control" name="nome_empresa" readonly="readonly" value="<?php echo utf8_encode($row['nome_empresa']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome_empresa" readonly="readonly" placeholder="Nome da empresa" maxlength="100" value="<?php echo utf8_encode($row['nome_empresa']); ?>"><br><br>
 
 					<label><b>CNPJ: </b></label><br>
-					<input type="text" class="form-control" name="cnpj" readonly="readonly" value="<?php echo utf8_encode($row['cnpj']); ?>"><br><br>
+					<input type="text" class="form-control" name="cnpj" readonly="readonly" placeholder="Apenas números" maxlength="14" value="<?php echo utf8_encode($row['cnpj']); ?>"><br><br>
 
 					<label><b>Tipo de empresa: </b></label><br>
 					<div class="custom-control custom-radio">
@@ -59,41 +59,41 @@ $row = getProjeto($id);
 					<label><b>Prospectado por: </b></label><br>
 					<input type="text" class="form-control" name="nome_usuario" readonly="readonly" value="<?php echo utf8_encode($row['nome_usuario']); ?>"><br><br>
 					
-					<label><b>Email: </b></label><br>
-					<input type="email" class="form-control" name="email" readonly="readonly" value="<?php echo utf8_encode($row['email']); ?>"><br><br>
-
 					<label><b>Telefone: </b></label><br>
 					<input type="text" class="form-control" name="telefone" readonly="readonly" value="<?php echo utf8_encode($row['telefone']); ?>"><br><br>
 
+					<label><b>Email: </b></label><br>
+					<input type="email" class="form-control" name="email" readonly="readonly" value="<?php echo utf8_encode($row['email']); ?>"><br><br>
+
 					<label><b>Riscos: </b></label><br>
-					<textarea type="text" class="form-control" name="riscos" rows="5" cols="80" /><?php echo utf8_encode($row['riscos']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="riscos" rows="5" cols="80" placeholder="Riscos inerentes ao andamento/execução do projeto" maxlength="2000"/><?php echo utf8_encode($row['riscos']); ?></textarea><br><br>
 
 					<label><b>Partes interessadas: </b></label><br>
-					<textarea type="text" class="form-control" name="interessados" rows="5" cols="80" /><?php echo utf8_encode($row['interessados']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="interessados" rows="5" cols="80" placeholder="Empresas que têm interesse no projeto" maxlength="2000"/><?php echo utf8_encode($row['interessados']); ?></textarea><br><br>
 
 					<label><b>Viabilidade: </b></label><br>
-					<textarea type="text" class="form-control" name="viabilidade" rows="5" cols="80" /><?php echo utf8_encode($row['viabilidade']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="viabilidade" rows="5" cols="80" placeholder="Fatores que propiciam a viabilidade do projeto" maxlength="2000"/><?php echo utf8_encode($row['viabilidade']); ?></textarea><br><br>
 
 					<label><b>Equipe do projeto: </b></label><br>
-					<textarea type="text" class="form-control" name="equipe" rows="5" cols="80" /><?php echo utf8_encode($row['equipe']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="equipe" rows="5" cols="80" placeholder="Pessoas envolvidas no projeto" maxlength="2000"/><?php echo utf8_encode($row['equipe']); ?></textarea><br><br>
 
 					<label><b>Entregas: </b></label><br>
-					<textarea type="text" class="form-control" name="entregas" rows="5" cols="80" /><?php echo utf8_encode($row['entregas']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="entregas" rows="5" cols="80" placeholder="Entregas do projeto" maxlength="2000"/><?php echo utf8_encode($row['entregas']); ?></textarea><br><br>
 
 					<label><b>Cronograma: </b></label><br>
-					<textarea type="text" class="form-control" name="cronograma" rows="5" cols="80" /><?php echo utf8_encode($row['cronograma']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="cronograma" rows="5" cols="80" placeholder="Datas para realização das entregas" maxlength="2000"/><?php echo utf8_encode($row['cronograma']); ?></textarea><br><br>
 
 					<label><b>Premissas: </b></label><br>
-					<textarea type="text" class="form-control" name="premissas" rows="5" cols="80" /><?php echo utf8_encode($row['premissas']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="premissas" rows="5" cols="80" placeholder="Pontos de partida para realização do projeto" maxlength="2000"/><?php echo utf8_encode($row['premissas']); ?></textarea><br><br>
 
 					<label><b>Efeitos do projeto: </b></label><br>
-					<textarea type="text" class="form-control" name="efeitos" rows="5" cols="80" /><?php echo utf8_encode($row['efeitos']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="efeitos" rows="5" cols="80" placeholder="Efeitos do projeto ao ser implementado com sucesso" maxlength="2000"/><?php echo utf8_encode($row['efeitos']); ?></textarea><br><br>
 
 					<label><b>Custo: </b></label><br>
-					<textarea type="text" class="form-control" name="custo" rows="5" cols="80" /><?php echo utf8_encode($row['custo']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="custo" rows="5" cols="80" placeholder="Custo total e detalhado do projeto" maxlength="2000"/><?php echo utf8_encode($row['custo']); ?></textarea><br><br>
 
 					<label><b>Anotações complementares: </b></label><br>
-					<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" /><?php echo utf8_encode($row['anotacoes_complementares']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" placeholder="Informações adicionais sobre o projeto" maxlength="2000"/><?php echo utf8_encode($row['anotacoes_complementares']); ?></textarea><br><br>
 
 					<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" value="1" id="checkbox">
