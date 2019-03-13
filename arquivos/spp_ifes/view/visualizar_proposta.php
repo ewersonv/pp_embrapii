@@ -12,7 +12,7 @@ $row = getProjeto($id);
 	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">
-				<h1>Preencher proposta</h1>
+				<h1>Visualizar proposta</h1>
 				<div class="py-2 text-right">
 					<?php
 						echo "<p><a class='btn btn-sm mr-4 btn-outline-danger' href='../controller/gerar_pdf.php?id=". $id . "' role='button'>Gerar PDF</a>";
@@ -23,18 +23,18 @@ $row = getProjeto($id);
 			
 			<!-- USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE -->
 
-			<form method="POST" action="../controller/proc_edit_proposta.php">
+			<form>
 				<div class="col-md-12 mb-3">
 					<input type="hidden" name="id" value="<?php echo utf8_encode($row['id_projeto']); ?>">
 
 					<label><b>Nome do projeto: </b></label><br>
-					<input type="text" class="form-control" name="nome_projeto" placeholder="Nome do projeto" maxlength="100" value="<?php echo utf8_encode($row['nome_projeto']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome_projeto" readonly="readonly" placeholder="Nome do projeto" maxlength="100" value="<?php echo utf8_encode($row['nome_projeto']); ?>"><br><br>
 
 					<label><b>Nome do produto que será desenvolvido: </b></label><br>
-					<input type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" maxlength="100" value="<?php echo utf8_encode($row['nome_produto']); ?>"><br><br>
+					<input type="text" class="form-control" name="nome_produto" readonly="readonly" placeholder="Nome do produto" maxlength="100" value="<?php echo utf8_encode($row['nome_produto']); ?>"><br><br>
 					
 					<label><b>Descrição do produto: </b></label><br>
-					<textarea type="text" class="form-control" name="descricao" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade" maxlength="4000"/><?php echo utf8_encode($row['descricao']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="descricao" readonly="readonly" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade" maxlength="4000"/><?php echo utf8_encode($row['descricao']); ?></textarea><br><br>
 					
 					<label><b>Nome da empresa: </b></label><br>
 					<input type="text" class="form-control" name="nome_empresa" readonly="readonly" placeholder="Nome da empresa" maxlength="100" value="<?php echo utf8_encode($row['nome_empresa']); ?>"><br><br>
@@ -66,43 +66,37 @@ $row = getProjeto($id);
 					<input type="email" class="form-control" name="email" readonly="readonly" value="<?php echo utf8_encode($row['email']); ?>"><br><br>
 
 					<label><b>Riscos: </b></label><br>
-					<textarea type="text" class="form-control" name="riscos" rows="5" cols="80" placeholder="Riscos inerentes ao andamento/execução do projeto" maxlength="2000"/><?php echo utf8_encode($row['riscos']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="riscos" readonly="readonly" rows="5" cols="80" placeholder="Riscos inerentes ao andamento/execução do projeto" maxlength="2000"/><?php echo utf8_encode($row['riscos']); ?></textarea><br><br>
 
 					<label><b>Partes interessadas: </b></label><br>
-					<textarea type="text" class="form-control" name="interessados" rows="5" cols="80" placeholder="Empresas que têm interesse no projeto" maxlength="2000"/><?php echo utf8_encode($row['interessados']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="interessados" readonly="readonly" rows="5" cols="80" placeholder="Empresas que têm interesse no projeto" maxlength="2000"/><?php echo utf8_encode($row['interessados']); ?></textarea><br><br>
 
 					<label><b>Viabilidade: </b></label><br>
-					<textarea type="text" class="form-control" name="viabilidade" rows="5" cols="80" placeholder="Fatores que propiciam a viabilidade do projeto" maxlength="2000"/><?php echo utf8_encode($row['viabilidade']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="viabilidade" readonly="readonly" rows="5" cols="80" placeholder="Fatores que propiciam a viabilidade do projeto" maxlength="2000"/><?php echo utf8_encode($row['viabilidade']); ?></textarea><br><br>
 
 					<label><b>Equipe do projeto: </b></label><br>
-					<textarea type="text" class="form-control" name="equipe" rows="5" cols="80" placeholder="Pessoas envolvidas no projeto" maxlength="2000"/><?php echo utf8_encode($row['equipe']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="equipe" readonly="readonly" rows="5" cols="80" placeholder="Pessoas envolvidas no projeto" maxlength="2000"/><?php echo utf8_encode($row['equipe']); ?></textarea><br><br>
 
 					<label><b>Entregas: </b></label><br>
-					<textarea type="text" class="form-control" name="entregas" rows="5" cols="80" placeholder="Entregas do projeto" maxlength="2000"/><?php echo utf8_encode($row['entregas']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="entregas" readonly="readonly" rows="5" cols="80" placeholder="Entregas do projeto" maxlength="2000"/><?php echo utf8_encode($row['entregas']); ?></textarea><br><br>
 
 					<label><b>Cronograma: </b></label><br>
-					<textarea type="text" class="form-control" name="cronograma" rows="5" cols="80" placeholder="Datas para realização das entregas" maxlength="2000"/><?php echo utf8_encode($row['cronograma']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="cronograma" readonly="readonly" rows="5" cols="80" placeholder="Datas para realização das entregas" maxlength="2000"/><?php echo utf8_encode($row['cronograma']); ?></textarea><br><br>
 
 					<label><b>Premissas: </b></label><br>
-					<textarea type="text" class="form-control" name="premissas" rows="5" cols="80" placeholder="Pontos de partida para realização do projeto" maxlength="2000"/><?php echo utf8_encode($row['premissas']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="premissas" readonly="readonly" rows="5" cols="80" placeholder="Pontos de partida para realização do projeto" maxlength="2000"/><?php echo utf8_encode($row['premissas']); ?></textarea><br><br>
 
 					<label><b>Efeitos do projeto: </b></label><br>
-					<textarea type="text" class="form-control" name="efeitos" rows="5" cols="80" placeholder="Efeitos do projeto ao ser implementado com sucesso" maxlength="2000"/><?php echo utf8_encode($row['efeitos']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="efeitos" readonly="readonly" rows="5" cols="80" placeholder="Efeitos do projeto ao ser implementado com sucesso" maxlength="2000"/><?php echo utf8_encode($row['efeitos']); ?></textarea><br><br>
 
 					<label><b>Custo: </b></label><br>
-					<textarea type="text" class="form-control" name="custo" rows="5" cols="80" placeholder="Custo total e detalhado do projeto" maxlength="2000"/><?php echo utf8_encode($row['custo']); ?></textarea><br><br>
+					<textarea type="text" class="form-control" name="custo" readonly="readonly" rows="5" cols="80" placeholder="Custo total e detalhado do projeto" maxlength="2000"/><?php echo utf8_encode($row['custo']); ?></textarea><br><br>
 
 					<label><b>Anotações complementares: </b></label><br>
-					<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" placeholder="Informações adicionais sobre o projeto" maxlength="2000"/><?php echo utf8_encode($row['anotacoes_complementares']); ?></textarea><br><br>
-
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" name="finalizado" value="1" id="checkbox">
-						<label class="custom-control-label" for="checkbox">Análise finalizada?</label>
-						<p><font size="2">*Marcando esta opção a proposta não estará mais disponível para edição.</font></p> <br>
-					</div>
+					<textarea type="text" class="form-control" name="anotacoes_complementares" readonly="readonly" rows="5" cols="80" placeholder="Informações adicionais sobre o projeto" maxlength="2000"/><?php echo utf8_encode($row['anotacoes_complementares']); ?></textarea>
 
 					<div class="py-5 text-center">
-						<button class="btn mr-2 btn-outline-dark" href="../controller/proc_edit_proposta.php">Preencher</button>
+						<a class="btn mr-2 btn-outline-dark" href="listar.php" role="button">Voltar</a>
 					</div>
 				</div>
 			</form>

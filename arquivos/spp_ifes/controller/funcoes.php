@@ -37,27 +37,14 @@ function limita_caracteres($texto, $limite, $quebra = true){
    return $novo_texto; // Retorna o valor formatado
 }
 
-function getAllProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $order == 1 DESC
+function getAllProjetos($inicio, $qnt_result_pg){
     /* Retorna todos os campos referentes à proposta necessários para exibição em "listar.php" */
-    
-    if($order == 0) /* exibição dos resultados em ordem crescente */
+    $tipo = $_SESSION['tipo'];
+    $id_usuario = $_SESSION['id'];
+
+    if($tipo == 1) /* Se o usuário for um adm, pode ver todos os projetos*/
     {
-        $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
-        FROM PROJETO P
-        INNER JOIN EMPRESA E
-        ON P.fk_id_empresa = E.id
-        INNER JOIN USUARIO U
-        ON P.fk_id_usuario = U.id
-        INNER JOIN PRODUTO PD
-        ON P.id = PD.fk_id_projeto
-        ORDER BY P.id
-        LIMIT $inicio, $qnt_result_pg";
-        
-        $resultado_projeto = mysqli_query(connect(), $result_projeto);
-    }
-    else /* exibição dos resultados em ordem decrescente */
-    {
-        $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
+        $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
         FROM PROJETO P
         INNER JOIN EMPRESA E
         ON P.fk_id_empresa = E.id
@@ -67,9 +54,24 @@ function getAllProjetos($inicio, $qnt_result_pg, $order){ // $order == 0 ASC | $
         ON P.id = PD.fk_id_projeto
         ORDER BY P.id DESC
         LIMIT $inicio, $qnt_result_pg";
-        
-        $resultado_projeto = mysqli_query(connect(), $result_projeto);
     }
+    else
+    {
+        $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
+        FROM PROJETO P
+        INNER JOIN EMPRESA E
+        ON P.fk_id_empresa = E.id
+        INNER JOIN USUARIO U
+        ON P.fk_id_usuario = U.id
+        INNER JOIN PRODUTO PD
+        ON P.id = PD.fk_id_projeto
+        WHERE P.fk_id_usuario = $id_usuario
+        ORDER BY P.id DESC
+        LIMIT $inicio, $qnt_result_pg";
+    }
+    
+    $resultado_projeto = mysqli_query(connect(), $result_projeto);
+    
     return $resultado_projeto;
 }
 
@@ -101,7 +103,7 @@ function getProjetosEmpresaMax($inicio, $qnt_result_pg)
 {
     $nome = empresaMaisProjetos();
 
-    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
+    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
     FROM PROJETO P
     INNER JOIN EMPRESA E
     ON P.fk_id_empresa = E.id
@@ -122,7 +124,7 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
 {
     $nome = maiorProspectador();
 
-    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
+    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
     FROM PROJETO P
     INNER JOIN EMPRESA E
     ON P.fk_id_empresa = E.id
@@ -208,9 +210,21 @@ function getIdProjeto($id_projeto)
 
 function totalProjetos()
 {
-    $query = "SELECT COUNT(id) FROM projeto";
-    $result = mysqli_query(connect(), $query);
-    $row = mysqli_fetch_row($result);
+    $tipo = $_SESSION['tipo'];
+    $id_usuario = $_SESSION['id'];
+
+    if($tipo == 1)
+    {
+        $query = "SELECT COUNT(id) FROM projeto";
+        $result = mysqli_query(connect(), $query);
+        $row = mysqli_fetch_row($result);
+    }
+    else
+    {
+        $query = "SELECT COUNT(id) FROM projeto WHERE fk_id_usuario = '$id_usuario'";
+        $result = mysqli_query(connect(), $query);
+        $row = mysqli_fetch_row($result);
+    }
 
     $value = $row[0];
 

@@ -1,7 +1,7 @@
 <?php
 	$query = "SELECT COUNT(id) AS qtd, MONTH(created) as mes
 	FROM PROJETO
-	WHERE created >= '2018-11-12'
+	WHERE created >= (SELECT created FROM projeto ORDER BY created LIMIT 1)
 	GROUP BY MONTH(created)
 	ORDER BY created";
 	$result = mysqli_query(connect(), $query);

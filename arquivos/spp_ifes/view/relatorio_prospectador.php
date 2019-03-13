@@ -18,7 +18,7 @@ include_once("../controller/exibicao.php");
 			$result = getProjetosProspectadorMax($inicio, $qnt_result_pg);
 
 			// Paginação - Somar a quantidade de formulários
-			$qtd_total = numProjetosPessoa($nome);
+			$qtd_total = numProjetosUsuario($nome);
 
 			// Nome da página para ser redirecionado
 			$nome_pagina = 'relatorio_prospectador.php';

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 12-Mar-2019 às 02:08
+-- Generation Time: 13-Mar-2019 às 19:59
 -- Versão do servidor: 5.7.23
 -- versão do PHP: 7.2.10
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `spp_ifes2`
+-- Database: `spp_ifes`
 --
 
 -- --------------------------------------------------------
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `senha`, `tipo`) VALUES
-(1, 'Ewerson Vieira Nascimento', '27996187663', 'ewersonv@gmail.com', '$2y$10$MPhusuCtvl5vgguXLjaLZu011yV8HQwbvxbhJGG/iX0bqK8/mBGRC', 1),
+(1, 'Ewerson Vieira Nascimento', '27996187663', 'ewersonv@gmail.com', '$2y$10$zdL7hns.ATRiJdGFBjzra.Q5ITr8Dpmyke8r/GJc4BGG1fP6CZPhK', 1),
 (2, 'Estefano Vieira', '12312312312', 'estefano@gmail.com', '$2y$10$zudQ8X0bx3fNXyGiULey5OccHJJcrqYmI7wGcWBDKDIwm9bhGw6RW', 1),
 (3, 'Deise', '27999888998', 'deise@gmail.com', '$2y$10$rWGo13UN0rT/RHJR7IJIj.xqIGLZ.iWFktn88kXb3xEfIb0R8XKI2', 1),
 (4, 'Pessoa7', '27123457777', 'pessoa7@email.com', '$2y$10$qDA0IO9N6XEmAntmRu3gbuH8eYkBQJojO2gMO.0jhQUGSOFJl0AlK', 0);

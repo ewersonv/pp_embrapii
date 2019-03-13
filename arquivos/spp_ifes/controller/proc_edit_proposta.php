@@ -16,6 +16,14 @@ $premissas = utf8_decode(filter_input(INPUT_POST, 'premissas', FILTER_SANITIZE_S
 $efeitos = utf8_decode(filter_input(INPUT_POST, 'efeitos', FILTER_SANITIZE_STRING));
 $custo = utf8_decode(filter_input(INPUT_POST, 'custo', FILTER_SANITIZE_STRING));
 $anotacoes_complementares = utf8_decode(filter_input(INPUT_POST, 'anotacoes_complementares', FILTER_SANITIZE_STRING));
+if(isset($_POST['finalizado']))
+{
+	$finalizado = 1;
+}
+else
+{
+	$finalizado = 0;
+}
 
 $conn1 = connect();
 $conn2 = connect();
@@ -26,7 +34,7 @@ $query = "UPDATE produto SET nome='$nome_produto', descricao='$descricao' WHERE 
 $result = mysqli_query($conn1, $query);
 
 
-$query = "UPDATE projeto SET nome='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares', modified=NOW() WHERE id ='$id_projeto'";
+$query = "UPDATE projeto SET nome='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares', finalizado='$finalizado', modified=NOW() WHERE id ='$id_projeto'";
 $result = mysqli_query($conn2, $query);
 
 

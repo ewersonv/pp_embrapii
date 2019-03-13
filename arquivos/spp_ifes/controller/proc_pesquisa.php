@@ -2,6 +2,9 @@
 //Incluir a conexão com banco de dados
 include_once("funcoes.php");
 
+$tipo = $_SESSION['tipo'];
+$id_usuario = $_SESSION['id'];
+
 $conn = connect();
 
 if(empty($_POST['nome_empresa']) && empty($_POST['nome_usuario']) && empty($_POST['nome_produto']) && empty($_POST['nome_projeto']))
@@ -44,27 +47,9 @@ if ($nome_projeto != '')
 // remove o ultimo AND com os espaços
 $resposta = substr($string, 0, -5);
 
-
-$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
-FROM PROJETO P
-INNER JOIN EMPRESA E
-ON P.fk_id_empresa = E.id
-INNER JOIN USUARIO U
-ON P.fk_id_usuario = U.id
-INNER JOIN PRODUTO PD
-ON P.id = PD.fk_id_projeto
-WHERE ($resposta)
-ORDER BY P.id DESC";
-$result = mysqli_query($conn, $query);
-$qtd_total = mysqli_num_rows($result);
-
-if($qtd_total == 0)
+if($tipo == 1) /* caso o usuário seja um administrador */
 {
-	echo "Nenhum resultado encontrado.";
-}
-else
-{
-	$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
+	$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
 	FROM PROJETO P
 	INNER JOIN EMPRESA E
 	ON P.fk_id_empresa = E.id
@@ -73,9 +58,62 @@ else
 	INNER JOIN PRODUTO PD
 	ON P.id = PD.fk_id_projeto
 	WHERE ($resposta)
-	ORDER BY P.id DESC
-	LIMIT $inicio, $qnt_result_pg";
+	ORDER BY P.id DESC";
 	$result = mysqli_query($conn, $query);
+	$qtd_total = mysqli_num_rows($result);
+}
+else
+{
+	$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
+	FROM PROJETO P
+	INNER JOIN EMPRESA E
+	ON P.fk_id_empresa = E.id
+	INNER JOIN USUARIO U
+	ON P.fk_id_usuario = U.id
+	INNER JOIN PRODUTO PD
+	ON P.id = PD.fk_id_projeto
+	WHERE ($resposta) AND P.fk_id_usuario = $id_usuario
+	ORDER BY P.id DESC";
+	$result = mysqli_query($conn, $query);
+	$qtd_total = mysqli_num_rows($result);
+}
+
+if($qtd_total == 0)
+{
+	echo "Nenhum resultado encontrado.";
+}
+else
+{	
+	if($tipo == 1) /* caso o usuário seja um administrador */
+	{
+		$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
+		FROM PROJETO P
+		INNER JOIN EMPRESA E
+		ON P.fk_id_empresa = E.id
+		INNER JOIN USUARIO U
+		ON P.fk_id_usuario = U.id
+		INNER JOIN PRODUTO PD
+		ON P.id = PD.fk_id_projeto
+		WHERE ($resposta)
+		ORDER BY P.id DESC
+		LIMIT $inicio, $qnt_result_pg";
+		$result = mysqli_query($conn, $query);
+	}
+	else
+	{
+		$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
+		FROM PROJETO P
+		INNER JOIN EMPRESA E
+		ON P.fk_id_empresa = E.id
+		INNER JOIN USUARIO U
+		ON P.fk_id_usuario = U.id
+		INNER JOIN PRODUTO PD
+		ON P.id = PD.fk_id_projeto
+		WHERE ($resposta) AND P.fk_id_usuario = $id_usuario
+		ORDER BY P.id DESC
+		LIMIT $inicio, $qnt_result_pg";
+		$result = mysqli_query($conn, $query);
+	}
 	
 	// Nome da página para ser redirecionado
 	$nome_pagina = 'pesquisa.php';
