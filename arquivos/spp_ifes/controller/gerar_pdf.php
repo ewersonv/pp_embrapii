@@ -1,10 +1,19 @@
-<?php	
+<?php
+	session_start();
     include_once("funcoes.php");
     
-    $conn = connect();
-
-    $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+	$conn = connect();
+	
+	// Pega o id de acordo com o que o usuário clicou na página anterior
+	$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+	
+	// Selecionar todos os itens do formulário
 	$projeto = getProjeto($id);
+	
+	if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $projeto['id_usuario']){ /* usuário não é administrador e não criou a proposta */
+		$_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
+		header("Location: ../view/listar.php");
+    }
 
     $html = '';
 	$html .= '<b>Nome do projeto: </b><br>';

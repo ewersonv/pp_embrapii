@@ -6,6 +6,12 @@ include_once("../controller/funcoes.php");
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $row = getProjeto($id);
 
+
+if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuário não é administrador e não criou a proposta */
+	$_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
+	header("Location: index.php");
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

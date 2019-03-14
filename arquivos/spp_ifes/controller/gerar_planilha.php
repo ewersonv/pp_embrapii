@@ -10,6 +10,11 @@
 	// Selecionar todos os itens do formulário
 	$projeto = getProjeto($id);
 
+	if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $projeto['id_usuario']){ /* usuário não é administrador e não criou a proposta */
+		$_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
+		header("Location: ../view/listar.php");
+    }
+
 	// Definimos o nome do arquivo que será exportado
 	$arquivo = utf8_encode($projeto['nome_projeto']) . '.xls';
 	
