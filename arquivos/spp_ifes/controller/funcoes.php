@@ -404,5 +404,11 @@ function updateSenha($conn, $nova, $email)
     $result = mysqli_query($conn, $query);
 }
 
+function updateTelefone($conn, $telefone, $id_usuario)
+{
+    $query = "UPDATE usuario SET telefone = '$telefone' WHERE id LIKE '$id_usuario'";
+    $result = mysqli_query($conn, $query);
+}
+
 
 ?>

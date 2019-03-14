@@ -6,8 +6,7 @@ $conn = connect();
 $id_usuario = $_SESSION['id'];
 $telefone = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING);
 
-$query = "UPDATE usuario SET telefone = '$telefone' WHERE id LIKE '$id_usuario'";
-$result = mysqli_query($conn, $query);
+updateTelefone($conn, $telefone, $id_usuario);
 
 if(mysqli_affected_rows($conn)){
     $_SESSION['msg'] = "<p style='color:green;'>Telefone alterado com sucesso!</p>";
