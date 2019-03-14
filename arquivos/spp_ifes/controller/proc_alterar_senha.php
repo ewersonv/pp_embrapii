@@ -5,18 +5,14 @@ include_once("funcoes.php");
 $conn = connect();
 $email = $_SESSION['email'];
 
-$query = "SELECT senha FROM usuario WHERE email LIKE '$email' LIMIT 1";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
-
+$senha = getSenha($conn, $email);
 
 $atual = filter_input(INPUT_POST, 'atual', FILTER_SANITIZE_STRING);
 $nova = password_hash(filter_input(INPUT_POST, 'nova', FILTER_SANITIZE_STRING), PASSWORD_DEFAULT);
 
-if(password_verify($atual, $row['senha']))
+if(password_verify($atual, $senha))
 {
-    $query = "UPDATE usuario SET senha = '$nova' WHERE email LIKE '$email'";
-    $result = mysqli_query($conn, $query);
+    updateSenha($conn, $nova, $email);
 
     if(mysqli_affected_rows($conn)){
         $_SESSION['msg'] = "<p style='color:green;'>Senha alterada com sucesso!</p>";
@@ -31,5 +27,4 @@ else
     $_SESSION['msg'] = "<p style='color:red;'>Senha atual incorreta!</p>";
 	header("Location: ../view/alterar_senha.php");
 }
-
 ?>

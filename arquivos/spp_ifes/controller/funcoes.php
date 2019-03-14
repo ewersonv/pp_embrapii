@@ -45,12 +45,12 @@ function getAllProjetos($inicio, $qnt_result_pg){
     if($tipo == 1) /* Se o usuário for um adm, pode ver todos os projetos*/
     {
         $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
-        FROM PROJETO P
-        INNER JOIN EMPRESA E
+        FROM projeto P
+        INNER JOIN empresa E
         ON P.fk_id_empresa = E.id
-        INNER JOIN USUARIO U
+        INNER JOIN usuario U
         ON P.fk_id_usuario = U.id
-        INNER JOIN PRODUTO PD
+        INNER JOIN produto PD
         ON P.id = PD.fk_id_projeto
         ORDER BY P.id DESC
         LIMIT $inicio, $qnt_result_pg";
@@ -58,12 +58,12 @@ function getAllProjetos($inicio, $qnt_result_pg){
     else
     {
         $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
-        FROM PROJETO P
-        INNER JOIN EMPRESA E
+        FROM projeto P
+        INNER JOIN empresa E
         ON P.fk_id_empresa = E.id
-        INNER JOIN USUARIO U
+        INNER JOIN usuario U
         ON P.fk_id_usuario = U.id
-        INNER JOIN PRODUTO PD
+        INNER JOIN produto PD
         ON P.id = PD.fk_id_projeto
         WHERE P.fk_id_usuario = $id_usuario
         ORDER BY P.id DESC
@@ -84,12 +84,12 @@ function getProjeto($id)
     PD.id as id_produto, PD.nome as nome_produto, PD.descricao,
     P.id as id_projeto, P.nome as nome_projeto, P.viabilidade, P.efeitos, P.equipe, P.riscos, P.entregas, P.premissas, P.cronograma, P.custo, P.interessados, P.anotacoes_complementares,
     U.id as id_usuario, U.nome as nome_usuario, U.telefone, U.email
-    FROM PROJETO P
-    INNER JOIN EMPRESA E
+    FROM projeto P
+    INNER JOIN empresa E
     ON P.fk_id_empresa = E.id
-    INNER JOIN USUARIO U
+    INNER JOIN usuario U
     ON P.fk_id_usuario = U.id
-    INNER JOIN PRODUTO PD
+    INNER JOIN produto PD
     ON P.id = PD.fk_id_projeto
     WHERE P.id = $id";
 
@@ -104,12 +104,12 @@ function getProjetosEmpresaMax($inicio, $qnt_result_pg)
     $nome = empresaMaisProjetos();
 
     $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
-    FROM PROJETO P
-    INNER JOIN EMPRESA E
+    FROM projeto P
+    INNER JOIN empresa E
     ON P.fk_id_empresa = E.id
-    INNER JOIN USUARIO U
+    INNER JOIN usuario U
     ON P.fk_id_usuario = U.id
-    INNER JOIN PRODUTO PD
+    INNER JOIN produto PD
     ON P.id = PD.fk_id_projeto
     WHERE E.nome LIKE '$nome'
     ORDER BY P.id DESC
@@ -125,12 +125,12 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
     $nome = maiorProspectador();
 
     $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
-    FROM PROJETO P
-    INNER JOIN EMPRESA E
+    FROM projeto P
+    INNER JOIN empresa E
     ON P.fk_id_empresa = E.id
-    INNER JOIN USUARIO U
+    INNER JOIN usuario U
     ON P.fk_id_usuario = U.id
-    INNER JOIN PRODUTO PD
+    INNER JOIN produto PD
     ON P.id = PD.fk_id_projeto
     WHERE U.nome LIKE '$nome'
     ORDER BY P.id DESC
@@ -388,5 +388,21 @@ function trocaMes($mes)
     
     return $mes;
 }
+
+function getSenha($conn, $email)
+{
+    $query = "SELECT senha FROM usuario WHERE email LIKE '$email' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+
+    return $row['senha'];
+}
+
+function updateSenha($conn, $nova, $email)
+{
+    $query = "UPDATE usuario SET senha = '$nova' WHERE email LIKE '$email'";
+    $result = mysqli_query($conn, $query);
+}
+
 
 ?>
