@@ -1,6 +1,5 @@
 <?php
 include_once("funcoes.php");
-    $conn = connect();
 
     $id_usuario = $_SESSION['id'];
     $tipo = $_SESSION['tipo'];

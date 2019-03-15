@@ -1,9 +1,7 @@
 <?php
 	session_start();
 	include_once("funcoes.php");
-	
-	$conn = connect();
-			
+				
 	// Pega o id de acordo com o que o usuário clicou na página anterior
 	$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 	
@@ -13,7 +11,7 @@
 	if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $projeto['id_usuario']){ /* usuário não é administrador e não criou a proposta */
 		$_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
 		header("Location: ../view/listar.php");
-    }
+	}
 
 	// Definimos o nome do arquivo que será exportado
 	$arquivo = utf8_encode($projeto['nome_projeto']) . '.xls';

@@ -5,20 +5,16 @@ include_once("funcoes.php");
 $conn = connect();
 
 $nome = utf8_decode(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
-$telefone = utf8_decode(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
+$telefone = utf8_decode(filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING));
 $email = utf8_decode(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING));
 $senha = password_hash('12345678', PASSWORD_DEFAULT); /* senha automática para primeiro acesso */
-$adm = filter_input(INPUT_POST, 'adm', FILTER_SANITIZE_NUMBER_INT);
+$tipo = filter_input(INPUT_POST, 'adm', FILTER_SANITIZE_NUMBER_INT);
 
 /* verificar se o nome do usuário já existe no BD */
-$prequery = "SELECT nome FROM usuario WHERE nome LIKE '$nome'";
-$result = mysqli_query($conn, $prequery);
-$row_nome = mysqli_fetch_assoc($result);
+$row_nome = verificaNomeUsuario($conn, $nome);
 
 /* verificar se email já existe no BD */
-$prequery = "SELECT id FROM usuario WHERE email LIKE '$email'";
-$result = mysqli_query($conn, $prequery);
-$row_email = mysqli_fetch_assoc($result);
+$row_email = verificaEmailUsuario($conn, $email);
 
 if ($row_nome > 0)
 {
@@ -32,8 +28,7 @@ elseif ($row_email > 0)
 }
 else
 {
-	$query = "INSERT INTO usuario (nome, telefone, email, senha, adm) VALUES ('$nome', '$telefone', '$email', '$senha', '$adm')";
-	$result = mysqli_query($conn, $query);
+	insertUsuario($conn, $nome, $telefone, $email, $senha, $tipo);
 
 	if(mysqli_affected_rows($conn)){
 		$_SESSION['msg'] = "<p style='color:green;'>Prospectador cadastrado com sucesso!</p>";

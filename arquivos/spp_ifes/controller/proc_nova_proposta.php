@@ -27,14 +27,10 @@ $conn = connect();
 
 $id_usuario = $_SESSION['id'];
 
-$prequery = "SELECT nome FROM empresa WHERE nome like '$nome_empresa'";
-$result = mysqli_query($conn, $prequery);
-$resultado = mysqli_fetch_assoc($result);
-if ($resultado < 1)
+$resultado = verificaNomeEmpresa($conn, $nome_empresa);
+if ($resultado < 1) /* se a empresa não existe no BD */
 {
-	$query = "INSERT INTO empresa (nome, cnpj, tipo)
-	VALUES ('$nome_empresa', '$cnpj', '$tipo_empresa')";
-	$result = mysqli_query($conn, $query);
+	insertEmpresa($conn, $nome_empresa, $cnpj, $tipo_empresa);
 	$id_empresa = mysqli_insert_id($conn);
 }
 else
@@ -43,14 +39,10 @@ else
 }
 
 
-$query = "INSERT INTO projeto (nome, riscos, interessados, viabilidade, equipe, entregas, cronograma, premissas, efeitos, custo, anotacoes_complementares, fk_id_empresa, fk_id_usuario, created)
-VALUES ('$nome_projeto', '$riscos', '$interessados', '$viabilidade', '$equipe', '$entregas', '$cronograma', '$premissas', '$efeitos', '$custo', '$anotacoes_complementares', '$id_empresa', '$id_usuario', NOW())";
-$result = mysqli_query($conn, $query);
+insertProjeto($conn, $nome_projeto, $riscos, $interessados, $viabilidade, $equipe, $entregas, $cronograma, $premissas, $efeitos, $custo, $anotacoes_complementares, $id_empresa, $id_usuario);
 $id_projeto = mysqli_insert_id($conn);
 
-$query = "INSERT INTO produto (nome, descricao, fk_id_projeto)
-VALUES ('$nome_produto', '$descricao', '$id_projeto')";
-$result = mysqli_query($conn, $query);
+insertProduto($conn, $nome_produto, $descricao, $id_projeto);
 
 
 if(mysqli_affected_rows($conn)){

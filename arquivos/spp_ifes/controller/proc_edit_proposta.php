@@ -25,17 +25,15 @@ else
 	$finalizado = 0;
 }
 
+/* criar 2 conexões para verificar se os updates foram realizados corretamente */
 $conn1 = connect();
 $conn2 = connect();
 $id_produto = getIdProduto($id_projeto);
 
 
-$query = "UPDATE produto SET nome='$nome_produto', descricao='$descricao' WHERE id ='$id_produto'";
-$result = mysqli_query($conn1, $query);
+updateProduto($conn1, $nome_produto, $descricao, $id_produto);
 
-
-$query = "UPDATE projeto SET nome='$nome_projeto', riscos='$riscos', interessados='$interessados', viabilidade='$viabilidade', equipe='$equipe', entregas='$entregas', cronograma='$cronograma', premissas='$premissas', efeitos='$efeitos', custo='$custo', anotacoes_complementares='$anotacoes_complementares', finalizado='$finalizado', modified=NOW() WHERE id ='$id_projeto'";
-$result = mysqli_query($conn2, $query);
+updateProjeto($conn2, $id_projeto, $nome_projeto, $riscos, $interessados, $viabilidade, $equipe, $entregas, $cronograma, $premissas, $efeitos, $custo, $anotacoes_complementares, $finalizado);
 
 
 if(mysqli_affected_rows($conn1) or mysqli_affected_rows($conn2)){

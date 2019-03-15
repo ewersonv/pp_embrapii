@@ -1,4 +1,6 @@
 <?php
+include_once("sessao.php");
+
 //Incluir a conexão com banco de dados
 include_once("funcoes.php");
 
@@ -47,36 +49,7 @@ if ($nome_projeto != '')
 // remove o ultimo AND com os espaços
 $resposta = substr($string, 0, -5);
 
-if($tipo == 1) /* caso o usuário seja um administrador */
-{
-	$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
-	FROM PROJETO P
-	INNER JOIN EMPRESA E
-	ON P.fk_id_empresa = E.id
-	INNER JOIN USUARIO U
-	ON P.fk_id_usuario = U.id
-	INNER JOIN PRODUTO PD
-	ON P.id = PD.fk_id_projeto
-	WHERE ($resposta)
-	ORDER BY P.id DESC";
-	$result = mysqli_query($conn, $query);
-	$qtd_total = mysqli_num_rows($result);
-}
-else
-{
-	$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
-	FROM PROJETO P
-	INNER JOIN EMPRESA E
-	ON P.fk_id_empresa = E.id
-	INNER JOIN USUARIO U
-	ON P.fk_id_usuario = U.id
-	INNER JOIN PRODUTO PD
-	ON P.id = PD.fk_id_projeto
-	WHERE ($resposta) AND P.fk_id_usuario = $id_usuario
-	ORDER BY P.id DESC";
-	$result = mysqli_query($conn, $query);
-	$qtd_total = mysqli_num_rows($result);
-}
+$qtd_total = qtdProjetosTipoUsuario($conn, $resposta, $tipo, $id_usuario);
 
 if($qtd_total == 0)
 {
@@ -84,36 +57,7 @@ if($qtd_total == 0)
 }
 else
 {	
-	if($tipo == 1) /* caso o usuário seja um administrador */
-	{
-		$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
-		FROM PROJETO P
-		INNER JOIN EMPRESA E
-		ON P.fk_id_empresa = E.id
-		INNER JOIN USUARIO U
-		ON P.fk_id_usuario = U.id
-		INNER JOIN PRODUTO PD
-		ON P.id = PD.fk_id_projeto
-		WHERE ($resposta)
-		ORDER BY P.id DESC
-		LIMIT $inicio, $qnt_result_pg";
-		$result = mysqli_query($conn, $query);
-	}
-	else
-	{
-		$query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
-		FROM PROJETO P
-		INNER JOIN EMPRESA E
-		ON P.fk_id_empresa = E.id
-		INNER JOIN USUARIO U
-		ON P.fk_id_usuario = U.id
-		INNER JOIN PRODUTO PD
-		ON P.id = PD.fk_id_projeto
-		WHERE ($resposta) AND P.fk_id_usuario = $id_usuario
-		ORDER BY P.id DESC
-		LIMIT $inicio, $qnt_result_pg";
-		$result = mysqli_query($conn, $query);
-	}
+	$result = getPesquisa($conn, $resposta, $tipo, $id_usuario, $inicio, $qnt_result_pg);
 	
 	// Nome da página para ser redirecionado
 	$nome_pagina = 'pesquisa.php';

@@ -1,11 +1,5 @@
 <?php
-	$query = "SELECT COUNT(P.fk_id_usuario) AS qtd, U.nome as nome_usuario
-	FROM PROJETO P
-	INNER JOIN USUARIO U
-	ON U.id = P.fk_id_usuario
-	GROUP BY U.nome
-	ORDER BY U.nome";
-	$result = mysqli_query(connect(), $query);
+	$result = projetosProspectador();
 
 	$aux = [];
 	$qtd = [];

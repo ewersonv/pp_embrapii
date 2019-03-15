@@ -1,11 +1,5 @@
 <?php
-    $query = "SELECT COUNT(P.fk_id_empresa) AS qtd, E.tipo as tipo_empresa
-    FROM PROJETO P
-    INNER JOIN EMPRESA E
-    ON E.id = P.fk_id_empresa
-    GROUP BY E.tipo
-    ORDER BY E.tipo";
-    $result = mysqli_query(connect(), $query);
+    $result = projetosTipoEmpresa();
 
     $aux = [];
 	$qtd = [];
