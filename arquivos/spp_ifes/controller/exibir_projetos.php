@@ -57,6 +57,10 @@ include_once("funcoes.php");
                         }
                         echo "<a class='btn btn-sm mr-2 btn-outline-danger' href='../controller/gerar_pdf.php?id=" . $row['id_projeto'] . "' role='button'>PDF</a>";
                         echo "<a class='btn btn-sm btn-outline-success' href='../controller/gerar_planilha.php?id=" . $row['id_projeto'] . "' role='button'>XLS</a></p>";
+                        if($tipo == 1)
+                        {
+                            echo "<a class='btn btn-sm btn-danger' href='../controller/deletar_proposta.php?id=" . $row['id_projeto'] . "' role='button'>DELETAR PROPOSTA</a></p>";
+                        }
 
                     ?>
                 </div>

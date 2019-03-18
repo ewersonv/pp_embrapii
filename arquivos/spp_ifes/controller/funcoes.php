@@ -20,6 +20,39 @@ function connect()
     return $conn;
 }
 
+function deletarProposta($id)
+{
+    $conn = connect();
+
+    // Deletar produto relacionado à proposta
+    $query = "DELETE FROM produto WHERE fk_id_projeto = $id";
+    $result = mysqli_query($conn, $query);
+
+    // Seleciona o id da empresa relacionada ao projeto em questão
+    $query = "SELECT fk_id_empresa FROM projeto WHERE id = $id";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+    $id_empresa = $row[0];
+
+    // Pesquisa quantos projetos estão relacionados à esta empresa
+    $query = "SELECT id FROM projeto WHERE fk_id_empresa = $id_empresa";
+    $result = mysqli_query($conn, $query);
+    $resultado = mysqli_fetch_row($result);
+    $num_proj_empresa = mysqli_num_rows($resultado);
+
+    // Caso o número de projetos seja 1 ou 0 a empresa será deletada juntamente com o projeto
+    if ($num_proj_empresa <= 1)
+    {
+        // Deletar empresa
+        $query = "DELETE FROM empresa WHERE id = $id_empresa";
+        $result = mysqli_query($conn, $query);
+    }
+
+    // Deletar proposta
+    $query = "DELETE FROM projeto WHERE id = $id";
+    $result = mysqli_query($conn, $query);
+}
+
 function empresaMaisProjetos()
 {
     $conn = connect();

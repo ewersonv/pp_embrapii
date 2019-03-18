@@ -20,6 +20,8 @@ include_once("../controller/exibicao.php");
 				<?php endif ?>
 
 				<h1>Propostas para prospecção</h1>
+
+				<a class='btn btn btn-outline-success' href='../controller/download_propostas.php' role='button'>Baixar propostas</a></p>
 			
 			</div>
 			
