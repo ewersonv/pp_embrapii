@@ -70,6 +70,8 @@
 
 	$html .= '<b>Anotações complementares: </b><br>';
 	$html .= utf8_encode($projeto['anotacoes_complementares']) . "<br><br>";
+
+	$nome_projeto = $projeto['nome_projeto'];
 	
 	//referenciar o DomPDF com namespace
 	use Dompdf\Dompdf;
@@ -79,6 +81,8 @@
 
 	//Criando a Instancia
 	$dompdf = new DOMPDF();
+
+	$dompdf->set_paper('a4', 'portrait');
 	
 	// Carrega seu HTML
 	$dompdf->load_html('
