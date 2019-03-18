@@ -93,6 +93,8 @@
 	//Renderizar o html
 	$dompdf->render();
 
+	ob_end_clean(); /* função para exibir corretamente o PDF no linux */
+
 	//Exibibir a página
 	$dompdf->stream(
 		"$nome_projeto", 
