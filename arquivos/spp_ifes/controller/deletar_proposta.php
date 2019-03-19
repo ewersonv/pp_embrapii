@@ -6,7 +6,7 @@
     
     deletarProposta($id);
 
-    /*$_SESSION['msg'] = "Proposta deletada! <br><br>";
-	header("Location: ../view/listar.php");*/
+    $_SESSION['msg'] = "Proposta deletada! <br><br>";
+    header("Location: ../view/listar.php");
 
 ?>

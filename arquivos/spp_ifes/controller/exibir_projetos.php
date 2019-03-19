@@ -56,10 +56,12 @@ include_once("funcoes.php");
                             }    
                         }
                         echo "<a class='btn btn-sm mr-2 btn-outline-danger' href='../controller/gerar_pdf.php?id=" . $row['id_projeto'] . "' role='button'>PDF</a>";
-                        echo "<a class='btn btn-sm btn-outline-success' href='../controller/gerar_planilha.php?id=" . $row['id_projeto'] . "' role='button'>XLS</a></p>";
+                        echo "<a class='btn btn-sm btn-outline-success' href='../controller/gerar_planilha.php?id=" . $row['id_projeto'] . "' role='button'>XLS</a>";
                         if($tipo == 1)
                         {
-                            echo "<a class='btn btn-sm btn-danger' href='../controller/deletar_proposta.php?id=" . $row['id_projeto'] . "' role='button'>DELETAR PROPOSTA</a></p>";
+                            ?>
+                            <a class='btn btn-sm btn-danger' href="#" role='button' onclick="confirma(<?php echo $row['id_projeto']; ?>)">DELETAR PROPOSTA</a></p>
+                            <?php
                         }
 
                     ?>
@@ -93,3 +95,11 @@ include_once("funcoes.php");
     echo "<a href='$nome_pagina?pagina=$quantidade_pg'>Última</a><br><br>";
     
 ?>
+<script>
+function confirma(id) {
+    var apagar = confirm('Você realmente deseja excluir esta proposta?');
+    if (apagar){
+        location.href = '../controller/deletar_proposta.php?id='+ id;
+        }    
+}
+</script>

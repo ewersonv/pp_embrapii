@@ -37,8 +37,7 @@ function deletarProposta($id)
     // Pesquisa quantos projetos estão relacionados à esta empresa
     $query = "SELECT id FROM projeto WHERE fk_id_empresa = $id_empresa";
     $result = mysqli_query($conn, $query);
-    $resultado = mysqli_fetch_row($result);
-    $num_proj_empresa = mysqli_num_rows($resultado);
+    $num_proj_empresa = mysqli_num_rows($result);
 
     // Caso o número de projetos seja 1 ou 0 a empresa será deletada juntamente com o projeto
     if ($num_proj_empresa <= 1)
