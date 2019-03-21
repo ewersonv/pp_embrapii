@@ -10,7 +10,7 @@ include_once("header.html");
 				<h1>Nova proposta</h1>
 			</div>
 
-				<form method="POST" action="../controller/proc_nova_proposta.php">
+				<form name="formulario" method="POST" action="../controller/proc_nova_proposta.php">
 					<div class="col-md-12 mb-3">
 
 						<label><b>Nome do projeto: </b></label><br>
@@ -82,12 +82,33 @@ include_once("header.html");
 						<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" placeholder="Informações adicionais sobre o projeto" maxlength="2000"/></textarea>
 
 						<div class="py-5 text-center">
-							<button class="btn mr-2 btn-outline-dark" href="#">Cadastrar</button>
+							<button class="btn mr-2 btn-outline-dark" type="button" onclick="validate()">Cadastrar</button>
 						</div>
 					</div>
 				</form>
-				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-				<script src="js/bootstrap.min.js"></script>
+				<script>
+					function validate() {
+						var regex = /^(?!.*\s)[0-9]*$/;
+
+						if (formulario.cnpj.value == '') {
+							formulario.cnpj.focus();
+							return false;
+						}
+						if (formulario.cnpj.value.length < 14) {
+							alert('Número de CNPJ inválido.');
+							formulario.cnpj.focus();
+							return false;
+						}
+						else if(!regex.exec(formulario.cnpj.value)) {
+							alert("Número de CNPJ inválido");
+							formulario.cnpj.focus();
+							return false;
+						}
+						else {
+							formulario.submit();
+						}
+					}
+				</script>
 		</div>
 	</body>
 </html>
