@@ -105,7 +105,7 @@ include_once("header.html");
 							return false;
 						}
 						else {
-							$_SESSION['submit'] = 1;
+							<?php $_SESSION['submit'] = 1; ?>
 							formulario.submit();
 						}
 					}
