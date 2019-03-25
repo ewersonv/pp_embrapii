@@ -2,6 +2,7 @@
 include_once("../controller/sessao.php");
 include_once("header.html");
 include_once("../controller/funcoes.php");
+$_SESSION['submit'] = 0;
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $row = getProjeto($id);
@@ -29,7 +30,7 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 			
 			<!-- USAR ENCODE NO FORM PARA OS DADOS SEREM EXIBIDOS CORRETAMENTE -->
 
-			<form method="POST" action="../controller/proc_edit_proposta.php">
+			<form name="formulario" method="POST" action="../controller/proc_edit_proposta.php">
 				<div class="col-md-12 mb-3">
 					<input type="hidden" name="id" value="<?php echo utf8_encode($row['id_projeto']); ?>">
 
@@ -108,12 +109,19 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 					</div>
 
 					<div class="py-5 text-center">
-						<button class="btn mr-2 btn-outline-dark" href="../controller/proc_edit_proposta.php">Preencher</button>
+						<button class="btn mr-2 btn-outline-dark" type="button" onclick="validate()">Preencher</button>
 					</div>
 				</div>
 			</form>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 			<script src="js/bootstrap.min.js"></script>
+			<script>
+				function validate()
+				{
+					<?php $_SESSION['submit'] = 1; ?>
+					formulario.submit();
+				}
+			</script>
 		</div>
 	</body>
 </html>

@@ -2,7 +2,9 @@
 include_once("../controller/sessao.php");
 include_once("header.html");
 include_once("../controller/funcoes.php");
+$_SESSION['submit'] = 1; /* submit = 1 para incluir exibicao.php */
 include_once("../controller/exibicao.php");
+$_SESSION['submit'] = 0;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -10,7 +12,8 @@ include_once("../controller/exibicao.php");
 		<div class="container">
 			<div class="py-5 text-center">
 		
-				<?php if (isset($_SESSION['message'])): ?>
+				<?php 
+				if (isset($_SESSION['message'])): ?>
 					<div class="msg">
 						<?php 
 							echo $_SESSION['message'];

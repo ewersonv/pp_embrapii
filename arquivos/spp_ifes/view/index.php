@@ -1,5 +1,6 @@
 <?php
 include_once("../controller/sessao.php");
+$_SESSION['submit'] = 0;
 
 if(isset($_SESSION['msg'])){
 	echo $_SESSION['msg'];
@@ -45,6 +46,7 @@ include_once("header.html");
 					return false;
 				}
 				else {
+					<?php $_SESSION['submit'] = 1; ?>
 					formulario.submit();
 				}
 			}

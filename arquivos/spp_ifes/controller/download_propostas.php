@@ -2,7 +2,7 @@
 	session_start();
     include_once("funcoes.php");
     
-    if($_SESSION['tipo'] != 1 ){ /* usuário não é administrador e não criou a proposta */
+    if($_SESSION['tipo'] != 1 ){ /* usuário não é administrador */
         $_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
         header("Location: ../view/listar.php");
     }

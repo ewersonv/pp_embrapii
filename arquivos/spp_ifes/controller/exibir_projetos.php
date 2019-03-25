@@ -12,56 +12,23 @@ include_once("funcoes.php");
             <h5 class="card-header"><?php echo "<b></b>" . utf8_encode($row['nome_projeto']); ?></h5>
                 <div class="card-body">
                     <?php
+
+                        $row_id_usuario = $row['id_usuario'];
+                        $row_finalizado = $row['finalizado'];
+                        $row_id_projeto = $row['id_projeto'];
                         
                         echo "<b>Número do projeto: </b>" . utf8_encode($row['id_projeto']) . "<br>";
                         echo "<b>Empresa: </b>" . utf8_encode($row['nome_empresa']) . "<br>";
                         echo "<b>Prospectado por: </b>" . utf8_encode($row['nome_usuario']) . "<br>";
-                        echo "<b>Descrição do produto: </b>" . utf8_encode(limita_caracteres($row['descricao'], 250)) . "<br><br>";
-                        if($tipo == 1) /* se o usuário é um administrador */
-                        {
-                            if($row['id_usuario'] == $id_usuario)  /* se a proposta ainda não foi finalizada */
-                            {
-                                if($row['finalizado'] == 0)
-                                {
-                                    echo "<p><a class='btn btn-sm mr-2 btn-outline-dark' href='edit_proposta.php?id=" . $row['id_projeto'] . "' role='button'>Preencher proposta</a>";
-                                }
-                                else
-                                {
-                                    echo "<p style='color:green;'>Proposta finalizada.</p>";
-                                    echo "<p><a class='btn btn-sm mr-2 btn-outline-dark' href='visualizar_proposta.php?id=" . $row['id_projeto'] . "' role='button'>Visualizar proposta</a>";
-                                }
-                            }
-                            else
-                            {
-                                if($row['finalizado'] == 1)
-                                {
-                                    echo "<p style='color:green;'>Proposta finalizada.</p>";
-                                }
-                                echo "<p><a class='btn btn-sm mr-2 btn-outline-dark' href='visualizar_proposta.php?id=" . $row['id_projeto'] . "' role='button'>Visualizar proposta</a>";
-                            }
-                        }
-                        else /* se o usuário NÃO é um administrador */
-                        {
-                            if($row['id_usuario'] == $id_usuario) /* se o usuário pode preencher a proposta */
-                            {
-                                if($row['finalizado'] == 0) /* se a proposta não foi finalizada */
-                                {
-                                    echo "<p><a class='btn btn-sm mr-2 btn-outline-dark' href='edit_proposta.php?id=" . $row['id_projeto'] . "' role='button'>Preencher proposta</a>";
-                                }
-                                else /* proposta finalizada */
-                                {
-                                    echo "<p style='color:green;'>Proposta finalizada.</p>";                                    
-                                    echo "<p><a class='btn btn-sm mr-2 btn-outline-dark' href='visualizar_proposta.php?id=" . $row['id_projeto'] . "' role='button'>Visualizar proposta</a>";
-                                }
-                            }    
-                        }
+                        echo "<b>Descrição do produto: </b>" . utf8_encode(limita_caracteres($row['descricao'], 280)) . "<br><br>";
+                        
+                        acessarProposta($tipo, $id_usuario, $row_id_usuario, $row_finalizado, $row_id_projeto);
+
                         echo "<a class='btn btn-sm mr-2 btn-outline-danger' href='../controller/gerar_pdf.php?id=" . $row['id_projeto'] . "' role='button'>PDF</a>";
                         echo "<a class='btn btn-sm mr-1 btn-outline-success' href='../controller/gerar_planilha.php?id=" . $row['id_projeto'] . "' role='button'>XLS</a>";
                         ?>
                         <a class='btn btn-sm btn-danger' href="#" role='button' onclick="confirma(<?php echo $row['id_projeto']; ?>)">DELETAR PROPOSTA</a></p>
-                        <?php
-
-                    ?>
+                        
                 </div>
         </div>
 
@@ -90,13 +57,16 @@ include_once("funcoes.php");
     }
     
     echo "<a href='$nome_pagina?pagina=$quantidade_pg'>Última</a><br><br>";
-    
+  
 ?>
 <script>
-function confirma(id) {
+function confirma(id)
+{
     var apagar = confirm('Você realmente deseja excluir esta proposta?');
-    if (apagar){
+    if (apagar)
+    {
+        <?php $_SESSION['submit'] = 1; ?>;
         location.href = '../controller/deletar_proposta.php?id='+ id;
-        }    
+    }
 }
 </script>
