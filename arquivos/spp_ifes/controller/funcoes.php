@@ -350,10 +350,10 @@ function insertProduto($conn, $nome_produto, $descricao, $id_projeto)
     $result = mysqli_query($conn, $query);
 }
 
-function insertProjeto($conn, $nome_projeto, $riscos, $interessados, $viabilidade, $equipe, $entregas, $cronograma, $premissas, $efeitos, $custo, $anotacoes_complementares, $id_empresa, $id_usuario)
+function insertProjeto($conn, $nome_projeto, $riscos, $interessados, $viabilidade, $equipe, $entregas, $cronograma, $premissas, $efeitos, $custo, $anotacoes_complementares, $finalizado, $id_empresa, $id_usuario)
 {
-    $query = "INSERT INTO projeto (nome, riscos, interessados, viabilidade, equipe, entregas, cronograma, premissas, efeitos, custo, anotacoes_complementares, fk_id_empresa, fk_id_usuario, created)
-    VALUES ('$nome_projeto', '$riscos', '$interessados', '$viabilidade', '$equipe', '$entregas', '$cronograma', '$premissas', '$efeitos', '$custo', '$anotacoes_complementares', '$id_empresa', '$id_usuario', NOW())";
+    $query = "INSERT INTO projeto (nome, riscos, interessados, viabilidade, equipe, entregas, cronograma, premissas, efeitos, custo, anotacoes_complementares, finalizado, fk_id_empresa, fk_id_usuario, created)
+    VALUES ('$nome_projeto', '$riscos', '$interessados', '$viabilidade', '$equipe', '$entregas', '$cronograma', '$premissas', '$efeitos', '$custo', '$anotacoes_complementares', '$finalizado', '$id_empresa', '$id_usuario', NOW())";
     $result = mysqli_query($conn, $query);
 }
 
