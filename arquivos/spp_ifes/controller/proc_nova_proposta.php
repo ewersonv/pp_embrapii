@@ -29,6 +29,7 @@ else /* se a página foi acessada via submit da página anterior */
 	$efeitos = utf8_decode(filter_input(INPUT_POST, 'efeitos', FILTER_SANITIZE_STRING));
 	$custo = utf8_decode(filter_input(INPUT_POST, 'custo', FILTER_SANITIZE_STRING));
 	$anotacoes_complementares = utf8_decode(filter_input(INPUT_POST, 'anotacoes_complementares', FILTER_SANITIZE_STRING));
+	$finalizado = 0; /* 0 pois a proposta acabou de ser criada */
 
 
 	$conn = connect();
@@ -47,7 +48,7 @@ else /* se a página foi acessada via submit da página anterior */
 	}
 
 
-	insertProjeto($conn, $nome_projeto, $riscos, $interessados, $viabilidade, $equipe, $entregas, $cronograma, $premissas, $efeitos, $custo, $anotacoes_complementares, $id_empresa, $id_usuario);
+	insertProjeto($conn, $nome_projeto, $riscos, $interessados, $viabilidade, $equipe, $entregas, $cronograma, $premissas, $efeitos, $custo, $anotacoes_complementares, $finalizado, $id_empresa, $id_usuario);
 	$id_projeto = mysqli_insert_id($conn);
 
 	insertProduto($conn, $nome_produto, $descricao, $id_projeto);
