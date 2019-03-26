@@ -1,5 +1,5 @@
 <?php
-	session_start();
+	include_once("sessao.php");
 	include_once("funcoes.php");
 				
 	// Pega o id de acordo com o que o usuário clicou na página anterior
@@ -8,6 +8,7 @@
 	// Selecionar todos os itens do formulário
 	$projeto = getProjeto($id);
 
+	/* CONTROLE DE ACESSO */
 	if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $projeto['id_usuario']){ /* usuário não é administrador e não criou a proposta */
 		$_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
 		header("Location: ../view/listar.php");

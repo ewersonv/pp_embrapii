@@ -14,6 +14,13 @@ $_SESSION['submit'] = 0;
             <br><br><br><br>
             <h3>Alterar telefone</h3><br>
 
+            <?php
+                if(isset($_SESSION['msg'])){
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+            ?>
+
             <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_alterar_telefone.php">
                 <label>Insira o novo telefone:</label>
                 <input class="form-control" type="text" name="telefone" style="max-width:400px;" placeholder="27999998888" maxlength="11"><br>

@@ -13,11 +13,11 @@ $_SESSION['submit'] = 0;
 			<div class="py-5 text-center">
 		
 				<?php 
-				if (isset($_SESSION['message'])): ?>
+				if (isset($_SESSION['msg'])): ?>
 					<div class="msg">
 						<?php 
-							echo $_SESSION['message'];
-							unset($_SESSION['message']);
+							echo $_SESSION['msg'];
+							unset($_SESSION['msg']);
 						?>
 					</div>
 				<?php endif ?>

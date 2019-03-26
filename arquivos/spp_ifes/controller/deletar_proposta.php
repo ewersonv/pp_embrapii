@@ -1,5 +1,5 @@
 <?php
-    
+    include_once("sessao.php");
     include_once("funcoes.php");
     
     if ($_SESSION['submit'] != 1) /* se a página foi acessada via url */

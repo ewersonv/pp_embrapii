@@ -21,7 +21,7 @@ else /* se a página foi acessada via submit da página anterior */
         header("Location: ../view/configuracoes.php");
     }else{
         $_SESSION['msg'] = "<p style='color:red;'>Não foi possível alterar o telefone.</p>";
-        header("Location: ../view/configuracoes.php");
+        header("Location: ../view/alterar_telefone.php");
     }
 }
 
