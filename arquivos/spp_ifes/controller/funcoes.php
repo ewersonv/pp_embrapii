@@ -112,6 +112,36 @@ function empresaMaisProjetos()
     return $value;
 }
 
+function gerarSenha($tamanho, $maiusculas, $minusculas, $numeros, $simbolos){
+    $ma = "ABCDEFGHIJKLMNOPQRSTUVYXWZ"; // $ma contem as letras maiúsculas
+    $mi = "abcdefghijklmnopqrstuvyxwz"; // $mi contem as letras minusculas
+    $nu = "0123456789"; // $nu contem os números
+    $si = "!@#$%¨&*()_+="; // $si contem os símbolos
+
+    if ($maiusculas){
+        // se $maiusculas for "true", a variável $ma é embaralhada e adicionada para a variável $senha
+        $senha .= str_shuffle($ma);
+    }
+
+    if ($minusculas){
+        // se $minusculas for "true", a variável $mi é embaralhada e adicionada para a variável $senha
+        $senha .= str_shuffle($mi);
+    }
+
+    if ($numeros){
+        // se $numeros for "true", a variável $nu é embaralhada e adicionada para a variável $senha
+        $senha .= str_shuffle($nu);
+    }
+
+    if ($simbolos){
+        // se $simbolos for "true", a variável $si é embaralhada e adicionada para a variável $senha
+        $senha .= str_shuffle($si);
+    }
+
+    // retorna a senha embaralhada com "str_shuffle" com o tamanho definido pela variável $tamanho
+    return substr(str_shuffle($senha),0,$tamanho);
+}
+
 function getAllProjetos($inicio, $qnt_result_pg){
     /* Retorna todos os campos referentes à proposta necessários para exibição em "listar.php" */
     $tipo = $_SESSION['tipo'];
@@ -519,6 +549,66 @@ function qtdProjetosTipoUsuario($conn, $resposta, $tipo, $id_usuario)
     }
 
     return $qtd_total;
+}
+
+function sendMail($nome, $email, $telefone, $senha, $tipo)
+{
+    /* require 'mailer/PHPMailerAutoload.php'; 
+
+    $mail->SMTPSecure = 'ssl';
+    $mail->Host = 'ssl://smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->Port = 465;
+
+    */
+    require '/usr/share/php/libphp-phpmailer/PHPMailerAutoload.php';
+
+    if ($tipo == 1)
+    {
+        $permissao = "permissão de acesso de administrador";
+    }
+    else
+    {
+        $permissao = "permissão de acesso de usuario comum";
+    }
+
+    $mail = new PHPMailer();
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'ssl';
+    $mail->Username = 'ewersonv@gmail.com';
+    $mail->Password = 'IronMan23';
+    $mail->Port = 465;
+
+    $mail->setFrom('ewersonv@gmail.com', utf8_decode('Plataforma de prospecção'));
+    
+    $mail->isHTML(true);
+
+    // Endereço do e-mail do destinatário
+    $mail->addAddress("$email");
+    
+    $mail->Subject = utf8_decode('Confirmação de cadastro na plataforma de prospecção');
+    $mail->Body    = utf8_decode("
+    Nome: $nome<br>
+    Email: $email<br>
+    Telefone: $telefone<br>
+    Senha*: <b>$senha</b><br>
+    Nível de acesso: $permissao<br><br>
+
+    Seu cadastro foi confirmado. Link para acessar a plataforma: http://localhost/pp_embrapii/arquivos/spp_ifes/view/login.php <br>
+    *Você pode alterar sua senha na aba 'Configurações'
+    ");
+
+    if(!$mail->send())
+    {
+        echo 'Não foi possível enviar a mensagem.<br>';
+        echo 'Erro: ' . $mail->ErrorInfo;
+    }
+    else
+    {
+        echo 'Mensagem enviada.';
+    }
 }
 
 function totalProdutos()

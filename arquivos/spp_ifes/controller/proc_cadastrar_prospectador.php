@@ -15,7 +15,8 @@ else /* se a página foi acessada via submit da página anterior */
 	$nome = utf8_decode(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
 	$telefone = utf8_decode(filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING));
 	$email = utf8_decode(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING));
-	$senha = password_hash('12345678', PASSWORD_DEFAULT); /* senha automática para primeiro acesso */
+	$senha_sem_hash = gerarSenha(8, true, true, true, false);  /* $tamanho, $maiusculas, $minusculas, $numeros, $simbolos */
+	$senha = password_hash($senha_sem_hash, PASSWORD_DEFAULT); /* senha automática para primeiro acesso */
 	$tipo = filter_input(INPUT_POST, 'adm', FILTER_SANITIZE_NUMBER_INT);
 
 	/* verificar se o nome do usuário já existe no BD */
@@ -39,6 +40,9 @@ else /* se a página foi acessada via submit da página anterior */
 		insertUsuario($conn, $nome, $telefone, $email, $senha, $tipo);
 
 		if(mysqli_affected_rows($conn)){
+
+			sendMail($nome, $email, $telefone, $senha_sem_hash, $tipo);
+
 			$_SESSION['msg'] = "<p style='color:green;'>Prospectador cadastrado com sucesso!</p>";
 			header("Location: ../view/configuracoes.php");
 		}else{
