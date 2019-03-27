@@ -349,6 +349,21 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
     return $result;
 }
 
+function getProspectadores()
+{
+    $query = "SELECT u.id, u.nome, u.email, u.telefone, u.tipo AS permissao,
+    COUNT(p.id) AS propostas, SUM(p.finalizado) AS finalizadas
+    FROM usuario u
+    LEFT JOIN projeto p
+    ON u.id = p.fk_id_usuario
+    GROUP BY u.nome
+    ORDER BY u.nome";
+
+    $result = mysqli_query(connect(), $query);
+
+    return $result;
+}
+
 function getSenha($conn, $email)
 {
     $query = "SELECT senha FROM usuario WHERE email LIKE '$email' LIMIT 1";

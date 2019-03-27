@@ -25,8 +25,8 @@ $_SESSION['submit'] = 0;
         <a href="alterar_telefone.php">Alterar telefone</a><br>
         <?php
         if($_SESSION['tipo'] == 1){
-            $link = 'cadastrar_prospectador.php';
-            echo "<a href='$link'>Cadastrar novo prospectador</a><br>";
+            echo "<a href='cadastrar_prospectador.php'>Cadastrar novo prospectador</a><br>";
+            echo "<a href='consultar_prospectador.php'>Consultar prospectadores</a><br>";
         }
         ?>
         
