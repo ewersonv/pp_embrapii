@@ -11,7 +11,7 @@
 	/* CONTROLE DE ACESSO */
 	if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $projeto['id_usuario']){ /* usuário não é administrador e não criou a proposta */
 		$_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
-		header("Location: ../view/listar.php");
+		header("Location: ../view/index.php");
     }
 
     $html = '';

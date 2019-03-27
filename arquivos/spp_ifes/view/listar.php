@@ -1,6 +1,6 @@
 <?php
 include_once("../controller/sessao.php");
-include_once("header.html");
+include_once("header.php");
 include_once("../controller/funcoes.php");
 $_SESSION['submit'] = 1; /* submit = 1 para incluir exibicao.php */
 include_once("../controller/exibicao.php");
@@ -43,6 +43,7 @@ $_SESSION['submit'] = 0;
 
 				// Nome da página para ser redirecionado
 				$nome_pagina = 'listar.php';
+				$_SESSION['submit'] = 1;
 				include_once("../controller/exibir_projetos.php");
 			?>
 

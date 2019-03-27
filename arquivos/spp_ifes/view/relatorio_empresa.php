@@ -1,7 +1,7 @@
 
 <?php
 include_once("../controller/sessao_adm.php");
-include_once("header.html");
+include_once("header.php");
 include_once("../controller/funcoes.php");
 include_once("../controller/exibicao.php");
 ?>

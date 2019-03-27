@@ -1,5 +1,13 @@
 <?php
-include_once("funcoes.php");
+
+if ($_SESSION['submit'] != 1) /* se a página foi acessada via url */
+{
+	header("Location: ../view/index.php");
+}
+else /* se a página foi acessada via submit da página anterior */
+{
+    include_once("funcoes.php");
+    $_SESSION['submit'] = 0;
 
     $id_usuario = $_SESSION['id'];
     $tipo = $_SESSION['tipo'];
@@ -57,7 +65,7 @@ include_once("funcoes.php");
     }
     
     echo "<a href='$nome_pagina?pagina=$quantidade_pg'>Última</a><br><br>";
-  
+} 
 ?>
 <script>
 function confirma(id)

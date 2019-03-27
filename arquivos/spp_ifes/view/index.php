@@ -7,7 +7,7 @@ if(isset($_SESSION['msg'])){
 	unset($_SESSION['msg']);
 }
 
-include_once("header.html");
+include_once("header.php");
 ?>
 
 <!DOCTYPE html>

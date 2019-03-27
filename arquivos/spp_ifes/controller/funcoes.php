@@ -591,7 +591,7 @@ function sendMail($nome, $email, $telefone, $senha, $tipo)
     $mail->Subject = utf8_decode('Confirmação de cadastro na plataforma de prospecção');
     $mail->Body    = utf8_decode("
     Nome: $nome<br>
-    Email: $email<br>
+    Login: $email<br>
     Telefone: $telefone<br>
     Senha*: <b>$senha</b><br>
     Nível de acesso: $permissao<br><br>

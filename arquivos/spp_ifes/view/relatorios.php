@@ -1,6 +1,6 @@
 <?php
 include_once("../controller/sessao_adm.php");
-include_once("header.html");
+include_once("header.php");
 include_once("../controller/funcoes.php");
 ?>
 <!DOCTYPE html>
@@ -10,22 +10,34 @@ include_once("../controller/funcoes.php");
 	<script type="text/javascript">
 	google.charts.load("current", {packages:["corechart"]});
 	google.charts.setOnLoadCallback(ProjetosTempo);
-	<?php include_once("../graficos/ProjetosTempo.php"); ?>
+	<?php
+	$_SESSION['submit'] = 1;
+	include_once("../graficos/ProjetosTempo.php");
+	?>
 	</script>
 
 	<script type="text/javascript">
 	google.charts.setOnLoadCallback(ProjetosEmpresa);
-	<?php include_once("../graficos/ProjetosEmpresa.php"); ?>
+	<?php
+	$_SESSION['submit'] = 1;
+	include_once("../graficos/ProjetosEmpresa.php");
+	?>
 	</script>
 
 	<script type="text/javascript">
 	google.charts.setOnLoadCallback(ProjetosTipoEmpresa);
-	<?php include_once("../graficos/ProjetosTipoEmpresa.php"); ?>
+	<?php
+	$_SESSION['submit'] = 1;
+	include_once("../graficos/ProjetosTipoEmpresa.php");
+	?>
 	</script>
 
 	<script type="text/javascript">
 	google.charts.setOnLoadCallback(ProjetosProspectador);
-	<?php include_once("../graficos/ProjetosProspectador.php"); ?>
+	<?php
+	$_SESSION['submit'] = 1;
+	include_once("../graficos/ProjetosProspectador.php");
+	?>
 	</script>
 
 </head>

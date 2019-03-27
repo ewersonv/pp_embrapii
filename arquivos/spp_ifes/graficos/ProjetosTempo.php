@@ -1,13 +1,22 @@
 <?php
-	$result = projetosTempo();
-
-	$aux = [];
-	$qtd = [];
-	while($row = mysqli_fetch_assoc($result))
+	if ($_SESSION['submit'] != 1) /* se a página foi acessada via url */
 	{
-		$mes = utf8_encode($row['mes']);
-		$aux[] = trocaMes($mes);
-		$qtd[] = $row['qtd'];
+		header("Location: ../view/index.php");
+	}
+	else /* se a página foi acessada via submit da página anterior */
+	{
+		$_SESSION['submit'] = 0;
+	
+		$result = projetosTempo();
+
+		$aux = [];
+		$qtd = [];
+		while($row = mysqli_fetch_assoc($result))
+		{
+			$mes = utf8_encode($row['mes']);
+			$aux[] = trocaMes($mes);
+			$qtd[] = $row['qtd'];
+		}
 	}
 ?>
 function ProjetosTempo() {

@@ -19,7 +19,12 @@
                 <a class="py-2 d-none d-md-inline-block" href="index.php">Início</a>
 				<a class="py-2 d-none d-md-inline-block" href="listar.php">Listar propostas</a>
 				<a class="py-2 d-none d-md-inline-block"href="nova_proposta.php">Nova Proposta</a>
-				<a class="py-2 d-none d-md-inline-block" href="relatorios.php">Relatórios</a>
+				<?php
+				if ($_SESSION['tipo'] == 1)
+				{
+					echo "<a class='py-2 d-none d-md-inline-block' href='relatorios.php'>Relatórios</a>";
+				}
+				?>
 				<a class="py-2 d-none d-md-inline-block" href="configuracoes.php">Configurações</a>
 				<a class="py-2 d-none d-md-inline-block" href="sair.php">Sair</a>
 			</div>

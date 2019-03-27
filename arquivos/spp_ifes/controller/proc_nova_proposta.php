@@ -4,7 +4,7 @@ include_once("funcoes.php");
 
 if ($_SESSION['submit'] != 1) /* se a página foi acessada via url */
 {
-	header("Location: ../view/listar.php");
+	header("Location: ../view/index.php");
 }
 else /* se a página foi acessada via submit da página anterior */
 {

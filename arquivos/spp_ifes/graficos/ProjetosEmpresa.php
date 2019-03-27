@@ -1,12 +1,21 @@
 <?php
-	$result = projetosEmpresa();
-
-	$aux = [];
-	$qtd = [];
-	while($row = mysqli_fetch_assoc($result))
+	if ($_SESSION['submit'] != 1) /* se a página foi acessada via url */
 	{
-		$aux[] = utf8_encode($row['nome_empresa']);
-		$qtd[] = $row['qtd'];
+		header("Location: ../view/index.php");
+	}
+	else /* se a página foi acessada via submit da página anterior */
+	{
+		$_SESSION['submit'] = 0;
+	
+		$result = projetosEmpresa();
+
+		$aux = [];
+		$qtd = [];
+		while($row = mysqli_fetch_assoc($result))
+		{
+			$aux[] = utf8_encode($row['nome_empresa']);
+			$qtd[] = $row['qtd'];
+		}
 	}
 ?>
 function ProjetosEmpresa() {
