@@ -94,6 +94,32 @@ function deletarProposta($id)
     $result = mysqli_query($conn, $query);
 }
 
+function updateStatusUsuario($id)
+{
+    /* troca o status do usuário, ativando-o ou desativando-o */
+    $conn = connect();
+
+    $query = "SELECT status, nome FROM usuario WHERE usuario.id = $id";
+    $result = mysqli_query($conn, $query);
+    $resultado = mysqli_fetch_assoc($result);
+    $aux = $resultado['status'];
+    $nome = $resultado['nome'];
+
+    if($aux == 1)
+    {
+        $status = 0;
+        $_SESSION['msg'] = "<p style='color:red;'>Prospectador $nome desativado!</p>";
+    }
+    else
+    {
+        $status = 1;
+        $_SESSION['msg'] = "<p style='color:green;'>Prospectador $nome ativado!</p>";
+    }
+
+    $query = "UPDATE usuario SET status = $status WHERE usuario.id = $id";
+    $result = mysqli_query($conn, $query);
+}
+
 function empresaMaisProjetos()
 {
     $conn = connect();
@@ -351,7 +377,7 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
 
 function getProspectadores()
 {
-    $query = "SELECT u.id, u.nome, u.email, u.telefone, u.tipo AS permissao,
+    $query = "SELECT u.id, u.nome, u.email, u.telefone, u.tipo AS permissao, u.status, u.last_access as acesso,
     COUNT(p.id) AS propostas, SUM(p.finalizado) AS finalizadas
     FROM usuario u
     LEFT JOIN projeto p
@@ -406,7 +432,7 @@ function insertUsuario($conn, $nome, $telefone, $email, $senha, $tipo)
 {
     /* Insere usuário no BD */
 
-    $query = "INSERT INTO usuario (nome, telefone, email, senha, tipo) VALUES ('$nome', '$telefone', '$email', '$senha', '$tipo')";
+    $query = "INSERT INTO usuario (nome, telefone, email, senha, tipo, status, created, last_access) VALUES ('$nome', '$telefone', '$email', '$senha', '$tipo', 1, NOW(), NULL)";
 	$result = mysqli_query($conn, $query);
 }
 
@@ -723,6 +749,12 @@ function trocaMes($mes)
     }
     
     return $mes;
+}
+
+function updateAcessoUsuario($conn, $id)
+{
+    $query = "UPDATE usuario SET last_access = NOW() WHERE usuario.id = $id";
+    $result = mysqli_query($conn, $query);
 }
 
 function updateProduto($conn, $nome_produto, $descricao, $id_produto)

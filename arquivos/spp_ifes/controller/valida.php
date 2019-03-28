@@ -21,6 +21,8 @@ if($btnLogin)
 
 			if(password_verify($senha, $row['senha']))
 			{
+				updateAcessoUsuario($conn, $row['id']);
+				
 				$_SESSION['id'] = $row['id'];
 				$_SESSION['nome'] = $row['nome'];
 				$_SESSION['email'] = $row['email'];

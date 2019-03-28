@@ -34,6 +34,7 @@ $_SESSION['submit'] = 0;
                         <th scope="col">Finalizadas</th>
                         <th scope="col">Último acesso</th>
                         <th scope="col"></th>
+                        <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,11 +66,23 @@ $_SESSION['submit'] = 0;
                         echo "<td>" . utf8_decode($permissao) . "</td>";
                         echo "<td>" . utf8_decode($row['propostas']) . "</td>";
                         echo "<td>" . utf8_decode($finalizadas) . "</td>";
+                        echo "<td>" . utf8_decode($row['acesso']) . "</td>";
                         echo "<td></td>";
 
-                        ?>
-                        <td><a class="btn btn-sm btn-danger" href="" role="button" onclick="confirma(<?php echo $row['id'] ?>)">DELETAR</a></p></td>
-                        <?php echo "</tr>";
+                        if ($row['status'] == 1)
+                        {
+                            ?>
+                            <td><a class="btn btn-sm btn-outline-danger" href="#" role="button" onclick="desativar(<?php echo $row['id']; ?>)">DESATIVAR</a></p></td>
+                            <?php
+                        }
+                        else
+                        {
+                            ?>
+                            <td><a class="btn btn-sm btn-outline-success" href="#" role="button" onclick="ativar(<?php echo $row['id']; ?>)">ATIVAR</a></p></td>
+                            <?php                            
+                        }
+                        
+                        echo "</tr>";
                     }
                     ?>
                     </tbody>
@@ -81,13 +94,24 @@ $_SESSION['submit'] = 0;
         </div>
     </div>
     <script>
-        function confirma(id)
+        function ativar(id)
         {
-            var apagar = confirm('Você realmente deseja excluir este prospectador?');
-            if (apagar)
+            var confirmar = confirm('O prospectador selecionado poderá acessar a plataforma novamente.');
+            if (confirmar)
             {
                 <?php $_SESSION['submit'] = 1; ?>;
-                location.href = '../controller/deletar_usuario.php?id='+ id;
+                location.href = '../controller/status_usuario.php?id='+ id;
+            }
+        }
+    </script>
+    <script>
+        function desativar(id)
+        {
+            var confirmar = confirm('Você realmente deseja desativar este prospectador?\n\nO prospectador selecionado não poderá acessar a plataforma.');
+            if (confirmar)
+            {
+                <?php $_SESSION['submit'] = 1; ?>;
+                location.href = '../controller/status_usuario.php?id='+ id;
             }
         }
     </script>

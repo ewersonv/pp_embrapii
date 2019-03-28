@@ -26,7 +26,7 @@ $_SESSION['submit'] = 0;
         <?php
         if($_SESSION['tipo'] == 1){
             echo "<a href='cadastrar_prospectador.php'>Cadastrar novo prospectador</a><br>";
-            echo "<a href='consultar_prospectador.php'>Consultar prospectadores</a><br>";
+            echo "<a href='consultar_prospectadores.php'>Consultar prospectadores</a><br>";
         }
         ?>
         
