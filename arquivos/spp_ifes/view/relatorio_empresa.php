@@ -23,7 +23,8 @@ include_once("../controller/exibicao.php");
 			
 			// Nome da página para ser redirecionado
 			$nome_pagina = 'relatorio_empresa.php';
-            include_once("../controller/exibir_projetos.php")
+			$_SESSION['submit'] = 1;
+			include_once("../controller/exibir_projetos.php");
 		?>
 		
 		</div>

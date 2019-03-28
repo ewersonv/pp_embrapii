@@ -1,7 +1,6 @@
 <?php
 include_once("../controller/sessao.php");
 include_once("header.php");
-include_once("../controller/funcoes.php");
 include_once("../controller/exibicao.php");
 ?>
 <!DOCTYPE html>
@@ -15,6 +14,7 @@ include_once("../controller/exibicao.php");
 			</div>
 			
             <?php
+				$_SESSION['submit'] = 1;
                 // Processamento da pesquisa
 				include_once("../controller/proc_pesquisa.php");
 			?>

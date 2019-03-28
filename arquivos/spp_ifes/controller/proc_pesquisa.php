@@ -55,6 +55,7 @@ else /* se a página foi acessada via submit da página anterior */
 	// remove o ultimo AND com os espaços
 	$resposta = substr($string, 0, -5);
 
+	/* Mudar a exbição dos projetos de acordo com o tipo de usuário que está acessando o sistema */
 	$qtd_total = qtdProjetosTipoUsuario($conn, $resposta, $tipo, $id_usuario);
 
 	if($qtd_total == 0)

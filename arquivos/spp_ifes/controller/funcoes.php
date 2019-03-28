@@ -62,6 +62,16 @@ function connect()
     return $conn;
 }
 
+function closeConnection($conn)
+{
+    /* Fecha a conexão com o banco de dados */
+
+    if ($conn)
+    {
+        mysqli_close($conn);
+    }
+}
+
 function deletarProposta($id)
 {
     $conn = connect();
@@ -92,32 +102,9 @@ function deletarProposta($id)
     // Deletar proposta
     $query = "DELETE FROM projeto WHERE id = $id";
     $result = mysqli_query($conn, $query);
-}
 
-function updateStatusUsuario($id)
-{
-    /* troca o status do usuário, ativando-o ou desativando-o */
-    $conn = connect();
-
-    $query = "SELECT status, nome FROM usuario WHERE usuario.id = $id";
-    $result = mysqli_query($conn, $query);
-    $resultado = mysqli_fetch_assoc($result);
-    $aux = $resultado['status'];
-    $nome = $resultado['nome'];
-
-    if($aux == 1)
-    {
-        $status = 0;
-        $_SESSION['msg'] = "<p style='color:red;'>Prospectador $nome desativado!</p>";
-    }
-    else
-    {
-        $status = 1;
-        $_SESSION['msg'] = "<p style='color:green;'>Prospectador $nome ativado!</p>";
-    }
-
-    $query = "UPDATE usuario SET status = $status WHERE usuario.id = $id";
-    $result = mysqli_query($conn, $query);
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 }
 
 function empresaMaisProjetos()
@@ -134,6 +121,9 @@ function empresaMaisProjetos()
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $value;
 }
@@ -173,6 +163,8 @@ function getAllProjetos($inicio, $qnt_result_pg){
     $tipo = $_SESSION['tipo'];
     $id_usuario = $_SESSION['id'];
 
+    $conn = connect();
+
     if($tipo == 1) /* Se o usuário for um adm, pode ver todos os projetos*/
     {
         $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
@@ -201,7 +193,10 @@ function getAllProjetos($inicio, $qnt_result_pg){
         LIMIT $inicio, $qnt_result_pg";
     }
     
-    $resultado_projeto = mysqli_query(connect(), $result_projeto);
+    $resultado_projeto = mysqli_query($conn, $result_projeto);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
     
     return $resultado_projeto;
 }
@@ -209,8 +204,13 @@ function getAllProjetos($inicio, $qnt_result_pg){
 function getEmpresaProjeto($id_projeto){
     /* retorna o nome da empresa relacionada à proposta em questão */
 
+    $conn = connect();
+
     $query = "SELECT nome FROM empresa WHERE id IN (SELECT fk_id_empresa FROM projeto WHERE id = $id_projeto)";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $result;
 }
@@ -219,13 +219,18 @@ function getIdEmpresa($nome)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
+    $conn = connect();
+
     $query = "SELECT id
     FROM empresa
     WHERE nome LIKE '$nome'";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
 
     $valor = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $valor;
 }
@@ -234,11 +239,16 @@ function getIdProduto($id_projeto)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
+    $conn = connect();
+
     $query = "SELECT id
     FROM produto
     WHERE fk_id_projeto = $id_projeto;";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $row[0];
 }
@@ -247,13 +257,18 @@ function getIdProjeto($id_projeto)
 {
     /* Retorna o ID da empresa de acordo com a FK registrada na proposta */
 
+    $conn = connect();
+
     $query = "SELECT id
     FROM projeto
     WHERE id = $id_projeto";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
 
     $valor = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $valor;
 }
@@ -262,13 +277,18 @@ function getIdUsuario($nome)
 {
     /* Retorna o ID da usuario de acordo com a FK registrada na proposta */
 
+    $conn = connect();
+
     $query = "SELECT id
     FROM usuario
     WHERE nome LIKE '$nome'";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
 
     $valor = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $valor;
 }
@@ -330,12 +350,17 @@ function getProjeto($id)
     $resultado_all = mysqli_query($conn, $result_all);
     $row = mysqli_fetch_assoc($resultado_all);
 
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
+
     return $row;
 }
 
 function getProjetosEmpresaMax($inicio, $qnt_result_pg)
 {
     $nome = empresaMaisProjetos();
+
+    $conn = connect();
 
     $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
     FROM projeto P
@@ -349,7 +374,10 @@ function getProjetosEmpresaMax($inicio, $qnt_result_pg)
     ORDER BY P.id DESC
     LIMIT $inicio, $qnt_result_pg";
 
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $result;
 }
@@ -357,6 +385,8 @@ function getProjetosEmpresaMax($inicio, $qnt_result_pg)
 function getProjetosProspectadorMax($inicio, $qnt_result_pg)
 {
     $nome = maiorProspectador();
+
+    $conn = connect();
 
     $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
     FROM projeto P
@@ -370,13 +400,18 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
     ORDER BY P.id DESC
     LIMIT $inicio, $qnt_result_pg";
 
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $result;
 }
 
 function getProspectadores()
 {
+    $conn = connect();
+
     $query = "SELECT u.id, u.nome, u.email, u.telefone, u.tipo AS permissao, u.status, DATE_FORMAT(u.last_access,'%d/%m/%Y') AS acesso,
     COUNT(p.id) AS propostas, SUM(p.finalizado) AS finalizadas
     FROM usuario u
@@ -385,7 +420,10 @@ function getProspectadores()
     GROUP BY u.nome
     ORDER BY u.nome";
 
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $result;
 }
@@ -455,16 +493,21 @@ function limita_caracteres($texto, $limite, $quebra = true){
 
 function maiorProspectador()
 {
+    $conn = connect();
+
     $query = "SELECT fk_id_usuario, COUNT(fk_id_usuario) FROM projeto GROUP BY fk_id_usuario ORDER BY COUNT(fk_id_usuario) DESC LIMIT 1";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $id_usuario = $row[0];
     $max = $row[1];
 
     $query = "SELECT nome FROM usuario WHERE id = '$id_usuario'";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $value;
 }
@@ -483,6 +526,9 @@ function numProjetosEmpresa($nome)
     $row = mysqli_fetch_row($result);
     $value = $row[0];
 
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
+
     return $value;
 }
 
@@ -500,57 +546,80 @@ function numProjetosUsuario($nome)
     $row = mysqli_fetch_row($result);
     $value = $row[0];
 
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
+
     return $value;
 }
 
 /* FUNÇÕES PARA GERAR GRÁFICOS EM relatorio.php */
 function projetosEmpresa()
 {
+    $conn = connect();
+
     $query = "SELECT COUNT(P.fk_id_empresa) AS qtd, E.nome as nome_empresa
 	FROM projeto P
 	INNER JOIN empresa E
 	ON E.id = P.fk_id_empresa
 	GROUP BY E.nome
 	ORDER BY E.nome";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
     
     return $result;
 }
 
 function projetosProspectador()
 {
+    $conn = connect();
+
     $query = "SELECT COUNT(P.fk_id_usuario) AS qtd, U.nome as nome_usuario
 	FROM projeto P
 	INNER JOIN usuario U
 	ON U.id = P.fk_id_usuario
 	GROUP BY U.nome
 	ORDER BY U.nome";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
     
     return $result;
 }
 
 function projetosTempo()
 {
+    $conn = connect();
+
     $query = "SELECT COUNT(id) AS qtd, MONTH(created) as mes
 	FROM projeto
 	WHERE created >= (SELECT created FROM projeto ORDER BY created LIMIT 1)
 	GROUP BY MONTH(created)
     ORDER BY created";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $result;
 }
 
 function projetosTipoEmpresa()
 {
+    $conn = connect();
+
     $query = "SELECT COUNT(P.fk_id_empresa) AS qtd, E.tipo as tipo_empresa
     FROM projeto P
     INNER JOIN empresa E
     ON E.id = P.fk_id_empresa
     GROUP BY E.tipo
     ORDER BY E.tipo";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $result;
 }
@@ -654,11 +723,16 @@ function sendMail($nome, $email, $telefone, $senha, $tipo)
 
 function totalProdutos()
 {
+    $conn = connect();
+
     $query = "SELECT COUNT(id) FROM produto";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
 
     $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $value;
 }
@@ -668,31 +742,41 @@ function totalProjetos()
     $tipo = $_SESSION['tipo'];
     $id_usuario = $_SESSION['id'];
 
+    $conn = connect();
+
     if($tipo == 1)
     {
         $query = "SELECT COUNT(id) FROM projeto";
-        $result = mysqli_query(connect(), $query);
+        $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_row($result);
     }
     else
     {
         $query = "SELECT COUNT(id) FROM projeto WHERE fk_id_usuario = '$id_usuario'";
-        $result = mysqli_query(connect(), $query);
+        $result = mysqli_query($conn, $query);
         $row = mysqli_fetch_row($result);
     }
 
     $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $value;
 }
 
 function totalUsuarios()
 {
+    $conn = connect();
+
     $query = "SELECT COUNT(id) FROM usuario";
-    $result = mysqli_query(connect(), $query);
+    $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
 
     $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 
     return $value;
 }
@@ -773,6 +857,35 @@ function updateSenha($conn, $nova, $email)
 {
     $query = "UPDATE usuario SET senha = '$nova' WHERE email LIKE '$email'";
     $result = mysqli_query($conn, $query);
+}
+
+function updateStatusUsuario($id)
+{
+    /* troca o status do usuário, ativando-o ou desativando-o */
+    $conn = connect();
+
+    $query = "SELECT status, nome FROM usuario WHERE usuario.id = $id";
+    $result = mysqli_query($conn, $query);
+    $resultado = mysqli_fetch_assoc($result);
+    $aux = $resultado['status'];
+    $nome = $resultado['nome'];
+
+    if($aux == 1)
+    {
+        $status = 0;
+        $_SESSION['msg'] = "<p style='color:red;'>Prospectador $nome desativado!</p>";
+    }
+    else
+    {
+        $status = 1;
+        $_SESSION['msg'] = "<p style='color:green;'>Prospectador $nome ativado!</p>";
+    }
+
+    $query = "UPDATE usuario SET status = $status WHERE usuario.id = $id";
+    $result = mysqli_query($conn, $query);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 }
 
 function updateTelefone($conn, $telefone, $id_usuario)
