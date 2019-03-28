@@ -377,7 +377,7 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
 
 function getProspectadores()
 {
-    $query = "SELECT u.id, u.nome, u.email, u.telefone, u.tipo AS permissao, u.status, u.last_access as acesso,
+    $query = "SELECT u.id, u.nome, u.email, u.telefone, u.tipo AS permissao, u.status, DATE_FORMAT(u.last_access,'%d/%m/%Y') AS acesso,
     COUNT(p.id) AS propostas, SUM(p.finalizado) AS finalizadas
     FROM usuario u
     LEFT JOIN projeto p
