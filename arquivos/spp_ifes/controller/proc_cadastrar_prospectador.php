@@ -27,11 +27,17 @@ else /* se a página foi acessada via submit da página anterior */
 
 	if ($row_nome > 0)
 	{
+		/* Fecha a conexão com o banco de dados */
+		closeConnection($conn);
+
 		$_SESSION['msg'] = "<p style='color:red;'>Este usuário já foi cadastrado anteriormente.</p>";
 		header("Location: ../view/cadastrar_prospectador.php");
 	}
 	elseif ($row_email > 0)
 	{
+		/* Fecha a conexão com o banco de dados */
+		closeConnection($conn);
+
 		$_SESSION['msg'] = "<p style='color:red;'>O email inserido já está em uso.</p>";
 		header("Location: ../view/cadastrar_prospectador.php");
 	}
@@ -43,9 +49,15 @@ else /* se a página foi acessada via submit da página anterior */
 
 			sendMail($nome, $email, $telefone, $senha_sem_hash, $tipo);
 
+			/* Fecha a conexão com o banco de dados */
+			closeConnection($conn);
+
 			$_SESSION['msg'] = "<p style='color:green;'>Prospectador cadastrado com sucesso!</p>";
 			header("Location: ../view/configuracoes.php");
 		}else{
+			/* Fecha a conexão com o banco de dados */
+			closeConnection($conn);
+			
 			$_SESSION['msg'] = "<p style='color:red;'>Não foi possível cadastrar o prospectador.</p>";
 			header("Location: ../view/configuracoes.php");
 		}

@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once("funcoes.php");
-$conn = connect();
 
 $btnLogin = filter_input(INPUT_POST, 'btnLogin', FILTER_SANITIZE_STRING);
 
@@ -13,6 +12,7 @@ if($btnLogin)
 	if((!empty($email)) AND (!empty($senha)))
 	{
 		//Pesquisar o usuário no BD
+		$conn = connect();
 		$resultado = getUsuario($conn, $email);
 		
 		if($resultado)
@@ -22,6 +22,9 @@ if($btnLogin)
 			if(password_verify($senha, $row['senha']))
 			{
 				updateAcessoUsuario($conn, $row['id']);
+
+				/* Fecha a conexão com o banco de dados */
+				closeConnection($conn);
 				
 				$_SESSION['id'] = $row['id'];
 				$_SESSION['nome'] = $row['nome'];
@@ -31,6 +34,9 @@ if($btnLogin)
 			}
 			else
 			{
+				/* Fecha a conexão com o banco de dados */
+				closeConnection($conn);
+
 				$_SESSION['msg'] = "Login ou senha incorretos! <br><br>";
 				header("Location: ../view/login.php");
 			}

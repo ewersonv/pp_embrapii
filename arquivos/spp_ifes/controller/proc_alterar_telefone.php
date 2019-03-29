@@ -17,9 +17,15 @@ else /* se a página foi acessada via submit da página anterior */
     updateTelefone($conn, $telefone, $id_usuario);
 
     if(mysqli_affected_rows($conn)){
+        /* Fecha a conexão com o banco de dados */
+        closeConnection($conn);
+        
         $_SESSION['msg'] = "<p style='color:green;'>Telefone alterado com sucesso!</p>";
         header("Location: ../view/configuracoes.php");
     }else{
+        /* Fecha a conexão com o banco de dados */
+        closeConnection($conn);
+        
         $_SESSION['msg'] = "<p style='color:red;'>Não foi possível alterar o telefone.</p>";
         header("Location: ../view/alterar_telefone.php");
     }

@@ -45,9 +45,17 @@ else /* se a página foi acessada via submit da página anterior */
 
 
 	if(mysqli_affected_rows($conn1) or mysqli_affected_rows($conn2)){
+		/* Fecha a conexão com o banco de dados */
+		closeConnection($conn1);
+		closeConnection($conn2);
+
 		$_SESSION['msg'] = "<p style='color:green;'>Alterações realizadas com sucesso!</p>";
 		header("Location: ../view/listar.php");
 	}else{
+		/* Fecha a conexão com o banco de dados */
+		closeConnection($conn1);
+		closeConnection($conn2);
+
 		$_SESSION['msg'] = "<p style='color:red;'>As alterações não foram salvas.</p>";
 		header("Location: ../view/listar.php?id=$id_projeto");
 	}

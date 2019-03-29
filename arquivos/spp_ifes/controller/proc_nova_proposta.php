@@ -55,9 +55,15 @@ else /* se a página foi acessada via submit da página anterior */
 
 
 	if(mysqli_affected_rows($conn)){
+		/* Fecha a conexão com o banco de dados */
+		closeConnection($conn);
+
 		$_SESSION['msg'] = "<p style = 'color:green;'>Proposta cadastrada com sucesso!</p>";
 		header("Location: ../view/listar.php");
 	}else{
+		/* Fecha a conexão com o banco de dados */
+		closeConnection($conn);
+		
 		$_SESSION['msg'] = "<p style = 'color:red;'>Não foi possível cadastrar a proposta.</p>";
 		header("Location: ../view/listar.php?id=$id");
 	}

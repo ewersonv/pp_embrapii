@@ -60,11 +60,17 @@ else /* se a página foi acessada via submit da página anterior */
 
 	if($qtd_total == 0)
 	{
+		/* Fecha a conexão com o banco de dados */
+		closeConnection($conn);
+
 		echo "Nenhum resultado encontrado.";
 	}
 	else
 	{	
 		$result = getPesquisa($conn, $resposta, $tipo, $id_usuario, $inicio, $qnt_result_pg);
+
+		/* Fecha a conexão com o banco de dados */
+		closeConnection($conn);
 		
 		// Nome da página para ser redirecionado
 		$nome_pagina = 'pesquisa.php';

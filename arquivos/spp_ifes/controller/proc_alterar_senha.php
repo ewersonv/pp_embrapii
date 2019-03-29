@@ -23,15 +23,24 @@ else /* se a página foi acessada via submit da página anterior */
         updateSenha($conn, $nova, $email);
 
         if(mysqli_affected_rows($conn)){
+            /* Fecha a conexão com o banco de dados */
+            closeConnection($conn);
+
             $_SESSION['msg'] = "<p style='color:green;'>Senha alterada com sucesso!</p>";
             header("Location: ../view/configuracoes.php");
         }else{
+            /* Fecha a conexão com o banco de dados */
+            closeConnection($conn);
+            
             $_SESSION['msg'] = "<p style='color:red;'>Não foi possível alterar a senha.</p>";
             header("Location: ../view/configuracoes.php");
         }
     }
     else
     {
+        /* Fecha a conexão com o banco de dados */
+        closeConnection($conn);
+        
         $_SESSION['msg'] = "<p style='color:red;'>Senha atual incorreta!</p>";
         header("Location: ../view/alterar_senha.php");
     }

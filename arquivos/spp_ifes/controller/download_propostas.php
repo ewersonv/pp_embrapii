@@ -80,5 +80,8 @@
 	header ("Content-Description: PHP Generated Data" );
 	// Envia o conteúdo do arquivo
 	echo $html;
-	exit;
+    exit;
+    
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
 ?>
