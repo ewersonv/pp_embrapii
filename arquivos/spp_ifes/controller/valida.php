@@ -19,7 +19,15 @@ if($btnLogin)
 		{
 			$row = mysqli_fetch_assoc($resultado);
 
-			if(password_verify($senha, $row['senha']))
+			if($row['status'] == 0)
+			{
+				/* Fecha a conexão com o banco de dados */
+				closeConnection($conn);
+
+				$_SESSION['msg'] = "Usuário desativado. Solicite a reativação à um administrador. <br><br>";
+				header("Location: ../view/login.php");
+			}
+			elseif(password_verify($senha, $row['senha']))
 			{
 				updateAcessoUsuario($conn, $row['id']);
 
