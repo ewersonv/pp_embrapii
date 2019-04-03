@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: 28-Mar-2019 às 21:40
+-- Generation Time: 03-Abr-2019 às 18:16
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -136,11 +136,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `telefone`, `email`, `senha`, `tipo`, `status`, `created`, `last_access`) VALUES
-(1, 'Ewerson Vieira Nascimento', '27996187663', 'ewersonv@gmail.com', '$2y$10$qDA0IO9N6XEmAntmRu3gbuH8eYkBQJojO2gMO.0jhQUGSOFJl0AlK', 1, 1, '2018-11-13 00:00:00', '2019-03-28 16:27:03'),
+(1, 'Ewerson Vieira Nascimento', '27996187663', 'ewersonv@gmail.com', '$2y$10$qDA0IO9N6XEmAntmRu3gbuH8eYkBQJojO2gMO.0jhQUGSOFJl0AlK', 1, 1, '2018-11-13 00:00:00', '2019-04-03 13:11:27'),
 (2, 'Estefano Vieira', '12312312312', 'estefano@gmail.com', '$2y$10$zudQ8X0bx3fNXyGiULey5OccHJJcrqYmI7wGcWBDKDIwm9bhGw6RW', 1, 1, '2018-11-13 00:00:00', '2019-03-28 13:22:00'),
-(3, 'Deise', '27999888998', 'deise@gmail.com', '$2y$10$rWGo13UN0rT/RHJR7IJIj.xqIGLZ.iWFktn88kXb3xEfIb0R8XKI2', 1, 1, '2018-11-13 00:00:00', '2019-03-28 13:22:00'),
-(4, 'Pessoa7', '27123457777', 'pessoa7@email.com', '$2y$10$qDA0IO9N6XEmAntmRu3gbuH8eYkBQJojO2gMO.0jhQUGSOFJl0AlK', 0, 1, '2018-11-13 00:00:00', '2019-03-28 13:22:00'),
-(22, 'Isadora Galli', '27996200409', 'pangosman@gmail.com', '$2y$10$50ymXAnPktLBLqh7bnfozeh3XdQ3HPiqZYhHpbHlgSC5kWvP6HswS', 0, 0, '2018-11-13 00:00:00', '2019-03-28 13:22:00');
+(3, 'Deise', '27999888998', 'deise@gmail.com', '$2y$10$rWGo13UN0rT/RHJR7IJIj.xqIGLZ.iWFktn88kXb3xEfIb0R8XKI2', 1, 1, '2018-11-13 00:00:00', '2019-03-28 22:40:28'),
+(4, 'Pessoa7', '27123457777', 'pessoa7@email.com', '$2y$10$qDA0IO9N6XEmAntmRu3gbuH8eYkBQJojO2gMO.0jhQUGSOFJl0AlK', 0, 1, '2018-11-13 00:00:00', '2019-04-01 09:11:25'),
+(35, 'Daiany Almeida', '27222233333', 'pangosman@gmail.com', '$2y$10$5/g./AZ3nUSO5F7AlGqsreycdQbK7zqsp2uorUH6TIr3TK5EyfgaC', 0, 1, '2019-03-29 14:54:53', NULL);
 
 --
 -- Indexes for dumped tables
@@ -181,25 +181,25 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `empresa`
 --
 ALTER TABLE `empresa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `projeto`
 --
 ALTER TABLE `projeto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

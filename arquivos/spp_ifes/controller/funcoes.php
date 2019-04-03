@@ -134,6 +134,8 @@ function gerarSenha($tamanho, $maiusculas, $minusculas, $numeros, $simbolos){
     $nu = "0123456789"; // $nu contem os números
     $si = "!@#$%¨&*()_+="; // $si contem os símbolos
 
+    $senha = "";
+
     if ($maiusculas){
         // se $maiusculas for "true", a variável $ma é embaralhada e adicionada para a variável $senha
         $senha .= str_shuffle($ma);
@@ -663,16 +665,7 @@ function qtdProjetosTipoUsuario($conn, $resposta, $tipo, $id_usuario)
 
 function sendMail($nome, $email, $telefone, $senha, $tipo)
 {
-    /* require 'mailer/PHPMailerAutoload.php'; 
-
-    $mail->SMTPSecure = 'ssl';
-    $mail->Host = 'ssl://smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Port = 465;
-
-    */
     require '/usr/share/php/libphp-phpmailer/PHPMailerAutoload.php';
-
     if ($tipo == 1)
     {
         $permissao = "permissão de acesso de administrador";
@@ -681,16 +674,14 @@ function sendMail($nome, $email, $telefone, $senha, $tipo)
     {
         $permissao = "permissão de acesso de usuario comum";
     }
-
-    $mail = new PHPMailer();
+    $mail = new PHPMailer(); //PHPMailer(true) habilita throw excepetion usando $mail->SMTPDebug = 3;
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->SMTPSecure = 'ssl';
+    $mail->SMTPSecure = 'tls';
     $mail->Username = 'ewersonv@gmail.com';
     $mail->Password = 'IronMan23';
-    $mail->Port = 465;
-
+    $mail->Port = 587;
     $mail->setFrom('ewersonv@gmail.com', utf8_decode('Plataforma de prospecção'));
     
     $mail->isHTML(true);
@@ -705,11 +696,9 @@ function sendMail($nome, $email, $telefone, $senha, $tipo)
     Telefone: $telefone<br>
     Senha*: <b>$senha</b><br>
     Nível de acesso: $permissao<br><br>
-
     Seu cadastro foi confirmado. Link para acessar a plataforma: http://localhost/pp_embrapii/arquivos/spp_ifes/view/login.php <br>
     *Você pode alterar sua senha na aba 'Configurações'
     ");
-
     if(!$mail->send())
     {
         echo 'Não foi possível enviar a mensagem.<br>';
