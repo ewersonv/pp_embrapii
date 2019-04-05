@@ -1,7 +1,7 @@
 <?php
 include_once("../controller/sessao.php");
 include_once("header.php");
-include_once("../controller/exibicao.php");
+include_once("../model/propostas/exibicao.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

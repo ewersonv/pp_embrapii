@@ -1,6 +1,7 @@
 <?php
 	include_once("sessao.php");
-	include_once("funcoes.php");
+	include_once("../model/funcoes.php");
+	include_once("../model/propostas/funcoes_propostas.php");
 				
 	// Pega o id de acordo com o que o usuário clicou na página anterior
 	$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);

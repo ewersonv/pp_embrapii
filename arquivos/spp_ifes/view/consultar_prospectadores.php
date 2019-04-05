@@ -2,6 +2,7 @@
 include_once("../controller/sessao_adm.php");
 include_once("header.php");
 include_once("../controller/funcoes.php");
+include_once("../model/usuarios/funcoes_usuarios.php");
 $_SESSION['submit'] = 0;
 ?>
 <!DOCTYPE html>

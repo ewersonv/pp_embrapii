@@ -1,7 +1,8 @@
 <?php
 include_once("../controller/sessao_adm.php");
 include_once("header.php");
-include_once("../controller/funcoes.php");
+include_once("../model/funcoes.php");
+include_once("../model/relatorios/funcoes_relatorios.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -12,7 +13,7 @@ include_once("../controller/funcoes.php");
 	google.charts.setOnLoadCallback(ProjetosTempo);
 	<?php
 	$_SESSION['submit'] = 1;
-	include_once("../graficos/ProjetosTempo.php");
+	include_once("../model/relatorios/ProjetosTempo.php");
 	?>
 	</script>
 
@@ -20,7 +21,7 @@ include_once("../controller/funcoes.php");
 	google.charts.setOnLoadCallback(ProjetosEmpresa);
 	<?php
 	$_SESSION['submit'] = 1;
-	include_once("../graficos/ProjetosEmpresa.php");
+	include_once("../model/relatorios/ProjetosEmpresa.php");
 	?>
 	</script>
 
@@ -28,7 +29,7 @@ include_once("../controller/funcoes.php");
 	google.charts.setOnLoadCallback(ProjetosTipoEmpresa);
 	<?php
 	$_SESSION['submit'] = 1;
-	include_once("../graficos/ProjetosTipoEmpresa.php");
+	include_once("../model/relatorios/ProjetosTipoEmpresa.php");
 	?>
 	</script>
 
@@ -36,7 +37,7 @@ include_once("../controller/funcoes.php");
 	google.charts.setOnLoadCallback(ProjetosProspectador);
 	<?php
 	$_SESSION['submit'] = 1;
-	include_once("../graficos/ProjetosProspectador.php");
+	include_once("../model/relatorios/ProjetosProspectador.php");
 	?>
 	</script>
 

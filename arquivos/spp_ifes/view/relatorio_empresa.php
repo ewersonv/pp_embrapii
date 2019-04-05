@@ -2,8 +2,9 @@
 <?php
 include_once("../controller/sessao_adm.php");
 include_once("header.php");
-include_once("../controller/funcoes.php");
-include_once("../controller/exibicao.php");
+include_once("../model/relatorios/funcoes_relatorios.php");
+include_once("../model/funcoes.php");
+include_once("../model/propostas/exibicao.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -79,6 +79,34 @@ function limita_caracteres($texto, $limite, $quebra = true){
    return $novo_texto; // Retorna o valor formatado
 }
 
+function totalProjetos() /* retorna o número total de projetos cadastrados no sistema */
+{
+    $tipo = $_SESSION['tipo'];
+    $id_usuario = $_SESSION['id'];
+
+    $conn = connect();
+
+    if($tipo == 1)
+    {
+        $query = "SELECT COUNT(id) FROM projeto";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_row($result);
+    }
+    else
+    {
+        $query = "SELECT COUNT(id) FROM projeto WHERE fk_id_usuario = '$id_usuario'";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_row($result);
+    }
+
+    $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
+
+    return $value;
+}
+
 function trocaMes($mes)
 {
     if ($mes == 1)

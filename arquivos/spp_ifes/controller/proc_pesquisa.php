@@ -1,8 +1,7 @@
 <?php
 include_once("sessao.php");
-
-//Incluir a conexão com banco de dados
-include_once("funcoes.php");
+include_once("../model/funcoes.php");
+include_once("../model/pesquisas/funcoes_pesquisas.php");
 
 if ($_SESSION['submit'] != 1) /* se a página foi acessada via url */
 {

@@ -1,6 +1,7 @@
 <?php
 	include_once("sessao_adm.php");
-    include_once("funcoes.php");
+    include_once("../model/funcoes.php");
+    include_once("../model/propostas/funcoes_propostas.php");
 
     $conn = connect();
 

@@ -1,6 +1,7 @@
 <?php
 session_start();
-include_once("funcoes.php");
+include_once("../model/funcoes.php");
+include_once("../model/usuarios/funcoes_usuarios.php");
 
 $btnLogin = filter_input(INPUT_POST, 'btnLogin', FILTER_SANITIZE_STRING);
 
@@ -52,7 +53,7 @@ if($btnLogin)
 	}
 	else
 	{
-		$_SESSION['msg'] = "Login ou senha incorretos! <br><br>";
+		$_SESSION['msg'] = "Preencha todos os campos. <br><br>";
 		header("Location: ../view/login.php");
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 include_once("../controller/sessao.php");
 include_once("header.php");
-include_once("../controller/funcoes.php");
+include_once("../model/funcoes.php");
 
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 $row = getProjeto($id);
