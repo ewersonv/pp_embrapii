@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../model/funcoes.php");
+include_once("../model/conexao.php");
 include_once("../model/usuarios/funcoes_usuarios.php");
 
 $btnLogin = filter_input(INPUT_POST, 'btnLogin', FILTER_SANITIZE_STRING);

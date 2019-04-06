@@ -3,6 +3,7 @@
 include_once("../controller/sessao_adm.php");
 include_once("header.php");
 include_once("../model/relatorios/funcoes_relatorios.php");
+include_once("../model/conexao.php");
 include_once("../model/funcoes.php");
 include_once("../model/propostas/exibicao.php");
 ?>

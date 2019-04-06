@@ -1,6 +1,6 @@
 <?php
 	include_once("sessao.php");
-	include_once("../model/funcoes.php");
+	include_once("../model/conexao.php");
 	include_once("../model/propostas/funcoes_propostas.php");
 				
 	// Pega o id de acordo com o que o usuário clicou na página anterior

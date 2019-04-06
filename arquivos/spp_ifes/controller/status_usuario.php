@@ -1,6 +1,6 @@
 <?php
     include_once("sessao_adm.php");
-    include_once("../model/funcoes.php");
+    include_once("../model/conexao.php");
     include_once("../model/usuarios/funcoes_usuarios.php");
     
     if ($_SESSION['submit'] != 1) /* se a página foi acessada via url */

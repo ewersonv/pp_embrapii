@@ -7,6 +7,7 @@ if ($_SESSION['submit'] != 1) /* se a página foi acessada via url */
 else /* se a página foi acessada via submit da página anterior */
 {
     include_once("../model/funcoes.php");
+    include_once("../model/propostas/funcoes_exibicao.php");
     $_SESSION['submit'] = 0;
 
     $id_usuario = $_SESSION['id'];

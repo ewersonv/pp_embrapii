@@ -1,11 +1,12 @@
 <?php
 include_once("../controller/sessao.php");
 include_once("header.php");
+include_once("../model/conexao.php");
 include_once("../model/funcoes.php");
-$_SESSION['submit'] = 1; /* submit = 1 para incluir exibicao.php */
-include_once("../model/propostas/exibicao.php");
 include_once("../model/propostas/funcoes_propostas.php");
 include_once("../model/propostas/funcoes_exibicao.php");
+$_SESSION['submit'] = 1; /* submit = 1 para incluir exibicao.php */
+include_once("../model/propostas/exibicao.php");
 $_SESSION['submit'] = 0;
 ?>
 <!DOCTYPE html>

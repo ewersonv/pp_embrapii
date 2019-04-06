@@ -1,6 +1,6 @@
 <?php
 include_once("sessao.php");
-include_once("../model/funcoes.php");
+include_once("../model/conexao.php");
 include_once("../model/pesquisas/funcoes_pesquisas.php");
 
 if ($_SESSION['submit'] != 1) /* se a página foi acessada via url */
