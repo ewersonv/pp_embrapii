@@ -5,6 +5,12 @@
 
     $conn = connect();
 
+    /* CONTROLE DE ACESSO */
+	if($_SESSION['tipo'] != 1){ /* usuário não é administrador e não criou a proposta */
+		$_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
+		header("Location: ../view/index.php");
+    }
+
     // Definimos o nome do arquivo que será exportado
     $arquivo = 'Propostas.xls';
     
