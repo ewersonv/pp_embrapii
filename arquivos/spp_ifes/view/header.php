@@ -18,7 +18,7 @@
 			<div class="container d-flex flex-column flex-md-row justify-content-between">
                 <a class="py-2 d-none d-md-inline-block" href="index.php">Início</a>
 				<a class="py-2 d-none d-md-inline-block" href="listar.php">Listar propostas</a>
-				<a class="py-2 d-none d-md-inline-block"href="nova_proposta.php">Nova Proposta</a>
+				<a class="py-2 d-none d-md-inline-block" href="nova_proposta.php">Nova Proposta</a>
 				<?php
 				if ($_SESSION['tipo'] == 1)
 				{

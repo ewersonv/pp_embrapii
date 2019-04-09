@@ -31,7 +31,7 @@ $_SESSION['submit'] = 0;
 				$tipo = $_SESSION['tipo'];
 				if ($tipo == 1)
 				{
-					echo "<a class='btn btn btn-outline-success' href='../controller/download_propostas.php' role='button'>Baixar propostas</a></p>";
+					echo "<a class='btn btn-outline-success' href='../controller/gerar_xls.php?id=-1' role='button'>Baixar propostas</a></p>";
 				}
 				?>
 			

@@ -142,4 +142,18 @@ function getProjeto($id)
     return $row;
 }
 
+function getNomeProjeto($id)
+{
+    $conn = connect();
+
+    $query = "SELECT nome FROM projeto WHERE id = $id";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+
+    /* Fecha a conexao com o banco de dados */
+    closeConnection($conn);
+
+    return $row[0];
+}
+
 ?>

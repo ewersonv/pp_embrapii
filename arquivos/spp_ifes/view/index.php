@@ -24,7 +24,12 @@ include_once("header.php");
 						<input class="form-control mr-sm-2" style="max-width: 400px;" type="text" name="nome_projeto" placeholder="Nome do projeto"> <br>
 						<input class="form-control mr-sm-2" style="max-width: 400px;" type="text" name="nome_produto" placeholder="Nome do produto"> <br>
 						<input class="form-control mr-sm-2" style="max-width: 400px;" type="text" name="nome_empresa" placeholder="Nome da empresa"> <br>
-						<input class="form-control mr-sm-2" style="max-width: 400px;" type="text" name="nome_usuario" placeholder="Nome do prospectador"> <br>
+						<?php
+						if($_SESSION['tipo'] == 1) // Usuário comum não pode ver propostas de outros prospectadores
+						{
+							echo "<input class='form-control mr-sm-2' style='max-width: 400px;' type='text' name='nome_usuario' placeholder='Nome do prospectador'> <br>";
+						}
+						?>
 					</div>
 						<br><button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
 				</form>

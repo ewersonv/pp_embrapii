@@ -20,10 +20,8 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 			<div class="py-5 text-center">
 				<h1>Visualizar proposta</h1>
 				<div class="py-2 text-right">
-					<?php
-						echo "<p><a class='btn btn-sm mr-4 btn-outline-danger' href='../controller/gerar_pdf.php?id=". $id . "' role='button'>Gerar PDF</a>";
-						echo "<a class='btn btn-sm mr-4 btn-outline-success' href='../controller/gerar_planilha.php?id=". $id . "' role='button'>Gerar XLS</a></p>";
-					?>
+					<a class='btn btn-sm mr-4 btn-outline-danger' href="#" role='button' onclick="pdf(<?php echo $id; ?>)">Gerar PDF</a>
+					<a class='btn btn-sm mr-4 btn-outline-success' href="#" role='button' onclick="xls(<?php echo $id; ?>)">Gerar XLS</a></p>
 				</div>
 			</div>
 			
@@ -110,4 +108,18 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 			<script src="js/bootstrap.min.js"></script>
 		</div>
 	</body>
+	<script>
+	function pdf(id)
+	{
+		<?php $_SESSION['submit'] = 1; ?>;
+		location.href = '../controller/gerar_pdf.php?id='+ id;
+	}
+	</script>
+	<script>
+	function xls(id)
+	{
+		<?php $_SESSION['submit'] = 1; ?>;
+		location.href = '../controller/gerar_xls.php?id='+ id;
+	}
+	</script>
 </html>

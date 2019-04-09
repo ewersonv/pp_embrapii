@@ -34,7 +34,7 @@ else /* se a página foi acessada via submit da página anterior */
                         acessarProposta($tipo, $id_usuario, $row_id_usuario, $row_finalizado, $row_id_projeto);
 
                         echo "<a class='btn btn-sm mr-2 btn-outline-danger' href='../controller/gerar_pdf.php?id=" . $row['id_projeto'] . "' role='button'>PDF</a>";
-                        echo "<a class='btn btn-sm mr-1 btn-outline-success' href='../controller/gerar_planilha.php?id=" . $row['id_projeto'] . "' role='button'>XLS</a>";
+                        echo "<a class='btn btn-sm mr-1 btn-outline-success' href='../controller/gerar_xls.php?id=" . $row['id_projeto'] . "' role='button'>XLS</a>";
                         ?>
                         <a class='btn btn-sm btn-danger' href="#" role='button' onclick="confirma(<?php echo $row['id_projeto']; ?>)">DELETAR PROPOSTA</a></p>
                         
