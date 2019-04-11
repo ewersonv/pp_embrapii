@@ -94,27 +94,27 @@ $_SESSION['submit'] = 0;
             </form>
         </div>
     </div>
-    <script>
-        function ativar(id)
-        {
-            var confirmar = confirm('O prospectador selecionado poderá acessar a plataforma novamente.');
-            if (confirmar)
-            {
-                <?php $_SESSION['submit'] = 1; ?>;
-                location.href = '../controller/status_usuario.php?id='+ id;
-            }
-        }
-    </script>
-    <script>
-        function desativar(id)
-        {
-            var confirmar = confirm('Você realmente deseja desativar este prospectador?\n\nO prospectador selecionado não poderá acessar a plataforma.');
-            if (confirmar)
-            {
-                <?php $_SESSION['submit'] = 1; ?>;
-                location.href = '../controller/status_usuario.php?id='+ id;
-            }
-        }
-    </script>
 </body>
+<script>
+    function ativar(id)
+    {
+        var confirmar = confirm('O prospectador selecionado poderá acessar a plataforma novamente.');
+        if (confirmar)
+        {
+            <?php $_SESSION['submit'] = 1; ?>;
+            location.href = '../controller/status_usuario.php?id='+ id;
+        }
+    }
+</script>
+<script>
+    function desativar(id)
+    {
+        var confirmar = confirm('Você realmente deseja desativar este prospectador?\n\nO prospectador selecionado não poderá acessar a plataforma.');
+        if (confirmar)
+        {
+            <?php $_SESSION['submit'] = 1; ?>;
+            location.href = '../controller/status_usuario.php?id='+ id;
+        }
+    }
+</script>
 </html>

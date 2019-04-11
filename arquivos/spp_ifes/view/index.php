@@ -37,19 +37,19 @@ include_once("header.php");
 				
 			</div>
 		</div>
-		<script>
-			function validateAndSend() {
-				if (formulario.nome_empresa.value == '' && formulario.nome_usuario.value == '' && formulario.nome_produto.value == '' && formulario.nome_projeto.value == '') {
-					alert('Você precisa preencher pelo menos um campo.');
-					return false;
-				}
-				else {
-					<?php $_SESSION['submit'] = 1; ?>
-					formulario.submit();
-				}
-			}
-		</script>
 	</body>
+	<script>
+		function validateAndSend() {
+			if (formulario.nome_empresa.value == '' && formulario.nome_usuario.value == '' && formulario.nome_produto.value == '' && formulario.nome_projeto.value == '') {
+				alert('Você precisa preencher pelo menos um campo.');
+				return false;
+			}
+			else {
+				<?php $_SESSION['submit'] = 1; ?>
+				formulario.submit();
+			}
+		}
+	</script>
 </html>
 <style>
 	body.center-form {

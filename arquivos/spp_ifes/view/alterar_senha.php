@@ -34,29 +34,29 @@ $_SESSION['submit'] = 0;
             </form>
         </div>
     </div>
-    <script>
-        function validate() {
-            var regex = /^(?=(?:.*?[A-Z]){2})(?=(?:.*?[0-9]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
-
-            if (formulario.atual.value == '' || formulario.nova.value == '') {
-                alert('Por favor, preencha todos os campos.');
-                return false;
-            }
-            if (formulario.nova.value.length < 8) {
-                alert('A senha precisa ter no mínimo 8 caracteres.');
-                formulario.nova.focus();
-                return false;
-            }
-            else if(!regex.exec(formulario.nova.value)) {
-                alert("A senha deve conter no mínimo 2 caracteres em maiúsculo e 1 número");
-                formulario.nova.focus();
-                return false;
-            }
-            else {
-                <?php $_SESSION['submit'] = 1; ?>
-                formulario.submit();
-            }
-        }
-    </script>
 </body>
+<script>
+    function validate() {
+        var regex = /^(?=(?:.*?[A-Z]){2})(?=(?:.*?[0-9]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
+
+        if (formulario.atual.value == '' || formulario.nova.value == '') {
+            alert('Por favor, preencha todos os campos.');
+            return false;
+        }
+        if (formulario.nova.value.length < 8) {
+            alert('A senha precisa ter no mínimo 8 caracteres.');
+            formulario.nova.focus();
+            return false;
+        }
+        else if(!regex.exec(formulario.nova.value)) {
+            alert("A senha deve conter no mínimo 2 caracteres em maiúsculo e 1 número");
+            formulario.nova.focus();
+            return false;
+        }
+        else {
+            <?php $_SESSION['submit'] = 1; ?>
+            formulario.submit();
+        }
+    }
+</script>
 </html>

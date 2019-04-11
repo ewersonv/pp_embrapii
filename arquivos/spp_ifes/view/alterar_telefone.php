@@ -30,29 +30,29 @@ $_SESSION['submit'] = 0;
             </form>
         </div>
     </div>
-    <script>
-        function validate() {
-            var regex = /^(?!.*\s)[0-9]*$/;
-
-            if (formulario.telefone.value == '') {
-                formulario.telefone.focus();
-                return false;
-            }
-            if (formulario.telefone.value.length < 11) {
-                alert('Número de telefone inválido.');
-                formulario.telefone.focus();
-                return false;
-            }
-            else if(!regex.exec(formulario.telefone.value)) {
-                alert("Número de telefone inválido");
-                formulario.nova.focus();
-                return false;
-            }
-            else {
-                <?php $_SESSION['submit'] = 1; ?>
-                formulario.submit();
-            }
-        }
-    </script>
 </body>
+<script>
+    function validate() {
+        var regex = /^(?!.*\s)[0-9]*$/;
+
+        if (formulario.telefone.value == '') {
+            formulario.telefone.focus();
+            return false;
+        }
+        if (formulario.telefone.value.length < 11) {
+            alert('Número de telefone inválido.');
+            formulario.telefone.focus();
+            return false;
+        }
+        else if(!regex.exec(formulario.telefone.value)) {
+            alert("Número de telefone inválido");
+            formulario.nova.focus();
+            return false;
+        }
+        else {
+            <?php $_SESSION['submit'] = 1; ?>
+            formulario.submit();
+        }
+    }
+</script>
 </html>

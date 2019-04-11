@@ -87,30 +87,30 @@ $_SESSION['submit'] = 0;
 						</div>
 					</div>
 				</form>
-				<script>
-					function validate() {
-						var regex = /^(?!.*\s)[0-9]*$/;
-
-						if (formulario.cnpj.value == '') {
-							formulario.cnpj.focus();
-							return false;
-						}
-						if (formulario.cnpj.value.length < 14) {
-							alert('Número de CNPJ inválido.');
-							formulario.cnpj.focus();
-							return false;
-						}
-						else if(!regex.exec(formulario.cnpj.value)) {
-							alert("Número de CNPJ inválido");
-							formulario.cnpj.focus();
-							return false;
-						}
-						else {
-							<?php $_SESSION['submit'] = 1; ?>
-							formulario.submit();
-						}
-					}
-				</script>
 		</div>
 	</body>
+	<script>
+		function validate() {
+			var regex = /^(?!.*\s)[0-9]*$/;
+
+			if (formulario.cnpj.value == '') {
+				formulario.cnpj.focus();
+				return false;
+			}
+			if (formulario.cnpj.value.length < 14) {
+				alert('Número de CNPJ inválido.');
+				formulario.cnpj.focus();
+				return false;
+			}
+			else if(!regex.exec(formulario.cnpj.value)) {
+				alert("Número de CNPJ inválido");
+				formulario.cnpj.focus();
+				return false;
+			}
+			else {
+				<?php $_SESSION['submit'] = 1; ?>
+				formulario.submit();
+			}
+		}
+	</script>
 </html>
