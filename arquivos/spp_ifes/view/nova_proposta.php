@@ -16,9 +16,6 @@ $_SESSION['submit'] = 0;
 
 						<label><b>Nome do projeto: </b></label><br>
 						<input type="text" class="form-control" name="nome_projeto" placeholder="Nome do projeto" maxlength="100" required><br><br>
-						<div class="invalid-feedback">
-							Campo "Nome do projeto" inválido.
-						</div>
 
 						<label><b>Nome do produto que será desenvolvido: </b></label>
 						<input type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" maxlength="100" required><br><br>
@@ -28,15 +25,9 @@ $_SESSION['submit'] = 0;
 						
 						<label><b>Nome da empresa: </b></label><br>
 						<input type="text" class="form-control" name="nome_empresa" placeholder="Nome da empresa" maxlength="100" required><br><br>
-						<div class="invalid-feedback">
-							Campo "Nome da empresa" inválido.
-						</div>
 
 						<label><b>CNPJ: </b></label><br>
 						<input type="text" class="form-control" name="cnpj" placeholder="Apenas números" maxlength="14" required><br><br>
-						<div class="invalid-feedback">
-							Campo "CNPJ" inválido.
-						</div>
 
 						<label><b>Tipo de empresa: </b></label><br>
 						<div class="custom-control custom-radio">
