@@ -1,54 +1,62 @@
-/* fisico: */
+/* logico: */
 
 CREATE TABLE EMPRESA (
-    id_empresa INTEGER PRIMARY KEY,
-    nome_empresa VARCHAR(100),
-    cnpj VARCHAR(14),
-    tipo_empresa VARCHAR(50)
+    id INTEGER PRIMARY KEY,
+    nome VARCHAR,
+    cnpj VARCHAR,
+    tipo VARCHAR
 );
 
-CREATE TABLE PESSOA (
-    id_pessoa INTEGER PRIMARY KEY,
-    nome_pessoa VARCHAR(100),
-    telefone VARCHAR(11),
-    email VARCHAR(100)
+CREATE TABLE USUARIO (
+    id INTEGER PRIMARY KEY,
+    nome VARCHAR,
+    telefone VARCHAR,
+    email VARCHAR,
+    senha VARCHAR,
+    tipo INTEGER,
+    status INTEGER,
+    created DATETIME,
+    last_access DATETIME
 );
 
 CREATE TABLE PROJETO (
-    id_projeto INTEGER PRIMARY KEY,
-    viabilidade VARCHAR(2000),
-    efeitos VARCHAR(2000),
-    equipe VARCHAR(2000),
-    nome_projeto VARCHAR(100),
-    riscos VARCHAR(2000),
-    entregas VARCHAR(2000),
-    premissas VARCHAR(2000),
-    cronograma VARCHAR(2000),
-    custo VARCHAR(2000),
-    interessados VARCHAR(2000),
-    anotacoes_complementares VARCHAR(2000),
-    id_empresa INTEGER,
-    id_pessoa INTEGER
+    id INTEGER PRIMARY KEY,
+    viabilidade VARCHAR,
+    efeitos VARCHAR,
+    equipe VARCHAR,
+    nome VARCHAR,
+    riscos VARCHAR,
+    entregas VARCHAR,
+    premissas VARCHAR,
+    cronograma VARCHAR,
+    custo VARCHAR,
+    anotacoes_complementares VARCHAR,
+    interessados VARCHAR,
+    finalizado INTEGER,
+    created DATETIME,
+    modified DATETIME,
+    FK_EMPRESA_id INTEGER,
+    FK_USUARIO_id INTEGER
 );
 
 CREATE TABLE PRODUTO (
-    id_produto INTEGER PRIMARY KEY,
-    nome_produto VARCHAR(450),
-    descricao_produto VARCHAR(4000),
-    id_projeto INTEGER
+    id INTEGER PRIMARY KEY,
+    descricao VARCHAR,
+    nome VARCHAR,
+    FK_PROJETO_id INTEGER
 );
  
-ALTER TABLE PROJETO ADD CONSTRAINT FK_PROJETO_1
-    FOREIGN KEY (id_empresa)
-    REFERENCES EMPRESA (id_empresa)
-    ON DELETE RESTRICT ON UPDATE RESTRICT;
- 
 ALTER TABLE PROJETO ADD CONSTRAINT FK_PROJETO_2
-    FOREIGN KEY (id_pessoa)
-    REFERENCES PESSOA (id_pessoa)
-    ON DELETE RESTRICT ON UPDATE RESTRICT;
+    FOREIGN KEY (FK_EMPRESA_id)
+    REFERENCES EMPRESA (id)
+    ON DELETE RESTRICT;
  
-ALTER TABLE PRODUTO ADD CONSTRAINT FK_PRODUTO_1
-    FOREIGN KEY (id_projeto)
-    REFERENCES PROJETO (id_projeto)
-    ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE PROJETO ADD CONSTRAINT FK_PROJETO_3
+    FOREIGN KEY (FK_USUARIO_id)
+    REFERENCES USUARIO (id)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE PRODUTO ADD CONSTRAINT FK_PRODUTO_2
+    FOREIGN KEY (FK_PROJETO_id)
+    REFERENCES PROJETO (id)
+    ON DELETE RESTRICT;
