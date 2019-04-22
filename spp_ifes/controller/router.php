@@ -1,51 +1,52 @@
-<?
-$request = $_SERVER['REDIRECT_URL'];
+<?php
+$request = $_SERVER['REQUEST_URI'];
+$aux = explode("/", $request);
+$pasta = $aux[count($aux)-3];
+$mvc = $aux[count($aux)-2];
+$request = $aux[count($aux)-1];
 
 switch ($request) {
-    case '/' :
-        require __DIR__ . '/index.php';
-        break;
     case '' :
-        require __DIR__ . '/index.php';
+        header('../view/index.php');
         break;
     case '/alterar_senha' :
-        require __DIR__ . '/alterar_senha.php';
+        require '../view/alterar_senha.php';
         break;
     case '/alterar_telefone' :
-        require __DIR__ . '/alterar_telefone.php';
+        require '../view/alterar_telefone.php';
         break;
     case '/cadastrar_prospectador' :
-        require __DIR__ . '/cadastrar_prospectador.php';
+        require '../view/cadastrar_prospectador.php';
         break;
     case '/configuracoes' :
-        require __DIR__ . '/configuracoes.php';
+        require '../view/configuracoes.php';
         break;
     case '/consultar_prospectador' :
-        require __DIR__ . '/consultar_prospectador.php';
+        require '../view/consultar_prospectador.php';
         break;
     case '/listar' :
-        require __DIR__ . '/listar.php';
+        require '../view/listar.php';
         break;
     case '/nova_proposta' :
-        require __DIR__ . '/nova_proposta.php';
+        require '../view/nova_proposta.php';
         break;
     case '/pesquisa' :
-        require __DIR__ . '/pesquisa.php';
+        require '../view/pesquisa.php';
         break;
     case '/relatorio_empresa' :
-        require __DIR__ . '/relatorio_empresa.php';
+        require '../view/relatorio_empresa.php';
         break;
     case '/relatorio_prospectador' :
-        require __DIR__ . '/relatorio_prospectador.php';
+        require '../view/relatorio_prospectador.php';
         break;
     case '/relatorios' :
-        require __DIR__ . '/relatorios.php';
+        require '../view/relatorios.php';
         break;
     case '/sair' :
-        require __DIR__ . '/sair.php';
+        require '../view/sair.php';
         break;
     default:
-        require __DIR__ . '/404.php';
+        header('../view/index.php');
         break;
 }
 ?>

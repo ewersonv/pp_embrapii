@@ -8,6 +8,8 @@ if(isset($_SESSION['msg'])){
 }
 
 include_once("header.php");
+include_once("../controller/router.php");
+
 ?>
 
 <html lang="pt-br">
