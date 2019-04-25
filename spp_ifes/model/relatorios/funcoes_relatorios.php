@@ -186,15 +186,15 @@ function projetosProspectador() /* retorna o número de projetos por prospectado
     return $result;
 }
 
-function projetosTempo() /* retorna o número de projetos por mês, desde o registro do primeiro projeto */
+function projetosUltimosMeses() /* retorna o número de projetos por mês, desde o registro do primeiro projeto */
 {
     $conn = connect();
 
-    $query = "SELECT COUNT(id) AS qtd, MONTH(created) as mes
-	FROM projeto
-	WHERE created >= (SELECT created FROM projeto ORDER BY created LIMIT 1)
-	GROUP BY MONTH(created)
-    ORDER BY created";
+    $query = "SELECT COUNT(id) as qtd, MONTH(created) as mes
+    FROM projeto
+    WHERE created BETWEEN CURDATE() - INTERVAL 6 MONTH AND CURDATE()
+    GROUP BY MONTH(created)
+    ORDER BY created DESC";
     $result = mysqli_query($conn, $query);
 
     /* Fecha a conexão com o banco de dados */

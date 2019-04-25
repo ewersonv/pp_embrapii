@@ -7,15 +7,32 @@
 	{
 		$_SESSION['submit'] = 0;
 	
-		$result = projetosTempo();
+		$result = projetosUltimosMeses();
 
-		$aux = [];
+		$mesAtual = date("n");
+		$meses = [];
 		$qtd = [];
-		while($row = mysqli_fetch_assoc($result))
+		$mes = $mesAtual;
+
+		$row = mysqli_fetch_assoc($result);
+
+		for ($i = 0; $i < 6; $i++)
 		{
-			$mes = utf8_encode($row['mes']);
-			$aux[] = trocaMes($mes);
-			$qtd[] = $row['qtd'];
+			$meses[] = trocaMes($mes);
+			if (utf8_encode($row['mes']) == $mes)
+			{
+				$qtd[] = utf8_encode($row['qtd']);
+				$row = mysqli_fetch_assoc($result);
+			}
+			else
+			{
+				$qtd[] = 0;
+			}
+			$mes = $mes - 1;
+			if ($mes < 1)
+			{
+				$mes = 12;
+			}
 		}
 	}
 ?>
@@ -23,14 +40,14 @@ function ProjetosTempo() {
 	var data = google.visualization.arrayToDataTable([
 		['Mês', 'Quantidade de projetos'],
 		<?php
-		for($i = 0; $i<count($aux) ; $i++){
+		for($i = count($meses)-1; $i >= 0 ; $i--){
 		?>
-		['<?php echo $aux[$i] ?>',   <?php echo $qtd[$i] ?>],
+		['<?php echo $meses[$i] ?>',   <?php echo $qtd[$i] ?>],
 		<?php } ?>
 	]);
 
 	var options = {
-		title: 'Número de projetos prospectados por mês',
+		title: 'Número de projetos prospectados nos últimos 6 meses',
 		backgroundColor: 'transparent',
 		curveType: 'function',
     	legend: { position: 'bottom' }
