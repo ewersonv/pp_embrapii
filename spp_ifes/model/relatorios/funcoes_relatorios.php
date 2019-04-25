@@ -73,6 +73,27 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
     return $result;
 }
 
+function maiorProspectador()
+{
+    $conn = connect();
+
+    $query = "SELECT fk_id_usuario, COUNT(fk_id_usuario) FROM projeto GROUP BY fk_id_usuario ORDER BY COUNT(fk_id_usuario) DESC LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+    $id_usuario = $row[0];
+    $max = $row[1];
+
+    $query = "SELECT nome FROM usuario WHERE id = '$id_usuario'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+    $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
+
+    return $value;
+}
+
 function numProjetosEmpresa($nome)
 {
     $conn = connect();
@@ -93,6 +114,22 @@ function numProjetosEmpresa($nome)
     return $value;
 }
 
+function numProjetosFinalizados()
+{
+    $conn = connect();
+
+    $query = "SELECT COUNT(id) FROM projeto WHERE finalizado = 1";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+
+    $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
+
+    return $value;
+}
+
 function numProjetosUsuario($nome)
 {
     $conn = connect();
@@ -103,27 +140,6 @@ function numProjetosUsuario($nome)
     $id_usuario = $row[0];
 
     $query = "SELECT COUNT(fk_id_usuario) FROM projeto WHERE fk_id_usuario = '$id_usuario'";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_row($result);
-    $value = $row[0];
-
-    /* Fecha a conexão com o banco de dados */
-    closeConnection($conn);
-
-    return $value;
-}
-
-function maiorProspectador()
-{
-    $conn = connect();
-
-    $query = "SELECT fk_id_usuario, COUNT(fk_id_usuario) FROM projeto GROUP BY fk_id_usuario ORDER BY COUNT(fk_id_usuario) DESC LIMIT 1";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_row($result);
-    $id_usuario = $row[0];
-    $max = $row[1];
-
-    $query = "SELECT nome FROM usuario WHERE id = '$id_usuario'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
     $value = $row[0];
