@@ -94,6 +94,22 @@ function maiorProspectador()
     return $value;
 }
 
+function numAnalisesFinalizadas()
+{
+    $conn = connect();
+
+    $query = "SELECT COUNT(id) FROM projeto WHERE finalizado = 1";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+
+    $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
+
+    return $value;
+}
+
 function numProjetosEmpresa($nome)
 {
     $conn = connect();
@@ -106,22 +122,6 @@ function numProjetosEmpresa($nome)
     $query = "SELECT COUNT(fk_id_empresa) FROM projeto WHERE fk_id_empresa = $id_empresa";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_row($result);
-    $value = $row[0];
-
-    /* Fecha a conexão com o banco de dados */
-    closeConnection($conn);
-
-    return $value;
-}
-
-function numProjetosFinalizados()
-{
-    $conn = connect();
-
-    $query = "SELECT COUNT(id) FROM projeto WHERE finalizado = 1";
-    $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_row($result);
-
     $value = $row[0];
 
     /* Fecha a conexão com o banco de dados */
