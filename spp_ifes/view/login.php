@@ -13,13 +13,6 @@ session_start();
 	</head>
     <body>
         
-        <?php
-			if(isset($_SESSION['msg'])){
-				echo $_SESSION['msg'];
-				unset($_SESSION['msg']);
-			}
-        ?>
-        
         <div class="wrapper fadeInDown">
             <div id="formContent">
                  <!-- Icon -->
