@@ -24,7 +24,7 @@ session_start();
             <div id="formContent">
                  <!-- Icon -->
                 <div class="fadeIn first">
-                    <img src="https://raw.githubusercontent.com/v1eira/pp_embrapii/master/arquivos/img/LOGO_POLO-vertical-JPEG.jpg" id="icon" alt="User Icon" />
+                    <img src="img/LOGO_POLO-vertical-JPEG.jpg" id="icon" alt="User Icon" />
                 </div>
                 
                 <!-- Login Form -->
