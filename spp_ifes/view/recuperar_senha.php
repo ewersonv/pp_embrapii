@@ -24,19 +24,18 @@ session_start();
             <div id="formContent">
                  <!-- Icon -->
                 <div class="fadeIn first">
-                    <img src="img/LOGO_POLO-vertical-JPEG.jpg" id="icon" alt="User Icon" />
+                    <br><br><h5>Informe seu email para recuperar a senha</h5><br>
                 </div>
                 
                 <!-- Login Form -->
-                <form method="POST" action="../controller/valida.php">
+                <form method="POST" action="../controller/valida_recuperar_senha.php">
                     <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email">
-                    <input type="password" id="password" class="fadeIn third" name="senha" placeholder="Digite a sua senha">
-                    <input type="submit" class="fadeIn fourth" name="btnLogin" value="Entrar">
+                    <input type="submit" class="fadeIn fourth" name="btnLogin" value="Recuperar">
                 </form>
 
                 <!-- Remind Password -->
                 <div id="formFooter">
-                    <a class="underlineHover" href="recuperar_senha.php">Esqueceu sua senha?</a>
+                    <a class="underlineHover" href="login.php">Voltar</a>
                 </div>
             </div>
         </div>

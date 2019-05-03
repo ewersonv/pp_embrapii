@@ -37,6 +37,100 @@ function getSenha($conn, $email)
     return $row['senha'];
 }
 
+function insertUsuario($conn, $nome, $telefone, $email, $senha, $tipo)
+{
+    /* Insere usuário no BD */
+
+    $query = "INSERT INTO usuario (nome, telefone, email, senha, tipo, status, created, last_access) VALUES ('$nome', '$telefone', '$email', '$senha', '$tipo', 1, NOW(), NULL)";
+	$result = mysqli_query($conn, $query);
+}
+
+function sendMail($nome, $email, $telefone, $senha, $tipo)
+{
+    require '/usr/share/php/libphp-phpmailer/PHPMailerAutoload.php';
+    if ($tipo == 1)
+    {
+        $permissao = "permissão de acesso de administrador";
+    }
+    else
+    {
+        $permissao = "permissão de acesso de usuario comum";
+    }
+    $mail = new PHPMailer(); //PHPMailer(true) habilita throw excepetion usando $mail->SMTPDebug = 3;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'tls';
+    $mail->Username = 'ewersonv@gmail.com';
+    $mail->Password = 'IronMan23';
+    $mail->Port = 587;
+    $mail->setFrom('ewersonv@gmail.com', utf8_decode('Plataforma de prospecção'));
+    
+    $mail->isHTML(true);
+
+    // Endereço do e-mail do destinatário
+    //$mail->addAddress("$email");
+    $mail->addAddress("ewersonv@gmail.com");
+    
+    $mail->Subject = utf8_decode('Confirmação de cadastro na plataforma de prospecção');
+    $mail->Body    = utf8_decode("
+    Nome: $nome<br>
+    Login: $email<br>
+    Telefone: $telefone<br>
+    Senha*: <b>$senha</b><br>
+    Nível de acesso: $permissao<br><br>
+    Seu cadastro foi confirmado. Link para acessar a plataforma: http://localhost/pp_embrapii/arquivos/spp_ifes/view/login.php <br>
+    *Você pode alterar sua senha na aba 'Configurações'
+    ");
+    if(!$mail->send())
+    {
+        echo 'Não foi possível enviar a mensagem.<br>';
+        echo 'Erro: ' . $mail->ErrorInfo;
+    }
+    else
+    {
+        echo 'Mensagem enviada.';
+    }
+}
+
+function sendMailRecuperarSenha($nome, $email, $senha)
+{
+    require '/usr/share/php/libphp-phpmailer/PHPMailerAutoload.php';
+
+    $mail = new PHPMailer(); //PHPMailer(true) habilita throw excepetion usando $mail->SMTPDebug = 3;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'tls';
+    $mail->Username = 'ewersonv@gmail.com';
+    $mail->Password = 'IronMan23';
+    $mail->Port = 587;
+    $mail->setFrom('ewersonv@gmail.com', utf8_decode('Plataforma de prospecção'));
+    
+    $mail->isHTML(true);
+
+    // Endereço do e-mail do destinatário
+    //$mail->addAddress("$email");
+    $mail->addAddress("ewersonv@gmail.com");
+    
+    $mail->Subject = utf8_decode('Recuperação de senha');
+    $mail->Body    = utf8_decode("
+    Olá $nome,<br>
+    Sua nova senha é: <b>$senha</b>.<br>
+    Você pode alterar sua senha na aba 'Configurações' em http://localhost/pp_embrapii/arquivos/spp_ifes/view/login.php.
+    ");
+    if(!$mail->send())
+    {
+        $_SESSION['msg'] = "Não foi possível enviar a mensagem.<br>";
+        header("Location: ../view/recuperar_senha.php");
+    }
+    else
+    {
+        $_SESSION['msg'] = "Uma mensagem contendo a nova senha de acesso foi enviada para o email informado. <br><br>";
+	    header("Location: ../view/login.php");
+    }
+}
+
 function updateAcessoUsuario($conn, $id)
 {
     $query = "UPDATE usuario SET last_access = NOW() WHERE usuario.id = $id";
@@ -104,61 +198,6 @@ function verificaEmailUsuario($conn, $email)
     $row_email = mysqli_fetch_assoc($result);
 
     return $row_email;
-}
-
-function insertUsuario($conn, $nome, $telefone, $email, $senha, $tipo)
-{
-    /* Insere usuário no BD */
-
-    $query = "INSERT INTO usuario (nome, telefone, email, senha, tipo, status, created, last_access) VALUES ('$nome', '$telefone', '$email', '$senha', '$tipo', 1, NOW(), NULL)";
-	$result = mysqli_query($conn, $query);
-}
-
-function sendMail($nome, $email, $telefone, $senha, $tipo)
-{
-    require '/usr/share/php/libphp-phpmailer/PHPMailerAutoload.php';
-    if ($tipo == 1)
-    {
-        $permissao = "permissão de acesso de administrador";
-    }
-    else
-    {
-        $permissao = "permissão de acesso de usuario comum";
-    }
-    $mail = new PHPMailer(); //PHPMailer(true) habilita throw excepetion usando $mail->SMTPDebug = 3;
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->SMTPSecure = 'tls';
-    $mail->Username = 'ewersonv@gmail.com';
-    $mail->Password = 'IronMan23';
-    $mail->Port = 587;
-    $mail->setFrom('ewersonv@gmail.com', utf8_decode('Plataforma de prospecção'));
-    
-    $mail->isHTML(true);
-
-    // Endereço do e-mail do destinatário
-    $mail->addAddress("$email");
-    
-    $mail->Subject = utf8_decode('Confirmação de cadastro na plataforma de prospecção');
-    $mail->Body    = utf8_decode("
-    Nome: $nome<br>
-    Login: $email<br>
-    Telefone: $telefone<br>
-    Senha*: <b>$senha</b><br>
-    Nível de acesso: $permissao<br><br>
-    Seu cadastro foi confirmado. Link para acessar a plataforma: http://localhost/pp_embrapii/arquivos/spp_ifes/view/login.php <br>
-    *Você pode alterar sua senha na aba 'Configurações'
-    ");
-    if(!$mail->send())
-    {
-        echo 'Não foi possível enviar a mensagem.<br>';
-        echo 'Erro: ' . $mail->ErrorInfo;
-    }
-    else
-    {
-        echo 'Mensagem enviada.';
-    }
 }
 
 ?>
