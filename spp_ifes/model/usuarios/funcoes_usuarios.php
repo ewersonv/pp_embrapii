@@ -117,7 +117,7 @@ function sendMailRecuperarSenha($nome, $email, $senha)
     $mail->Body    = utf8_decode("
     Olá $nome,<br>
     Sua nova senha é: <b>$senha</b>.<br>
-    Você pode alterar sua senha na aba 'Configurações' em http://localhost/pp_embrapii/arquivos/spp_ifes/view/login.php.
+    Você pode alterá-la na aba 'Configurações' em http://localhost/pp_embrapii/spp_ifes/view/login.php.
     ");
     if(!$mail->send())
     {

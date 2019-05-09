@@ -22,7 +22,9 @@
 				<?php
 				if ($_SESSION['tipo'] == 1)
 				{
-					echo "<a class='py-2 d-none d-md-inline-block' href='relatorios.php'>Relatórios</a>";
+					?>
+						<a class='py-2 d-none d-md-inline-block' href='relatorios.php'>Relatórios</a>
+					<?php
 				}
 				?>
 				<a class="py-2 d-none d-md-inline-block" href="configuracoes.php">Configurações</a>

@@ -70,17 +70,20 @@ $_SESSION['submit'] = 0;
                         echo "<td>" . utf8_decode($row['acesso']) . "</td>";
                         echo "<td></td>";
 
-                        if ($row['status'] == 1)
+                        if ($row['id'] != $_SESSION['id'])
                         {
-                            ?>
-                            <td><a class="btn btn-sm btn-outline-danger" href="#" role="button" onclick="desativar(<?php echo $row['id']; ?>)">DESATIVAR</a></p></td>
-                            <?php
-                        }
-                        else
-                        {
-                            ?>
-                            <td><a class="btn btn-sm btn-outline-success" href="#" role="button" onclick="ativar(<?php echo $row['id']; ?>)">ATIVAR</a></p></td>
-                            <?php                            
+                            if ($row['status'] == 1)
+                            {
+                                ?>
+                                <td><a class="btn btn-sm btn-outline-danger" href="#" role="button" onclick="desativar(<?php echo $row['id']; ?>)">DESATIVAR</a></p></td>
+                                <?php
+                            }
+                            else
+                            {
+                                ?>
+                                <td><a class="btn btn-sm btn-outline-success" href="#" role="button" onclick="ativar(<?php echo $row['id']; ?>)">ATIVAR</a></p></td>
+                                <?php                            
+                            }
                         }
                         
                         echo "</tr>";

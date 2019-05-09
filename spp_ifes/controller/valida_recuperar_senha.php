@@ -13,22 +13,29 @@ if($btnLogin)
     //Pesquisar o usuário no BD
     $conn = connect();
     $resultado = getUsuario($conn, $email);
+    $row = mysqli_fetch_assoc($resultado);
     
-    if($resultado)
+    if($row != "")
     {
-        $row = mysqli_fetch_assoc($resultado);
+        if ($row['status'] == 0)
+        {
+            $_SESSION['msg'] = "Usuário desativado. Solicite a reativação à um administrador. <br><br>";
+			header("Location: ../view/login.php");
+        }
+        else
+        {
+            $novaSenha = gerarSenha(8, true, true, true, false);
+            $novaSenhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
 
-        $novaSenha = gerarSenha(8, true, true, true, false);
-        $novaSenhaHash = password_hash($novaSenha);
+            updateSenha($conn, $novaSenhaHash, $email);
 
-        updateSenha($conn, $novaSenhaHash, $email);
-
-        sendMailRecuperarSenha($row['nome'], $email, $novaSenha);     
+            sendMailRecuperarSenha($row['nome'], $email, $novaSenha);     
+        }
     }
     else
     {
         $_SESSION['msg'] = "<p style='color:red;'>Não existe usuário associado ao email inserido.</p><br><br>";
-        header("Location: ../view/login.php");
+        header("Location: ../view/recuperar_senha.php");
     }
 }
 else
