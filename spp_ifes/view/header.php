@@ -50,6 +50,7 @@
 		{
 			?>
 				<a class="underlineHover" href='relatorios.php'><li>Relatórios</li></a>
+				<a class="underlineHover" href='../controller/gerar_xls.php?id=-1' onclick="submit()"><li>Baixar propostas</li></a>
 			<?php
 		}
 		?>
@@ -58,6 +59,12 @@
 		</ul>
 	</div>
 	</nav>
+	<script>
+		function submit()
+		{
+			<?php $_SESSION['submit'] = 1; ?>
 
+		}
+	</script>
 	</body>
 </html>

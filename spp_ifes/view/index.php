@@ -13,6 +13,9 @@ include_once("../controller/router.php");
 ?>
 
 <html lang="pt-br">
+	<head>
+		<link href="css/index.css" rel="stylesheet">
+	</head>
 	<body id="grad1" class="center-form">
 		<div class="container">
 			<div class="py-5 text-center">
@@ -53,43 +56,3 @@ include_once("../controller/router.php");
 		}
 	</script>
 </html>
-<style>
-	body.center-form {
-		min-height: 100vh;
-	}
-
-	div.center-form {
-		position: relative;
-		min-height: 100vh;
-	}
-	div.center-form > form {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translateY(-50%) translateX(-50%);
-	}
-
-	label {
-		display: inline-block;
-		width: 180px;
-		text-align: right;
-	}​
-
-	input{
-		max-width: 400px;
-	}
-
-	::-webkit-input-placeholder {
-		font-style: italic;
-	}
-	:-moz-placeholder {
-		font-style: italic;  
-	}
-	::-moz-placeholder {
-		font-style: italic;  
-	}
-	:-ms-input-placeholder {  
-		font-style: italic; 
-	}
-</style>
-

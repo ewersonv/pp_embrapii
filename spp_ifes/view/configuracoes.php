@@ -1,7 +1,6 @@
 <?php
 include_once("../controller/sessao.php");
 include_once("header.php");
-$_SESSION['submit'] = 0;
 ?>
 <!DOCTYPE html>
 <html>
