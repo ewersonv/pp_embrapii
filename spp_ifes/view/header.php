@@ -54,7 +54,7 @@
 		}
 		?>
 		<a class="underlineHover" href="configuracoes.php"><li>Configurações</li></a> <br>
-		<a class="underlineHover" href="sair.php"><li>Sair</li></a>
+ 		<a class="underlineHover" href="sair.php"><li>Sair</li></a>
 		</ul>
 	</div>
 	</nav>
