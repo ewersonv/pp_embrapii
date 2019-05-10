@@ -4,6 +4,10 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="bootstrap/css/product.css" rel="stylesheet">
+		<link href="css/menu.css" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 		<title>SPP - Ifes</title>
 		<style>
 			#grad1 {
@@ -14,22 +18,46 @@
 		</style>
 	</head>
 	<body id="grad1">
-		<nav class="site-header sticky-top py-1">
-			<div class="container d-flex flex-column flex-md-row justify-content-between">
-                <a class="py-2 d-none d-md-inline-block" href="index.php">Início</a>
-				<a class="py-2 d-none d-md-inline-block" href="listar.php">Listar propostas</a>
-				<a class="py-2 d-none d-md-inline-block" href="nova_proposta.php">Nova Proposta</a>
-				<?php
-				if ($_SESSION['tipo'] == 1)
-				{
-					?>
-						<a class='py-2 d-none d-md-inline-block' href='relatorios.php'>Relatórios</a>
-					<?php
-				}
-				?>
-				<a class="py-2 d-none d-md-inline-block" href="configuracoes.php">Configurações</a>
-				<a class="py-2 d-none d-md-inline-block" href="sair.php">Sair</a>
-			</div>
-		</nav>			
+
+	<nav role="navigation">
+	<div id="menuToggle">
+		<!--
+		A fake / hidden checkbox is used as click reciever,
+		so you can use the :checked selector on it.
+		-->
+		<input type="checkbox" />
+		
+		<!--
+		Some spans to act as a hamburger.
+		
+		They are acting like a real hamburger,
+		not that McDonalds stuff.
+		-->
+		<span></span>
+		<span></span>
+		<span></span>
+		
+		<!--
+		Too bad the menu has to be inside of the button
+		but hey, it's pure CSS magic.
+		-->
+		<ul id="menu">
+		<a class="underlineHover" href="index.php"><li>Home</li></a> <br>
+		<a class="underlineHover" href="listar.php"><li>Listar</li></a>
+		<a class="underlineHover" href="nova_proposta.php"><li>Nova Proposta</li></a>
+		<?php
+		if ($_SESSION['tipo'] == 1)
+		{
+			?>
+				<a class="underlineHover" href='relatorios.php'><li>Relatórios</li></a>
+			<?php
+		}
+		?>
+		<a class="underlineHover" href="configuracoes.php"><li>Configurações</li></a> <br>
+		<a class="underlineHover" href="sair.php"><li>Sair</li></a>
+		</ul>
+	</div>
+	</nav>
+
 	</body>
 </html>

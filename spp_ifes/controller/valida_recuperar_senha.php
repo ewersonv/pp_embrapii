@@ -29,7 +29,9 @@ if($btnLogin)
 
             updateSenha($conn, $novaSenhaHash, $email);
 
-            sendMailRecuperarSenha($row['nome'], $email, $novaSenha);     
+            closeConnection($conn);
+
+            sendMailRecuperarSenha($row['nome'], $email, $novaSenha);
         }
     }
     else

@@ -37,6 +37,20 @@ function getSenha($conn, $email)
     return $row['senha'];
 }
 
+function getTelefone($id_usuario)
+{
+    $conn = connect();
+
+    $query = "SELECT telefone FROM usuario WHERE id = $id_usuario";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
+
+    return $row['telefone'];
+}
+
 function insertUsuario($conn, $nome, $telefone, $email, $senha, $tipo)
 {
     /* Insere usuário no BD */

@@ -1,4 +1,6 @@
 <?php
+include_once("../model/conexao.php");
+include_once("../model/usuarios/funcoes_usuarios.php");
 include_once("../controller/sessao.php");
 include_once("header.php");
 $_SESSION['submit'] = 0;
@@ -22,6 +24,9 @@ $_SESSION['submit'] = 0;
             ?>
 
             <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_alterar_telefone.php">
+                <label>Telefone atual:</label>
+                <?php echo getTelefone($_SESSION['id']) ?> <br><br>          
+
                 <label>Insira o novo telefone:</label>
                 <input class="form-control" type="text" name="telefone" style="max-width:400px;" placeholder="27999998888" maxlength="11"><br>
                 
