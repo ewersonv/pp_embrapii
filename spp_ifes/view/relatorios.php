@@ -60,11 +60,11 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 
 			<label><h5>Total de projetos:                   </h5></label> <?php echo totalProjetos(); ?> <br>
 			<label><h5>Análises finalizadas:              </h5></label> <?php echo numAnalisesFinalizadas(); ?> <br>
-			<label><h5>Total de prospectadores:       </h5></label> <?php echo totalUsuarios(); ?> <br>
+			<label><h5>Prospectadores cadastrados:</h5></label> <?php echo totalUsuarios(); ?> <br>
+			<label><h5>Prospectadores ativos:     </h5></label> <?php echo totalUsuariosAtivos(); ?> <br>
 			<!-- <label><h5>Total de produtos:                   </h5></label> <?php echo totalProdutos(); ?> <br> -->
 			<label><h5>Empresa com mais projetos:   </h5></label><a class='btn btn-sm btn-outline-dark' href="relatorio_empresa.php" role='button'><?php $_SESSION['submit'] = 1; $empresa = empresaMaisProjetos(); echo $empresa . ' (' . numProjetosEmpresa($empresa) . ')'; ?></a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
 			<label><h5>Maior prospectador:               </h5></label><a class='btn btn-sm btn-outline-dark' href="relatorio_prospectador.php" role='button'><?php $_SESSION['submit'] = 1; $usuario = maiorProspectador(); echo $usuario . ' (' . numProjetosUsuario($usuario) . ')'; ?></a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
-		</div>
 
 
 			<div class="row">
@@ -75,6 +75,8 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 					<div id="ProjetosProspectador" class="chart" ></div>
 				</div>
 			</div>
+		
+		</div>
 
 	</body>
 </html>

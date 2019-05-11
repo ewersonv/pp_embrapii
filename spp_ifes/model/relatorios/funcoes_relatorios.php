@@ -237,7 +237,23 @@ function totalProdutos() /* retorna o número total de produtos cadastrados no s
     return $value;
 }
 
-function totalUsuarios() /* retorna o número total de usuários ATIVOS cadastrados no sistema */
+function totalUsuarios() /* retorna o número total de usuários cadastrados no sistema */
+{
+    $conn = connect();
+
+    $query = "SELECT COUNT(id) FROM usuario";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_row($result);
+
+    $value = $row[0];
+
+    /* Fecha a conexão com o banco de dados */
+    closeConnection($conn);
+
+    return $value;
+}
+
+function totalUsuariosAtivos() /* retorna o número total de usuários ATIVOS cadastrados no sistema */
 {
     $conn = connect();
 
