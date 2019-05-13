@@ -104,7 +104,7 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 					<div class="custom-control custom-checkbox">
 						<input type="checkbox" class="custom-control-input" name="finalizado" value="1" id="checkbox">
 						<label class="custom-control-label" for="checkbox">Análise finalizada?</label>
-						<p><font size="2">*Marcando esta opção a proposta não estará mais disponível para edição.</font></p> <br>
+						<br> <small>*Marcando esta opção a proposta não estará mais disponível para edição.</font></small> <br>
 					</div>
 
 					<div class="py-5 text-center">

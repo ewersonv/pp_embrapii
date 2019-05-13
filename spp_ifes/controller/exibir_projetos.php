@@ -18,7 +18,7 @@ else /* se a página foi acessada via submit da página anterior */
         ?>
 
         <div class="card border-secondary mb-3">
-            <h5 class="card-header"><?php echo "<b></b>" . utf8_encode($row['nome_projeto']); ?></h5>
+            <h5 class="card-header"><?php echo "<b>" . utf8_encode($row['nome_projeto']) . "</b>" ?></h5>
                 <div class="card-body">
                         
                         <b>Empresa: </b> <?php echo utf8_encode($row['nome_empresa']) ?> <br>
@@ -28,9 +28,8 @@ else /* se a página foi acessada via submit da página anterior */
                         <?php acessarProposta($tipo, $id_usuario, $row['id_usuario'], $row['finalizado'], $row['id_projeto']); ?>
 
                         <a class="btn btn-sm mr-2 btn-outline-danger" href="../controller/gerar_pdf.php?id='<?php echo $row['id_projeto'] ?>'" role="button">PDF</a>
-                        <a class="btn btn-sm mr-1 btn-outline-success" href="../controller/gerar_xls.php?id='<?php echo $row['id_projeto'] ?>'" role="button">XLS</a>
-
-                        <a class='btn btn-sm btn-danger' href="#" role='button' onclick="confirma(<?php echo $row['id_projeto']; ?>)">DELETAR PROPOSTA</a></p>
+                        <a class="btn btn-sm mr-2 btn-outline-success" href="../controller/gerar_xls.php?id='<?php echo $row['id_projeto'] ?>'" role="button">XLS</a>
+                        <a class='btn btn-sm btn-danger' href="#" role='button' onclick="confirma(<?php echo $row['id_projeto']; ?>)">DELETAR PROPOSTA</a>
                         
                 </div>
         </div>
