@@ -19,15 +19,18 @@ include_once("header.php");
                 unset($_SESSION['msg']);
             }
         ?>
-        
-        <a href="alterar_senha.php">Alterar senha</a><br>
-        <a href="alterar_telefone.php">Alterar telefone</a><br>
-        <?php
-        if($_SESSION['tipo'] == 1){
-            echo "<a href='cadastrar_prospectador.php'>Cadastrar novo prospectador</a><br>";
-            echo "<a href='consultar_prospectadores.php'>Consultar prospectadores</a><br>";
-        }
-        ?>
+
+
+        <div class="list-group">
+            <a href="alterar_senha.php" class="list-group-item list-group-item-action">Alterar senha</a>
+            <a href="alterar_telefone.php" class="list-group-item list-group-item-action">Alterar telefone</a>
+            <?php
+            if($_SESSION['tipo'] == 1){
+                echo "<a href='cadastrar_prospectador.php' class='list-group-item list-group-item-action'>Cadastrar novo prospectador</a>";
+                echo "<a href='consultar_prospectadores.php' class='list-group-item list-group-item-action'>Consultar prospectadores</a>";
+            }
+            ?>
+        </div>
         
     </div>
 </body>

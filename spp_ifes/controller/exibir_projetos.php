@@ -27,6 +27,8 @@ else /* se a página foi acessada via submit da página anterior */
                         
                         <?php acessarProposta($tipo, $id_usuario, $row['id_usuario'], $row['finalizado'], $row['id_projeto']); ?>
 
+                        <br><br>
+
                         <a class="btn btn-sm mr-2 btn-outline-danger" href="../controller/gerar_pdf.php?id='<?php echo $row['id_projeto'] ?>'" role="button">PDF</a>
                         <a class="btn btn-sm mr-1 btn-outline-success" href="../controller/gerar_xls.php?id='<?php echo $row['id_projeto'] ?>'" role="button">XLS</a>
 
