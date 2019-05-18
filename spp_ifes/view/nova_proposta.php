@@ -76,7 +76,7 @@ $_SESSION['submit'] = 0;
 						<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" placeholder="Informações adicionais sobre o projeto" maxlength="2000"/></textarea>
 
 						<div class="py-5 text-center">
-							<button class="btn mr-2 btn-outline-dark" type="button" onclick="validate()">Cadastrar</button>
+							<button class="btn mr-2 btn-dark" type="button" onclick="validate()">Cadastrar</button>
 						</div>
 					</div>
 				</form>

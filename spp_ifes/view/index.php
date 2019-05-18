@@ -36,7 +36,7 @@ include_once("../controller/router.php");
 						}
 						?>
 					</div>
-						<br><button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
+						<br><button class="btn btn-dark my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
 				</form>
 
 				

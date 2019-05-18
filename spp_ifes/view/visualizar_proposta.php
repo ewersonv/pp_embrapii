@@ -100,7 +100,7 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 					<textarea type="text" class="form-control" name="anotacoes_complementares" readonly="readonly" rows="5" cols="80" placeholder="Informações adicionais sobre o projeto" maxlength="2000"/><?php echo utf8_encode($row['anotacoes_complementares']); ?></textarea>
 
 					<div class="py-5 text-center">
-						<a class="btn mr-2 btn-outline-dark" href="listar.php" role="button">Voltar</a>
+						<a class="btn mr-2 btn-dark" href="listar.php" role="button">Voltar</a>
 					</div>
 				</div>
 			</form>
