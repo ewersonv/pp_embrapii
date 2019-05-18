@@ -8,7 +8,9 @@ $_SESSION['submit'] = 0;
 	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">
-				<h1>Nova proposta</h1>
+				<h1 class="mb-0">
+					<a class="text-dark">Nova proposta</a>
+				</h1>
 			</div>
 
 				<form name="formulario" method="POST" action="../controller/proc_nova_proposta.php">

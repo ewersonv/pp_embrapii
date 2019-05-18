@@ -25,7 +25,9 @@ $_SESSION['submit'] = 0;
 					</div>
 				<?php endif ?>
 
-				<h1>Propostas para prospecção</h1>
+				<h1 class="mb-0">
+					<a class="text-dark">Propostas</a>
+				</h1>
 			
 			</div>
 			

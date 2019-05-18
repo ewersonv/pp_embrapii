@@ -13,9 +13,9 @@
 	if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $projeto['id_usuario']){ /* usuário não é administrador e não criou a proposta */
 		$_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
 		header("Location: ../view/index.php");
-    }
+	}
 
-    $html = '';
+  $html = '';
 	$html .= '<b>Nome do projeto: </b><br>';
 	$html .= utf8_encode($projeto['nome_projeto']) . "<br><br>";
 

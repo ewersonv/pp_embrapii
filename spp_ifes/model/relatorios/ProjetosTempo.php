@@ -49,7 +49,7 @@ function ProjetosTempo() {
 	var options = {
 		title: 'Número de projetos prospectados nos últimos 6 meses',
 		backgroundColor: 'transparent',
-		curveType: 'function',
+		curveType: '',
     	legend: { position: 'bottom' }
 	};
 

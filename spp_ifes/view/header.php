@@ -51,12 +51,21 @@
 		{
 			?>
 				<a class="underlineHover" href='relatorios.php'><li>Relatórios</li></a>
-				<a class="underlineHover" href='../controller/gerar_xls.php?id=-1' onclick="submit()"><li>Baixar propostas</li></a>
 			<?php
 		}
 		?>
 		<a class="underlineHover" href="configuracoes.php"><li>Configurações</li></a> <br>
  		<a class="underlineHover" href="sair.php"><li>Sair</li></a>
+
+		<?php
+		if ($_SESSION['tipo'] == 1)
+		{
+			?>
+				<br><br><br><br><br>
+				<a class="underlineHover" href='../controller/gerar_xls.php?id=-1' onclick="submit()"><li>Baixar propostas</li></a>
+			<?php
+		}
+		?>
 		</ul>
 	</div>
 	</nav>

@@ -81,51 +81,51 @@ function trocaMes($mes)
 {
     if ($mes == 1)
 	{
-		$mes = "Janeiro";
+		$mes = "Jan";
 	}
 	elseif ($mes == 2)
 	{
-		$mes = "Fevereiro";
+		$mes = "Fev";
 	}
 	elseif ($mes == 3)
 	{
-		$mes = "Março";
+		$mes = "Mar";
 	}
 	elseif ($mes == 4)
 	{
-		$mes = "Abril";
+		$mes = "Abr";
 	}
 	elseif ($mes == 5)
 	{
-		$mes = "Maio";
+		$mes = "Mai";
 	}
 	elseif ($mes == 6)
 	{
-		$mes = "Junho";
+		$mes = "Jun";
 	}
 	elseif ($mes == 7)
 	{
-		$mes = "Julho";
+		$mes = "Jul";
 	}
 	elseif ($mes == 8)
 	{
-		$mes = "Agosto";
+		$mes = "Ago";
 	}
 	elseif ($mes == 9)
 	{
-		$mes = "Setembro";
+		$mes = "Set";
 	}
 	elseif ($mes == 10)
 	{
-		$mes = "Outubro";
+		$mes = "Out";
 	}
 	elseif ($mes == 11)
 	{
-		$mes = "Novembro";
+		$mes = "Nov";
 	}
 	else
 	{
-		$mes = "Dezembro";
+		$mes = "Dez";
     }
     
     return $mes;

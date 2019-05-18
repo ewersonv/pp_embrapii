@@ -55,7 +55,16 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">
-				<h1>Relatórios</h1>
+				<h1 class="mb-0">
+					<a class="text-dark">Relatórios</a>
+				</h1>
+			</div>
+
+
+			<div class="list-group">
+
+
+
 			</div>
 
 			<label><h5>Total de projetos:                   </h5></label> <?php echo totalProjetos(); ?> <br>
@@ -66,6 +75,7 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 			<label><h5>Empresa com mais projetos:   </h5></label><a class='btn btn-sm btn-outline-dark' href="relatorio_empresa.php" role='button'><?php $_SESSION['submit'] = 1; $empresa = empresaMaisProjetos(); echo $empresa . ' (' . numProjetosEmpresa($empresa) . ')'; ?></a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
 			<label><h5>Maior prospectador:               </h5></label><a class='btn btn-sm btn-outline-dark' href="relatorio_prospectador.php" role='button'><?php $_SESSION['submit'] = 1; $usuario = maiorProspectador(); echo $usuario . ' (' . numProjetosUsuario($usuario) . ')'; ?></a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
 
+			<br>
 
 			<div class="row">
 				<div class="clearfix"></div>

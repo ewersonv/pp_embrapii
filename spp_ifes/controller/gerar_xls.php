@@ -11,8 +11,6 @@ if($_SESSION['submit'] != 1){ /* usuário inseriu URL diretamente no navegador *
     header("Location: ../view/index.php");
 }
 
-$_SESSION['submit'] = 0;   
-
 // Pega o id de acordo com o que o usuário clicou na página anterior
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 

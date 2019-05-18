@@ -12,27 +12,36 @@ $_SESSION['submit'] = 0;
 </head>
 <body id="grad1">
     <div class="container">
-		<div class="text-left">
-            <br><br><br><br>
-            <h3>Alterar telefone</h3><br>
+        <div class="py-5 text-center">
+			<h3 class="mb-0">
+				<a class="text-dark">Alterar telefone</a>
+		    </h3>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <div class="text-left">
 
-            <?php
-                if(isset($_SESSION['msg'])){
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
-            ?>
+                    <?php
+                        if(isset($_SESSION['msg'])){
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                    ?>
 
-            <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_alterar_telefone.php">
-                <label>Telefone atual:</label>
-                <?php echo getTelefone($_SESSION['id']) ?> <br><br>          
+                    <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_alterar_senha.php">
+                        <label>Telefone atual:</label>
+                        <?php echo getTelefone($_SESSION['id']) ?> <br><br>
 
-                <label>Insira o novo telefone:</label>
-                <input class="form-control" type="text" name="telefone" style="max-width:400px;" placeholder="27999998888" maxlength="11"><br>
-                
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
-                
-            </form>
+                        <label>Novo telefone:</label>
+                        <input class="form-control" type="text" name="nova" style="min-width:345px; max-width:450px;" placeholder="27999998888"> <br><br>
+                        
+                        <div class="text-center">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </body>

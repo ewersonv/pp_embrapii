@@ -1,7 +1,9 @@
-.chart {
-  width: 100%; 
-  min-height: 500px;
+@media (min-width: 400px) {
+  .chart {
+    width: 100%; 
+    min-height: 500px;
 }
-.row {
-  margin:0 !important;
+  .row {
+    margin:0;
+  }
 }

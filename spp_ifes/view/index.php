@@ -20,7 +20,7 @@ include_once("../controller/router.php");
 		<div class="container">
 			<div class="py-5 text-center">
 				<h1 class="mb-0">
-					<br><br><a class="text-dark">Pesquisar projetos</a><br><br>
+					<br><a class="text-dark">Pesquisar projetos</a><br><br>
 				</h1>
 
 

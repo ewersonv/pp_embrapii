@@ -10,41 +10,48 @@ $_SESSION['submit'] = 0;
 </head>
 <body id="grad1">
     <div class="container">
-		<div class="text-left">
-            <br><br><br><br>
-            <h3>Cadastrar Prospectador</h3><br>
+        <div class="py-5 text-center">
+			<h3 class="mb-0">
+				<a class="text-dark">Cadastrar Prospectador</a>
+		    </h3>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <div class="text-left">
 
-            <?php
-                if(isset($_SESSION['msg'])){
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
-            ?>
+                    <?php
+                        if(isset($_SESSION['msg'])){
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                    ?>
 
-            <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_cadastrar_prospectador.php">
-                <label>Nome:</label>
-                <input class="form-control" type="text" name="nome" style="max-width:400px;" placeholder="João Silva"><br>
+                    <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_cadastrar_prospectador.php">
+                        <label>Nome:</label>
+                        <input class="form-control" type="text" name="nome" style="min-width:345px; max-width:450px;" placeholder="João Silva"><br>
 
-                <label>Telefone:</label>
-                <input class="form-control" type="text" name="telefone" style="max-width:400px;" placeholder="27999998888" maxlength="11"><br>
-            
-                <label>Email:</label>
-                <input class="form-control" type="email" name="email" style="max-width:400px;" placeholder="exemplo@email.com"><br>
+                        <label>Telefone:</label>
+                        <input class="form-control" type="text" name="telefone" style="min-width:345px; max-width:450px;" placeholder="27999998888" maxlength="11"><br>
+                    
+                        <label>Email:</label>
+                        <input class="form-control" type="email" name="email" style="min-width:345px; max-width:450px;" placeholder="exemplo@email.com"><br>
 
-                <label>Permissões de administrador?</label>
-                <div class="custom-control custom-radio">
-                    <input id="sim" name="adm" type="radio" class="custom-control-input" value="1" required>
-                    <label class="custom-control-label" for="sim">Sim</label> <br>
+                        <label>Permissões de administrador?</label>
+                        <div class="custom-control custom-radio">
+                            <input id="sim" name="adm" type="radio" class="custom-control-input" value="1" required>
+                            <label class="custom-control-label" for="sim">Sim</label> <br>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input id="nao" name="adm" type="radio" class="custom-control-input" value="0">
+                            <label class="custom-control-label" for="nao">Não</label> <br><br>
+                        </div>
+                        
+                        
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
+                        
+                    </form>
                 </div>
-                <div class="custom-control custom-radio">
-                    <input id="nao" name="adm" type="radio" class="custom-control-input" value="0">
-                    <label class="custom-control-label" for="nao">Não</label> <br><br>
-                </div>
-                
-                
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
-                
-            </form>
+            </div>
         </div>
     </div>
 </body>

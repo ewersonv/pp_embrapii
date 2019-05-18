@@ -10,28 +10,37 @@ $_SESSION['submit'] = 0;
 </head>
 <body id="grad1">
     <div class="container">
-		<div class="text-left">
-            <br><br><br><br>
-            <h3>Alterar senha</h3><br>
+        <div class="py-5 text-center">
+			<h3 class="mb-0">
+				<a class="text-dark">Alterar senha</a>
+		    </h3>
+        </div>
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto">
+                <div class="text-left">
 
-            <?php
-                if(isset($_SESSION['msg'])){
-                    echo $_SESSION['msg'];
-                    unset($_SESSION['msg']);
-                }
-            ?>
+                    <?php
+                        if(isset($_SESSION['msg'])){
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                    ?>
 
-            <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_alterar_senha.php">
-                <label>Senha atual:</label>
-                <input class="form-control" type="password" name="atual" style="max-width:400px;" placeholder="******"><br>
+                    <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_alterar_senha.php">
+                        <label>Senha atual:</label>
+                        <input class="form-control" type="password" name="atual" style="min-width:345px;" placeholder="******"><br>
 
-                <label>Nova senha:</label>
-                <input class="form-control" type="password" name="nova" style="max-width:400px;" placeholder="******">
-                <small>A senha deve conter no mínimo 8 caracteres, sendo 2 maiúsculos e 1 número.</small> <br><br>
-                
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
-                
-            </form>
+                        <label>Nova senha:</label>
+                        <input class="form-control" type="password" name="nova" style="min-width:345px;" placeholder="******">
+                        <small>A senha deve conter no mínimo 8 caracteres, sendo 2 maiúsculos e 1 número.</small> <br><br>
+                        
+                        <div class="text-center">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </body>
