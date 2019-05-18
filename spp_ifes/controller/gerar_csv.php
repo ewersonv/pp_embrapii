@@ -17,12 +17,41 @@ $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
 // Definimos o nome do arquivo que será exportado
 $id == -1 ? $arquivo = 'Propostas' : $arquivo = getNomeProjeto($id);
 
-header("Content-Type: text/csv; charset=utf-8");
-header("Content-Disposition: attachment; filename=$arquivo.xls");
+
+header('Pragma: public');
+header('Expires: 0');
+header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+header('Content-Description: File Transfer');
+header('Content-Type: text/csv');
+header("Content-Disposition: attachment; filename=$arquivo.csv;");
+header('Content-Transfer-Encoding: binary');
+
 
 $saida = fopen("php://output", 'w');
 
-fputcsv($saida, array('Nome do projeto', 'Nome do produto que será desenvolvido', 'Descrição do produto', 'Nome da empresa', 'CNPJ', 'Tipo de empresa', 'Prospectado por', 'Email', 'Telefone', 'Riscos', 'Partes interessadas', 'Viabilidade', 'Equipe do projeto', 'Entregas', 'Cronograma', 'Premissas', 'Efeitos do projeto', 'Custo', 'Anotações complementares'));
+fputs($saida, $bom =( chr(0xEF) . chr(0xBB) . chr(0xBF) ));
+
+$header = array("Nome do projeto",
+              "Nome do produto que será desenvolvido",
+              "Descrição do produto",
+              "Nome da empresa",
+              "CNPJ",
+              "Tipo de empresa",
+              "Prospectado por",
+              "Email",
+              "Telefone",
+              "Riscos",
+              "Partes interessadas",
+              "Viabilidade",
+              "Equipe do projeto",
+              "Entregas",
+              "Cronograma",
+              "Premissas",
+              "Efeitos do projeto",
+              "Custo",
+              "Anotações complementares");
+
+fputcsv($saida, $header, ";");
 
 if($id == -1) // Download de todas as propostas
 {
@@ -62,7 +91,7 @@ while($row = mysqli_fetch_assoc($result))
     utf8_encode($projeto['custo']),
     utf8_encode($projeto['anotacoes_complementares']));
 
-    fputcsv($saida, $linha);
+    fputcsv($saida, $linha, ";");
 }
 
 ?>

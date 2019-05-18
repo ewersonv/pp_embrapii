@@ -23,7 +23,7 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 				<h1>Preencher proposta</h1>
 				<div class="py-2 text-right">
 					<a class='btn btn-sm mr-4 btn-outline-danger' href="#" role='button' onclick="pdf(<?php echo $id; ?>)">Gerar PDF</a>
-					<a class='btn btn-sm mr-4 btn-outline-success' href="#" role='button' onclick="xls(<?php echo $id; ?>)">Gerar XLS</a></p>
+					<a class='btn btn-sm mr-4 btn-outline-success' href="#" role='button' onclick="xls(<?php echo $id; ?>)">Gerar CSV</a></p>
 				</div>
 			</div>
 			
@@ -108,7 +108,7 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 					</div>
 
 					<div class="py-5 text-center">
-						<button class="btn mr-2 btn-outline-dark" type="button" onclick="validate()">Preencher</button>
+						<button class="btn mr-2 btn-dark" type="button" onclick="validate()">Preencher</button>
 					</div>
 				</div>
 			</form>
@@ -134,7 +134,7 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 	function xls(id)
 	{
 		<?php $_SESSION['submit'] = 1; ?>;
-		location.href = '../controller/gerar_xls.php?id='+ id;
+		location.href = '../controller/gerar_csv.php?id='+ id;
 	}
 	</script>
 </html>
