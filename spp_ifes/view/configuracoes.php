@@ -10,9 +10,9 @@ include_once("header.php");
 <body id="grad1">
 	<div class="container">
 		<div class="py-5 text-center">
-            <h1 class="mb-0">
+            <h2 class="mb-0">
 				<a class="text-dark">Configurações</a>
-			</h1>
+			</h2>
         </div>
         
         <?php

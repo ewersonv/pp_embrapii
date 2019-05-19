@@ -55,36 +55,51 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">
-				<h1 class="mb-0">
+				<h2 class="mb-0">
 					<a class="text-dark">Relatórios</a>
-				</h1>
+				</h2>
 			</div>
 
-
-			<div class="list-group">
-
-
-
-			</div>
-
-			<label><h5>Total de projetos:                   </h5></label> <?php echo totalProjetos(); ?> <br>
-			<label><h5>Análises finalizadas:              </h5></label> <?php echo numAnalisesFinalizadas(); ?> <br>
-			<label><h5>Prospectadores cadastrados:</h5></label> <?php echo totalUsuarios(); ?> <br>
-			<label><h5>Prospectadores ativos:     </h5></label> <?php echo totalUsuariosAtivos(); ?> <br>
-			<!-- <label><h5>Total de produtos:                   </h5></label> <?php echo totalProdutos(); ?> <br> -->
-			<label><h5>Empresa com mais projetos:   </h5></label><a class='btn btn-sm btn-outline-dark' href="relatorio_empresa.php" role='button'><?php $_SESSION['submit'] = 1; $empresa = empresaMaisProjetos(); echo $empresa . ' (' . numProjetosEmpresa($empresa) . ')'; ?></a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
-			<label><h5>Maior prospectador:               </h5></label><a class='btn btn-sm btn-outline-dark' href="relatorio_prospectador.php" role='button'><?php $_SESSION['submit'] = 1; $usuario = maiorProspectador(); echo $usuario . ' (' . numProjetosUsuario($usuario) . ')'; ?></a> <br> <!-- Alt+2+5+5 em vez de "espaço"-->
+			<table class="table table-bordered">
+			<tbody>
+				<tr>
+				<td>Total de projetos</td>
+				<td class="text-center"><?php echo totalProjetos(); ?></td>
+				</tr>
+				<tr>
+				<td>Análises finalizadas</td>
+				<td class="text-center"><?php echo numAnalisesFinalizadas(); ?></td>
+				</tr>
+				<tr>
+				<td>Prospectadores cadastrados</td>
+				<td class="text-center"><?php echo totalUsuarios(); ?></td>
+				</tr>
+				<tr>
+				<td>Prospectadores ativos</td>
+				<td class="text-center"><?php echo totalUsuariosAtivos(); ?></td>
+				</tr>
+				<tr>
+				<td>Empresa com mais projetos</td>
+				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="location.href = 'relatorio_empresa.php';">
+				<?php $_SESSION['submit'] = 1; $empresa = empresaMaisProjetos(); echo $empresa . ' (' . numProjetosEmpresa($empresa) . ')'; ?>
+				</a>
+				</td>
+				</tr>
+				<tr>
+				<td>Maior prospectador</td>
+				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="location.href = 'relatorio_prospectador.php';">
+				<?php $_SESSION['submit'] = 1; $usuario = maiorProspectador(); echo $usuario . ' (' . numProjetosUsuario($usuario) . ')'; ?>
+				</td>
+				</tr>
+			</tbody>
+			</table>
 
 			<br>
-
-			<div class="row">
-				<div class="clearfix"></div>
-					<div id="ProjetosTempo" class="chart" ></div>
-					<div id="ProjetosEmpresa" class="chart" ></div>
-					<div id="ProjetosTipoEmpresa" class="chart" ></div>
-					<div id="ProjetosProspectador" class="chart" ></div>
-				</div>
-			</div>
+			
+			<div id="ProjetosTempo" class="chart" ></div>
+			<div id="ProjetosEmpresa" class="chart" ></div>
+			<div id="ProjetosTipoEmpresa" class="chart" ></div>
+			<div id="ProjetosProspectador" class="chart" ></div>
 		
 		</div>
 

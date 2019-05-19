@@ -11,8 +11,9 @@ include_once("../model/propostas/exibicao.php");
 	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">
-	
-				<h1>Projetos <?php $nome = maiorProspectador(); echo '- ' . $nome; ?></h1>
+				<h2 class="mb-0">
+					<a class="text-dark">Projetos <?php $nome = maiorProspectador(); echo '- ' . $nome; ?></a>
+				</h2>
 			</div>
 
 		<?php

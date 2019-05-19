@@ -18,7 +18,9 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">
-				<h1>Visualizar proposta</h1>
+				<h2 class="mb-0">
+					<a class="text-dark">Visualizar proposta</a>
+				</h2>
 				<div class="py-2 text-right">
 					<a class='btn btn-sm mr-4 btn-outline-danger' href="#" role='button' onclick="pdf(<?php echo $id; ?>)">Gerar PDF</a>
 					<a class='btn btn-sm mr-4 btn-outline-success' href="#" role='button' onclick="xls(<?php echo $id; ?>)">Gerar CSV</a></p>

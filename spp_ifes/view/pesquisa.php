@@ -8,9 +8,9 @@ include_once("../model/propostas/exibicao.php");
 	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">
-
-				<h1>Resultados</h1>
-			
+				<h2 class="mb-0">
+					<a class="text-dark">Resultados</a>
+				</h2>
 			</div>
 			
             <?php
