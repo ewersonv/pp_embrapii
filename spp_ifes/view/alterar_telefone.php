@@ -36,7 +36,7 @@ $_SESSION['submit'] = 0;
                         <input class="form-control" type="text" name="nova" style="min-width:345px; max-width:450px;" placeholder="27999998888"> <br><br>
                         
                         <div class="text-center">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
+                            <button class="btn btn-dark my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
                         </div>
                         
                     </form>
