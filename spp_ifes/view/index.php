@@ -13,33 +13,30 @@ include_once("../controller/router.php");
 ?>
 
 <html lang="pt-br">
-	<head>
-		<link href="css/index.css" rel="stylesheet">
-	</head>
-	<body id="grad1" class="center-form">
+	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">
 				<h1 class="mb-0">
 					<br><a class="text-dark">Pesquisar projetos</a><br><br>
 				</h1>
 
-
-				<form name="formulario" class="center-form" style="float:center" method="POST" action="pesquisa.php">
-					<div style="align-center;width: 500px;margin-left: 280px;">
-						<input class="form-control mr-sm-2" style="max-width: 400px;" type="text" name="nome_projeto" placeholder="Nome do projeto"> <br>
-						<input class="form-control mr-sm-2" style="max-width: 400px;" type="text" name="nome_produto" placeholder="Nome do produto"> <br>
-						<input class="form-control mr-sm-2" style="max-width: 400px;" type="text" name="nome_empresa" placeholder="Nome da empresa"> <br>
-						<?php
-						if($_SESSION['tipo'] == 1) // Usuário comum não pode ver propostas de outros prospectadores
-						{
-							echo "<input class='form-control mr-sm-2' style='max-width: 400px;' type='text' name='nome_usuario' placeholder='Nome do prospectador'> <br>";
-						}
-						?>
+				<div class="row justify-content-md-center">
+            		<div class="col-md-auto">
+						<form name="formulario" style="float:center" method="POST" action="pesquisa.php">
+								<input class="form-control mr-sm-2" style="min-width: 345px;" type="text" name="nome_projeto" placeholder="Nome do projeto"> <br>
+								<input class="form-control mr-sm-2" style="min-width: 345px;" type="text" name="nome_produto" placeholder="Nome do produto"> <br>
+								<input class="form-control mr-sm-2" style="min-width: 345px;" type="text" name="nome_empresa" placeholder="Nome da empresa"> <br>
+								<?php
+								if($_SESSION['tipo'] == 1) // Usuário comum não pode ver propostas de outros prospectadores
+								{
+									echo "<input class='form-control mr-sm-2' style='min-width: 345px;' type='text' name='nome_usuario' placeholder='Nome do prospectador'> <br>";
+								}
+								?>
+								<br><button class="btn btn-dark my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
+						</form>
 					</div>
-						<br><button class="btn btn-dark my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
-				</form>
+				</div>
 
-				
 			</div>
 		</div>
 	</body>
