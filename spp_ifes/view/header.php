@@ -62,7 +62,7 @@
 		{
 			?>
 				<br><br><br><br><br>
-				<a class="underlineHover" href='../controller/gerar_xls.php?id=-1' onclick="submit()"><li>Baixar propostas</li></a>
+				<a class="underlineHover" href='../controller/gerar_csv.php?id=-1' onclick="submit()"><li>Baixar propostas</li></a>
 			<?php
 		}
 		?>
