@@ -43,7 +43,6 @@ $_SESSION['submit'] = 0;
             </div>
         </div>
     </div>
-</body>
 <script>
     function validate() {
         var regex = /^(?=(?:.*?[A-Z]){2})(?=(?:.*?[0-9]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
@@ -68,4 +67,5 @@ $_SESSION['submit'] = 0;
         }
     }
 </script>
+</body>
 </html>

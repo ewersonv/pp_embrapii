@@ -39,7 +39,6 @@ include_once("../controller/router.php");
 
 			</div>
 		</div>
-	</body>
 	<script>
 		function validateAndSend() {
 			if (formulario.nome_empresa.value == '' && formulario.nome_usuario.value == '' && formulario.nome_produto.value == '' && formulario.nome_projeto.value == '') {
@@ -52,4 +51,5 @@ include_once("../controller/router.php");
 			}
 		}
 	</script>
+	</body>
 </html>

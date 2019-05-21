@@ -81,7 +81,6 @@ $_SESSION['submit'] = 0;
 					</div>
 				</form>
 		</div>
-	</body>
 	<script>
 		function validate() {
 			var regex = /^(?!.*\s)[0-9]*$/;
@@ -106,4 +105,5 @@ $_SESSION['submit'] = 0;
 			}
 		}
 	</script>
+	</body>
 </html>

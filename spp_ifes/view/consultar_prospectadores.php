@@ -104,7 +104,6 @@ $_SESSION['submit'] = 0;
             </div>
         </div>
     </div>
-</body>
 <script>
     function ativar(id)
     {
@@ -127,4 +126,5 @@ $_SESSION['submit'] = 0;
         }
     }
 </script>
+</body>
 </html>

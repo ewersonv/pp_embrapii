@@ -114,29 +114,29 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 					</div>
 				</div>
 			</form>
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-			<script src="js/bootstrap.min.js"></script>
-			<script>
-				function validate()
-				{
-					<?php $_SESSION['submit'] = 1; ?>
-					formulario.submit();
-				}
-			</script>
 		</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script>
+		function validate()
+		{
+			<?php $_SESSION['submit'] = 1; ?>
+			formulario.submit();
+		}
+	</script>
+	<script>
+		function pdf(id)
+		{
+			<?php $_SESSION['submit'] = 1; ?>;
+			location.href = '../controller/gerar_pdf.php?id='+ id;
+		}
+	</script>
+	<script>
+		function xls(id)
+		{
+			<?php $_SESSION['submit'] = 1; ?>;
+			location.href = '../controller/gerar_csv.php?id='+ id;
+		}
+	</script>
 	</body>
-	<script>
-	function pdf(id)
-	{
-		<?php $_SESSION['submit'] = 1; ?>;
-		location.href = '../controller/gerar_pdf.php?id='+ id;
-	}
-	</script>
-	<script>
-	function xls(id)
-	{
-		<?php $_SESSION['submit'] = 1; ?>;
-		location.href = '../controller/gerar_csv.php?id='+ id;
-	}
-	</script>
 </html>
