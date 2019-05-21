@@ -2,20 +2,20 @@
 	include_once("sessao.php");
 	include_once("../model/conexao.php");
 	include_once("../model/propostas/funcoes_propostas.php");
-	
-	// Pega o id de acordo com o que o usuário clicou na página anterior
-	$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-	
-	// Selecionar todos os itens do formulário
-	$projeto = getProjeto($id);
-	
+
 	/* CONTROLE DE ACESSO */
 	if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $projeto['id_usuario']){ /* usuário não é administrador e não criou a proposta */
 		$_SESSION['msg'] = "Você não tem permissão para acessar essa página.";
 		header("Location: ../view/index.php");
 	}
 
-  $html = '';
+	// Pega o id de acordo com o que o usuário clicou na página anterior
+	$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+	
+	// Selecionar todos os itens do formulário
+	$projeto = getProjeto($id);
+
+  	$html = '';
 	$html .= '<b>Nome do projeto: </b><br>';
 	$html .= utf8_encode($projeto['nome_projeto']) . "<br><br>";
 
@@ -73,35 +73,35 @@
 	$html .= '<b>Anotações complementares: </b><br>';
 	$html .= utf8_encode($projeto['anotacoes_complementares']) . "<br><br>";
 
-	$nome_projeto = $projeto['nome_projeto'];
+	$nome_projeto = utf8_encode($projeto['nome_projeto']);
 	
-	//referenciar o DomPDF com namespace
+	// referenciar o DomPDF com namespace
 	use Dompdf\Dompdf;
 
 	// include autoloader
 	require_once("dompdf/autoload.inc.php");
 
-	//Criando a Instancia
+	// Criando a Instancia
 	$dompdf = new DOMPDF();
 
 	$dompdf->set_paper('a4', 'portrait');
 	
 	// Carrega seu HTML
 	$dompdf->load_html('
-			<h1 style="text-align: center;">' . utf8_encode($projeto['nome_projeto']) . '</h1>
+			<h1 style="text-align: center;">' . $nome_projeto . '</h1>
 			'. $html .'
 		');
 
 	//Renderizar o html
 	$dompdf->render();
 
-	ob_end_clean(); /* função para exibir corretamente o PDF no linux */
+	ob_end_clean(); // função para exibir corretamente o PDF no linux
 
 	//Exibibir a página
 	$dompdf->stream(
 		"$nome_projeto", 
 		array(
-			"Attachment" => false //Para realizar o download somente alterar para true
+			"Attachment" => false // Para realizar o download somente alterar para true
 		)
 	);
 ?>
