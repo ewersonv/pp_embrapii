@@ -76,7 +76,7 @@ function sendMail($nome, $email, $telefone, $senha, $tipo)
     $mail->SMTPAuth = true;
     $mail->SMTPSecure = 'tls';
     $mail->Username = 'ewersonv@gmail.com';
-    $mail->Password = 'IronMan23';
+    $mail->Password = '';
     $mail->Port = 587;
     $mail->setFrom('ewersonv@gmail.com', utf8_decode('Plataforma de prospecção'));
     
@@ -117,7 +117,7 @@ function sendMailRecuperarSenha($nome, $email, $senha)
     $mail->SMTPAuth = true;
     $mail->SMTPSecure = 'tls';
     $mail->Username = 'ewersonv@gmail.com';
-    $mail->Password = 'IronMan23';
+    $mail->Password = '';
     $mail->Port = 587;
     $mail->setFrom('ewersonv@gmail.com', utf8_decode('Plataforma de prospecção'));
     
