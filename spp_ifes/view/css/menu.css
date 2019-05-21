@@ -11,10 +11,10 @@ body
 
 a
 {
-    color: #000000;
-    display: inline-block;
-    text-decoration: none;
-    font-weight: 400;
+  color: #000000;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 400;
 }
 
 #menuToggle
@@ -116,7 +116,7 @@ a
 {
   position: absolute;
   width: 300px;
-  height: 100vmin;
+  min-height: 100vh;
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
