@@ -93,7 +93,7 @@ function sendMail($nome, $email, $telefone, $senha, $tipo)
     Telefone: $telefone<br>
     Senha*: <b>$senha</b><br>
     Nível de acesso: $permissao<br><br>
-    Seu cadastro foi confirmado. Link para acessar a plataforma: http://localhost/pp_embrapii/arquivos/spp_ifes/view/login.php <br>
+    Seu cadastro foi confirmado. Link para acessar a plataforma: http://localhost/pp_embrapii/spp_ifes/view/login.php <br>
     *Você pode alterar sua senha na aba 'Configurações'
     ");
     if(!$mail->send())

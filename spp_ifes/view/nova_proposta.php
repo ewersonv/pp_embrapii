@@ -15,23 +15,24 @@ $_SESSION['submit'] = 0;
 
 				<form name="formulario" method="POST" action="../controller/proc_nova_proposta.php">
 					<div class="col-md-12 mb-3">
+						<small>*Campo obrigatório</small><br><br>
 
-						<label><b>Nome do projeto: </b></label><br>
+						<label><b>Nome do projeto*: </b></label><br>
 						<input type="text" class="form-control" name="nome_projeto" placeholder="Nome do projeto" maxlength="100" required><br><br>
 
-						<label><b>Nome do produto que será desenvolvido: </b></label>
+						<label><b>Nome do produto que será desenvolvido*: </b></label>
 						<input type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" maxlength="100" required><br><br>
 						
 						<label><b>Descrição do produto: </b></label>
 						<textarea type="text" class="form-control" name="descricao" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade" maxlength="4000"/></textarea><br><br>
 						
-						<label><b>Nome da empresa: </b></label><br>
+						<label><b>Nome da empresa*: </b></label><br>
 						<input type="text" class="form-control" name="nome_empresa" placeholder="Nome da empresa" maxlength="100" required><br><br>
 
-						<label><b>CNPJ: </b></label><br>
+						<label><b>CNPJ*: </b></label><br>
 						<input type="text" class="form-control" name="cnpj" placeholder="Apenas números" maxlength="14" required><br><br>
 
-						<label><b>Tipo de empresa: </b></label><br>
+						<label><b>Tipo de empresa*: </b></label><br>
 						<div class="custom-control custom-radio">
 							<input id="MEI/ME" name="tipo_empresa" type="radio" value="MEI/ME" class="custom-control-input" required>
 							<label class="custom-control-label" for="MEI/ME" >MEI/ME</label> <br>
@@ -85,6 +86,18 @@ $_SESSION['submit'] = 0;
 		function validate() {
 			var regex = /^(?!.*\s)[0-9]*$/;
 
+			if (formulario.nome_projeto.value == '') {
+				formulario.nome_projeto.focus();
+				return false;
+			}
+			if (formulario.nome_produto.value == '') {
+				formulario.nome_produto.focus();
+				return false;
+			}
+			if (formulario.nome_empresa.value == '') {
+				formulario.nome_empresa.focus();
+				return false;
+			}
 			if (formulario.cnpj.value == '') {
 				formulario.cnpj.focus();
 				return false;
