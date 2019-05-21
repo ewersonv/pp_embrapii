@@ -1,21 +1,21 @@
 <?php
 include_once("../controller/sessao.php");
 $_SESSION['submit'] = 0;
-
-if(isset($_SESSION['msg'])){
-	echo $_SESSION['msg'];
-	unset($_SESSION['msg']);
-}
-
 include_once("header.php");
 include_once("../controller/router.php");
-
 ?>
 
 <html lang="pt-br">
 	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">
+				<?php
+					if(isset($_SESSION['msg'])){
+						echo $_SESSION['msg'];
+						unset($_SESSION['msg']);
+					}
+				?>
+
 				<h1 class="mb-0">
 					<br><a class="text-dark">Pesquisar projetos</a><br><br>
 				</h1>

@@ -16,17 +16,17 @@ $_SESSION['submit'] = 0;
             <div class="col-md-auto">
                 <div class="text-left">
                     <div class="py-5 text-center">
+                        <?php
+                            if(isset($_SESSION['msg'])){
+                                echo $_SESSION['msg'];
+                                unset($_SESSION['msg']);
+                            }
+                        ?>
+                        
                         <h3 class="mb-0">
                             <a class="text-dark">Consultar prospectadores</a>
                         </h3>
                     </div>
-
-                    <?php
-                        if(isset($_SESSION['msg'])){
-                            echo $_SESSION['msg'];
-                            unset($_SESSION['msg']);
-                        }
-                    ?>
 
                     <div class="table-responsive">
                         <table class="table responsive">

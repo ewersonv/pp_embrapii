@@ -15,7 +15,7 @@ session_start();
     
         <div class="wrapper fadeInDown">
 
-        <?php // Mensagem de erro no login
+        <?php // Mensagem de erro
             if(isset($_SESSION['msg'])){
                 echo "<div class='text-center'>";
                 echo $_SESSION['msg'];

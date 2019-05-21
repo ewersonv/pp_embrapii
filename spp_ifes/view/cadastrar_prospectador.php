@@ -36,6 +36,9 @@ $_SESSION['submit'] = 0;
                         <label>Email:</label>
                         <input class="form-control" type="email" name="email" style="min-width:345px; max-width:450px;" placeholder="exemplo@email.com"><br>
 
+                        <label>Confirmar email:</label>
+                        <input class="form-control" type="email" name="confirmar_email" style="min-width:345px; max-width:450px;" placeholder="exemplo@email.com"><br>
+
                         <label>Permissões de administrador?</label>
                         <div class="custom-control custom-radio">
                             <input id="sim" name="adm" type="radio" class="custom-control-input" value="1" required>
@@ -77,8 +80,14 @@ $_SESSION['submit'] = 0;
             return false;
         }
         else if(!regex.exec(formulario.telefone.value)) {
-            alert("Número de telefone inválido");
+            alert("Número de telefone inválido.");
             formulario.nova.focus();
+            return false;
+        }
+        if (formulario.email.value != formulario.confirmar_email.value)
+        {
+            alert("Emails informados são diferentes.");
+            formulario.confirmar_email.focus();
             return false;
         }
         else {

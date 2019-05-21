@@ -10,18 +10,17 @@ include_once("header.php");
 <body id="grad1">
 	<div class="container">
 		<div class="py-5 text-center">
+            <?php
+                if(isset($_SESSION['msg'])){
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+            ?>
+
             <h2 class="mb-0">
 				<a class="text-dark">Configurações</a>
 			</h2>
         </div>
-        
-        <?php
-            if(isset($_SESSION['msg'])){
-                echo $_SESSION['msg'];
-                unset($_SESSION['msg']);
-            }
-        ?>
-
 
         <div class="list-group">
             <a href="alterar_senha.php" class="list-group-item list-group-item-action">Alterar senha</a>
