@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
 		<link rel="stylesheet" href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="bootstrap/css/product.css" rel="stylesheet">
 		<link href="css/menu.css" rel="stylesheet">

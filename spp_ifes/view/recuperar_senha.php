@@ -5,6 +5,8 @@ session_start();
 <html lang="pt-br">
 	<head>
 		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="img/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
 		<title>SPP - Ifes</title>
         <link href="css/login.css" rel="stylesheet" type="text/css">
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
