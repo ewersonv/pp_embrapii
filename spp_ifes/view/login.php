@@ -14,15 +14,17 @@ session_start();
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
     <body>
-    
-        <?php
-			if(isset($_SESSION['msg'])){
-				echo $_SESSION['msg'];
-				unset($_SESSION['msg']);
-			}
-        ?>
         
         <div class="wrapper fadeInDown">
+        
+        <?php // Mensagem de erro no login
+            if(isset($_SESSION['msg'])){
+                echo "<div class='text-center'>";
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+                echo "</div>";
+            }
+        ?>
             <div id="formContent">
                  <!-- Icon -->
                 <div class="fadeIn first">

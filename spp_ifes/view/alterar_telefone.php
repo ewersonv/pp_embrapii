@@ -33,7 +33,7 @@ $_SESSION['submit'] = 0;
                         <?php echo getTelefone($_SESSION['id']) ?> <br><br>
 
                         <label>Novo telefone:</label>
-                        <input class="form-control" type="text" name="nova" style="min-width:345px; max-width:450px;" placeholder="27999998888"> <br><br>
+                        <input class="form-control" type="text" name="telefone" style="min-width:345px; max-width:450px;" placeholder="27999998888" maxlength="11"> <br><br>
                         
                         <div class="text-center">
                             <button class="btn btn-dark my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>
