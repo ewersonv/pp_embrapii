@@ -41,13 +41,13 @@
 		-->
 		<ul id="menu">
 		<a class="underlineHover" href="index.php"><li>Home</li></a> <br>
-		<a class="underlineHover" href="listar.php"><li>Listar</li></a>
-		<a class="underlineHover" href="nova_proposta.php"><li>Nova Proposta</li></a>
+		<a class="underlineHover" href="listar.php"><li>Listar</li></a> <br>
+		<a class="underlineHover" href="nova_proposta.php"><li>Nova Proposta</li></a> <br>
 		<?php
 		if ($_SESSION['tipo'] == 1)
 		{
 			?>
-				<a class="underlineHover" href='relatorios.php'><li>Relatórios</li></a>
+				<a class="underlineHover" href='relatorios.php'><li>Relatórios</li></a> <br>
 			<?php
 		}
 		?>
