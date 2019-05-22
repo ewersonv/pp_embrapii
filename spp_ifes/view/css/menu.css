@@ -165,3 +165,12 @@ a
   .underlineHover:hover:after{
     width: 100%;
   }
+
+
+@media (max-width: 400px)
+{
+  #menu
+  {
+    width: 100%;
+  }
+}
