@@ -23,7 +23,7 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 				</h2>
 				<div class="py-2 text-right">
 					<a class='btn btn-sm mr-4 btn-outline-danger' href="#" role='button' onclick="pdf(<?php echo $id; ?>)">Gerar PDF</a>
-					<a class='btn btn-sm mr-4 btn-outline-success' href="#" role='button' onclick="xls(<?php echo $id; ?>)">Gerar CSV</a></p>
+					<a class='btn btn-sm mr-4 btn-outline-success' href="#" role='button' onclick="csv(<?php echo $id; ?>)">Gerar CSV</a></p>
 				</div>
 			</div>
 			
@@ -113,11 +113,11 @@ if($_SESSION['tipo'] != 1 AND $_SESSION['id'] != $row['id_usuario']){ /* usuári
 		function pdf(id)
 		{
 			<?php $_SESSION['submit'] = 1; ?>;
-			location.href = '../controller/gerar_pdf.php?id='+ id;
+			window.open('../controller/gerar_pdf.php?id='+ id, "_blank");
 		}
 	</script>
 	<script>
-		function xls(id)
+		function csv(id)
 		{
 			<?php $_SESSION['submit'] = 1; ?>;
 			location.href = '../controller/gerar_csv.php?id='+ id;
