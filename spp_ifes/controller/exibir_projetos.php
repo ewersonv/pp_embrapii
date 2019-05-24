@@ -21,6 +21,7 @@ else /* se a página foi acessada via submit da página anterior */
             <h5 class="card-header"><?php echo "<b>" . utf8_encode($row['nome_projeto']) . "</b>" ?></h5>
                 <div class="card-body">
                         
+                        <b>Criada em: </b> <?php echo utf8_encode($row['created']) ?> <br>
                         <b>Empresa: </b> <?php echo utf8_encode($row['nome_empresa']) ?> <br>
                         <b>Prospectado por: </b> <?php echo utf8_encode($row['nome_usuario']) ?> <br>
                         <b>Descrição do produto: </b> <?php echo utf8_encode(limita_caracteres($row['descricao'], 280)) ?> <br><br>

@@ -51,7 +51,7 @@ function getAllProjetos($inicio, $qnt_result_pg){
 
     if($tipo == 1) /* Se o usuário for um adm, pode ver todos os projetos*/
     {
-        $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
+        $result_projeto = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, DATE_FORMAT(P.created,'%d/%m/%Y') AS created, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao as descricao
         FROM projeto P
         INNER JOIN empresa E
         ON P.fk_id_empresa = E.id
