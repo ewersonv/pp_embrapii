@@ -30,9 +30,9 @@ session_start();
                 </div>
                 
                 <!-- Login Form -->
-                <form method="POST" action="../controller/valida_recuperar_senha.php">
-                    <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email">
-                    <input type="submit" class="fadeIn fourth" name="btnLogin" value="Recuperar">
+                <form name="form" method="POST" action="../controller/valida_recuperar_senha.php">
+                    <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email" required=>
+                    <input type="submit" class="fadeIn fourth" name="btnLogin" value="Recuperar" onsubmit="check()" onclick="check()">
                 </form>
 
                 <!-- Remind Password -->

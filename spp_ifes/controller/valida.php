@@ -15,17 +15,17 @@ if($btnLogin)
 		//Pesquisar o usuário no BD
 		$conn = connect();
 		$resultado = getUsuario($conn, $email);
+		$row = mysqli_fetch_assoc($resultado);
 		
-		if($resultado)
+		if($row != "")
 		{
-			$row = mysqli_fetch_assoc($resultado);
 
 			if($row['status'] == 0)
 			{
 				/* Fecha a conexão com o banco de dados */
 				closeConnection($conn);
 
-				$_SESSION['msg'] = "Usuário desativado. Solicite a reativação à um administrador. <br><br>";
+				$_SESSION['msg'] = "<p style='color:red;'>Usuário desativado. Solicite a reativação à um administrador.</p><br><br>";
 				header("Location: ../view/login.php");
 			}
 			elseif(password_verify($senha, $row['senha']))
@@ -46,14 +46,19 @@ if($btnLogin)
 				/* Fecha a conexão com o banco de dados */
 				closeConnection($conn);
 
-				$_SESSION['msg'] = "Login ou senha incorretos! <br><br>";
+				$_SESSION['msg'] = "<p style='color:red;'>Senha incorreta.</p><br><br>";
 				header("Location: ../view/login.php");
 			}
+		}
+		else
+		{
+			$_SESSION['msg'] = "<p style='color:red;'>Não existe usuário associado ao email inserido.</p><br><br>";
+			header("Location: ../view/login.php");
 		}
 	}
 	else
 	{
-		$_SESSION['msg'] = "Preencha todos os campos. <br><br>";
+		$_SESSION['msg'] = "<p style='color:red;'>Preencha todos os campos.</p><br><br>";
 		header("Location: ../view/login.php");
 	}
 }

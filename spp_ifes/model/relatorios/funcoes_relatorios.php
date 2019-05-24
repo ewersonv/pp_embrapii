@@ -27,7 +27,7 @@ function getProjetosEmpresaMax($inicio, $qnt_result_pg)
 
     $conn = connect();
 
-    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
+    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, DATE_FORMAT(P.created,'%d/%m/%Y') AS created, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
     FROM projeto P
     INNER JOIN empresa E
     ON P.fk_id_empresa = E.id
@@ -53,7 +53,7 @@ function getProjetosProspectadorMax($inicio, $qnt_result_pg)
 
     $conn = connect();
 
-    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
+    $query = "SELECT P.id as id_projeto, P.nome as nome_projeto, P.finalizado, DATE_FORMAT(P.created,'%d/%m/%Y') AS created, U.id as id_usuario, U.nome as nome_usuario, E.nome as nome_empresa, PD.descricao
     FROM projeto P
     INNER JOIN empresa E
     ON P.fk_id_empresa = E.id
