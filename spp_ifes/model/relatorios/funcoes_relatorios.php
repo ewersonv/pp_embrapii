@@ -192,7 +192,7 @@ function projetosUltimosMeses() /* retorna o número de projetos por mês, desde
 
     $query = "SELECT COUNT(id) as qtd, MONTH(created) as mes
     FROM projeto
-    WHERE created BETWEEN CURDATE() - INTERVAL 6 MONTH AND CURDATE()
+    WHERE DATE(created) BETWEEN CURDATE() - INTERVAL 6 MONTH AND CURDATE()
     GROUP BY MONTH(created)
     ORDER BY created DESC";
     $result = mysqli_query($conn, $query);
