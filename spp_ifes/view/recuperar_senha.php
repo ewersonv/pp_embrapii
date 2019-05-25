@@ -30,9 +30,9 @@ session_start();
                 </div>
                 
                 <!-- Login Form -->
-                <form name="form" method="POST" action="../controller/valida_recuperar_senha.php">
-                    <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email" required=>
-                    <input type="submit" class="fadeIn fourth" name="btnLogin" value="Recuperar" onsubmit="check()" onclick="check()">
+                <form name="formulario" method="POST" action="../controller/valida_recuperar_senha.php">
+                    <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email">
+                    <input type="button" class="fadeIn fourth" name="btnLogin" value="Recuperar" onclick="validate()">
                 </form>
 
                 <!-- Remind Password -->
@@ -41,6 +41,20 @@ session_start();
                 </div>
             </div>
         </div>
+    <script>
+        function validate() {
+            if (formulario.email.value == '')
+            {
+                formulario.email.focus();
+                return false;
+            }
+            else
+            {
+                <?php $_SESSION['submit'] = 1; ?>
+                formulario.submit();
+            }
+        }
+    </script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </body>

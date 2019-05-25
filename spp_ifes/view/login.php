@@ -30,10 +30,10 @@ session_start();
                 </div>
                 
                 <!-- Login Form -->
-                <form method="POST" action="../controller/valida.php">
-                    <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email" required>
-                    <input type="password" id="password" class="fadeIn third" name="senha" placeholder="Digite a sua senha" required>
-                    <input type="submit" class="fadeIn fourth" name="btnLogin" value="Entrar">
+                <form name="formulario" method="POST" action="../controller/valida.php">
+                    <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email">
+                    <input type="password" id="password" class="fadeIn third" name="senha" placeholder="Digite a sua senha">
+                    <input type="button" class="fadeIn fourth" name="btnLogin" value="Entrar" onclick="validate()">
                 </form>
 
                 <!-- Remind Password -->
@@ -42,6 +42,26 @@ session_start();
                 </div>
             </div>
         </div>
+    <script>
+        function validate() {
+            if (formulario.email.value == '')
+            {
+                formulario.email.focus();
+                return false;
+            }
+            if (formulario.senha.value == '')
+            {
+                formulario.senha.focus();
+                return false;
+            }
+            else
+            {
+                <?php $_SESSION['submit'] = 1; ?>
+                formulario.submit();
+            }
+        }
+    
+    </script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </body>

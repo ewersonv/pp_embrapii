@@ -41,7 +41,7 @@ $_SESSION['submit'] = 0;
 
                         <label>Permissões de administrador?</label>
                         <div class="custom-control custom-radio">
-                            <input id="sim" name="adm" type="radio" class="custom-control-input" value="1" required>
+                            <input id="sim" name="adm" type="radio" class="custom-control-input" value="1">
                             <label class="custom-control-label" for="sim">Sim</label> <br>
                         </div>
                         <div class="custom-control custom-radio">
@@ -72,6 +72,16 @@ $_SESSION['submit'] = 0;
         }
         if (formulario.email.value == '') {
             formulario.email.focus();
+            return false;
+        }
+        if (formulario.confirmar_email.value == '')
+        {
+            formulario.confirmar_email.focus();
+            return false;
+        }
+        if (formulario.adm.value == '')
+        {
+            alert('Escolha uma permissão.')
             return false;
         }
         if (formulario.telefone.value.length < 11) {

@@ -47,8 +47,12 @@ $_SESSION['submit'] = 0;
     function validate() {
         var regex = /^(?=(?:.*?[A-Z]){2})(?=(?:.*?[0-9]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/;
 
-        if (formulario.atual.value == '' || formulario.nova.value == '') {
-            alert('Por favor, preencha todos os campos.');
+        if (formulario.atual.value == '') {
+            formulario.atual.focus();
+            return false;
+        }
+        if (formulario.nova.value == '') {
+            formulario.nova.focus();
             return false;
         }
         if (formulario.nova.value.length < 8) {

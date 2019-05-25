@@ -3,9 +3,7 @@ session_start();
 include_once("../model/conexao.php");
 include_once("../model/usuarios/funcoes_usuarios.php");
 
-$btnLogin = filter_input(INPUT_POST, 'btnLogin', FILTER_SANITIZE_STRING);
-
-if($btnLogin)
+if($_SESSION['submit'] == 1)
 {
 	$email= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
 	$senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
@@ -39,6 +37,7 @@ if($btnLogin)
 				$_SESSION['nome'] = $row['nome'];
 				$_SESSION['email'] = $row['email'];
 				$_SESSION['tipo'] = $row['tipo'];
+				$_SESSION['submit'] = 0;
 				header("Location: ../view/index.php");
 			}
 			else

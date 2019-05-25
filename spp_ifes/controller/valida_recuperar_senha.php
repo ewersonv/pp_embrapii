@@ -4,10 +4,10 @@ include_once("../model/conexao.php");
 include_once("../model/funcoes.php");
 include_once("../model/usuarios/funcoes_usuarios.php");
 
-$btnLogin = filter_input(INPUT_POST, 'btnLogin', FILTER_SANITIZE_STRING);
-
-if($btnLogin)
+if($_SESSION['submit'] == 1)
 {
+    $_SESSION['submit'] = 0;
+    
 	$email= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
 
     //Pesquisar o usuário no BD
