@@ -3,11 +3,11 @@ include_once("../controller/sessao.php");
 include_once("header.php");
 ?>
 <!DOCTYPE html>
-<html>
+<html id="grad1">
 <head>
     <meta charset="utf-8">
 </head>
-<body id="grad1">
+<body>
 	<div class="container">
 		<div class="py-5 text-center">
             <?php

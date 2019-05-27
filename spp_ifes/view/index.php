@@ -5,8 +5,8 @@ include_once("header.php");
 include_once("../controller/router.php");
 ?>
 
-<html lang="pt-br">
-	<body id="grad1">
+<html id="grad1" lang="pt-br">
+	<body>
 		<div class="container">
 			<div class="py-5 text-center">
 				<?php

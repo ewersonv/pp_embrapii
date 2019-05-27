@@ -6,11 +6,11 @@ include_once("header.php");
 $_SESSION['submit'] = 0;
 ?>
 <!DOCTYPE html>
-<html>
+<html id="grad1">
 <head>
     <meta charset="utf-8">
 </head>
-<body id="grad1">
+<body>
     <div class="container">
         <div class="py-5 text-center">
 			<h3 class="mb-0">

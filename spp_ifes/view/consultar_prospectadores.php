@@ -6,11 +6,11 @@ include_once("../model/usuarios/funcoes_usuarios.php");
 $_SESSION['submit'] = 0;
 ?>
 <!DOCTYPE html>
-<html>
+<html id="grad1">
 <head>
     <meta charset="utf-8">
 </head>
-<body id="grad1">
+<body>
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-md-auto">
