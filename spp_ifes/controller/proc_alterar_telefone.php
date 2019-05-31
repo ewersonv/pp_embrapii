@@ -14,20 +14,31 @@ else /* se a página foi acessada via submit da página anterior */
     $conn = connect();
     $id_usuario = $_SESSION['id'];
     $telefone = filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING);
+    $senha = filter_input(INPUT_POST, 'senha', FILTER_SANITIZE_STRING);
+    $email = $_SESSION['email'];
+    $senha_banco = getSenha($conn, $email);
 
-    updateTelefone($conn, $telefone, $id_usuario);
+    if(password_verify($senha, $senha_banco))
+    {
+        updateTelefone($conn, $telefone, $id_usuario);
 
-    if(mysqli_affected_rows($conn)){
-        /* Fecha a conexão com o banco de dados */
-        closeConnection($conn);
-        
-        $_SESSION['msg'] = "<p style='color:green;'>Telefone alterado com sucesso!</p>";
-        header("Location: ../view/configuracoes.php");
-    }else{
-        /* Fecha a conexão com o banco de dados */
-        closeConnection($conn);
-        
-        $_SESSION['msg'] = "<p style='color:red;'>Não foi possível alterar o telefone.</p>";
+        if(mysqli_affected_rows($conn)){
+            /* Fecha a conexão com o banco de dados */
+            closeConnection($conn);
+            
+            $_SESSION['msg'] = "<p style='color:green;'>Telefone alterado com sucesso!</p>";
+            header("Location: ../view/configuracoes.php");
+        }else{
+            /* Fecha a conexão com o banco de dados */
+            closeConnection($conn);
+            
+            $_SESSION['msg'] = "<p style='color:red;'>Não foi possível alterar o telefone.</p>";
+            header("Location: ../view/alterar_telefone.php");
+        }
+    }
+    else
+    {
+        $_SESSION['msg'] = "<p style='color:red;'>Senha incorreta.</p>";
         header("Location: ../view/alterar_telefone.php");
     }
 }

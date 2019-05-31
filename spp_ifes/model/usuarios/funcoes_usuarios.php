@@ -61,87 +61,69 @@ function insertUsuario($conn, $nome, $telefone, $email, $senha, $tipo)
 
 function sendMail($nome, $email, $telefone, $senha, $tipo)
 {
-    require '/usr/share/php/libphp-phpmailer/PHPMailerAutoload.php';
+    $to = $email;
+    $subject = utf8_decode('Confirmação de cadastro na plataforma de prospecção');
+    
+    $headers = 'From: polodeinovacao@ifes.edu.br' . "\r\n" .
+               'Reply-To: polodeinovacao@ifes.edu.br';
+    $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+    
     if ($tipo == 1)
     {
-        $permissao = "permissão de acesso de administrador";
+        $permissao = utf8_decode("permissão de acesso de administrador");
     }
     else
     {
-        $permissao = "permissão de acesso de usuario comum";
+        $permissao = utf8_decode("permissão de acesso de usuário comum");
     }
-    $mail = new PHPMailer(); //PHPMailer(true) habilita throw excepetion usando $mail->SMTPDebug = 3;
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->SMTPSecure = 'tls';
-    $mail->Username = 'ewersonv@gmail.com';
-    $mail->Password = '';
-    $mail->Port = 587;
-    $mail->setFrom('ewersonv@gmail.com', utf8_decode('Plataforma de prospecção'));
     
-    $mail->isHTML(true);
-
-    // Endereço do e-mail do destinatário
-    //$mail->addAddress("$email");
-    $mail->addAddress("ewersonv@gmail.com");
-    
-    $mail->Subject = utf8_decode('Confirmação de cadastro na plataforma de prospecção');
-    $mail->Body    = utf8_decode("
-    Nome: $nome<br>
-    Login: $email<br>
-    Telefone: $telefone<br>
-    Senha*: <b>$senha</b><br>
-    Nível de acesso: $permissao<br><br>
-    Seu cadastro foi confirmado. Link para acessar a plataforma: http://localhost/pp_embrapii/spp_ifes/view/login.php <br>
-    *Você pode alterar sua senha na aba 'Configurações'
+    $message = utf8_decode("
+        Nome: $nome<br>
+        Login: $email<br>
+        Telefone: $telefone<br>
+        Senha*: <b>$senha</b><br>
+        Nível de acesso: $permissao<br><br>
+        Seu cadastro foi confirmado. Link para acessar a plataforma: http://localhost/pp_embrapii/spp_ifes/view/login.php <br>
+        *Você pode alterar sua senha na aba 'Configurações'
     ");
-    if(!$mail->send())
+
+    $success = mail($to, $subject, $message, $headers);
+    if(!$success)
     {
-        echo 'Não foi possível enviar a mensagem.<br>';
-        echo 'Erro: ' . $mail->ErrorInfo;
+        $_SESSION['msg'] = "Não foi possível enviar email de confirmação para o usuário";
     }
     else
     {
-        echo 'Mensagem enviada.';
+        $_SESSION['msg'] = "Um email de confirmação foi enviado para o usuário cadastrado.";
     }
 }
 
 function sendMailRecuperarSenha($nome, $email, $senha)
 {
-    require '/usr/share/php/libphp-phpmailer/PHPMailerAutoload.php';
-
-    $mail = new PHPMailer(); //PHPMailer(true) habilita throw excepetion usando $mail->SMTPDebug = 3;
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->SMTPSecure = 'tls';
-    $mail->Username = 'ewersonv@gmail.com';
-    $mail->Password = '';
-    $mail->Port = 587;
-    $mail->setFrom('ewersonv@gmail.com', utf8_decode('Plataforma de prospecção'));
+    $path = 'http://localhost/pp_embrapii/spp_ifes/view/login.php';
+    $to = $email;
+    $subject = utf8_decode('Recuperação de senha');
     
-    $mail->isHTML(true);
+    $headers = 'From: polodeinovacao@ifes.edu.br' . "\r\n" .
+               'Reply-To: polodeinovacao@ifes.edu.br';
+    $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
-    // Endereço do e-mail do destinatário
-    //$mail->addAddress("$email");
-    $mail->addAddress("ewersonv@gmail.com");
-    
-    $mail->Subject = utf8_decode('Recuperação de senha');
-    $mail->Body    = utf8_decode("
-    Olá $nome,<br>
-    Sua nova senha é: <b>$senha</b>.<br>
-    Você pode alterá-la na aba 'Configurações' em http://localhost/pp_embrapii/spp_ifes/view/login.php.
+    $message = utf8_decode("
+        Olá $nome,<br>
+        Sua nova senha é: <b>$senha</b>.<br>
+        Você pode alterá-la na aba 'Configurações' em $path.
     ");
-    if(!$mail->send())
+
+    $success = mail($to, $subject, $message, $headers);
+    if(!$success)
     {
-        $_SESSION['msg'] = "Não foi possível enviar a mensagem.<br>";
+        $_SESSION['msg'] = "Não foi possível enviar email de confirmação para o usuário";
         header("Location: ../view/recuperar_senha.php");
     }
     else
     {
         $_SESSION['msg'] = "Uma mensagem contendo a nova senha de acesso foi enviada para o email informado. <br><br>";
-	    header("Location: ../view/login.php");
+        header("Location: ../view/login.php");
     }
 }
 
@@ -162,25 +144,43 @@ function updateStatusUsuario($id)
     /* troca o status do usuário, ativando-o ou desativando-o */
     $conn = connect();
 
+    /* verifica quantos administradores ativados existem no banco */
+    $query = "SELECT COUNT(id) AS qtd FROM usuario WHERE tipo = 1 AND status = 1";
+    $result = mysqli_query($conn, $query);
+    $resultado = mysqli_fetch_assoc($result);
+    $qtd = $resultado['qtd'];
+
     $query = "SELECT status, nome FROM usuario WHERE usuario.id = $id";
     $result = mysqli_query($conn, $query);
     $resultado = mysqli_fetch_assoc($result);
-    $aux = $resultado['status'];
+    $status_antigo = $resultado['status'];
     $nome = $resultado['nome'];
 
-    if($aux == 1)
+    if($status_antigo == 1)
     {
-        $status = 0;
-        $_SESSION['msg'] = "<p style='color:red;'>Prospectador $nome desativado!</p>";
+        if ($qtd > 1)
+        {
+            $status = 0;
+
+            $query = "UPDATE usuario SET status = $status WHERE usuario.id = $id";
+            $result = mysqli_query($conn, $query);
+
+            $_SESSION['msg'] = "<p style='color:red;'>Prospectador $nome desativado!</p>";
+        }
+        else
+        {
+            $_SESSION['msg'] = "<p style='color:red;'>Prospectador $nome não pode ser desativado pois é o único administrador do sistema.</p>";
+        }
     }
     else
     {
         $status = 1;
+
+        $query = "UPDATE usuario SET status = $status WHERE usuario.id = $id";
+        $result = mysqli_query($conn, $query);
+        
         $_SESSION['msg'] = "<p style='color:green;'>Prospectador $nome ativado!</p>";
     }
-
-    $query = "UPDATE usuario SET status = $status WHERE usuario.id = $id";
-    $result = mysqli_query($conn, $query);
 
     /* Fecha a conexão com o banco de dados */
     closeConnection($conn);
