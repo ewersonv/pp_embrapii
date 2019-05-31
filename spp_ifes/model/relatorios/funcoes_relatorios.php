@@ -121,8 +121,15 @@ function numProjetosEmpresa($nome)
 
     $query = "SELECT COUNT(fk_id_empresa) FROM projeto WHERE fk_id_empresa = $id_empresa";
     $result = mysqli_query($conn, $query);
-    $row = mysqli_fetch_row($result);
-    $value = $row[0];
+    if ($result)
+    {
+        $row = mysqli_fetch_row($result);
+        $value = $row[0];
+    }
+    else
+    {
+        $value = 0;
+    }
 
     /* Fecha a conexão com o banco de dados */
     closeConnection($conn);

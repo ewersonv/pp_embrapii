@@ -81,7 +81,7 @@ $_SESSION['submit'] = 0;
         }
         if (formulario.adm.value == '')
         {
-            alert('Escolha uma permissão.')
+            alert('Escolha uma permissão.');
             return false;
         }
         if (formulario.telefone.value.length < 11) {

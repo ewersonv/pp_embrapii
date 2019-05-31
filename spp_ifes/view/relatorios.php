@@ -64,7 +64,7 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 			<tbody>
 				<tr>
 				<td>Total de projetos</td>
-				<td class="text-center"><?php echo totalProjetos(); ?></td>
+				<td class="text-center"><?php $qtd = totalProjetos(); echo $qtd;?></td>
 				</tr>
 				<tr>
 				<td>Análises finalizadas</td>
@@ -80,14 +80,14 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 				</tr>
 				<tr>
 				<td>Empresa com mais projetos</td>
-				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="location.href = 'relatorio_empresa.php';">
+				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="qtdEmpresa(<?php echo $qtd; ?>)">
 				<?php $_SESSION['submit'] = 1; $empresa = empresaMaisProjetos(); echo $empresa . ' (' . numProjetosEmpresa($empresa) . ')'; ?>
 				</a>
 				</td>
 				</tr>
 				<tr>
 				<td>Maior prospectador</td>
-				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="location.href = 'relatorio_prospectador.php';">
+				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="qtdProspectador(<?php echo $qtd; ?>)">
 				<?php $_SESSION['submit'] = 1; $usuario = maiorProspectador(); echo $usuario . ' (' . numProjetosUsuario($usuario) . ')'; ?>
 				</td>
 				</tr>
@@ -102,6 +102,19 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 			<div id="ProjetosProspectador" class="chart" ></div>
 		
 		</div>
-
+	<script>
+		function qtdEmpresa(qtd)
+		{
+			if (qtd > 0) {
+				location.href = 'relatorio_empresa.php';
+			}
+		}
+		function qtdProspectador(qtd)
+		{
+			if (qtd > 0) {
+				location.href = 'relatorio_prospectador.php';
+			}
+		}
+	</script>
 	</body>
 </html>

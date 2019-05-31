@@ -34,16 +34,16 @@ $_SESSION['submit'] = 0;
 
 						<label><b>Tipo de empresa*: </b></label><br>
 						<div class="custom-control custom-radio">
-							<input id="MEI/ME" name="tipo_empresa" type="radio" value="MEI/ME" class="custom-control-input" required>
-							<label class="custom-control-label" for="MEI/ME" >MEI/ME</label> <br>
+							<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" value="MEI/ME">
+							<label class="custom-control-label" for="MEI/ME">MEI/ME</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input id="EPP" name="tipo_empresa" type="radio" value="EPP" class="custom-control-input">
-							<label class="custom-control-label" for="EPP" >EPP</label> <br>
+							<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input" value="EPP">
+							<label class="custom-control-label" for="EPP">EPP</label> <br>
 						</div>
 						<div class="custom-control custom-radio">
-							<input id="Médio/Grande porte" name="tipo_empresa" type="radio" value="Médio/Grande porte" class="custom-control-input">
-							<label class="custom-control-label" for="Médio/Grande porte" >Médio/Grande porte</label> <br><br>
+							<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input" value="Médio/Grande porte">
+							<label class="custom-control-label" for="Médio/Grande porte">Médio/Grande porte</label> <br><br>
 						</div>
 
 						<label><b>Riscos: </b></label><br>
@@ -100,6 +100,10 @@ $_SESSION['submit'] = 0;
 			}
 			if (formulario.cnpj.value == '') {
 				formulario.cnpj.focus();
+				return false;
+			}
+			if (formulario.tipo_empresa.value == '') {
+				alert('Escolha um tipo de empresa.');
 				return false;
 			}
 			if (formulario.cnpj.value.length < 14) {
