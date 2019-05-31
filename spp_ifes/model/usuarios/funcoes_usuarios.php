@@ -2,7 +2,7 @@
 
 function getUsuario($conn, $email)
 {
-    $query = "SELECT id, nome, email, senha, tipo, status FROM usuario WHERE email LIKE '$email' LIMIT 1";
+    $query = "SELECT id, nome, telefone, email, senha, tipo, status, created, last_access FROM usuario WHERE email LIKE '$email' LIMIT 1";
     $resultado = mysqli_query($conn, $query);
     
     return $resultado;
