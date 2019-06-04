@@ -13,7 +13,7 @@ include_once("../model/propostas/exibicao.php");
 		<div class="container">
 			<div class="py-5 text-center">
 				<h2 class="mb-0">
-					<a class="text-dark">Projetos <?php $nome = empresaMaisProjetos(); echo '- ' . $nome; ?></a>
+					<a class="text-dark">Projetos <?php $nome = empresaMaisProjetos(); echo '- ' . utf8_encode($nome); ?></a>
 				</h2>
 			</div>
 

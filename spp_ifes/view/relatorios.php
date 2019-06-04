@@ -81,14 +81,14 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 				<tr>
 				<td>Empresa com mais projetos</td>
 				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="qtdEmpresa(<?php echo $qtd; ?>)">
-				<?php $_SESSION['submit'] = 1; $empresa = empresaMaisProjetos(); echo $empresa . ' (' . numProjetosEmpresa($empresa) . ')'; ?>
+				<?php $_SESSION['submit'] = 1; $empresa = empresaMaisProjetos(); echo utf8_encode($empresa) . ' (' . numProjetosEmpresa($empresa) . ')'; ?>
 				</a>
 				</td>
 				</tr>
 				<tr>
 				<td>Maior prospectador</td>
 				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="qtdProspectador(<?php echo $qtd; ?>)">
-				<?php $_SESSION['submit'] = 1; $usuario = maiorProspectador(); echo $usuario . ' (' . numProjetosUsuario($usuario) . ')'; ?>
+				<?php $_SESSION['submit'] = 1; $usuario = maiorProspectador(); echo utf8_encode($usuario) . ' (' . numProjetosUsuario($usuario) . ')'; ?>
 				</td>
 				</tr>
 			</tbody>
