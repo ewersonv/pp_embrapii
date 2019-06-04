@@ -1,5 +1,5 @@
 ### Descrição:<br>
-Criação de um sistema para prospecção de projetos no Polo de Inovação do IFES Campus Vitória. <br><br>
+Criação de um sistema para prospecção de projetos no Polo de Inovação do Ifes Campus Vitória. <br><br>
 
 [Mockup do projeto](arquivos/Mockup_Prospeccao_Projetos.pdf) <br><br>
 
