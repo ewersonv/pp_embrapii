@@ -66,13 +66,13 @@ $_SESSION['submit'] = 0;
                                     $finalizadas = $row['finalizadas'];
                                 }
                                 echo "<tr>";
-                                echo "<th scope='row'>" . utf8_decode($row['nome']) . "</th>";
-                                echo "<td>" . utf8_decode($row['email']) . "</td>";
-                                echo "<td>" . utf8_decode($row['telefone']) . "</td>";
-                                echo "<td>" . utf8_decode($permissao) . "</td>";
-                                echo "<td>" . utf8_decode($row['propostas']) . "</td>";
-                                echo "<td>" . utf8_decode($finalizadas) . "</td>";
-                                echo "<td>" . utf8_decode($row['acesso']) . "</td>";
+                                echo "<th scope='row'>" . utf8_encode($row['nome']) . "</th>";
+                                echo "<td>" . utf8_encode($row['email']) . "</td>";
+                                echo "<td>" . utf8_encode($row['telefone']) . "</td>";
+                                echo "<td>" . utf8_encode($permissao) . "</td>";
+                                echo "<td>" . utf8_encode($row['propostas']) . "</td>";
+                                echo "<td>" . utf8_encode($finalizadas) . "</td>";
+                                echo "<td>" . utf8_encode($row['acesso']) . "</td>";
                                 echo "<td></td>";
 
                                 if ($row['id'] != $_SESSION['id'])
