@@ -18,10 +18,10 @@ $_SESSION['submit'] = 0;
 						<small>*Campo obrigatório</small><br><br>
 
 						<label><b>Nome do projeto*: </b></label><br>
-						<input type="text" class="form-control" name="nome_projeto" placeholder="Nome do projeto" maxlength="100" required><br><br>
+						<input type="text" class="form-control" name="nome_projeto" placeholder="Nome do projeto" maxlength="250" required><br><br>
 
 						<label><b>Nome do produto que será desenvolvido*: </b></label>
-						<input type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" maxlength="100" required><br><br>
+						<input type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" maxlength="250" required><br><br>
 						
 						<label><b>Descrição do produto: </b></label>
 						<textarea type="text" class="form-control" name="descricao" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade" maxlength="4000"/></textarea><br><br>
