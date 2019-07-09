@@ -63,6 +63,8 @@ function sendMail($nome, $email, $telefone, $senha, $tipo)
 {
     $to = $email;
     $subject = utf8_decode('Confirmação de cadastro na plataforma de prospecção');
+
+    $path = 'https://prospeccao.polo.ifes.edu.br';
     
     $headers = 'From: polodeinovacao@ifes.edu.br' . "\r\n" .
                'Reply-To: polodeinovacao@ifes.edu.br';
@@ -83,7 +85,7 @@ function sendMail($nome, $email, $telefone, $senha, $tipo)
         Telefone: $telefone<br>
         Senha*: <b>$senha</b><br>
         Nível de acesso: $permissao<br><br>
-        Seu cadastro foi confirmado. Link para acessar a plataforma: http://localhost/pp_embrapii/spp_ifes/view/login.php <br>
+        Seu cadastro foi confirmado. Link para acessar a plataforma: '$path' <br>
         *Você pode alterar sua senha na aba 'Configurações'
     ");
 
@@ -100,7 +102,7 @@ function sendMail($nome, $email, $telefone, $senha, $tipo)
 
 function sendMailRecuperarSenha($nome, $email, $senha)
 {
-    $path = 'http://localhost/pp_embrapii/spp_ifes/view/login.php';
+    $path = 'https://prospeccao.polo.ifes.edu.br';
     $to = $email;
     $subject = utf8_decode('Recuperação de senha');
     
@@ -111,14 +113,14 @@ function sendMailRecuperarSenha($nome, $email, $senha)
     $message = utf8_decode("
         Olá $nome,<br>
         Sua nova senha é: <b>$senha</b>.<br>
-        Você pode alterá-la na aba 'Configurações' em $path.
+        Você pode alterá-la na aba 'Configurações' em '$path'.
     ");
 
     $success = mail($to, $subject, $message, $headers);
     if(!$success)
     {
-        $_SESSION['msg'] = "Não foi possível enviar email de confirmação para o usuário";
-        header("Location: ../view/recuperar_senha.php");
+        $_SESSION['msg'] = "Não foi possível enviar email de confirmação para o usuário. <br><br>";
+        return 0;
     }
     else
     {

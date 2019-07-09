@@ -20,23 +20,32 @@ if($_SESSION['submit'] == 1)
     {
         if ($row['status'] == 0)
         {
-            $_SESSION['msg'] = "Usuário desativado. Solicite a reativação à um administrador. <br><br>";
+            $_SESSION['msg'] = "<p style='color:red;'>Usuário desativado. Solicite a reativação à um administrador.</p><br><br>";
 			header("Location: ../view/recuperar_senha.php");
         }
         else
         {
             if ($row['cpf'] != $cpf)
             {
-                $_SESSION['msg'] = "CPF incorreto. <br><br>";
+                $_SESSION['msg'] = "<p style='color:red;'>CPF incorreto.</p><br><br>";
                 header("Location: ../view/recuperar_senha.php");
             }
             
             else
             {
+                $senhaAntiga = $row['senha'];
                 $novaSenha = gerarSenha(8, true, true, true, false);
                 $novaSenhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
 
                 updateSenha($conn, $novaSenhaHash, $email);
+
+                $resposta = sendMailRecuperarSenha($row['nome'], $email, $novaSenha);
+
+                if ($resposta == 0)
+                {
+                    updateSenha($conn, $senhaAntiga, $email);
+                    header("Location: ../view/recuperar_senha.php");
+                }
 
                 closeConnection($conn);
 
