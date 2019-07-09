@@ -2,7 +2,7 @@
 
 function getUsuario($conn, $email)
 {
-    $query = "SELECT id, nome, telefone, email, senha, tipo, status, created, last_access FROM usuario WHERE email LIKE '$email' LIMIT 1";
+    $query = "SELECT * FROM usuario WHERE email LIKE '$email' LIMIT 1";
     $resultado = mysqli_query($conn, $query);
     
     return $resultado;
@@ -12,7 +12,7 @@ function getProspectadores()
 {
     $conn = connect();
 
-    $query = "SELECT u.id, u.nome, u.email, u.telefone, u.tipo AS permissao, u.status, DATE_FORMAT(u.last_access,'%d/%m/%Y') AS acesso,
+    $query = "SELECT u.id, u.nome, u.cpf, u.email, u.telefone, u.tipo AS permissao, u.status, DATE_FORMAT(u.last_access,'%d/%m/%Y') AS acesso,
     COUNT(p.id) AS propostas, SUM(p.finalizado) AS finalizadas
     FROM usuario u
     LEFT JOIN projeto p
@@ -51,11 +51,11 @@ function getTelefone($id_usuario)
     return $row['telefone'];
 }
 
-function insertUsuario($conn, $nome, $telefone, $email, $senha, $tipo)
+function insertUsuario($conn, $nome, $cpf, $telefone, $email, $senha, $tipo)
 {
     /* Insere usuário no BD */
 
-    $query = "INSERT INTO usuario (nome, telefone, email, senha, tipo, status, created, last_access) VALUES ('$nome', '$telefone', '$email', '$senha', '$tipo', 1, NOW(), NULL)";
+    $query = "INSERT INTO usuario (nome, cpf, telefone, email, senha, tipo, status, created, last_access) VALUES ('$nome', '$cpf','$telefone', '$email', '$senha', '$tipo', 1, NOW(), NULL)";
 	$result = mysqli_query($conn, $query);
 }
 

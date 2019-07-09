@@ -15,6 +15,7 @@ else /* se a página foi acessada via submit da página anterior */
 	$conn = connect();
 
 	$nome = utf8_decode(filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING));
+	$cpf = utf8_decode(filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_STRING));
 	$telefone = utf8_decode(filter_input(INPUT_POST, 'telefone', FILTER_SANITIZE_STRING));
 	$email = utf8_decode(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING));
 	$senha_sem_hash = gerarSenha(8, true, true, true, false);  /* $tamanho, $maiusculas, $minusculas, $numeros, $simbolos */
@@ -45,7 +46,7 @@ else /* se a página foi acessada via submit da página anterior */
 	}
 	else
 	{
-		insertUsuario($conn, $nome, $telefone, $email, $senha, $tipo);
+		insertUsuario($conn, $nome, $cpf, $telefone, $email, $senha, $tipo);
 
 		if(mysqli_affected_rows($conn)){
 

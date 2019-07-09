@@ -8,7 +8,8 @@ if($_SESSION['submit'] == 1)
 {
     $_SESSION['submit'] = 0;
     
-	$email= filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
+    $cpf = filter_input(INPUT_POST, 'cpf', FILTER_SANITIZE_STRING);
 
     //Pesquisar o usuário no BD
     $conn = connect();
@@ -20,18 +21,27 @@ if($_SESSION['submit'] == 1)
         if ($row['status'] == 0)
         {
             $_SESSION['msg'] = "Usuário desativado. Solicite a reativação à um administrador. <br><br>";
-			header("Location: ../view/login.php");
+			header("Location: ../view/recuperar_senha.php");
         }
         else
         {
-            $novaSenha = gerarSenha(8, true, true, true, false);
-            $novaSenhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
+            if ($row['cpf'] != $cpf)
+            {
+                $_SESSION['msg'] = "CPF incorreto. <br><br>";
+                header("Location: ../view/recuperar_senha.php");
+            }
+            
+            else
+            {
+                $novaSenha = gerarSenha(8, true, true, true, false);
+                $novaSenhaHash = password_hash($novaSenha, PASSWORD_DEFAULT);
 
-            updateSenha($conn, $novaSenhaHash, $email);
+                updateSenha($conn, $novaSenhaHash, $email);
 
-            closeConnection($conn);
+                closeConnection($conn);
 
-            sendMailRecuperarSenha($row['nome'], $email, $novaSenha);
+                sendMailRecuperarSenha($row['nome'], $email, $novaSenha);
+            }
         }
     }
     else

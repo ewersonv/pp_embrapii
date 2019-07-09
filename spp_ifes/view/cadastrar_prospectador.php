@@ -8,6 +8,12 @@ $_SESSION['submit'] = 0;
 <head>
     <meta charset="utf-8">
 </head>
+<style>
+input {
+    min-width: 345px;
+    max-width: 450px;
+}
+</style>
 <body>
     <div class="container">
         <div class="py-5 text-center">
@@ -28,16 +34,19 @@ $_SESSION['submit'] = 0;
 
                     <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_cadastrar_prospectador.php">
                         <label>Nome:</label>
-                        <input class="form-control" type="text" name="nome" style="min-width:345px; max-width:450px;" placeholder="João Silva"><br>
+                        <input class="form-control" type="text" name="nome" placeholder="João Silva"><br>
+
+                        <label>CPF:</label>
+                        <input class="form-control" type="text" name="cpf" placeholder="11122233344" maxlength="11"><br>
 
                         <label>Telefone:</label>
-                        <input class="form-control" type="text" name="telefone" style="min-width:345px; max-width:450px;" placeholder="27999998888" maxlength="11"><br>
+                        <input class="form-control" type="text" name="telefone" placeholder="27999998888" maxlength="11"><br>
                     
                         <label>Email:</label>
-                        <input class="form-control" type="email" name="email" style="min-width:345px; max-width:450px;" placeholder="exemplo@email.com"><br>
+                        <input class="form-control" type="email" name="email" placeholder="exemplo@email.com"><br>
 
                         <label>Confirmar email:</label>
-                        <input class="form-control" type="email" name="confirmar_email" style="min-width:345px; max-width:450px;" placeholder="exemplo@email.com"><br>
+                        <input class="form-control" type="email" name="confirmar_email" placeholder="exemplo@email.com"><br>
 
                         <label>Permissões de administrador?</label>
                         <div class="custom-control custom-radio">
@@ -66,6 +75,10 @@ $_SESSION['submit'] = 0;
             formulario.nome.focus();
             return false;
         }
+        if (formulario.cpf.value == '') {
+            formulario.cpf.focus();
+            return false;
+        }
         if (formulario.telefone.value == '') {
             formulario.telefone.focus();
             return false;
@@ -81,7 +94,12 @@ $_SESSION['submit'] = 0;
         }
         if (formulario.adm.value == '')
         {
-            alert('Escolha uma permissão.');
+            alert('Escolha um tipo de permissão.');
+            return false;
+        }
+        if (formulario.cpf.value.length < 11) {
+            alert('CPF inválido.');
+            formulario.telefone.focus();
             return false;
         }
         if (formulario.telefone.value.length < 11) {

@@ -33,6 +33,7 @@ $_SESSION['submit'] = 0;
                             <thead class="thead-dark">
                                 <tr>
                                 <th scope="col">Nome</th>
+                                <th scope="col">CPF</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Telefone</th>
                                 <th scope="col">Permissao</th>
@@ -67,6 +68,7 @@ $_SESSION['submit'] = 0;
                                 }
                                 echo "<tr>";
                                 echo "<th scope='row'>" . utf8_encode($row['nome']) . "</th>";
+                                echo "<td>" . utf8_encode($row['cpf']) . "</td>";
                                 echo "<td>" . utf8_encode($row['email']) . "</td>";
                                 echo "<td>" . utf8_encode($row['telefone']) . "</td>";
                                 echo "<td>" . utf8_encode($permissao) . "</td>";

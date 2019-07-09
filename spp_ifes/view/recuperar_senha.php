@@ -26,12 +26,13 @@ session_start();
             <div id="formContent">
                  <!-- Icon -->
                 <div class="fadeIn first">
-                    <br><br><h5>Informe seu email para recuperar a senha</h5><br>
+                    <br><br><h5>Informe seu email e CPF para recuperar a senha</h5><br>
                 </div>
                 
                 <!-- Login Form -->
                 <form name="formulario" method="POST" action="../controller/valida_recuperar_senha.php">
                     <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email">
+                    <input type="text" id="cpf" class="fadeIn third" name="cpf" placeholder="CPF (apenas números)" maxlength="11">
                     <input type="button" class="fadeIn fourth" name="btnLogin" value="Recuperar" onclick="validate()">
                 </form>
 
@@ -46,6 +47,11 @@ session_start();
             if (formulario.email.value == '')
             {
                 formulario.email.focus();
+                return false;
+            }
+            if (formulario.cpf.value == '')
+            {
+                formulario.cpf.focus();
                 return false;
             }
             else
