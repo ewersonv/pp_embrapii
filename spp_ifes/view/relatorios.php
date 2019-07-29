@@ -60,7 +60,7 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 				</h2>
 			</div>
 
-			<table class="table table-bordered">
+			<table class="table table-bordered" style="box-shadow: 0 10px 20px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.05);">
 			<tbody>
 				<tr>
 				<td>Total de projetos</td>

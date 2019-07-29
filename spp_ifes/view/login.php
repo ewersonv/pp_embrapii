@@ -32,7 +32,7 @@ session_start();
                 <!-- Login Form -->
                 <form name="formulario" method="POST" action="../controller/valida.php">
                     <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email">
-                    <input type="password" id="password" class="fadeIn third" name="senha" placeholder="Digite a sua senha">
+                    <input type="password" id="password" class="fadeIn third" name="senha" placeholder="Digite a sua senha"><br><br>
                     <input type="button" class="fadeIn fourth" name="btnLogin" value="Entrar" onclick="validate()">
                 </form>
 

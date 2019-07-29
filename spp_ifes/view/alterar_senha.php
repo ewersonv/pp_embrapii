@@ -32,7 +32,7 @@ $_SESSION['submit'] = 0;
 
                         <label>Nova senha:</label>
                         <input class="form-control" type="password" name="nova" style="min-width:345px;" placeholder="******">
-                        <small>A senha deve conter no mínimo 8 caracteres, sendo 2 maiúsculos e 1 número.</small> <br><br>
+                        <br><small>A senha deve conter no mínimo 8 caracteres, sendo 2 maiúsculos e 1 número.</small> <br><br>
                         
                         <div class="text-center">
                             <button class="btn btn-dark my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>

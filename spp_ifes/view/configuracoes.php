@@ -22,7 +22,7 @@ include_once("header.php");
 			</h2>
         </div>
 
-        <div class="list-group">
+        <div class="list-group" style="margin: auto; max-width: 70%; box-shadow: 0 10px 20px rgba(0,0,0,0.15), 0 6px 6px rgba(0,0,0,0.05);">
             <a href="alterar_senha.php" class="list-group-item list-group-item-action">Alterar senha</a>
             <a href="alterar_telefone.php" class="list-group-item list-group-item-action">Alterar telefone</a>
             <?php

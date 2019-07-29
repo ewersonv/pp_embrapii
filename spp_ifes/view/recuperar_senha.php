@@ -32,7 +32,7 @@ session_start();
                 <!-- Login Form -->
                 <form name="formulario" method="POST" action="../controller/valida_recuperar_senha.php">
                     <input type="text" id="login" class="fadeIn second" name="email" placeholder="Digite seu email">
-                    <input type="text" id="cpf" class="fadeIn third" name="cpf" placeholder="CPF (apenas números)" maxlength="11">
+                    <input type="text" id="cpf" class="fadeIn third" name="cpf" placeholder="CPF (apenas números)" maxlength="11"><br><br>
                     <input type="button" class="fadeIn fourth" name="btnLogin" value="Recuperar" onclick="validate()">
                 </form>
 
