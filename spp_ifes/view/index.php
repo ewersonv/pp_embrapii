@@ -6,6 +6,9 @@ include_once("../controller/router.php");
 ?>
 
 <html id="grad1" lang="pt-br">
+	<head>
+		<link href="css/index.css" rel="stylesheet">
+	</head>
 	<body>
 		<div class="container">
 			<div class="py-5 text-center">
@@ -23,13 +26,13 @@ include_once("../controller/router.php");
 				<div class="row justify-content-md-center">
             		<div class="col-md-auto">
 						<form name="formulario" style="float:center" method="POST" action="pesquisa.php">
-								<input class="form-control mr-sm-2" style="min-width: 345px;" type="text" name="nome_projeto" placeholder="Nome do projeto"> <br>
-								<input class="form-control mr-sm-2" style="min-width: 345px;" type="text" name="nome_produto" placeholder="Nome do produto"> <br>
-								<input class="form-control mr-sm-2" style="min-width: 345px;" type="text" name="nome_empresa" placeholder="Nome da empresa"> <br>
+								<input class="form-control mr-sm-2" style="min-width: 345px; box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" name="nome_projeto" placeholder="Nome do projeto"> <br>
+								<input class="form-control mr-sm-2" style="min-width: 345px; box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" name="nome_produto" placeholder="Nome do produto"> <br>
+								<input class="form-control mr-sm-2" style="min-width: 345px; box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" name="nome_empresa" placeholder="Nome da empresa"> <br>
 								<?php
 								if($_SESSION['tipo'] == 1) // Usuário comum não pode ver propostas de outros prospectadores
 								{
-									echo "<input class='form-control mr-sm-2' style='min-width: 345px;' type='text' name='nome_usuario' placeholder='Nome do prospectador'> <br>";
+									echo "<input class='form-control mr-sm-2' style='min-width: 345px; box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);' type='text' name='nome_usuario' placeholder='Nome do prospectador'> <br>";
 								}
 								?>
 								<br><button class="btn btn-dark my-2 my-sm-0" type="button" onclick="validateAndSend()">Pesquisar</button>
