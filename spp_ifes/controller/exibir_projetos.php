@@ -17,7 +17,7 @@ else /* se a página foi acessada via submit da página anterior */
         /* USAR ENCODE AQUI, CASO CONTRÁRIO OS CARACTERES ESPECIAIS NÃO APARECERÃO NA PÁGINA */
         ?>
 
-        <div class="card border-secondary mb-3" style="box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.19);">
+        <div class="card border-secondary mb-3" id="cartao">
             <h5 class="card-header"><?php echo "<b>" . utf8_encode($row['nome_projeto']) . "</b>" ?></h5>
                 <div class="card-body">
                         

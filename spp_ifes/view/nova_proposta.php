@@ -5,82 +5,80 @@ $_SESSION['submit'] = 0;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+	<head>
+		<link rel="stylesheet" href="css/proposta.css">
+	</head>
 	<body id="grad1">
-		<div class="container">
-			<div class="py-5 text-center">
-				<h2 class="mb-0">
-					<a class="text-dark">Nova proposta</a>
-				</h2>
-			</div>
+		<div class="wrapper container">
+			
+			<h2 class="py-5 text-center mb-0 text-dark">Nova proposta</h2>
 
-				<form name="formulario" method="POST" action="../controller/proc_nova_proposta.php">
-					<div class="col-md-12 mb-3">
-						<small>*Campo obrigatório</small><br><br>
+			<form name="formulario" method="POST" action="../controller/proc_nova_proposta.php">
+				<small>*Campo obrigatório</small><br><br>
 
-						<label><b>Nome do projeto*: </b></label><br>
-						<input style="box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="nome_projeto" placeholder="Nome do projeto" maxlength="250" required><br><br>
+				<label><b>Nome do projeto*: </b></label><br>
+				<input type="text" class="form-control" name="nome_projeto" placeholder="Nome do projeto" maxlength="250" required><br><br>
 
-						<label><b>Nome do produto que será desenvolvido*: </b></label>
-						<input style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" maxlength="250" required><br><br>
-						
-						<label><b>Descrição do produto: </b></label>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="descricao" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade" maxlength="4000"/></textarea><br><br>
-						
-						<label><b>Nome da empresa*: </b></label><br>
-						<input style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="nome_empresa" placeholder="Nome da empresa" maxlength="100" required><br><br>
+				<label><b>Nome do produto que será desenvolvido*: </b></label>
+				<input type="text" class="form-control" name="nome_produto" placeholder="Nome do produto" maxlength="250" required><br><br>
+				
+				<label><b>Descrição do produto: </b></label>
+				<textarea type="text" class="form-control" name="descricao" rows="5" cols="80" placeholder="Descrição do produto, suas características e finalidade" maxlength="4000"/></textarea><br><br>
+				
+				<label><b>Nome da empresa*: </b></label><br>
+				<input type="text" class="form-control" name="nome_empresa" placeholder="Nome da empresa" maxlength="100" required><br><br>
 
-						<label><b>CNPJ*: </b></label><br>
-						<input style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="cnpj" placeholder="Apenas números" maxlength="14" required><br><br>
+				<label><b>CNPJ*: </b></label><br>
+				<input type="text" class="form-control" name="cnpj" placeholder="Apenas números" maxlength="14" required><br><br>
 
-						<label><b>Tipo de empresa*: </b></label><br>
-						<div class="custom-control custom-radio">
-							<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" value="MEI/ME">
-							<label class="custom-control-label" for="MEI/ME">MEI/ME</label> <br>
-						</div>
-						<div class="custom-control custom-radio">
-							<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input" value="EPP">
-							<label class="custom-control-label" for="EPP">EPP</label> <br>
-						</div>
-						<div class="custom-control custom-radio">
-							<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input" value="Médio/Grande porte">
-							<label class="custom-control-label" for="Médio/Grande porte">Médio/Grande porte</label> <br><br>
-						</div>
+				<label><b>Tipo de empresa*: </b></label><br>
+				<div class="custom-control custom-radio">
+					<input id="MEI/ME" name="tipo_empresa" type="radio" class="custom-control-input" value="MEI/ME">
+					<label class="custom-control-label" for="MEI/ME">MEI/ME</label> <br>
+				</div>
+				<div class="custom-control custom-radio">
+					<input id="EPP" name="tipo_empresa" type="radio" class="custom-control-input" value="EPP">
+					<label class="custom-control-label" for="EPP">EPP</label> <br>
+				</div>
+				<div class="custom-control custom-radio">
+					<input id="Médio/Grande porte" name="tipo_empresa" type="radio" class="custom-control-input" value="Médio/Grande porte">
+					<label class="custom-control-label" for="Médio/Grande porte">Médio/Grande porte</label> <br><br>
+				</div>
 
-						<label><b>Riscos: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="riscos" rows="5" cols="80" placeholder="Riscos inerentes ao andamento/execução do projeto" maxlength="2000"/></textarea><br><br>
+				<label><b>Riscos: </b></label><br>
+				<textarea type="text" class="form-control" name="riscos" rows="5" cols="80" placeholder="Riscos inerentes ao andamento/execução do projeto" maxlength="2000"/></textarea><br><br>
 
-						<label><b>Partes interessadas: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="interessados" rows="5" cols="80" placeholder="Empresas que têm interesse no projeto" maxlength="2000"/></textarea><br><br>
+				<label><b>Partes interessadas: </b></label><br>
+				<textarea type="text" class="form-control" name="interessados" rows="5" cols="80" placeholder="Empresas que têm interesse no projeto" maxlength="2000"/></textarea><br><br>
 
-						<label><b>Viabilidade: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="viabilidade" rows="5" cols="80" placeholder="Fatores que propiciam a viabilidade do projeto" maxlength="2000"/></textarea><br><br>
-						
-						<label><b>Equipe do projeto: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="equipe" rows="5" cols="80" placeholder="Pessoas envolvidas no projeto" maxlength="2000"/></textarea><br><br>
+				<label><b>Viabilidade: </b></label><br>
+				<textarea type="text" class="form-control" name="viabilidade" rows="5" cols="80" placeholder="Fatores que propiciam a viabilidade do projeto" maxlength="2000"/></textarea><br><br>
+				
+				<label><b>Equipe do projeto: </b></label><br>
+				<textarea type="text" class="form-control" name="equipe" rows="5" cols="80" placeholder="Pessoas envolvidas no projeto" maxlength="2000"/></textarea><br><br>
 
-						<label><b>Entregas: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="entregas" rows="5" cols="80" placeholder="Entregas do projeto" maxlength="2000"/></textarea><br><br>
+				<label><b>Entregas: </b></label><br>
+				<textarea type="text" class="form-control" name="entregas" rows="5" cols="80" placeholder="Entregas do projeto" maxlength="2000"/></textarea><br><br>
 
-						<label><b>Cronograma: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="cronograma" rows="5" cols="80" placeholder="Datas para realização das entregas" maxlength="2000"/></textarea><br><br>
+				<label><b>Cronograma: </b></label><br>
+				<textarea type="text" class="form-control" name="cronograma" rows="5" cols="80" placeholder="Datas para realização das entregas" maxlength="2000"/></textarea><br><br>
 
-						<label><b>Premissas: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="premissas" rows="5" cols="80" placeholder="Pontos de partida para realização do projeto" maxlength="2000"/></textarea><br><br>
+				<label><b>Premissas: </b></label><br>
+				<textarea type="text" class="form-control" name="premissas" rows="5" cols="80" placeholder="Pontos de partida para realização do projeto" maxlength="2000"/></textarea><br><br>
 
-						<label><b>Efeitos do projeto: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="efeitos" rows="5" cols="80" placeholder="Efeitos do projeto ao ser implementado com sucesso" maxlength="2000"/></textarea><br><br>
+				<label><b>Efeitos do projeto: </b></label><br>
+				<textarea type="text" class="form-control" name="efeitos" rows="5" cols="80" placeholder="Efeitos do projeto ao ser implementado com sucesso" maxlength="2000"/></textarea><br><br>
 
-						<label><b>Custo: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="custo" rows="5" cols="80" placeholder="Custo total e detalhado do projeto" maxlength="2000"/></textarea><br><br>
+				<label><b>Custo: </b></label><br>
+				<textarea type="text" class="form-control" name="custo" rows="5" cols="80" placeholder="Custo total e detalhado do projeto" maxlength="2000"/></textarea><br><br>
 
-						<label><b>Anotações complementares: </b></label><br>
-						<textarea style=" box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);" type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" placeholder="Informações adicionais sobre o projeto" maxlength="2000"/></textarea>
+				<label><b>Anotações complementares: </b></label><br>
+				<textarea type="text" class="form-control" name="anotacoes_complementares" rows="5" cols="80" placeholder="Informações adicionais sobre o projeto" maxlength="2000"/></textarea>
 
-						<div class="py-5 text-center">
-							<button class="btn mr-2 btn-dark" type="button" onclick="validate()">Cadastrar</button>
-						</div>
-					</div>
-				</form>
+				<div class="py-5 text-center">
+					<button class="btn mr-2 btn-dark" type="button" onclick="validate()">Cadastrar</button>
+				</div>
+			</form>
 		</div>
 	<script>
 		function validate() {

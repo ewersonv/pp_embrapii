@@ -43,10 +43,10 @@ input {
                         <input class="form-control" type="text" name="telefone" placeholder="27999998888" maxlength="11"><br>
                     
                         <label>Email:</label>
-                        <input class="form-control" type="email" name="email" placeholder="exemplo@email.com"><br>
+                        <input class="form-control" autocapitalize="off" type="email" name="email" placeholder="exemplo@email.com"><br>
 
                         <label>Confirmar email:</label>
-                        <input class="form-control" type="email" name="confirmar_email" placeholder="exemplo@email.com"><br>
+                        <input class="form-control" autocapitalize="off" type="email" name="confirmar_email" placeholder="exemplo@email.com"><br>
 
                         <label>Permissões de administrador?</label>
                         <div class="custom-control custom-radio">

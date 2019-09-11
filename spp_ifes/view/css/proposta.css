@@ -1,0 +1,43 @@
+body {
+    padding-bottom: 25px;
+}
+
+.container {
+    -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    background: rgba(255, 255, 255, 0.192);
+    padding: 30px;
+    width: 90%;
+    margin-top: 20px;
+    max-width: 900px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+}
+
+input[type="text"], input[type="email"], textarea[type="text"] {
+    color: #0d0d0d;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 2.5%;
+    max-width: 95%;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+label, small {
+    margin-left: 2.5%;
+}
+
+@media (max-width: 400px)
+{
+  #botoes-visualizar-proposta, #botoes-preencher-proposta  {
+    padding-left: 30px;
+    display: inline-flex;
+  }
+
+  #botoes-visualizar-proposta {
+    margin-top: 20px;
+  }
+}

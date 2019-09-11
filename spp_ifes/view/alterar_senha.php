@@ -28,10 +28,10 @@ $_SESSION['submit'] = 0;
 
                     <form name="formulario" class="align center" style="float:center" method="POST" action="../controller/proc_alterar_senha.php">
                         <label>Senha atual:</label>
-                        <input class="form-control" type="password" name="atual" style="min-width:345px;" placeholder="******"><br>
+                        <input class="form-control" autocapitalize="off" type="password" name="atual" style="min-width:345px;" placeholder="******"><br>
 
                         <label>Nova senha:</label>
-                        <input class="form-control" type="password" name="nova" style="min-width:345px;" placeholder="******">
+                        <input class="form-control" autocapitalize="off" type="password" name="nova" style="min-width:345px;" placeholder="******">
                         <br><small>A senha deve conter no mínimo 8 caracteres, sendo 2 maiúsculos e 1 número.</small> <br><br>
                         
                         <div class="text-center">

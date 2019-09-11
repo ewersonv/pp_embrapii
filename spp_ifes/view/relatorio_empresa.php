@@ -9,6 +9,9 @@ include_once("../model/propostas/exibicao.php");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+	<head>
+		<link rel="stylesheet" href="css/listar.css">
+	</head>
 	<body id="grad1">
 		<div class="container">
 			<div class="py-5 text-center">

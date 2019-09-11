@@ -60,7 +60,7 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 				</h2>
 			</div>
 
-			<table class="table table-bordered" style="box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 6px 6px rgba(0,0,0,0.05);">
+			<table class="table table-bordered" id="tabela">
 			<tbody>
 				<tr>
 				<td>Total de projetos</td>
@@ -80,14 +80,14 @@ include_once("../model/relatorios/funcoes_relatorios.php");
 				</tr>
 				<tr>
 				<td>Empresa com mais projetos</td>
-				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="qtdEmpresa(<?php echo $qtd; ?>)">
+				<td class='btn btn-sm btn-outline-dark' role='button' id="clicavel" onclick="qtdEmpresa(<?php echo $qtd; ?>)">
 				<?php $_SESSION['submit'] = 1; $empresa = empresaMaisProjetos(); echo utf8_encode($empresa) . ' (' . numProjetosEmpresa($empresa) . ')'; ?>
 				</a>
 				</td>
 				</tr>
 				<tr>
 				<td>Maior prospectador</td>
-				<td class='btn btn-sm btn-outline-dark' role='button' style='width:100%' onclick="qtdProspectador(<?php echo $qtd; ?>)">
+				<td class='btn btn-sm btn-outline-dark' role='button' id="clicavel" onclick="qtdProspectador(<?php echo $qtd; ?>)">
 				<?php $_SESSION['submit'] = 1; $usuario = maiorProspectador(); echo utf8_encode($usuario) . ' (' . numProjetosUsuario($usuario) . ')'; ?>
 				</td>
 				</tr>

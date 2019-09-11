@@ -10,8 +10,7 @@
 		<style>
 			#grad1 {
 				height: 100%;
-				background-color: #fafafa; /* For browsers that do not support gradients */
-				background-image: linear-gradient(100deg,#fafafa,#f1f1f1); /* Standard syntax (must be last) */
+				background-color: #f6f6f6; /* For browsers that do not support gradients */
 			}
 		</style>
 	</head>

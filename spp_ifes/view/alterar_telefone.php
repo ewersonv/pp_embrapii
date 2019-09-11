@@ -35,8 +35,8 @@ $_SESSION['submit'] = 0;
                         <label>Novo telefone:</label>
                         <input class="form-control" type="text" name="telefone" style="min-width:345px; max-width:450px;" placeholder="27999998888" maxlength="11"> <br>
 
-                        <label>Senha:</label>
-                        <input class="form-control" type="password" name="senha" style="min-width:345px;" placeholder="******"><br><br>
+                        <label>Insira sua senha para confirmar a alteração:</label>
+                        <input class="form-control" autocapitalize="off" type="password" name="senha" style="min-width:345px;" placeholder="******"><br><br>
                         
                         <div class="text-center">
                             <button class="btn btn-dark my-2 my-sm-0" type="button" onclick="validate()">Confirmar</button><br>

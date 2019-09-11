@@ -18,18 +18,16 @@ include_once("header.php");
                 }
             ?>
 
-            <h2 class="mb-0">
-				<a class="text-dark">Configurações</a>
-			</h2>
+            <h2 class="mb-0 text-dark">Configurações</h2>
         </div>
 
         <div class="list-group">
-            <a href="alterar_senha.php" class="list-group-item list-group-item-action">Alterar senha</a>
-            <a href="alterar_telefone.php" class="list-group-item list-group-item-action">Alterar telefone</a>
+            <a id="config-item" href="alterar_senha.php" class="list-group-item list-group-item-action">Alterar senha</a>
+            <a id="config-item" href="alterar_telefone.php" class="list-group-item list-group-item-action">Alterar telefone</a>
             <?php
             if($_SESSION['tipo'] == 1){
-                echo "<a href='cadastrar_prospectador.php' class='list-group-item list-group-item-action'>Cadastrar novo prospectador</a>";
-                echo "<a href='consultar_prospectadores.php' class='list-group-item list-group-item-action'>Consultar prospectadores</a>";
+                echo "<a id='config-item' href='cadastrar_prospectador.php' class='list-group-item list-group-item-action'>Cadastrar novo prospectador</a>";
+                echo "<a id='config-item' href='consultar_prospectadores.php' class='list-group-item list-group-item-action'>Consultar prospectadores</a>";
             }
             ?>
         </div>
