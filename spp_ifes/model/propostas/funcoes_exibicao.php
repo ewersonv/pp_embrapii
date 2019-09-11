@@ -12,7 +12,7 @@ function acessarProposta($tipo, $id_usuario, $row_id_usuario, $row_finalizado, $
             }
             else
             {
-                echo "<p style='color:green;'>Proposta finalizada.</p>";
+                echo "<p id='finalizada'>Proposta finalizada.</p>";
                 echo "<p><a class='btn btn-sm mr-2 btn-outline-dark' href='visualizar_proposta.php?id=" . $row_id_projeto . "' role='button'>Visualizar proposta</a>";
             }
         }
@@ -20,7 +20,7 @@ function acessarProposta($tipo, $id_usuario, $row_id_usuario, $row_finalizado, $
         {
             if($row_finalizado == 1)
             {
-                echo "<p style='color:green;'>Proposta finalizada.</p>";
+                echo "<p id='finalizada'>Proposta finalizada.</p>";
             }
             echo "<p><a class='btn btn-sm mr-2 btn-outline-dark' href='visualizar_proposta.php?id=" . $row_id_projeto . "' role='button'>Visualizar proposta</a>";
         }
@@ -35,7 +35,7 @@ function acessarProposta($tipo, $id_usuario, $row_id_usuario, $row_finalizado, $
             }
             else /* proposta finalizada */
             {
-                echo "<p style='color:green;'>Proposta finalizada.</p>";                                    
+                echo "<p id='finalizada'>Proposta finalizada.</p>";                                    
                 echo "<p><a class='btn btn-sm mr-2 btn-outline-dark' href='visualizar_proposta.php?id=" . $row_id_projeto . "' role='button'>Visualizar proposta</a>";
             }
         }    
