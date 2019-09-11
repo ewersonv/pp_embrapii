@@ -62,7 +62,7 @@ else /* se a página foi acessada via submit da página anterior */
 		/* Fecha a conexão com o banco de dados */
 		closeConnection($conn);
 
-		echo "Nenhum resultado encontrado.";
+		echo "<p style='text-align: center; margin-top: 15%;' >Nenhum resultado encontrado.</p>";
 	}
 	else
 	{	
