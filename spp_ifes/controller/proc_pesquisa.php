@@ -16,40 +16,48 @@ else /* se a página foi acessada via submit da página anterior */
 
 	if(empty($_POST['nome_empresa']) && empty($_POST['nome_usuario']) && empty($_POST['nome_produto']) && empty($_POST['nome_projeto']))
 	{
-		$nome_empresa = verificaCookie('nome_empresa');
-		$nome_usuario = verificaCookie('nome_usuario');
-		$nome_produto = verificaCookie('nome_produto');
 		$nome_projeto = verificaCookie('nome_projeto');
+		$nome_produto = verificaCookie('nome_produto');
+		$nome_empresa = verificaCookie('nome_empresa');
+		if ($_SESSION['tipo'] == 1) {
+			$nome_usuario = verificaCookie('nome_usuario');
+		}
 	}
 	else
 	{
-		$nome_empresa = $_POST['nome_empresa'];
-		$nome_usuario = $_POST['nome_usuario'];
-		$nome_produto = $_POST['nome_produto'];
 		$nome_projeto = $_POST['nome_projeto'];
+		$nome_produto = $_POST['nome_produto'];
+		$nome_empresa = $_POST['nome_empresa'];
+		if ($_SESSION['tipo'] == 1) {
+			$nome_usuario = $_POST['nome_usuario'];
+		}
 	}
 
-	setcookie('nome_empresa', $nome_empresa);
-	setcookie('nome_usuario', $nome_usuario);
-	setcookie('nome_produto', $nome_produto);
 	setcookie('nome_projeto', $nome_projeto);
+	setcookie('nome_produto', $nome_produto);
+	setcookie('nome_empresa', $nome_empresa);
+	if ($_SESSION['tipo'] == 1) {
+		setcookie('nome_usuario', $nome_usuario);
+	}
 
 	$string = '';
-	if ($nome_empresa != '')
+	if ($nome_projeto != '')
 	{
-		$string = $string."E.nome LIKE '%".$nome_empresa."%' AND ";
-	}
-	if ($nome_usuario != '')
-	{
-		$string = $string."U.nome LIKE '%".$nome_usuario."%' AND "; 
+		$string = $string."P.nome LIKE '%".$nome_projeto."%' AND ";
 	}
 	if ($nome_produto != '')
 	{
 		$string = $string."PD.nome LIKE '%".$nome_produto."%' AND ";
 	}
-	if ($nome_projeto != '')
+	if ($nome_empresa != '')
 	{
-		$string = $string."P.nome LIKE '%".$nome_projeto."%' AND ";
+		$string = $string."E.nome LIKE '%".$nome_empresa."%' AND ";
+	}
+	if ($_SESSION['tipo'] == 1) {
+		if ($nome_usuario != '')
+		{
+			$string = $string."U.nome LIKE '%".$nome_usuario."%' AND "; 
+		}
 	}
 	// remove o ultimo AND com os espaços
 	$resposta = substr($string, 0, -5);

@@ -27,7 +27,8 @@ input {
 
                     <?php
                         if(isset($_SESSION['msg'])){
-                            echo $_SESSION['msg'];
+                            echo $_SESSION['msg'] . "<br>";
+                            echo $_SESSION['fail'];
                             unset($_SESSION['msg']);
                         }
                     ?>

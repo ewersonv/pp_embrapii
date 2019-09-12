@@ -61,71 +61,86 @@ function insertUsuario($conn, $nome, $cpf, $telefone, $email, $senha, $tipo)
 
 function sendMail($nome, $email, $telefone, $senha, $tipo)
 {
-    $to = $email;
-    $subject = utf8_decode('Confirmação de cadastro na plataforma de prospecção');
+    require "../model/libphp-phpmailer/PHPMailerAutoload.php"; // Caminho relativo à view que chama este arquivo.
+    require "../model/env.php";
 
-    $path = 'https://prospeccao.polo.ifes.edu.br';
-    
-    $headers = 'From: polodeinovacao@ifes.edu.br' . "\r\n" .
-               'Reply-To: polodeinovacao@ifes.edu.br';
-    $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
-    
     if ($tipo == 1)
     {
-        $permissao = utf8_decode("permissão de acesso de administrador");
+        $permissao = "permissão de acesso de administrador";
     }
     else
     {
-        $permissao = utf8_decode("permissão de acesso de usuário comum");
+        $permissao = "permissão de acesso de usuario comum";
     }
+    $mail = new PHPMailer(); //PHPMailer(true) habilita throw exception usando $mail->SMTPDebug = 3;
+    $mail->isSMTP();
+    $mail->Host = $env_host;
+    $mail->SMTPAuth = $env_smtpauth;
+    $mail->SMTPSecure = $env_smtpsecure;
+    $mail->Username = $env_username;
+    $mail->Password = $env_password;
+    $mail->Port = $env_port;
+    $mail->setFrom($env_username, utf8_decode('Plataforma de prospecção'));
     
-    $message = utf8_decode("
-        Nome: $nome<br>
-        Login: $email<br>
-        Telefone: $telefone<br>
-        Senha*: <b>$senha</b><br>
-        Nível de acesso: $permissao<br><br>
-        Seu cadastro foi confirmado. Link para acessar a plataforma: '$path' <br>
-        *Você pode alterar sua senha na aba 'Configurações'
-    ");
+    $mail->isHTML(true);
 
-    $success = mail($to, $subject, $message, $headers);
-    if(!$success)
+    $mail->addAddress($email);
+    
+    $mail->Subject = utf8_decode('Plataforma de Prospecção - Confirmação de cadastro');
+    $mail->Body    = utf8_decode("
+    Nome: $nome<br>
+    Login: $email<br>
+    Telefone: $telefone<br>
+    Senha*: <b>$senha</b><br>
+    Nível de acesso: $permissao.<br><br>
+    Seu cadastro foi confirmado. Link para acessar a plataforma: $env_url <br><br>
+    Se encontrar algum problema, favor entrar em contato no e-mail $env_emailcontato. <br><br>
+    *<small>Você pode alterar sua senha na aba <b>Configurações</b>.</small>
+    ");
+    if(!$mail->send())
     {
-        $_SESSION['msg'] = "Não foi possível enviar email de confirmação para o usuário";
+        $_SESSION['fail'] = "Não foi possível enviar a mensagem.<br> Erro: " . $mail->ErrorInfo;
     }
     else
     {
-        $_SESSION['msg'] = "Um email de confirmação foi enviado para o usuário cadastrado.";
+        $_SESSION['success'] = 'Mensagem enviada.';
     }
 }
 
 function sendMailRecuperarSenha($nome, $email, $senha)
 {
-    $path = 'https://prospeccao.polo.ifes.edu.br';
-    $to = $email;
-    $subject = utf8_decode('Recuperação de senha');
+    require "../model/libphp-phpmailer/PHPMailerAutoload.php"; // Caminho relativo à view que chama este arquivo.
+    require "../model/env.php";
+
+    $mail = new PHPMailer(); //PHPMailer(true) habilita throw exception usando $mail->SMTPDebug = 3;
+    $mail->isSMTP();
+    $mail->Host = $env_host;
+    $mail->SMTPAuth = $env_smtpauth;
+    $mail->SMTPSecure = $env_smtpsecure;
+    $mail->Username = $env_username;
+    $mail->Password = $env_password;
+    $mail->Port = $env_port;
+    $mail->setFrom($env_username, utf8_decode('Plataforma de prospecção'));
     
-    $headers = 'From: polodeinovacao@ifes.edu.br' . "\r\n" .
-               'Reply-To: polodeinovacao@ifes.edu.br';
-    $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+    $mail->isHTML(true);
 
-    $message = utf8_decode("
-        Olá $nome,<br>
-        Sua nova senha é: <b>$senha</b>.<br>
-        Você pode alterá-la na aba 'Configurações' em '$path'.
+    $mail->addAddress($email);
+    
+    $mail->Subject = utf8_decode('Plataforma de Prospecção - Recuperação de senha');
+    $mail->Body    = utf8_decode("
+    Olá, $nome!<br>
+    Sua nova senha é: <b>$senha</b>.<br>
+    Você pode alterá-la na aba 'Configurações' em $env_url.
     ");
-
-    $success = mail($to, $subject, $message, $headers);
-    if(!$success)
+    if(!$mail->send())
     {
-        $_SESSION['msg'] = "Não foi possível enviar email de confirmação para o usuário. <br><br>";
-        return 0;
+        $_SESSION['msg'] = "Não foi possível enviar a mensagem.<br>";
+        header("Location: ../view/recuperar_senha.php");
     }
     else
     {
         $_SESSION['msg'] = "Uma mensagem contendo a nova senha de acesso foi enviada para o email informado. <br><br>";
-        header("Location: ../view/login.php");
+	    header("Location: ../view/login.php");
     }
 }
 
@@ -146,12 +161,6 @@ function updateStatusUsuario($id)
     /* troca o status do usuário, ativando-o ou desativando-o */
     $conn = connect();
 
-    /* verifica quantos administradores ativados existem no banco */
-    $query = "SELECT COUNT(id) AS qtd FROM usuario WHERE tipo = 1 AND status = 1";
-    $result = mysqli_query($conn, $query);
-    $resultado = mysqli_fetch_assoc($result);
-    $qtd = $resultado['qtd'];
-
     $query = "SELECT status, nome FROM usuario WHERE usuario.id = $id";
     $result = mysqli_query($conn, $query);
     $resultado = mysqli_fetch_assoc($result);
@@ -160,19 +169,12 @@ function updateStatusUsuario($id)
 
     if($status_antigo == 1)
     {
-        if ($qtd > 1)
-        {
-            $status = 0;
+        $status = 0;
 
-            $query = "UPDATE usuario SET status = $status WHERE usuario.id = $id";
-            $result = mysqli_query($conn, $query);
+        $query = "UPDATE usuario SET status = $status WHERE usuario.id = $id";
+        $result = mysqli_query($conn, $query);
 
-            $_SESSION['msg'] = "<p style='color:red;'>Prospectador $nome desativado!</p>";
-        }
-        else
-        {
-            $_SESSION['msg'] = "<p style='color:red;'>Prospectador $nome não pode ser desativado pois é o único administrador do sistema.</p>";
-        }
+        $_SESSION['msg'] = "<p style='color:red;'>Prospectador $nome desativado!</p>";
     }
     else
     {

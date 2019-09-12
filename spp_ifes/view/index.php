@@ -41,9 +41,17 @@ include_once("../controller/router.php");
 		</div>
 	<script>
 		function validateAndSend() {
-			if (formulario.nome_empresa.value == '' && formulario.nome_usuario.value == '' && formulario.nome_produto.value == '' && formulario.nome_projeto.value == '') {
-				alert('Você precisa preencher pelo menos um campo.');
-				return false;
+			if (formulario.nome_projeto.value == '' && formulario.nome_produto.value == '' && formulario.nome_empresa.value == '') {
+				if(formulario.nome_usuario) {
+					if (formulario.nome_usuario.value == '') {
+						alert('Você precisa preencher pelo menos um campo.');
+						return false;
+					}
+				}
+				else {
+					alert('Você precisa preencher pelo menos um campo.');
+					return false;
+				}
 			}
 			else {
 				<?php $_SESSION['submit'] = 1; ?>

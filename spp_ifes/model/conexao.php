@@ -1,5 +1,7 @@
 <?php
 
+require 'env.php';
+
 function connect()
 {
     /* Conecta ao banco de dados */
