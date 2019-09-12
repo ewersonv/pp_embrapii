@@ -35,9 +35,6 @@ label, small {
   #botoes-visualizar-proposta, #botoes-preencher-proposta  {
     padding-left: 30px;
     display: inline-flex;
-  }
-
-  #botoes-visualizar-proposta {
     margin-top: 20px;
   }
 }
