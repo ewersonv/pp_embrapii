@@ -18,7 +18,7 @@ $_SESSION['submit'] = 0;
                     <div class="py-5 text-center">
                         <?php
                             if(isset($_SESSION['msg'])){
-                                echo $_SESSION['msg'];
+                                echo utf8_encode($_SESSION['msg']);
                                 unset($_SESSION['msg']);
                             }
                         ?>
